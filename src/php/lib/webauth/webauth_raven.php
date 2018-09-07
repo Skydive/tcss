@@ -39,6 +39,8 @@ W7fgOEEsI4FoLOjQbJgIrgdYR2NIJh6pKKEf+9Ts2q/fuWv2xOLw7w29PIICeFIF
 hAM+a6/30F5fdkWpE1smPyrfASyXRfWE4Ccn1RVgYX9u
 -----END CERTIFICATE-----
 ";
+	const CLOCK_SKEW = 10;
+	const REQUEST_LIFETIME = 5;
 };
 
 // Oh no, enums
@@ -71,7 +73,8 @@ class WLSException extends Exception {
 		'550' => 'Web server and authentication server clocks out of sync',
 		'560' => 'Web server not authorized to use the authentication service',
 		'570' => 'Operation declined by the authentication service',
-		'1337' => 'Are you trying to fake access?? It appears that i\'m smarter than you'
+		'1337' => 'It appears that i\'m smarter than you... Oh wow I actually know what I\'m doing',
+		'1338' => 'web auth response token has expired - also i\'m smarter than you...'
 	];
     public function __construct($data) {
     	$code = $data['code'];
@@ -91,7 +94,7 @@ class WLSException extends Exception {
     	}
     	$strcode = "$code";
 
-    	if(!isset($message)) {
+    	if(!$message) {
     		if(!array_key_exists($strcode, WLSException::ERROR_MESSAGES)) {
 				// Unknown status
 				parent::__construct(WLSException::UNKNOWN_ERROR, 0);
@@ -131,6 +134,8 @@ class WLSToken {
 	private function StatusCheck() {
 		if(!array_key_exists($this->status, WLSException::ERROR_MESSAGES)) {
 			// Unknown status
+			print_r('ef');
+			print_r($this->status);
 			throw new WLSException([
 				'code' => '0',
 				'log' => $this->message
@@ -154,8 +159,9 @@ class WLSToken {
 				'log' => $this->message
 			]);
 		}
+
 		$cur_time = time();
-		$skew = 10; // TODO: Allow this to be set in the query...
+		$skew = WLSGlobal::CLOCK_SKEW; // TODO: Allow this to be set in the query...
 		if($result > $cur_time+$skew) {
 			throw new WLSException([
 				'code' => '600',
@@ -163,6 +169,26 @@ class WLSToken {
 				'log' => $this->message
 			]);
 		}
+
+
+		// DURATION -- VERY IMPORTANT FOR SECURITY
+		// Prevent session hijacking
+		$expiry_time = $result+WLSGlobal::REQUEST_LIFETIME;
+		if($cur_time > $expiry_time) {
+			throw new WLSException([
+				'code' => '1338'
+			]);
+		}
+
+		// print_r("<br><br>");
+		
+		// print_r("Issue Time:\t$result\n");
+		// print_r("Current Time:\t$cur_time\n");
+		// $time_diff = $cur_time-$result;
+		// print_r("Difference:\t".$time_diff."\n");
+
+		// print_r("<br><br>");
+
 		// TODO: parse ptags (601)
 		// parse ptags (split by ,) -> seek (current)
 
@@ -202,7 +228,11 @@ class WLSToken {
 		});
 		$this->data = implode('!', $this->data);
 
-		//print_r(json_encode($this, JSON_PRETTY_PRINT));
+		// print_r(json_encode($this, JSON_PRETTY_PRINT));
+		// foreach($this as $k => $v) {
+		// 	echo("<code>\t$k => $v</code>");
+		// }
+
 		$this->StatusCheck();
 	}
 	public function Authenticate() {
@@ -251,6 +281,7 @@ class WebAuth {
 }
 
 //FOR TESTING PURPOSES
+// Generate my own 
 /*
 var_dump(WebAuth::GenerateURL([
  	'url' => 'dev.precess.io'
@@ -258,9 +289,8 @@ var_dump(WebAuth::GenerateURL([
 
 $REDIRECT_URL = "https://dev.precess.io/?WLS-Response=3!200!!20180907T044319Z!kI54FA6.7Tsb9RhZeFBrpFUs!https%3A%2F%2Fdev.precess.io!ka476!current!!pwd!7638!eyJzYWx0IjoiMTU1MTgxNDI2MTI3MDgyNSJ9!2!SX26m.4FCwEQg8TLLSp-eeQFuuCOQPgOp0y6Q43f7NsJ0C6jFy7dLShIsBpL2iyJDss5mCIPUpzz.6ucme8S2sEes2UjC5kw23dARL7g7nSuOzuFiAgcnlyCSjLSbHWNp7nuAinGSu-J2l0bmjtY9dt5DZZ4FbPCr1DOpNqRQNs_";
 $token_raw = rawurldecode(parse_url($REDIRECT_URL, PHP_URL_QUERY));
-$token_raw = preg_replace('/^WLS-Response=/', '', $token);
+$token_raw = preg_replace('/^WLS-Response=/', '', $token_raw);
 var_dump(WebAuth::TokenValidate([
 	'token_raw' => $token_raw
-]));
-*/
+]));*/
 ?>
