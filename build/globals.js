@@ -30,8 +30,8 @@ const pages = [
 	''
 ];
 
-const content_path = './content';
-const output_path = './www';
+const content_path = './src';
+const output_path = './dist';
 
 const libs = [
 	{
@@ -107,6 +107,16 @@ const libs = [
 			'**/*.ttf',
 			'**/*.woff',
 			'**/*.woff2'
+		]
+	},
+	{
+		type: 'clone',
+		options: {
+			dest: `${output_path}/static`
+		},
+		path: 'static',
+		files: [
+			'**/*.*'
 		]
 	}
 ];

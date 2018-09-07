@@ -77,6 +77,10 @@ const page = function(page) {
 	});
 	console.log(`${g.colors.bright}Building Page:${g.colors.bright}${g.colors.cyan}./${page}${g.colors.reset}`);
 
+
+	var pp = function(str, n) {
+		// indent every line except first by n		
+	}
 	fs.writeFileSync(`${g.output_path}/${page}/index.html`,`
 <!DOCTYPE html>
 <html>
