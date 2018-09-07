@@ -1,37 +1,47 @@
-<h1>precess.io</h1>
-<div id="philosophy">
-	<h1>Philosophy</h1>
-	<h2>Nginx</h2>
-	<h2>JavaScript</h2>
-	<h2>PHP</h2>
-	<h2>SQL (InnoDB)</h2>
-	
+<h1 class="precess">precess.io</h1>
+<br>
 
-	<h1>Features</h1>
-	<h2>Mobile Support</h2>
-	<h2>User Accounts</h2>
-	<h2>Dynamic Content Editing</h2>
-	<h2>Society pinboard</h2>
+<style>
+#atlas {
+	width: 280px;
+	background-color: #EFEFEF;
+
+	box-sizing: border-box;
+	padding: 5px;
+	margin: 0 calc((100% - 280px) / 2);
 
 
-	<h2>Raven Integration? (WELL... FUK)</h2>
+	display: flex;
+	flex-direction: row;
+}
 
-	<h2>Why?</h2>
-	<h3>Scale</h3>
-	<h3>Speed</h3>
-	<h3>Reliability</h3>
-
-	<h2>Lighthouse Compliant</h2>
+#atlas .title {
+	font-size: 24px;
+}
+#atlas .college {
+	font-size: 16px;
+}
+</style>
+<div id="atlas">
+	<div>
+		<canvas class="avatar" width="64" height="64"></canvas>
+	</div>
+	<div style="flex-grow:1;text-align:left;padding:5px 0 0 15px;">
+		<span class="title"></span><br>
+		<span class="college"></span>
+	</div>
 </div>
-<div id="users">
-	<h1>Users</h1>
-	<h2>Trinity College Science Society</h2>
-	<h2>...</h2>	
-</div>
-<div id="the-team">
-	<h1>The Team</h1>
-	<h2>Frontend Developer</h2>
-	<h2>Backend Developer</h2>
-	<h2>Network Engineer</h2>
-	<h2>System Administrator</h2>
-</div>
+
+<script>
+$(window).on('atlas_success', function(e, data) {
+	$(".precess").text("Atlas: Login Success");
+	$("#atlas .title").html("<span style='font-weight:300;'>"+data.display_name+"</span>");
+	$("#atlas .college").html("<span style='font-weight:200;'>"+data.college+" ("+data.crsid+")</span>");
+	$("#atlas .avatar").jdenticon(data.user_id.toString());
+
+});
+$(window).on('atlas_failure', function(e, data) {
+	$("#atlas .title").text("Atlas Login Failure");
+	$("#atlas .info").text(data.type);
+});
+</script>

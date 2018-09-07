@@ -6,6 +6,7 @@ class User {
 	public static function Create($data) {
 		$data['auth_provider'] = array_key_exists('auth_provider', $data) ? $data['auth_provider'] : "default";
 		$auth_provider = array_key_exists($data['auth_provider'], $GLOBALS['auth_providers']) ? $GLOBALS['auth_providers'][$data['auth_provider']] : 0;
+		$data['password'] = array_key_exists('password', $data) ? $data['password'] : Security::GenerateUniqueInteger();
 
 		$db = $data['db'];
 
@@ -82,22 +83,22 @@ class User {
 			'type' => 'user',
 			'error' => 'invalid'
 		]);
-		$user_row = $stmt->fetchObject();
+		$user_row = $stmt->fetch();
 
 		$password_hash = Security::GenerateHash([
 			'data' => $data['password'],
 			'salt_id' => 'password',
-			'extra_salt' => "$user_row->user_id"
+			'extra_salt' => $user_row['user_id']
 		]);
 
 		// password invalid
-		if($password_hash !== $user_row->password_hash) SKYException::Send([
+		if($password_hash !== $user_row['password_hash']) SKYException::Send([
 			'type' => 'user',
 			'error' => 'invalid'
 		]);
 
 		return [
-			'user_id' => $user_row->user_id
+			'user_id' => $user_row-['user_id']
 		];
 	}
 
@@ -118,7 +119,7 @@ class User {
 			'error' => 'invalid_id'
 		]);
 		
-		$user_row = $stmt->fetchObject();
+		$user_row = $stmt->fetch();
 		return $user_row;
 	}
 }

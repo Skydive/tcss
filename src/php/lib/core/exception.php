@@ -12,7 +12,7 @@ class SKYException extends Exception {
     
     public function __toString() {
         $options = SKYException::$_options;
-        return __CLASS__ . ": {$options->type}_{$options->error}\n";
+        return __CLASS__ . ": {$options['type']}_{$options['error']}\n";
     }
 
     public static function GetOptions() {

@@ -9,6 +9,13 @@ const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
 
+function swallowError(error) {
+  // If you want details of the error in the console
+  console.log(error.toString())
+
+  this.emit('end')
+}
+
 const exec = {
 	js: function(lib) {
 		console.log(`Building ${lib.path}:`);
@@ -19,6 +26,7 @@ const exec = {
 		gulp.src(files)
 			.pipe(concat(lib.options.output))
 			.pipe(uglify())
+			.on('error', swallowError)
 			.pipe(gulp.dest(lib.options.dest));
 		
 		console.log(`Output: ${lib.options.dest}/${lib.options.output}`);
@@ -32,6 +40,7 @@ const exec = {
 		gulp.src(files)
 			.pipe(concat(lib.options.output))
 			.pipe(cleanCSS())
+			.on('error', swallowError)
 			.pipe(gulp.dest(lib.options.dest));
 		
 		console.log(`Output: ${lib.options.dest}/${lib.options.output}`);

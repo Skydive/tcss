@@ -54,12 +54,12 @@ class Session {
 		]);
 		SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
 
-		$row_login = $stmt->fetchObject();
+		$row_login = $stmt->fetch();
 		SKYException::CheckNULL($row_login, "session", "token_invalid");
 
 		return [
-			'id' => $row_login->id,
-			'user_id' => $row_login->user_id
+			'id' => $row_login['id'],
+			'user_id' => $row_login['user_id']
 		];
 	}
 

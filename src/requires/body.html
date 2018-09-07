@@ -6,10 +6,32 @@
 </div>
 <header>
 	<div class="header">
-		<div class="spinner s25"></div>
-		<div class="title"></div>
-		<div class="button">philosophy</div>
-		<div class="button">projects</div>
-		<div class="button">the team</div>
+		<div class="content">
+			<div id="#spin" class="spinner s25"></div>
+			<a href="javascript:SKY.History.pushState({}, '/');" class="button title r">precess.io</a>
+			<a href="javascript:SKY.History.pushState({}, '/philosophy');" class="button g">philosophy</a>
+			<a href="/projects" class="button b">projects</a>
+			<a href="/team" class="button p">the team</a>
+			<a href="/php/raven_login.php" class="login button o">login</a>
+			<a href="javascript:Lib.Ajax.Session.Destroy();window.location.reload();" class="logout button o">logout</a>
+
+		</div>
 	</div>
 </header>
+
+<script>
+
+$(SKY.History).on('construct', function(e, data) {
+	$(window).trigger('token_validate');
+});
+
+$(window).on('session_created', function(e, data) {
+	$(".login").hide();
+	$(".logout").show();
+});
+$(window).on('session_destroyed', function(e, data) {
+	$(".login").show();
+	$(".logout").hide();
+});
+
+</script>

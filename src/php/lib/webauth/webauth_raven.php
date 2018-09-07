@@ -76,8 +76,8 @@ class WLSException extends Exception {
 		'550' => 'Web server and authentication server clocks out of sync',
 		'560' => 'Web server not authorized to use the authentication service',
 		'570' => 'Operation declined by the authentication service',
-		'1337' => 'It appears that i\'m smarter than you... Oh wow I actually know what I\'m doing',
-		'1338' => 'web auth response token has expired - also i\'m smarter than you...'
+		'1337' => 'Oh wow it appears that I actually know what I\'m doing - invalid wls response',
+		'1338' => 'wls response expired'
 	];
     public function __construct($data) {
     	$code = $data['code'];
@@ -172,29 +172,6 @@ class WLSToken {
 				'log' => $this->message
 			]);
 		}
-
-
-		// DURATION -- VERY IMPORTANT FOR SECURITY
-		// Prevent session hijacking
-		$expiry_time = $result+WLSGlobal::REQUEST_LIFETIME;
-		if($cur_time > $expiry_time) {
-			throw new WLSException([
-				'code' => '1338'
-			]);
-		}
-
-		// print_r("<br><br>");
-		
-		// print_r("Issue Time:\t$result\n");
-		// print_r("Current Time:\t$cur_time\n");
-		// $time_diff = $cur_time-$result;
-		// print_r("Difference:\t".$time_diff."\n");
-
-		// print_r("<br><br>");
-
-		// TODO: parse ptags (601)
-		// parse ptags (split by ,) -> seek (current)
-
 		// Parse KeyID
 		if(!preg_match('/\d{1,8}$/', $this->keyid)) {
 			throw new WLSException([
@@ -240,7 +217,20 @@ class WLSToken {
 	}
 	public function Authenticate() {
 		$pub_key = openssl_get_publickey(WLSGlobal::PUBKEY2_CRT);
-		return openssl_verify($this->data, $this->decoded_signature(), $pub_key, OPENSSL_ALGO_SHA1);
+		$result = openssl_verify($this->data, $this->decoded_signature(), $pub_key, OPENSSL_ALGO_SHA1);
+		if($result) {
+			// DURATION -- VERY IMPORTANT FOR SECURITY
+			// Prevent session hijacking
+			$cur_time = time();
+			$issue_time = strtotime($this->issue);
+			$expiry_time = $issue_time+WLSGlobal::REQUEST_LIFETIME;
+			if($cur_time > $expiry_time) {
+				throw new WLSException([
+					'code' => '1338'
+				]);
+			}
+		}
+		return $result;
 	}
 }
 

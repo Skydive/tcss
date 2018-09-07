@@ -27,7 +27,8 @@ const colors = {
 };
 
 const pages = [
-	''
+	'',
+	'philosophy'
 ];
 
 const content_path = './src';
@@ -42,10 +43,13 @@ const libs = [
 		},
 		path: 'js/vendor',
 		files: [
+			'js.cookie-2.2.0.min.js',
 			'jquery-3.3.1.min.js',
 			'jquery-ui.min.js',
-			'js.cookie-2.2.0.min.js',
-			'moment.js'
+			'native.history.js',
+			//'jquery.history.js',
+			'moment.js',
+			'jdenticon-2.1.0.min.js'
 		]
 	},
 	{
@@ -56,7 +60,9 @@ const libs = [
 		},
 		path: 'js/app',
 		files: [
-			'**/*.js'
+			'sky_history.js',
+			'ajax.js',
+			'main.js'
 		]
 	},
 	{
@@ -117,6 +123,16 @@ const libs = [
 		path: 'static',
 		files: [
 			'**/*.*'
+		]
+	},
+	{
+		type: 'clone',
+		options: {
+			dest: `${output_path}`
+		},
+		path: '',
+		files: [
+			'robots.txt'
 		]
 	}
 ];
