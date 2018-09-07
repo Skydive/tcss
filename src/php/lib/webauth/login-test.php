@@ -9,7 +9,7 @@ if (isset($_SERVER['QUERY_STRING']) and preg_match('/^WLS-Response=/', $_SERVER[
 		$obj = WebAuth::TokenValidate([
 			'token_raw' => $token_str
 		]);
-		echo("<code>Success (Now for account / session generation):</code>");
+		echo("<code>Success (Now for user / session generation):</code>");
 		echo("<code>CRSID: ".$obj['token']->principal."</code>");
 		echo("<code>Parameters:</code><br>");
 		foreach($obj['params'] as $k => $v) {
@@ -31,7 +31,7 @@ if (isset($_SERVER['QUERY_STRING']) and preg_match('/^WLS-Response=/', $_SERVER[
 	echo("</pre>");
 } else {
 	$url = WebAuth::GenerateURL([
- 		'url' => 'dev.precess.io/php/lib/webauth/login.php'
+ 		'url' => 'dev.precess.io/php/lib/webauth/login-test.php'
 	]);
 	header("Location: $url");
 }
