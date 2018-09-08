@@ -23,6 +23,8 @@ try {
 		'id' => $token_data['id']
 	]);
 
+	$db->commit();
+	
 	Output::SetNotify("type", "success");
 } catch (SKYException $e) {
 	if($db) $db->rollback();
@@ -41,9 +43,5 @@ try {
 			Output::SetNotify("type", "failure_unspecified");
 			break;
 	}
-	Output::PrintOutput();
-	die();
 }
-$db->commit();
-Output::PrintOutput();
 ?>

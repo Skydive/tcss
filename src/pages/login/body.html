@@ -1,0 +1,41 @@
+<h1 class="precess"></h1>
+<br>
+<style>
+
+.provider {
+	padding: 10px;
+	margin: 0 auto;
+
+	width: 64px;
+	height: 64px;
+
+	border: solid 1px lightgrey;
+
+	cursor: pointer;
+
+	background-color: white;
+	transition: background-color 0.5s ease;
+}
+
+.provider:hover {
+	background-color: #EFEFEF;
+}
+
+</style>
+<div class="provider raven">
+	<div style="width:100%; height:100%;background: center / contain no-repeat url('https://raven.cam.ac.uk/images/raven-logo.gif');"></div>
+</div>
+<script>
+$(function() {
+	$(".provider.raven").on('click.login', function() {
+		Lib.Ajax.Raven.Redirect({
+			redirect_url: "https://"+window.location.hostname+"/atlas"
+		}).done(function(json) {
+			window.location.href = json.auth_url;
+		});
+	});
+});
+$(SKY.History).on('deconstruct', function() {
+	$(".provider.raven").off('click.login');
+});
+</script>

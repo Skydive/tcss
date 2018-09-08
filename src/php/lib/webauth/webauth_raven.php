@@ -42,14 +42,15 @@ W7fgOEEsI4FoLOjQbJgIrgdYR2NIJh6pKKEf+9Ts2q/fuWv2xOLw7w29PIICeFIF
 hAM+a6/30F5fdkWpE1smPyrfASyXRfWE4Ccn1RVgYX9u
 -----END CERTIFICATE-----
 ";
-	const CLOCK_SKEW = 10;
-	const REQUEST_LIFETIME = 5;
+	const CLOCK_SKEW = 1;
+	// Increase if latency
+	const REQUEST_LIFETIME = 1;
 };
 
 // Oh no, enums
 abstract class EWLSToken {
 	const VERSION	= 0;
-	const STATUS 	= 1; // (blank)
+	const STATUS 	= 1; // (default 200)
 	const MESSAGE	= 2;
 	const ISSUE		= 3; 
 	const ID 		= 4;
@@ -57,15 +58,18 @@ abstract class EWLSToken {
 	const PRINCIPAL	= 6;
 	const PTAGS		= 7; // current (all cases)
 	const AUTH		= 8; // (blank)
-	const SSO		= 9; // pwd?
-	const LIFE		= 10; // 30408 (all cases)
+	const SSO		= 9; // pwd
+	const LIFE		= 10; // (30408 max) - ignored as we do session management ourselves
 	const PARAMS	= 11;
-	const KEYID		= 12; // 2 (all cases)
-	const SIGNATURE	= 13; // (IMPORTANT)
+	const KEYID		= 12; // 2 (all cases) - ignored as crt is within file
+	const SIGNATURE	= 13; // (IMPORTANT) - RSA verification
 }
 
 class WLSException extends Exception {
 	public const UNKNOWN_ERROR = 'An unknown error has occured. This is not ideal';
+	// Why are we using a deprecated model like error codes?
+	// Perhaps it is a good idea to pay homage to the classical apache code,
+	// especially when in reality most of these errors will NEVER occur
 	public const ERROR_MESSAGES = [
 		'200' => 'OK',
 		'410' => 'Authentication cancelled at user\'s request',
@@ -77,7 +81,7 @@ class WLSException extends Exception {
 		'560' => 'Web server not authorized to use the authentication service',
 		'570' => 'Operation declined by the authentication service',
 		'1337' => 'Oh wow it appears that I actually know what I\'m doing - invalid wls response',
-		'1338' => 'wls response expired'
+		'1338' => 'Oh wow it appears that I actually know what I\'m doing - wls response expired'
 	];
     public function __construct($data) {
     	$code = $data['code'];
@@ -245,11 +249,12 @@ class WebAuth {
 		if(!array_key_exists('params', $data)) {
 			$data['params'] = [];
 		}		
-		$data['params']['salt'] = WebAuth::GenerateUniqueInteger(); // Extra protection for signature generation
+		// Extra protection for signature generation
+		$data['params']['salt'] = WebAuth::GenerateUniqueInteger();
 
 		$query_data = [
 			'ver' => array_key_exists('ver', $data) ? $data['ver'] : '3',
-			'url' => "https://$hostname",
+			'url' => $hostname,
 			'params' => base64_encode(json_encode($data['params']))
 		];
 		$query = http_build_query($query_data);
@@ -263,7 +268,7 @@ class WebAuth {
 		if($result) {
 			return [
 				'token' => $token,
-				'params' => json_decode(base64_decode($token->params))
+				'params' => json_decode(base64_decode($token->params), true)
 			];
 		}
 

@@ -1,0 +1,77 @@
+.atlas.large {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	padding: 5px;
+	padding-bottom: 25px;
+	box-sizing: border-box;
+}
+
+.atlas.small {
+	display: flex;
+	flex-direction: row;
+
+	width: 280px;
+	box-sizing: border-box;
+	padding: 5px;
+
+	cursor: pointer;
+}
+
+.atlas.small>.avatar {
+	flex-grow:1;
+
+	padding:5px 0 0 15px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: left;
+
+	text-align:left;
+}
+.atlas>.content {
+	flex-grow:1;
+
+	padding:5px 0 0 15px;
+
+	display: flex;
+	flex-direction: column;
+	
+}
+.atlas.small>.content {
+	align-items: left;
+	justify-content: left;
+
+	text-align:left;
+}
+.atlas.large>.content {
+	align-items: center;
+	justify-content: center;
+
+	text-align:center;
+}
+
+.atlas.bg {
+	background-color: #EFEFEF;
+}
+
+.atlas.small>.content>.title {
+	font-size: 24px;
+}
+.atlas.small>.content>.college {
+	font-size: 16px;
+}
+
+
+.atlas.large>.content>.title {
+	font-size: 72px;
+	font-weight: 200;
+}
+.atlas.large>.content>.college {
+	font-size: 48px;
+	font-weight: 200;
+
+}

@@ -13,8 +13,6 @@ try {
 	$db = Database::Connect($GLOBALS['project_name']);
 	SKYException::CheckNULL($db, "db", "null");
 
-	$db->beginTransaction();
-	
 	$token_data = Session::TokenValidate([
 		"db" => $db,
 		"session_token" => $session_token
@@ -57,9 +55,5 @@ try {
 			Output::SetNotify("type", "failure_unspecified");
 			break;
 	}
-	Output::PrintOutput();
-	die();
 }
-$db->commit();
-Output::PrintOutput();
 ?>

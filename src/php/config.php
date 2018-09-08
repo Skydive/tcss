@@ -7,7 +7,7 @@ $GLOBALS['auth_providers'] = [
 	'raven' => 1
 ];
 
-
+$GLOBALS['hostname'] = 'dev.precess.io';
 $GLOBALS['project_name'] = 'precess-io';
 $GLOBALS['databases'] = [
 	$GLOBALS['project_name'] => [

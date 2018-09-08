@@ -28,7 +28,11 @@ const colors = {
 
 const pages = [
 	'',
-	'philosophy'
+	'philosophy',
+	'projects',
+	'team',
+	'login',
+	'atlas'
 ];
 
 const content_path = './src';
@@ -47,7 +51,6 @@ const libs = [
 			'jquery-3.3.1.min.js',
 			'jquery-ui.min.js',
 			'native.history.js',
-			//'jquery.history.js',
 			'moment.js',
 			'jdenticon-2.1.0.min.js'
 		]

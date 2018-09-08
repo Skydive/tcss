@@ -24,6 +24,8 @@ try {
 		"user_id" => $token_data['user_id']
 	]);
 
+	$db->commit();
+	
 	Output::SetNotify("type", "success");
 	Output::SetNotify("username", $user['username']);
 	Output::SetNotify("user_id", $user['user_id']);
@@ -44,9 +46,5 @@ try {
 			Output::SetNotify("type", "failure_unspecified");
 			break;
 	}
-	Output::PrintOutput();
-	die();
 }
-$db->commit();
-Output::PrintOutput();
 ?>

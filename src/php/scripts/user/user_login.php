@@ -27,6 +27,8 @@ try {
 		'user_agent' => $_SERVER['HTTP_USER_AGENT'] ? $_SERVER['HTTP_USER_AGENT'] : "default-agent"
 	]);
 
+	$db->commit();
+
 	Output::SetNotify("type", "success");
 	Output::SetNotify("session_token", $login_result['session_token']);
 } catch (SKYException $e) {
@@ -46,9 +48,5 @@ try {
 			Output::SetNotify("type", "failure_unspecified");
 			break;
 	}
-	Output::PrintOutput();
-	die();
 }
-$db->commit();
-Output::PrintOutput();
 ?>

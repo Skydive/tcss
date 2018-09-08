@@ -1,0 +1,26 @@
+<h1 class="precess"></h1>
+<br>
+
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+	<div class="atlas bg large">
+		<div>
+			<canvas class="avatar" width="512" height="512" style="width:256px;height:256px;"></canvas>
+		</div>
+		<div class="content">
+			<span class="title"></span>
+			<span class="college"></span>
+		</div>
+	</div>
+</div>
+<script>
+$(window).on('atlas_success.atlas', function(e, data) {
+	$(".precess").text("Atlas: Login Success");
+});
+$(window).on('session_destroyed.atlas', function(e, data) {
+	$(".atlas.large").hide();
+});
+$(SKY.History).on('deconstruct', function() {
+	$(window).off('atlas_success.atlas');
+	$(window).off('session_destroyed.atlas');
+});
+</script>

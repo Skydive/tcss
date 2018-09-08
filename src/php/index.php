@@ -19,8 +19,14 @@ switch($action) {
 	case 'atlas_fetch':
 		require_once("scripts/atlas/$action.php");
 		break;
+	case 'raven_session': // This is a DIRECT entrypoint - no AJAX
+	case 'raven_redirect': // depends on raven_verify
+		require_once("scripts/raven/$action.php");
+		break;
 	default:
 		die("invalid action: $action");
 		break;
 }
+Output::PrintOutput();
+die();
 ?>

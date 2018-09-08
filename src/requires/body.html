@@ -4,27 +4,25 @@
 		<div class="spinner s40 m50"></div>
 	</div>
 </div>
+
 <header>
 	<div class="header">
 		<div class="content">
 			<div id="#spin" class="spinner s25"></div>
 			<a href="javascript:SKY.History.pushState({}, '/');" class="button title r">precess.io</a>
 			<a href="javascript:SKY.History.pushState({}, '/philosophy');" class="button g">philosophy</a>
-			<a href="/projects" class="button b">projects</a>
-			<a href="/team" class="button p">the team</a>
-			<a href="/php/raven_login.php" class="login button o">login</a>
+			<a href="javascript:SKY.History.pushState({}, '/projects');" class="button b">projects</a>
+			<a href="javascript:SKY.History.pushState({}, '/team');" class="button p">the team</a>
+			<a href="javascript:SKY.History.pushState({}, '/login');" class="login button o">login</a>
 			<a href="javascript:Lib.Ajax.Session.Destroy();window.location.reload();" class="logout button o">logout</a>
-
 		</div>
 	</div>
 </header>
 
 <script>
-
 $(SKY.History).on('construct', function(e, data) {
 	$(window).trigger('token_validate');
 });
-
 $(window).on('session_created', function(e, data) {
 	$(".login").hide();
 	$(".logout").show();
@@ -32,6 +30,31 @@ $(window).on('session_created', function(e, data) {
 $(window).on('session_destroyed', function(e, data) {
 	$(".login").show();
 	$(".logout").hide();
+});
+</script>
+
+<div class="atlas bg small" style="position:fixed;bottom:25px;right:25px;">
+	<div>
+		<canvas class="avatar" width="512" height="512" style="width:64px;height:64px;"></canvas>
+	</div>
+	<div class="content">
+		<span class="title"></span>
+		<span class="college"></span>
+	</div>
+</div>
+<script>
+$(".atlas.small").one('click', function() {
+	SKY.History.pushState({}, '/atlas');
+});
+
+$(window).on('atlas_success', function(e, data) {
+	$(".atlas .title").html("<span style='font-weight:300;'>"+data.display_name+"</span>");
+	$(".atlas .college").html("<span style='font-weight:200;'>"+data.college+" ("+data.crsid+")</span>");
+	$(".atlas .avatar").jdenticon(data.user_id.toString());
+	$(".atlas.small").fadeIn(250);
+});
+$(window).on('session_destroyed', function(e, data) {
+	$(".atlas.small").hide();
 });
 
 </script>

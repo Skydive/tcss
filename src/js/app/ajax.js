@@ -20,7 +20,6 @@ Object.assign(Lib.Ajax, {
 			}, null, "json").done(function(json) {
 				if(json.type == "success") {
 					Cookies.set("session_token", json.session_token, {
-						domain: '.'+window.location.hostname,
 						expire: 365,
 						path: '/'
 					});
@@ -32,10 +31,7 @@ Object.assign(Lib.Ajax, {
 				action: "user_logout"
 			}, null, "json").done(function(json) {
 				if(json.type == "success") 
-					Cookies.set("session_token", "SESSION_TOKEN_UNSPECIFIED", {
-						domain: '.'+window.location.hostname,
-						path: '/'
-					});
+					Cookies.remove("session_token");
 			});
 		},
 		TokenValidate: function() {		
@@ -48,6 +44,14 @@ Object.assign(Lib.Ajax, {
 		Fetch: function() {
 			return $.post(Lib.Ajax.ENTRY_POINT, {
 				action: "atlas_fetch"
+			}, null, "json");
+		}
+	},
+	Raven: {
+		Redirect: function(data) {
+			return $.post(Lib.Ajax.ENTRY_POINT, {
+				action: "raven_redirect",
+				redirect_url: data.redirect_url
 			}, null, "json");
 		}
 	}
