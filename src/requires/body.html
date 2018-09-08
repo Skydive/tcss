@@ -8,13 +8,15 @@
 <header>
 	<div class="header">
 		<div class="content">
-			<div id="#spin" class="spinner s25"></div>
+			<div id="spin" class="spinner s25">
+				<canvas width="25" height="25"></canvas>
+			</div>
 			<a href="javascript:SKY.History.pushState({}, '/');" class="button title r">precess.io</a>
-			<a href="javascript:SKY.History.pushState({}, '/philosophy');" class="button g">philosophy</a>
-			<a href="javascript:SKY.History.pushState({}, '/projects');" class="button b">projects</a>
+			<!-- <a href="javascript:SKY.History.pushState({}, '/philosophy');" class="button g">philosophy</a> -->
+			<!-- <a href="javascript:SKY.History.pushState({}, '/projects');" class="button b">projects</a> -->
 			<a href="javascript:SKY.History.pushState({}, '/team');" class="button p">the team</a>
 			<a href="javascript:SKY.History.pushState({}, '/login');" class="login button o">login</a>
-			<a href="javascript:Lib.Ajax.Session.Destroy();window.location.reload();" class="logout button o">logout</a>
+			<a href="javascript:Lib.Ajax.Session.Destroy();window.location.href='https://'+window.location.hostname;" class="logout button o">logout</a>
 		</div>
 	</div>
 </header>

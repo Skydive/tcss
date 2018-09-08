@@ -11,7 +11,7 @@ $(function() {
 				$(window).trigger('session_created', json);
 				break;
 			default:
-				$(window).trigger('session_destroyed', json);	
+				$(window).trigger('session_destroyed', json);
 				break;
 			}
 		});
@@ -49,6 +49,6 @@ $(function() {
 	});
 
 	$(window).on('atlas_failure', function() {
-
+		console.log("[DEBUG] Atlas has failed to find your crsid");
 	});
 });
