@@ -9,6 +9,7 @@ $GLOBALS['auth_providers'] = [
 
 $GLOBALS['hostname'] = 'dev.precess.io';
 $GLOBALS['project_name'] = 'precess-io';
+$GLOBALS['dsn'] = 'pgsql'; // or mysql
 $GLOBALS['databases'] = [
 	$GLOBALS['project_name'] => [
 		"host" => "172.17.0.1",

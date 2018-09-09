@@ -1,0 +1,107 @@
+{
+	"content_path": "./src",
+	"output_path": "./dist",
+	"lib": {
+		"html": {
+			"processor": "pages",
+			"options": {
+				"prefix": "pages",
+				"dest": "",
+				"requires": [
+					"requires/body.html",
+					"requires/footer.html",
+					"requires/head.html"
+				]
+			},
+			"content": [
+				"",
+				"philosophy",
+				"projects",
+				"team",
+				"login",
+				"atlas"		
+			]
+		},
+		"js": {
+			"processor": "js",
+			"options": {
+				"prefix": "js",
+				"dest": "static/js"
+			},
+			"content": {
+				"vendor": [
+					"js.cookie-2.2.0.min.js",
+					"jquery-3.3.1.min.js",
+					"jquery-ui.min.js",
+					"native.history.js",
+					"moment.js",
+					"jdenticon-2.1.0.min.js"
+				],
+				"app": [
+					"sky_history.js",
+					"ajax.js",
+					"main.js"		
+				]
+			}
+		},
+		"css": {
+			"processor": "css",
+			"options": {
+				"prefix": "css",
+				"dest": "static/css"
+			},
+			"content": {
+				"vendor": [
+					"jquery-ui.theme.min.css",
+					"jquery-ui.structure.min.css",
+					"jquery-ui.min.css",
+					"font-awesome.min.css",
+					"animate.min.css"
+				],
+				"app": [
+					"**/*.css"
+				]
+			}
+		},
+		"php": {
+			"processor": "clone",
+			"options": {
+				"prefix": "php",
+				"dest": "php"
+			},
+			"content": [
+				"**/*.php"
+			]
+		},
+		"fonts": {
+			"processor": "clone",
+			"options": {
+				"prefix": "fonts",
+				"dest": "static/fonts"
+			},
+			"content": [
+				"**"
+			]
+		},
+		"static": {
+			"processor": "clone",
+			"options": {
+				"prefix": "static",
+				"dest": "static"
+			},
+			"content": [
+				"**"
+			]
+		},
+		"robots": {
+			"processor": "clone",
+			"options": {
+				"prefix": "",
+				"dest": ""
+			},
+			"content": [
+				"robots.txt"
+			]
+		}
+	}
+}

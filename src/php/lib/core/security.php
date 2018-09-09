@@ -15,6 +15,7 @@ class Security {
 		$salt = $GLOBALS['hashsalts'][$saltname] ? $GLOBALS['hashsalts'][$saltname] : Security::$fallover_salts[$saltname];
 		$extra_salt = $options['extra_salt'] ? $options['extra_salt'] : "";
 		
+		// TODO: Perhaps use hmac??
 		$hash = hash($algo,$data.$base_salt.$salt.$extra_salt);
 		
 		return $hash;

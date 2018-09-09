@@ -52,7 +52,7 @@ $(".atlas.small").one('click', function() {
 $(window).on('atlas_success', function(e, data) {
 	$(".atlas .title").html("<span style='font-weight:300;'>"+data.display_name+"</span>");
 	$(".atlas .college").html("<span style='font-weight:200;'>"+data.college+" ("+data.crsid+")</span>");
-	$(".atlas .avatar").jdenticon(data.user_id.toString());
+	$(".atlas .avatar").jdenticon(data.crsid);
 	$(".atlas.small").fadeIn(250);
 });
 $(window).on('session_destroyed', function(e, data) {

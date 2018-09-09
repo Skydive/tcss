@@ -31,7 +31,7 @@ if (isset($_SERVER['QUERY_STRING']) and preg_match('/^WLS-Response=/', $_SERVER[
 	echo("</pre>");
 } else {
 	$url = WebAuth::GenerateURL([
- 		'url' => 'dev.precess.io/php/lib/webauth/login-test.php'
+ 		'url' => 'https://dev.precess.io/php/lib/webauth/login-test.php'
 	]);
 	header("Location: $url");
 }

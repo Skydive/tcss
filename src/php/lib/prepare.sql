@@ -7,7 +7,8 @@ GRANT ALL PRIVILEGES ON `precess-io`.* TO 'precess-io'@'172.17.0.1' WITH GRANT O
 FLUSH PRIVILEGES;
 
 CREATE DATABASE `precess-io`;
-CREATE TABLE `precess-io`.users (
+USE `precess-io`;
+CREATE TABLE users (
 	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`user_id` bigint(20) NOT NULL,
 	`username` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -16,12 +17,12 @@ CREATE TABLE `precess-io`.users (
 	`creation_date` timestamp NULL DEFAULT NULL,
 	`active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-ALTER TABLE `precess-io`.users
+ALTER TABLE users
 	ADD UNIQUE KEY `user_id` (`user_id`),
 	ADD KEY `username` (`username`),
 	ADD KEY `auth_provider` (`auth_provider`);
 
-CREATE TABLE `precess-io`.logins (
+CREATE TABLE logins (
 	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`user_id` bigint(20) NOT NULL,
 	`session_token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -31,12 +32,13 @@ CREATE TABLE `precess-io`.logins (
 	`logout_date` timestamp NULL DEFAULT NULL,
 	`active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-ALTER TABLE `precess-io`.logins
+ALTER TABLE logins
 	ADD KEY `user_id` (`user_id`),
 	ADD KEY `session_token` (`session_token`);
 
 # ka476,K. Aleem,Aleem,student,TRIN,TRINUG
-CREATE TABLE `precess-io`.raven_users (
+# TODO: rename atlas_users
+CREATE TABLE raven_users (
 	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`crsid` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
 	`display_name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -45,6 +47,6 @@ CREATE TABLE `precess-io`.raven_users (
 	`college` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-ALTER TABLE `precess-io`.raven_users
+ALTER TABLE raven_users
 	ADD UNIQUE KEY `crsid` (`crsid`),
 	ADD KEY `surname` (`surname`);
