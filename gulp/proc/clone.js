@@ -23,17 +23,18 @@ module.exports = function(data, config) {
 				}))
 				.pipe(gulp.dest(`${config.deploy_path}/${options.dest}`));
 		}
+		return flow;
 	});
 
 	let build_task_name = `build:${task_group}`;
 	gulp.task(build_task_name, function() {		
-		gulp.src(file_paths)
+		return gulp.src(file_paths)
 			.pipe(gulp.dest(`${config.build_path}/${options.dest}`));
 	});
 
 	let watch_task_name = `watch:${task_group}`;
 	gulp.task(watch_task_name, function() {
-		watch(`${config.content_path}/${options.prefix}/*`, [build_task_name]);
+		return watch(`${config.content_path}/${options.prefix}/*`, [build_task_name]);
 	});
 
 	return {

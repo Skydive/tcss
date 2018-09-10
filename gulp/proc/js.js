@@ -21,7 +21,7 @@ module.exports = function(data, config) {
 
 		let deploy_task_name = `deploy:${task_group}:${group}`;
 		gulp.task(deploy_task_name, function() {
-			gulp.src(file_paths)
+			return gulp.src(file_paths)
 				.pipe(concat(`${group}.min.js`))
 				.pipe(uglify())
 				.on('error', swallow_error)
@@ -36,7 +36,7 @@ module.exports = function(data, config) {
 
 		let build_task_name = `build:${task_group}:${group}`;
 		gulp.task(build_task_name, function() {
-			gulp.src(file_paths)
+			return gulp.src(file_paths)
 				.pipe(concat(`${group}.min.js`))
 				.on('error', swallow_error)
 				.pipe(gulp.dest(`${config.build_path}/${options.dest}`));
@@ -44,7 +44,7 @@ module.exports = function(data, config) {
 
 		let watch_task_name = `watch:${task_group}:${group}`;
 		gulp.task(watch_task_name, function() {
-			watch(`${config.content_path}/${options.prefix}/${group}/*`, [build_task_name]);
+			return watch(`${config.content_path}/${options.prefix}/${group}/*`, [build_task_name]);
 		});
 		deploy_tasks.push(deploy_task_name);
 		build_tasks.push(build_task_name);

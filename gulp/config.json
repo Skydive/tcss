@@ -1,7 +1,7 @@
 {
 	"content_path": "./src",
 	"build_path": "./build",
-	"deploy_path": "./dist",
+	"deploy_path": "./deploy",
 	"lib": {
 		"html": {
 			"processor": "pages",
