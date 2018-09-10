@@ -43,8 +43,12 @@ module.exports = function(data, config) {
 		});
 
 		let watch_task_name = `watch:${task_group}:${group}`;
-		gulp.task(watch_task_name, function() {
-			return watch(`${config.content_path}/${options.prefix}/${group}/*`, [build_task_name]);
+		gulp.task(watch_task_name, function(cb) {
+			watch(`${config.content_path}/${options.prefix}/${group}/*`, function() {
+				console.log(`${watch_task_name} --> Changed`);
+				gulp.start(build_task_name);
+			});
+			cb();
 		});
 		deploy_tasks.push(deploy_task_name);
 		build_tasks.push(build_task_name);

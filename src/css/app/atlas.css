@@ -18,6 +18,8 @@
 	padding: 5px;
 
 	cursor: pointer;
+
+	z-index: 999;
 }
 
 .atlas.small>.avatar {

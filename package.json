@@ -5,7 +5,8 @@
   "scripts": {
     "watch": "gulp watch",
     "build": "gulp build",
-    "start": "gulp build watch"
+    "start": "gulp build; gulp watch",
+    "deploy": "gulp clean:./deploy; gulp deploy"
   },
   "repository": {
     "type": "git",

@@ -49,7 +49,7 @@ module.exports = function(data, config) {
 
 		let build_task_name = `build:${task_group}:${page}`;
 		gulp.task(build_task_name, function() {
-			console.log(`build_task_name --> Building...`);
+			console.log(`${build_task_name} --> Building...`);
 			let src = gulp.src([`${config.content_path}/${options.prefix}/${page}/*.html`].concat(requires_paths));
 			let streams = [{
 				template: TEMPLATE_INDEX,
@@ -67,8 +67,12 @@ module.exports = function(data, config) {
 	        	));
 		});
 		let watch_task_name = `watch:${task_group}:${page}`;
-		gulp.task(watch_task_name, function() {
-			watch(`${config.content_path}/${options.prefix}/${page}/*`, [build_task_name]);
+		gulp.task(watch_task_name, function(cb) {
+			watch(`${config.content_path}/${options.prefix}/${page}/*`, function() {
+				console.log(`${watch_task_name} --> Changed`);
+				gulp.start(build_task_name);
+			});
+			cb();
 		});
 
 		deploy_tasks.push(deploy_task_name);
@@ -79,8 +83,12 @@ module.exports = function(data, config) {
 	gulp.task(`build:${task_group}`, build_tasks);
 	gulp.task(`watch:${task_group}`, watch_tasks);
 
-	gulp.task('watch:requires', function() {
-		watch(requires_paths, `build:${task_group}`);
+	gulp.task('watch:requires', function(cb) {
+		watch(requires_paths, function() {
+				console.log(`watch:requires --> Changed`);
+				gulp.start(`build:${task_group}`);
+			});
+		cb()
 	});
 
 	return {
