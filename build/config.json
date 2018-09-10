@@ -1,6 +1,7 @@
 {
 	"content_path": "./src",
-	"output_path": "./dist",
+	"build_path": "./dist",
+	"deploy_path": "./dist",
 	"lib": {
 		"html": {
 			"processor": "pages",
@@ -87,7 +88,8 @@
 			"processor": "clone",
 			"options": {
 				"prefix": "static",
-				"dest": "static"
+				"dest": "static",
+				"revision": "true"
 			},
 			"content": [
 				"**"

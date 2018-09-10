@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "watch": "gulp watch",
-	"build": "gulp build",
-	"start": "gulp build watch"
+    "build": "gulp build",
+    "start": "gulp build watch"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,13 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-rewrite": "^1.1.1",
     "gulp-uglify": "^3.0.1",
     "gulp-watch": "^5.0.1",
-    "node-glob": "^1.2.0"
+    "node-glob": "^1.2.0",
+    "run-sequence": "^2.2.1"
   },
   "dependencies": {}
 }
