@@ -57,7 +57,7 @@ module.exports = function() {
 	OUT_DIRS.map((x) => {
 		let clean_task_name = `clean:${x}`;
 		gulp.task(clean_task_name, function() {
-			gulp.src(x, {read:false}).pipe(rm());
+			gulp.src(`${x}/**`, {read:false}).pipe(rm());
 		});
 		clean_tasks.push(clean_task_name)
 	});
