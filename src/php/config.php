@@ -1,13 +1,16 @@
 <?php
 date_default_timezone_set('UTC');
 // MAKE THIS WITH CONST CLASS VARS
+// TODO: use an actual preprocessor for this single argument
+DEFINE('DEVELOPMENT_MODE', true);
 
 $GLOBALS['auth_providers'] = [
 	'default' => 0,
 	'raven' => 1
 ];
 
-$GLOBALS['hostname'] = 'dev.precess.io';
+$GLOBALS['hostname'] = DEVELOPMENT_MODE ? $_SERVER['HTTP_HOST'] : 'precess.io';
+
 $GLOBALS['project_name'] = 'precess-io';
 $GLOBALS['dsn'] = 'pgsql'; // or mysql
 $GLOBALS['databases'] = [
@@ -23,5 +26,4 @@ $GLOBALS['hashsalts'] = [
 	'token' => '617wvX3uA8eQVU!2@Xcn'
 ];
 
-DEFINE('DEVELOPMENT_MODE', true);
 ?>

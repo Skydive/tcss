@@ -64,4 +64,3 @@ module.exports = function() {
 	gulp.task('clean', clean_tasks);
 
 };
-

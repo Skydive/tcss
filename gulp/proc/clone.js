@@ -34,7 +34,7 @@ module.exports = function(data, config) {
 
 	let watch_task_name = `watch:${task_group}`;
 	gulp.task(watch_task_name, function(cb) {
-		watch(`${config.content_path}/${options.prefix}/*`, function() {
+		watch(file_paths, function() {
 				console.log(`${watch_task_name} --> Changed`);
 				gulp.start(build_task_name);
 			});

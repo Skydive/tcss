@@ -39,8 +39,9 @@ module.exports = function(data, config) {
 			let min_streams = streams.map((s) => 
 				s.pipe(htmlmin({
 					collapseWhitespace: true,
+					minifyJS: true,
 					minifyCSS: true,
-					minifyJS: true
+					removeComments: true
 				})));
 			min_streams.map((s) => s.pipe(
 	        		gulp.dest(`${config.deploy_path}/${options.dest}/${page}`)
