@@ -5,8 +5,8 @@ const htmlmin = require('gulp-htmlmin');
 const build_html = require('./build.js');
 
 const fs = require('fs');
-const TEMPLATE_INDEX = fs.readFileSync('./build/structure_index.html', 'utf-8');
-const TEMPLATE_CONTENT = fs.readFileSync('./build/structure_content.html', 'utf-8');
+const TEMPLATE_INDEX = fs.readFileSync(require.resolve('./structure_index.html'), 'utf-8');
+const TEMPLATE_CONTENT = fs.readFileSync(require.resolve('./structure_content.html'), 'utf-8');
 
 module.exports = function(data, config) {
 	// TODO: add config for template <---> output, requires for template

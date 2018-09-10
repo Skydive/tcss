@@ -1,6 +1,6 @@
 {
 	"content_path": "./src",
-	"build_path": "./dist",
+	"build_path": "./build",
 	"deploy_path": "./dist",
 	"lib": {
 		"html": {
