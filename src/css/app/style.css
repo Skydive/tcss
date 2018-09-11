@@ -134,3 +134,14 @@ body, html {
 	padding: 0 25px;
 	line-height: 72px;
 }
+
+
+.container {
+	display: flex;
+}
+.container.row {
+	flex-direction: row;
+}
+.container.col {
+	flex-direction: column;
+}

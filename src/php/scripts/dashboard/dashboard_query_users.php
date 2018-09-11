@@ -2,7 +2,6 @@
 require_once("lib/core/database.php");
 require_once("lib/core/exception.php");
 require_once("lib/framework/auth/session.php");
-require_once("lib/framework/group/group.php");
 
 $session_token = (string)$_COOKIE['session_token'];
 $index = $inputs['index'] ? (int)$inputs['index'] : 0;

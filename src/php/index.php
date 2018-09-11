@@ -20,6 +20,8 @@ switch($action) {
 		require_once("scripts/group/$action.php");
 		break;
 	case 'dashboard_query_users':
+	case 'dashboard_query_groups':
+	case 'dashboard_assign_group':
 		require_once("scripts/dashboard/$action.php");
 		break;
 	case 'raven_session': // This is a DIRECT entrypoint - no AJAX

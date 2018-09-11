@@ -1,59 +1,102 @@
-<div id="template-user-selection-item" style="display:none;">
+<li id="template-user-selection-item" style="display:none;">
 	<div class="left">
 		<svg class="avatar"></svg>
 	</div>
 	<div class="right">
 		<div class="container">
-			<div class="title">Khalid Aleem</div>
-			<div class="college">student</div>
-			<div class="group">student</div>
+			<div class="title"></div>
+			<div class="college"></div>
+			<div class="group"></div>
 		</div>
 	</div>
-</div>
+</li>
 <section>
 	<div class="content">
-		<div class="cover">
-			<div class="title">User Configuration</div>
-			<div id="user-selection" class="selection">
-				<div style="font-size:22px;font-weight:200;padding-bottom:15px;">Search</div>
-				<div class="search">
-					<i class="fa fa-search"></i>
-					<input type="text" placeholder="By crsid, surname or group..."></input>
+		<div class="container col">
+			<div class="item" style="width:100%;">
+				<div class="title">User Configuration</div>
+			</div>
+			<div class="item" style="flex-grow:1;width:100%;">
+				<div class="container row">
+					<div id="user-selection" class="selection">
+						<div style="font-size:22px;font-weight:200;padding:15px 0;">Search</div>
+						<div class="search">
+							<i class="fa fa-search"></i>
+							<input type="text" placeholder="By crsid, surname or group..."></input>
+						</div>
+						<div class="populate"><ul></ul></div>
+					</div>
+					<div id="user-information" class="information" style="flex-grow:1;">
+						<!-- <div style="font-size:22px;font-weight:200;padding:15px 0;">Information</div> -->
+						<div class="atlas large" style="display:block;">
+							<div>
+								<svg class="avatar" style="width:256px;height:256px;"></svg>
+							</div>
+							<div class="content">
+								<span class="title"></span>
+								<span class="college"></span>
+								<span class="group"></span>
+							</div>
+						</div>
+					</div>
+					<div id="user-editing" class="selection">
+						<div style="font-size:22px;font-weight:200;padding:15px 0;">Group</div>
+						<div class="search">
+							<i class="fa fa-search"></i>
+							<input type="text" placeholder="By group name..."></input>
+						</div>
+						<div class="populate"><ul></ul></div>
+					</div>
 				</div>
-				<div class="populate"><ul></ul><div>
 			</div>
 		</div>
 	</div>
 </section>
+
 <style>
-.cover {
-	height: calc(100vh - 72px - 64px);
+section>.content {
+	height: calc(100vh - 64px - 72px);
 }
-section>.content>.cover>.title {
+
+.selection, .information, .editing {
+	height: calc(100vh - 64px - 72px - 54px);
+}
+
+.information {
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+
+section>.content>.container>.item>.title {
+	width: 100%;
 	font-size: 24px;
 	font-weight: 200;
 	padding-top: 25px;
 }
-#user-selection {
+.selection {
+	height: calc(100vh - 64px - 72px - 54px);
+	padding-bottom: 25px;
+	box-sizing: border-box;
 }
-#user-selection>.populate {
-	flex-grow: 1;
-}
-#user-selection .title {
+.selection .title {
 	font-size: 20px;
 	font-weight: 200;
 }
-#user-selection .college {
+.selection .college {
 	font-size: 16px;
 	font-weight: 200;
 }
-#user-selection .group {
+.selection .group {
 	font-size: 16px;
 	font-weight: 100;
 }
 
 .selection {
 	width: 350px;
+	display: flex;
+	flex-direction: column;
 }
 .selection>.search {
 	display: flex;
@@ -78,6 +121,7 @@ section>.content>.cover>.title {
 .selection>.populate {
 	overflow-y: scroll;
 	border: 1px solid rgba(0, 0, 0, 0.125);
+	height: 100%;
 }
 .selection>.populate>ul {
 	margin-top: 0;
@@ -97,6 +141,14 @@ section>.content>.cover>.title {
 	margin-bottom: -1px;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	min-height: 64px;
+	background-color: #fff;
+	transition: background-color 0.5s ease;
+}
+.selection>.populate>ul>li:hover {
+	background-color: #FAFAFA;
+}
+.selection>.populate>ul>li[selected] {
+	background-color: lightgrey;
 }
 .selection>.populate>ul>li:last-child {
 	margin-bottom: 0;
@@ -142,17 +194,42 @@ section>.content>.cover>.title {
 				return;
 			}
 			let entries = json.out;
+			 $('#user-selection').data('last-selected', null);
 			let count = $('#user-selection').data('current_loaded');
 			entries.map(function(entry) {
 				let div = $("#template-user-selection-item").clone().show();
-				div.find(".title").text(entry.display_name);
-				div.find(".college").text(entry.college + " ("+entry.username+")");
-				div.find(".group").text(entry.group_name);
-				div.find(".avatar").attr('data-jdenticon-value', entry.username);
-				$("#user-selection>.populate>ul").append("<li>"+div.html()+"</li>")
+				div.removeAttr('id');
+				div.attr('user_id', entry.user_id);
+				div.on('click', function() {
+					let last = $('#user-selection').data('last-selected');
+					if(last)last.removeAttr("selected");
+					$('#user-selection').data('last-selected', $(this));
+					$(this).attr("selected","");
+
+					$("#user-information").trigger('select_user', entry);
+				});
+				div.on('refresh', function() {
+					Lib.Ajax.Dashboard.QueryUsers({
+						search_query: entry.username,
+						index: 0,
+						count: 1
+					}).done(function(json) {
+						if(json.status !== 'success') return;
+						if(json.out === null) return;
+						div.trigger('update', json.out[0]);
+					});
+				});
+				div.on('update', function(e, entry) {
+					div.data('user_info', entry);
+					div.find(".title").text(entry.display_name);
+					div.find(".college").text(entry.college + " ("+entry.username+")");
+					div.find(".group").text(entry.group_name);
+					div.find(".avatar").attr('data-jdenticon-value', entry.username);
+				}).trigger('update', entry);
+				div.appendTo("#user-selection>.populate>ul");
 			});
 			$('#user-selection').data('current_loaded', count+entries.length);
-		})
+		});
 	}).trigger('load_entries');
 	$('#user-selection>.populate').on('scroll', function() {
 		let th = $(this).find('ul').height();
@@ -161,6 +238,80 @@ section>.content>.cover>.title {
 		let f = s/(th-vh);
 		if(f > 1.0) { // check browser support ?!?!?
 			$('#user-selection').trigger('load_entries');
+		}
+    });
+
+	$("#user-information").on('select_user', function(e, entry) {
+		$("#user-information").find(".title").text(entry.display_name);
+		$("#user-information").find(".college").text(entry.college+" ("+entry.username+")");
+		$("#user-information").find(".group").text(entry.group_name);
+		$("#user-information").find(".avatar").attr('data-jdenticon-value', entry.username);
+
+		$("#user-editing li").removeAttr("selected");
+		$("#user-editing li[group_id="+entry.group_id+"]").attr("selected", '');
+	});
+
+    $('#user-editing').data('current_loaded', 0);
+	$('#user-editing').data('search_query', '');
+	$("#user-editing>.search>input").on('keyup', function(e) {
+		if(e.keyCode !== 13) return;
+		$('#user-editing').data('search_query', $(this).val());
+		$('#user-editing').data('current_loaded', 0);
+		$("#user-editing>.populate>ul").empty();
+		$('#user-editing').trigger('load_entries');
+	});
+
+
+	$('#user-editing').on('load_entries', function(e) {
+		Lib.Ajax.Dashboard.QueryGroups({
+			search_query: $('#user-editing').data('search_query'),
+			index: $('#user-editing').data('current_loaded'),
+			count: 10
+		}).done(function(json) {
+			if(json.status !== 'success') {
+				if(json.type === "failure_session_token_invalid") {
+					alert("You're not authenticated :(");
+					window.location.href = '/login';
+				}
+				return;
+			}
+			let entries = json.out;
+			$('#user-editing').data('last-selected', null);
+			let count = $('#user-editing').data('current_loaded');
+			entries.map(function(entry) {
+				let div = $("#template-user-selection-item").clone().show();
+				div.removeAttr('id');
+				div.attr('group_id', entry.group_id);
+				div.find(".title").text(entry.display_name);
+				div.find(".college").text("Level: "+entry.access_level);
+				div.find(".avatar").attr('data-jdenticon-value', entry.name);
+				div.appendTo("#user-editing>.populate>ul");
+				div.on('click', function() {
+					let selected = $('#user-selection').data('last-selected').data('user_info');
+					Lib.Ajax.Dashboard.AssignGroup({
+						user_id: selected.user_id,
+						group_id: entry.group_id
+					}).done(function(json) {
+						console.log(json);
+						$('#user-editing li').removeAttr('selected');
+						$('#user-editing li[group_id='+entry.group_id+']').attr('selected', '');
+						$('#user-selection li[user_id='+selected.user_id+']').trigger('refresh');
+
+					});
+					console.log(entry.display_name);
+				});
+			});
+			$('#user-editing').data('current_loaded', count+entries.length);
+
+		})
+	}).trigger('load_entries');
+	$('#user-editing>.populate').on('scroll', function() {
+		let th = $(this).find('ul').height();
+		let vh = $(this).height();
+		let s = $(this).scrollTop();
+		let f = s/(th-vh);
+		if(f > 1.0) { // check browser support ?!?!?
+			$('#user-editing').trigger('load_entries');
 		}
     });
 </script>
