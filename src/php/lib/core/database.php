@@ -6,7 +6,8 @@ class Database {
 		$user = $GLOBALS['databases'][$database]['username'];
 		$pass = $GLOBALS['databases'][$database]['password'];
 		$charset = 'utf8mb4';
-		$dsn = "mysql:host=$host;dbname=$database;charset=$charset";
+		$dsn = $GLOBALS['dsn'];
+		$dsn = "$dsn:host=$host;dbname=$database;charset=$charset";
 		$opt = [
 			PDO::ATTR_ERRMODE			 => PDO::ERRMODE_EXCEPTION,
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

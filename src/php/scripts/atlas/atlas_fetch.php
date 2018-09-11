@@ -18,25 +18,38 @@ try {
 		"session_token" => $session_token
 	]);
 
-	$user = User::GetByID([
+	$user = User::Query([
 		"db" => $db,
-		"user_id" => $token_data['user_id']
+		"user_id" => $token_data['user_id'],
+		"requests" => ['username', 'user_id'],
+		"limit" => 1
 	]);
+	if($user === null) {
+		SKYException::Send([
+			'type' => 'user',
+			'error' => 'unmatched_user_id'
+		]);
+	}
 
-	$atlas = Atlas::FromCRSID([
-		'db' => $db,
-		'crsid' => $user['username']
+	$atlas = Atlas::Query([
+		"db" => $db,
+		"crsid" => $user['username'],
+		"limit" => 1
 	]);
+	if($atlas === null) {
+		SKYException::Send([
+			'type' => 'atlas',
+			'error' => 'atlas_crsid_unknown'
+		]);
+	}
+
 	Output::SetNotify("type", "success");
-	Output::SetNotify("crsid", $atlas['crsid']);
-	Output::SetNotify("display_name", $atlas['display_name']);
-	Output::SetNotify("surname", $atlas['surname']);
-	Output::SetNotify("role", $atlas['role']);
-	Output::SetNotify("college", $atlas['college']);
-
-	
-	Output::SetNotify("username", $user['username']);
-	Output::SetNotify("user_id", $user['user_id']);
+	foreach($atlas as $k => $v) {
+		Output::SetNotify($k, $v);
+	}
+	foreach($user as $k => $v) {
+		Output::SetNotify($k, $v);
+	}
 } catch (SKYException $e) {
 	if($db) $db->rollback();
 	

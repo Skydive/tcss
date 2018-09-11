@@ -13,11 +13,14 @@ switch($action) {
 	case 'user_logout':
 		require_once("scripts/user/$action.php");
 		break;
-	case 'raven_login':
-		require_once("$action.php");
-		break;
 	case 'atlas_fetch':
 		require_once("scripts/atlas/$action.php");
+		break;
+	case 'group_fetch':
+		require_once("scripts/group/$action.php");
+		break;
+	case 'dashboard_query_users':
+		require_once("scripts/dashboard/$action.php");
 		break;
 	case 'raven_session': // This is a DIRECT entrypoint - no AJAX
 	case 'raven_redirect': // depends on raven_verify

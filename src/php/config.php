@@ -12,7 +12,7 @@ $GLOBALS['auth_providers'] = [
 $GLOBALS['hostname'] = DEVELOPMENT_MODE ? $_SERVER['HTTP_HOST'] : 'precess.io';
 
 $GLOBALS['project_name'] = 'precess-io';
-$GLOBALS['dsn'] = 'pgsql'; // or mysql
+$GLOBALS['dsn'] = 'mysql'; // or pgsql
 $GLOBALS['databases'] = [
 	$GLOBALS['project_name'] => [
 		"host" => "172.17.0.1",

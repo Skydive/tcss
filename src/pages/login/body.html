@@ -30,13 +30,11 @@
 	<div class="img"></div>
 </div>
 <script>
-$(function() {
-	$(".provider.raven").on('click.login', function() {
-		Lib.Ajax.Raven.Redirect({
-			redirect_url: "https://"+window.location.hostname+"/atlas"
-		}).done(function(json) {
-			window.location.href = json.auth_url;
-		});
+$(".provider.raven").on('click.login', function() {
+	Lib.Ajax.Raven.Redirect({
+		redirect_url: "https://"+window.location.hostname+"/atlas"
+	}).done(function(json) {
+		window.location.href = json.auth_url;
 	});
 });
 $(SKY.History).on('deconstruct', function() {

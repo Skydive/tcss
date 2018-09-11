@@ -61,12 +61,17 @@
 }
 
 .atlas.small>.content>.title {
-	font-size: 24px;
+	font-size: 20px;
+	font-weight: 200;
 }
 .atlas.small>.content>.college {
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: 200;
 }
-
+.atlas.small>.content>.group {
+	font-size: 14px;
+	font-weight: 100;
+}
 
 .atlas.large>.content>.title {
 	font-size: 72px;
@@ -76,4 +81,8 @@
 	font-size: 48px;
 	font-weight: 200;
 
+}
+.atlas.large>.content>.group {
+	font-size: 48px;
+	font-weight: 200;
 }

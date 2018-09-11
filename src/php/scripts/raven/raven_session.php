@@ -37,6 +37,7 @@ try {
 	]);
 	SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
 
+	
 	$db->beginTransaction();
 
 	// If user doesn't exist - create new one
@@ -48,6 +49,12 @@ try {
 			'auth_provider' => "raven"
 		]);
 		$user_id = $user['user_id'];
+		
+		User::AssignGroup([
+			'db' => $db,
+			'user_id' => $user_id,
+			'group_id' => 2,
+		]);
 	} else {
 		$row_user = $stmt->fetch();
 		$user_id = $row_user['user_id'];

@@ -1,0 +1,166 @@
+<div id="template-user-selection-item" style="display:none;">
+	<div class="left">
+		<svg class="avatar"></svg>
+	</div>
+	<div class="right">
+		<div class="container">
+			<div class="title">Khalid Aleem</div>
+			<div class="college">student</div>
+			<div class="group">student</div>
+		</div>
+	</div>
+</div>
+<section>
+	<div class="content">
+		<div class="cover">
+			<div class="title">User Configuration</div>
+			<div id="user-selection" class="selection">
+				<div style="font-size:22px;font-weight:200;padding-bottom:15px;">Search</div>
+				<div class="search">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="By crsid, surname or group..."></input>
+				</div>
+				<div class="populate"><ul></ul><div>
+			</div>
+		</div>
+	</div>
+</section>
+<style>
+.cover {
+	height: calc(100vh - 72px - 64px);
+}
+section>.content>.cover>.title {
+	font-size: 24px;
+	font-weight: 200;
+	padding-top: 25px;
+}
+#user-selection {
+}
+#user-selection>.populate {
+	flex-grow: 1;
+}
+#user-selection .title {
+	font-size: 20px;
+	font-weight: 200;
+}
+#user-selection .college {
+	font-size: 16px;
+	font-weight: 200;
+}
+#user-selection .group {
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.selection {
+	width: 350px;
+}
+.selection>.search {
+	display: flex;
+	margin-bottom: 20px;
+}
+.selection>.search>i {
+	font-size: 24px;
+}
+.selection>.search>input {
+	flex-grow:1;
+	
+	border: none;
+	outline: none;
+
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+	
+	font-size: 20px;
+	font-weight: 100;
+}
+.selection>.populate {
+	overflow-y: scroll;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.selection>.populate>ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+}
+.selection>.populate>ul>li {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 0;
+
+	padding: 6px 14px;
+	margin-bottom: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	min-height: 64px;
+}
+.selection>.populate>ul>li:last-child {
+	margin-bottom: 0;
+}
+.selection>.populate>ul>li>.left>.avatar{
+	width: 64px;
+	height: 64px;
+}
+.selection>.populate>ul>li>.right {
+	padding-left: 20px;
+	flex-grow: 1;
+}
+.selection>.populate>ul>li>.right>.container {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: left;
+}
+
+</style>
+<script>
+	$('#user-selection').data('current_loaded', 0);
+	$('#user-selection').data('search_query', '');
+	$("#user-selection>.search>input").on('keyup', function(e) {
+		if(e.keyCode !== 13) return;
+		$('#user-selection').data('search_query', $(this).val());
+		$('#user-selection').data('current_loaded', 0);
+		$("#user-selection>.populate>ul").empty();
+		$('#user-selection').trigger('load_entries');
+	});
+	$('#user-selection').on('load_entries', function(e) {
+		Lib.Ajax.Dashboard.QueryUsers({
+			search_query: $('#user-selection').data('search_query'),
+			index: $('#user-selection').data('current_loaded'),
+			count: 10
+		}).done(function(json) {
+			if(json.status !== 'success') {
+				if(json.type === "failure_session_token_invalid") {
+					alert("You're not authenticated :(");
+					window.location.href = '/login';
+				}
+				return;
+			}
+			let entries = json.out;
+			let count = $('#user-selection').data('current_loaded');
+			entries.map(function(entry) {
+				let div = $("#template-user-selection-item").clone().show();
+				div.find(".title").text(entry.display_name);
+				div.find(".college").text(entry.college + " ("+entry.username+")");
+				div.find(".group").text(entry.group_name);
+				div.find(".avatar").attr('data-jdenticon-value', entry.username);
+				$("#user-selection>.populate>ul").append("<li>"+div.html()+"</li>")
+			});
+			$('#user-selection').data('current_loaded', count+entries.length);
+		})
+	}).trigger('load_entries');
+	$('#user-selection>.populate').on('scroll', function() {
+		let th = $(this).find('ul').height();
+		let vh = $(this).height();
+		let s = $(this).scrollTop();
+		let f = s/(th-vh);
+		if(f > 1.0) { // check browser support ?!?!?
+			$('#user-selection').trigger('load_entries');
+		}
+    });
+</script>

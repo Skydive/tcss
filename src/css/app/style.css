@@ -81,7 +81,7 @@ body, html {
 }
 .content {
 	max-width: 1140px;
-	padding: 25px;
+	box-sizing: border-box;
 	margin-right: auto;
     margin-left: auto;
 
@@ -110,6 +110,7 @@ body, html {
 
 
 #page-content-body {
+	/*padding-top: 64px;*/
 	min-height: calc(100vh - 64px - 72px);
 }
 

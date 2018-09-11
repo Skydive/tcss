@@ -4,11 +4,12 @@
 <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
 	<div class="atlas bg large">
 		<div>
-			<canvas class="avatar" width="256" height="256" style="width:256px;height:256px;"></canvas>
+			<svg class="avatar" style="width:256px;height:256px;"></svg>
 		</div>
 		<div class="content">
 			<span class="title"></span>
 			<span class="college"></span>
+			<span class="group"></span>
 		</div>
 	</div>
 </div>
@@ -21,6 +22,7 @@ $(window).on('session_destroyed.atlas', function(e, data) {
 });
 $(SKY.History).on('deconstruct', function() {
 	$(window).off('atlas_success.atlas');
+	$(window).off('group_success.atlas');
 	$(window).off('session_destroyed.atlas');
 });
 </script>

@@ -40,6 +40,13 @@ Object.assign(Lib.Ajax, {
 			}, null, "json");
 		}
 	},
+	Group: {
+		Fetch: function() {
+			return $.post(Lib.Ajax.ENTRY_POINT, {
+				action: "group_fetch"
+			}, null, "json");
+		}
+	},
 	Atlas: {
 		Fetch: function() {
 			return $.post(Lib.Ajax.ENTRY_POINT, {

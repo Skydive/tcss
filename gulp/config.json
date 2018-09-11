@@ -16,10 +16,7 @@
 			},
 			"content": [
 				"",
-				"philosophy",
-				"projects",
-				"team",
-				"login",
+				"dashboard",
 				"atlas"		
 			]
 		},
@@ -36,11 +33,13 @@
 					"jquery-ui.min.js",
 					"native.history.js",
 					"moment.js",
-					"jdenticon-2.1.0.min.js"
+					"jdenticon-2.1.0.min.js",
+					"content-tools.min.js"
 				],
 				"app": [
 					"sky_history.js",
 					"ajax.js",
+					"dashboard.js",
 					"main.js"		
 				]
 			}
@@ -57,7 +56,8 @@
 					"jquery-ui.structure.min.css",
 					"jquery-ui.min.css",
 					"font-awesome.min.css",
-					"animate.min.css"
+					"animate.min.css",
+					"content-tools.min.css"
 				],
 				"app": [
 					"**/*.css"
