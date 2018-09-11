@@ -43,12 +43,13 @@ CREATE TABLE groups (
 	`group_id` bigint(20) NOT NULL,
 	`name` varchar(64) NOT NULL,
 	`display_name` varchar(64) NOT NULL,
-	`access_level` TINYINT(3) UNSIGNED NOT NULL DEFAULT 255,
+	`access_level` tinyint(3) unsigned NOT NULL DEFAULT 255,
 	`creation_date` timestamp NOT NULL,
 	`active` tinyint(1) NOT NULL DEFAULT 1
 );
 ALTER TABLE groups
-	ADD UNIQUE KEY `group_id` (`group_id`);
+	ADD UNIQUE KEY `group_id` (`group_id`),
+	ADD UNIQUE KEY `name` (`name`);
 INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (0, 'developer', 'Developer', 0, FROM_UNIXTIME(1));
 INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (1, 'unassigned', 'Unassigned', 255, FROM_UNIXTIME(1));
 INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (2, 'student', 'Student', 100, FROM_UNIXTIME(1));
@@ -70,3 +71,18 @@ CREATE TABLE raven_users (
 ALTER TABLE raven_users
 	ADD UNIQUE KEY `crsid` (`crsid`),
 	ADD KEY `surname` (`surname`);
+
+
+CREATE TABLE content_editable (
+	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`content_id` int(11) bigint(20) NOT NULL,
+	`name` varchar(64) NOT NULL,
+	`access_level` tinyint(3) unsigned NOT NULL,
+	`content` TEXT NOT NULL,
+	`user_id` int(11) bigint(20) NOT NULL,
+	`modify_date` timestamp NOT NULL,
+	`active` tinyint(1) NOT NULL DEFAULT 1 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ALTER TABLE content_editable
+	ADD UNIQUE KEY `content_id` (`content_id`),
+	ADD KEY `modify_date` (`modify_date`);
