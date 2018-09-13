@@ -27,7 +27,7 @@
 						<div class="populate"><ul></ul></div>
 					</div>
 					<div id="user-information" class="information" style="flex-grow:1;">
-						<!-- <div style="font-size:22px;font-weight:200;padding:15px 0;">Information</div> -->
+						<div style="font-size:22px;font-weight:200;padding:15px 0;">Information</div>
 						<div class="atlas large" style="display:block;">
 							<div>
 								<svg class="avatar" style="width:256px;height:256px;"></svg>
@@ -206,7 +206,9 @@ section>.content>.container>.item>.title {
 					$('#user-selection').data('last-selected', $(this));
 					$(this).attr("selected","");
 
-					$("#user-information").trigger('select_user', entry);
+					$("#user-editing li").removeAttr("selected");
+					$("#user-editing li[group_id="+entry.group_id+"]").attr("selected", '');
+					$("#user-information").trigger('update', entry);
 				});
 				div.on('refresh', function() {
 					Lib.Ajax.Dashboard.QueryUsers({
@@ -225,6 +227,7 @@ section>.content>.container>.item>.title {
 					div.find(".college").text(entry.college + " ("+entry.username+")");
 					div.find(".group").text(entry.group_name);
 					div.find(".avatar").attr('data-jdenticon-value', entry.username);
+					$("#user-information").trigger('update', entry);
 				}).trigger('update', entry);
 				div.appendTo("#user-selection>.populate>ul");
 			});
@@ -236,20 +239,16 @@ section>.content>.container>.item>.title {
 		let vh = $(this).height();
 		let s = $(this).scrollTop();
 		let f = s/(th-vh);
-		console.log(f);
 		if(f > 0.999) { // check browser support ?!?!?
 			$('#user-selection').trigger('load_entries');
 		}
     });
 
-	$("#user-information").on('select_user', function(e, entry) {
+	$("#user-information").on('update', function(e, entry) {
 		$("#user-information").find(".title").text(entry.display_name);
 		$("#user-information").find(".college").text(entry.college+" ("+entry.username+")");
 		$("#user-information").find(".group").text(entry.group_name);
 		$("#user-information").find(".avatar").attr('data-jdenticon-value', entry.username);
-
-		$("#user-editing li").removeAttr("selected");
-		$("#user-editing li[group_id="+entry.group_id+"]").attr("selected", '');
 	});
 
     $('#user-editing').data('current_loaded', 0);
@@ -294,12 +293,18 @@ section>.content>.container>.item>.title {
 						group_id: entry.group_id
 					}).done(function(json) {
 						console.log(json);
-						$('#user-editing li').removeAttr('selected');
-						$('#user-editing li[group_id='+entry.group_id+']').attr('selected', '');
-						$('#user-selection li[user_id='+selected.user_id+']').trigger('refresh');
+						switch(json.type) {
+						case 'success':
+							$('#user-editing li').removeAttr('selected');
+							$('#user-editing li[group_id='+entry.group_id+']').attr('selected', '');
+							$('#user-selection li[user_id='+selected.user_id+']').trigger('refresh');
+							break;
+						case 'failure_access_self_modify':
+							alert('Cannot modify self');
+							break;
+						}
 
 					});
-					console.log(entry.display_name);
 				});
 			});
 			$('#user-editing').data('current_loaded', count+entries.length);
