@@ -21,7 +21,7 @@ class Group {
 		
 		$group_id = Security::GenerateUniqueInteger();
 
-		$creation_date = time();
+		$creation_date = date("Y-m-d G:i:s", time());
 		$query = "INSERT INTO groups(
 				group_id,
 				name,
@@ -33,7 +33,7 @@ class Group {
 				:name,
 				:display_name,
 				:access_level,
-				FROM_UNIXTIME(:creation_date)
+				:creation_date
 			)";
 
 		$stmt = $db->prepare($query);

@@ -14,7 +14,7 @@ class Session {
 			'salt' => 'token'
 		]);
 
-		$login_date = time();
+		$login_date = date("Y-m-d G:i:s", time());
 
 		$query = "INSERT INTO logins(
 					user_id,
@@ -27,7 +27,7 @@ class Session {
 					:session_token,
 					:user_agent,
 					:ip_address,
-					FROM_UNIXTIME(:login_date)
+					:login_date
 				)";
 		$stmt = $db->prepare($query);
 
@@ -47,7 +47,7 @@ class Session {
 	}
 	public static function TokenValidate($data) {
 		$db = $data['db'];
-		$query = "SELECT id, user_id FROM logins WHERE session_token=:session_token AND logout_date IS NULL AND active=1 LIMIT 1";
+		$query = "SELECT id, user_id FROM logins WHERE session_token=:session_token AND logout_date IS NULL AND active=true LIMIT 1";
 		$stmt = $db->prepare($query);
 		$result = $stmt->execute([
 			'session_token' => $data['session_token']
@@ -66,10 +66,10 @@ class Session {
 	public static function Destroy($data) {
 		$db = $data['db'];
 
-		$cur_date = time();
+		$cur_date = date("Y-m-d G:i:s", time());
 
 		$query = "UPDATE logins 
-				  SET	logout_date=FROM_UNIXTIME(:logout_date)
+				  SET	logout_date=:logout_date
 				  WHERE	id=:id 
 				  AND 	logout_date IS NULL";
 		$stmt = $db->prepare($query);

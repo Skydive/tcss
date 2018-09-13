@@ -2,17 +2,19 @@
 require_once("lib/core/exception.php");
 class Database {
 	public static function Connect($database) {
-		$host = $GLOBALS['databases'][$database]['host'];
+		$params = "";
+		foreach($GLOBALS['databases'][$database]['params'] as $k => $v) {
+			$params = "$params;$k=$v";
+		}
+		$dsn = $GLOBALS['databases'][$database]['dsn'];
 		$user = $GLOBALS['databases'][$database]['username'];
 		$pass = $GLOBALS['databases'][$database]['password'];
-		$charset = 'utf8mb4';
-		$dsn = $GLOBALS['dsn'];
-		$dsn = "$dsn:host=$host;dbname=$database;charset=$charset";
+		$dsn = "$dsn:$params";
 		$opt = [
 			PDO::ATTR_ERRMODE			 => PDO::ERRMODE_EXCEPTION,
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 			PDO::ATTR_EMULATE_PREPARES	 => false,
-			PDO::ATTR_AUTOCOMMIT		 => false
+		//	PDO::ATTR_AUTOCOMMIT		 => false
 		];
 		try {
 			$db = new PDO($dsn, $user, $pass, $opt);

@@ -1,3 +1,4 @@
+# mariadb
 DROP USER 'precess-io'@'172.17.0.1';
 DROP DATABASE precess;
 
@@ -43,22 +44,22 @@ CREATE TABLE groups (
 	`group_id` bigint(20) NOT NULL,
 	`name` varchar(64) NOT NULL,
 	`display_name` varchar(64) NOT NULL,
-	`access_level` TINYINT(3) UNSIGNED NOT NULL DEFAULT 255,
-	`creation_date` timestamp NOT NULL,
+	`access_level` tinyint(3) UNSIGNED NOT NULL DEFAULT 255,
+	`creation_date` timestamp NOT NULL DEFAULT FROM_UNIXTIME(1),
 	`active` tinyint(1) NOT NULL DEFAULT 1
 );
 ALTER TABLE groups
 	ADD UNIQUE KEY `group_id` (`group_id`);
-INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (0, 'developer', 'Developer', 0, FROM_UNIXTIME(1));
-INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (1, 'unassigned', 'Unassigned', 255, FROM_UNIXTIME(1));
-INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (2, 'student', 'Student', 100, FROM_UNIXTIME(1));
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (0, 'developer', 'Developer', 0);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (1, 'unassigned', 'Unassigned', 255);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'student', 'Student', 100);
 
-INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (3, 'president', 'President', 10, FROM_UNIXTIME(1));
-INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (4, 'committee', 'General Committee', 20, FROM_UNIXTIME(1));
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'President', 10);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'General Committee', 20);
 
 # ka476,K. Aleem,Aleem,student,TRIN,TRINUG
 # TODO: rename atlas_users
-CREATE TABLE raven_users (
+CREATE TABLE atlas (
 	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`crsid` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
 	`display_name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -67,6 +68,68 @@ CREATE TABLE raven_users (
 	`college` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-ALTER TABLE raven_users
+ALTER TABLE atlas
 	ADD UNIQUE KEY `crsid` (`crsid`),
 	ADD KEY `surname` (`surname`);
+
+# PGSQL
+CREATE DATABASE "precess-io" WITH ENCODING "UTF8" LC_COLLATE="en_US.UTF-8" LC_CTYPE="en_US.UTF-8" TEMPLATE="template0";
+CREATE ROLE "precess-io" WITH LOGIN ENCRYPTED PASSWORD 'xaxaxaxa';
+GRANT ALL PRIVILEGES ON DATABASE "precess-io" TO "precess-io";
+
+CREATE TABLE users (
+	id SERIAL NOT NULL PRIMARY KEY,
+	user_id BIGINT NOT NULL,
+	username VARCHAR(64) NOT NULL,
+	password_hash VARCHAR(128) NOT NULL,
+	auth_provider SMALLINT NOT NULL,
+	creation_date TIMESTAMP NOT NULL,
+	group_id BIGINT NOT NULL DEFAULT 1,
+	active BOOLEAN NOT NULL DEFAULT 1::BOOLEAN
+);
+CREATE UNIQUE INDEX index_users_user_id ON users (user_id);
+CREATE INDEX index_users_username ON users (username);
+CREATE INDEX index_users_auth_provider ON users (auth_provider);
+
+CREATE TABLE logins (
+	id SERIAL NOT NULL PRIMARY KEY,
+	user_id BIGINT NOT NULL,
+	session_token VARCHAR(128) NOT NULL,
+	ip_address INET NOT NULL,
+	user_agent TEXT NOT NULL,
+	login_date TIMESTAMP NOT NULL,
+	logout_date TIMESTAMP NULL DEFAULT NULL,
+	active BOOLEAN NOT NULL DEFAULT 1::BOOLEAN
+);
+CREATE INDEX index_logins_user_id ON logins (user_id);
+CREATE INDEX index_logins_session_token ON logins (session_token);
+
+CREATE TABLE groups (
+	id SERIAL NOT NULL PRIMARY KEY,
+	group_id BIGINT NOT NULL,
+	name VARCHAR(64) NOT NULL,
+	display_name VARCHAR(64) NOT NULL,
+	access_level SMALLINT DEFAULT 255,
+	creation_date TIMESTAMP NOT NULL DEFAULT 'epoch',
+	active BOOLEAN NOT NULL DEFAULT 1::BOOLEAN
+);
+CREATE UNIQUE INDEX index_groups_group_id ON groups (group_id);
+
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (0, 'developer', 'Developer', 0);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (1, 'unassigned', 'Unassigned', 255);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'student', 'Student', 100);
+
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'President', 10);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'General Committee', 20);
+
+
+CREATE TABLE atlas (
+	id SERIAL NOT NULL PRIMARY KEY,
+	crsid VARCHAR(16) NOT NULL,
+	display_name VARCHAR(128) NOT NULL,
+	surname VARCHAR(64) NOT NULL,
+	role VARCHAR(16) NOT NULL,
+	college VARCHAR(16) NOT NULL
+);
+CREATE UNIQUE INDEX index_atlas_crsid ON atlas (crsid);
+CREATE INDEX index_atlas_surname ON atlas (surname);

@@ -24,10 +24,10 @@ try {
 	$query = "SELECT 
 		group_id, name, display_name, access_level 
 	FROM groups 
-	WHERE display_name LIKE :display_name 
+	WHERE LOWER(display_name) LIKE LOWER(:display_name) 
 	AND 0 < access_level AND access_level <= 100
 	ORDER BY access_level ASC
-	LIMIT $index,$count";
+	LIMIT $count OFFSET $index";
 
 	$stmt = $db->prepare($query);
 	$result = $stmt->execute([

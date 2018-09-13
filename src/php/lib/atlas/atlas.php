@@ -3,7 +3,7 @@ require_once("lib/core/security.php");
 require_once("lib/core/database.php");
 
 class Atlas {
-	const QUERY_TABLE = 'raven_users';
+	const QUERY_TABLE = 'atlas';
 	const QUERY_SAFE_REQUESTS = ['crsid', 'display_name', 'surname', 'role', 'college'];
 	const QUERY_BY_SAFE = ['crsid', 'surname', 'college'];
 	public static function Query($data) {

@@ -26,13 +26,13 @@ try {
 		c.group_id, c.display_name AS group_name,
 		b.display_name, b.surname, b.college
 	FROM users a
-	INNER JOIN raven_users b ON b.crsid = a.username
+	INNER JOIN atlas b ON b.crsid = a.username
 	INNER JOIN groups c ON c.group_id = a.group_id
 	WHERE
-		b.crsid LIKE :crsid
-	OR	b.display_name LIKE :display_name
-	OR	c.display_name LIKE :group_name
-	ORDER BY b.surname LIMIT $index,$count";
+		LOWER(b.crsid) LIKE LOWER(:crsid)
+	OR	LOWER(b.display_name) LIKE LOWER(:display_name)
+	OR	LOWER(c.display_name) LIKE LOWER(:group_name)
+	ORDER BY NULLIF(LOWER(b.surname), '') ASC, b.crsid ASC NULLS LAST LIMIT $count OFFSET $index";
 
 	$stmt = $db->prepare($query);
 	$result = $stmt->execute([

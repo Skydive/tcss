@@ -39,7 +39,7 @@ class User {
 			'extra_salt' => "$user_id"
 		]);
 		
-		$creation_date = time();
+		$creation_date = date();
 		
 		$query = "INSERT INTO users(
 				user_id,
@@ -52,7 +52,7 @@ class User {
 				:username,
 				:password_hash,
 				:auth_provider,
-				FROM_UNIXTIME(:creation_date)
+				:creation_date
 			)";
 
 		$stmt = $db->prepare($query);
@@ -77,7 +77,7 @@ class User {
 
 		$db = $data['db'];
 
-		$query = "SELECT user_id, password_hash FROM users WHERE username=:username AND auth_provider=:auth_provider AND active=1 LIMIT 1";
+		$query = "SELECT user_id, password_hash FROM users WHERE username=:username AND auth_provider=:auth_provider AND active=true LIMIT 1";
 		$stmt = $db->prepare($query);
 
 		$result = $stmt->execute([

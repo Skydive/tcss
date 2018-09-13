@@ -236,7 +236,8 @@ section>.content>.container>.item>.title {
 		let vh = $(this).height();
 		let s = $(this).scrollTop();
 		let f = s/(th-vh);
-		if(f > 1.0) { // check browser support ?!?!?
+		console.log(f);
+		if(f > 0.999) { // check browser support ?!?!?
 			$('#user-selection').trigger('load_entries');
 		}
     });
@@ -310,7 +311,7 @@ section>.content>.container>.item>.title {
 		let vh = $(this).height();
 		let s = $(this).scrollTop();
 		let f = s/(th-vh);
-		if(f > 1.0) { // check browser support ?!?!?
+		if(f > 0.999) { // check browser support ?!?!?
 			$('#user-editing').trigger('load_entries');
 		}
     });

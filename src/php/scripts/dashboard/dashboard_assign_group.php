@@ -78,7 +78,7 @@ try {
 	}
 
 
-	$query = "UPDATE users SET group_id=:group_id WHERE user_id=:user_id LIMIT 1";
+	$query = "UPDATE users SET group_id=:group_id WHERE user_id=:user_id";
 
 	$stmt = $db->prepare($query);
 	$result = $stmt->execute([
