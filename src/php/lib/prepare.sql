@@ -44,6 +44,7 @@ CREATE TABLE groups (
 	`group_id` bigint(20) NOT NULL,
 	`name` varchar(64) NOT NULL,
 	`display_name` varchar(64) NOT NULL,
+<<<<<<< HEAD
 	`access_level` tinyint(3) UNSIGNED NOT NULL DEFAULT 255,
 	`creation_date` timestamp NOT NULL DEFAULT FROM_UNIXTIME(1),
 	`active` tinyint(1) NOT NULL DEFAULT 1
@@ -53,6 +54,18 @@ ALTER TABLE groups
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (0, 'developer', 'Developer', 0);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (1, 'unassigned', 'Unassigned', 255);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'student', 'Student', 100);
+=======
+	`access_level` tinyint(3) unsigned NOT NULL DEFAULT 255,
+	`creation_date` timestamp NOT NULL,
+	`active` tinyint(1) NOT NULL DEFAULT 1
+);
+ALTER TABLE groups
+	ADD UNIQUE KEY `group_id` (`group_id`),
+	ADD UNIQUE KEY `name` (`name`);
+INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (0, 'developer', 'Developer', 0, FROM_UNIXTIME(1));
+INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (1, 'unassigned', 'Unassigned', 255, FROM_UNIXTIME(1));
+INSERT INTO groups (group_id, name, display_name, access_level, creation_date) VALUES (2, 'student', 'Student', 100, FROM_UNIXTIME(1));
+>>>>>>> 157cb3eaa84973f40f1aa354830dbca274e9eac6
 
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'President', 10);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'General Committee', 20);
@@ -71,6 +84,21 @@ CREATE TABLE atlas (
 ALTER TABLE atlas
 	ADD UNIQUE KEY `crsid` (`crsid`),
 	ADD KEY `surname` (`surname`);
+
+CREATE TABLE content_editable (
+	`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`content_id` int(11) bigint(20) NOT NULL,
+	`name` varchar(64) NOT NULL,
+	`access_level` tinyint(3) unsigned NOT NULL,
+	`content` TEXT NOT NULL,
+	`user_id` int(11) bigint(20) NOT NULL,
+	`modify_date` timestamp NOT NULL,
+	`active` tinyint(1) NOT NULL DEFAULT 1 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ALTER TABLE content_editable
+	ADD UNIQUE KEY `content_id` (`content_id`),
+	ADD KEY `modify_date` (`modify_date`);
+
 
 # PGSQL
 CREATE DATABASE "precess-io" WITH ENCODING "UTF8" LC_COLLATE="en_US.UTF-8" LC_CTYPE="en_US.UTF-8" TEMPLATE="template0";
