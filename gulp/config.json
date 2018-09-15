@@ -11,7 +11,9 @@
 				"requires": [
 					"requires/body.html",
 					"requires/footer.html",
-					"requires/head.html"
+					"requires/head.html",
+					"script.js",
+					"style.css"
 				]
 			},
 			"content": [

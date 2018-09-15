@@ -24,14 +24,13 @@ module.exports = function(data) {
 		if(path.dirname(path_repl) !== 'requires') {
 			path_repl = path.basename(file.path);
 		}
-
 		let str = vinyl_string(file.contents);
-		switch(file.extname) {
+		switch(path.extname(file.path)) {
 		case '.js':
-			str = `<script>${str}</script>`;
+			str = `<script>\n${str}\n</script>`;
 			break;
 		case '.css':
-			str = `<style>${str}</style>`;
+			str = `<style>\n${str}\n</style>`;
 			break;
 		}
 		html_output = html_output.replace(`<!-- ${path_repl} -->`, str);

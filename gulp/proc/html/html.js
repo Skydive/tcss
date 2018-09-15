@@ -24,7 +24,7 @@ module.exports = function(data, config) {
 		let deploy_task_name = `deploy:${task_group}:${page}`;
 		// TODO: fix callbacks to prevent race conditions
 		gulp.task(deploy_task_name, function() {
-			let src = gulp.src([`${config.content_path}/${options.prefix}/${page}/*.html`].concat(requires_paths));
+			let src = gulp.src([`${config.content_path}/${options.prefix}/${page}/*`].concat(requires_paths));
 			let streams = [{
 				template: TEMPLATE_INDEX,
 				output: 'index.html'
@@ -51,7 +51,7 @@ module.exports = function(data, config) {
 		let build_task_name = `build:${task_group}:${page}`;
 		gulp.task(build_task_name, function() {
 			console.log(`${build_task_name} --> Building...`);
-			let src = gulp.src([`${config.content_path}/${options.prefix}/${page}/*.html`].concat(requires_paths));
+			let src = gulp.src([`${config.content_path}/${options.prefix}/${page}/*`].concat(requires_paths));
 			let streams = [{
 				template: TEMPLATE_INDEX,
 				output: 'index.html'
