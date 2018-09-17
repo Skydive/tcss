@@ -30,11 +30,11 @@
 $(SKY.History).on('construct', function(e, data) {
 	$(window).trigger('token_validate');
 });
-$(window).on('session_created', function(e, data) {
+$(window).on('user_session_created', function(e, data) {
 	$(".login").hide();
 	$(".logout").show();
 });
-$(window).on('session_destroyed', function(e, data) {
+$(window).on('user_session_destroyed', function(e, data) {
 	$(".login").show();
 	$(".logout").hide();
 });
@@ -55,7 +55,7 @@ $(".atlas.small").one('click', function() {
 	SKY.History.pushState({}, '/atlas');
 });
 
-$(window).on('atlas_success', function(e, data) {
+$(window).on('user_atlas_success', function(e, data) {
 	$(".atlas .title").text(data.display_name);
 	$(".atlas .college").text(data.college+" ("+data.crsid+")");
 
@@ -63,10 +63,10 @@ $(window).on('atlas_success', function(e, data) {
 	$(".atlas .avatar").attr('data-jdenticon-value', data.crsid);
 	$(".atlas.small").fadeIn(250);
 });
-$(window).on('group_success', function(e, data) {
+$(window).on('user_group_success', function(e, data) {
 	$(".atlas .group").text(data.display_name);
 });
-$(window).on('session_destroyed', function(e, data) {
+$(window).on('user_session_destroyed', function(e, data) {
 	$(".atlas.small").hide();
 });
 

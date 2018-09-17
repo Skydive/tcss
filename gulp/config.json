@@ -41,6 +41,7 @@
 				"app": [
 					"sky_history.js",
 					"ajax.js",
+					"user.js",
 					"dashboard.js",
 					"main.js"		
 				]
@@ -54,9 +55,11 @@
 			},
 			"content": {
 				"vendor": [
+					"bootstrap.min.css",
+					"bootstrap-theme.min.css",
+					"jquery-ui.min.css",
 					"jquery-ui.theme.min.css",
 					"jquery-ui.structure.min.css",
-					"jquery-ui.min.css",
 					"font-awesome.min.css",
 					"animate.min.css",
 					"content-tools.min.css"

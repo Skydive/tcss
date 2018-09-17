@@ -71,15 +71,15 @@ $('#user-selection>.populate').on('scroll', function() {
 	}
 });
 
-$("#user-information").on('update', function(e, entry) {
-	$("#user-information").find(".title").text(entry.display_name);
-	$("#user-information").find(".college").text(entry.college+" ("+entry.username+")");
-	$("#user-information").find(".group").text(entry.group_name);
-	$("#user-information").find(".avatar").attr('data-jdenticon-value', entry.username);
+$("#user-editing").on('update', function(e, entry) {
+	$(this).find(".title").text(entry.display_name);
+	$(this).find(".college").text(entry.college+" ("+entry.username+")");
+	$(this).find(".group").text(entry.group_name);
+	$(this).find(".avatar").attr('data-jdenticon-value', entry.username);
 });
 
-$('#user-editing').data('current_loaded', 0);
-$('#user-editing').data('search_query', '');
+$("#user-editing").data('current_loaded', 0);
+$("#user-editing").data('search_query', '');
 $("#user-editing>.search>input").on('keyup', function(e) {
 	if(e.keyCode !== 13) return;
 	$('#user-editing').data('search_query', $(this).val());

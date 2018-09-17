@@ -1,57 +1,26 @@
-section>.content {
-	height: calc(100vh - 64px - 72px);
+#user-selection {
+	box-sizing: border-box;
+	padding-bottom: 25px;
 }
-
-.selection, .information, .editing {
-	height: calc(100vh - 64px - 72px - 54px);
-}
-
-.information {
-	display:flex;
-	flex-direction:column;
-	justify-content:center;
-	align-items:center;
-}
-
-section>.content>.container>.item>.title {
-	width: 100%;
+.content>div>div>.title {
 	font-size: 24px;
 	font-weight: 200;
 	padding-top: 25px;
 }
-.selection {
-	height: calc(100vh - 64px - 72px - 54px);
-	padding-bottom: 25px;
-	box-sizing: border-box;
-}
-.selection .title {
+.content .title {
 	font-size: 20px;
 	font-weight: 200;
 }
-.selection .college {
+.content .college {
 	font-size: 16px;
 	font-weight: 200;
 }
-.selection .group {
+.content .group {
 	font-size: 16px;
 	font-weight: 100;
 }
 
-.selection {
-	width: 350px;
-	display: flex;
-	flex-direction: column;
-}
-.selection>.search {
-	display: flex;
-	margin-bottom: 20px;
-}
-.selection>.search>i {
-	font-size: 24px;
-}
-.selection>.search>input {
-	flex-grow:1;
-	
+.selection input {	
 	border: none;
 	outline: none;
 
@@ -62,12 +31,13 @@ section>.content>.container>.item>.title {
 	font-size: 20px;
 	font-weight: 100;
 }
-.selection>.populate {
+.populate {
+	height: calc(100vh - 64px - 59px - 61px - 34px - 72px - 25px);
+
 	overflow-y: scroll;
 	border: 1px solid rgba(0, 0, 0, 0.125);
-	height: 100%;
 }
-.selection>.populate>ul {
+.populate>ul {
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-left: 0;
@@ -76,7 +46,7 @@ section>.content>.container>.item>.title {
 	flex-direction: column;
 	list-style: none;
 }
-.selection>.populate>ul>li {
+.populate>ul>li {
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 0;
@@ -88,24 +58,25 @@ section>.content>.container>.item>.title {
 	background-color: #fff;
 	transition: background-color 0.5s ease;
 }
-.selection>.populate>ul>li:hover {
+.populate>ul>li:hover {
 	background-color: #FAFAFA;
 }
-.selection>.populate>ul>li[selected] {
+.populate>ul>li[selected] {
 	background-color: lightgrey;
 }
-.selection>.populate>ul>li:last-child {
+.populate>ul>li:last-child {
 	margin-bottom: 0;
 }
-.selection>.populate>ul>li>.left>.avatar{
+.populate>ul>li>.left>.avatar{
 	width: 64px;
 	height: 64px;
 }
-.selection>.populate>ul>li>.right {
-	padding-left: 20px;
+.populate>ul>li>.right {
+	padding-left: 12px;
+	text-align: left;
 	flex-grow: 1;
 }
-.selection>.populate>ul>li>.right>.container {
+.populate>ul>li>.right>.container {
 	text-align: left;
 	display: flex;
 	flex-direction: column;
