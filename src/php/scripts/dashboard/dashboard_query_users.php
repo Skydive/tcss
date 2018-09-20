@@ -23,7 +23,7 @@ try {
 	// I want consistency of libraries over schema
 	$query = "SELECT
 		a.user_id, a.username,
-		c.group_id, c.display_name AS group_name,
+		c.group_id, c.display_name AS group_name, c.access_level,
 		b.display_name, b.surname, b.college
 	FROM users a
 	INNER JOIN atlas b ON b.crsid = a.username

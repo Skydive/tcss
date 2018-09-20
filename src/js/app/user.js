@@ -3,7 +3,6 @@ if(!Lib.User)Lib.User={};
 Object.assign(Lib.User, {
 	State: {},
 	Init: function() {
-		let self = Lib.User.State;
 		// TODO: Deferred event for post_validation like
 		// $.when('user_token_validate user_atlas_validate user_group_validate')
 		Lib.User.Group.Init();
@@ -11,7 +10,7 @@ Object.assign(Lib.User, {
 		$(window).on('user_token_validate', function() {  // TODO: Combine User/Atlas/Group into --> RavenUser
 			Lib.Ajax.Session.TokenValidate().done(function(json) {
 				console.log("[DEBUG] Processed session_token: "+Cookies.get("session_token"));
-				self = json;
+				Lib.User.State = json;
 				switch(json.type) {
 				case "success":
 					$(window).trigger('user_session_created', json);
@@ -35,12 +34,11 @@ Object.assign(Lib.User, {
 	},
 	Atlas: {
 		State: {},
-		Init: function() { 
-			let self = Lib.User.Atlas.State;
+		Init: function() {
 			$(window).on('user_atlas_validate', function() {
 				console.log("[DEBUG] Querying group authority with session_token");
 				Lib.Ajax.Atlas.Fetch().done(function(json) {
-					self = json;
+					Lib.User.Atlas.State = json;
 					switch(json.type) {
 					case "success":
 						$(window).trigger('user_atlas_success', json);
@@ -55,12 +53,18 @@ Object.assign(Lib.User, {
 	},
 	Group: {
 		State: {},
+		EAccessLevel: { // NOTE: This is complemented in the pre-SQL data
+			DEVELOPER: 0,
+			PRESIDENT: 10,
+			COMMITTEE: 20,
+			STUDENT: 100,
+			UNASSIGNED: 255
+		},
 		Init: function() {
-			let self = Lib.User.Group.State;
 			$(window).on('user_group_validate', function() {
 				console.log("[DEBUG] Querying Atlas with session_token");
 				Lib.Ajax.Group.Fetch().done(function(json) {
-					self = json;
+					Lib.User.Group.State = json;
 					switch(json.type) {
 					case "success":
 						$(window).trigger('user_group_success', json);
@@ -71,6 +75,40 @@ Object.assign(Lib.User, {
 					}
 				});
 			});
+		},
+		/*
+			The editing of users can be broken down into two distinct stages.
+			1. Can a actually edit b
+				1.1. Cannot edit SELF
+				1.2. Cannot edit a user of the same access level (unless a is DEVELOPER or PRESIDENT)
+				1.3. Cannot edit a user of lower access level
+			2. Can user a assign group g to b.
+				2.1. Cannot assign if group g access level is of same as user a (unless a is DEVELOPER or PRESIDENT)
+				2.3. Cannot assign if group g access level is lower than user a 
+		*/
+		CanEdit: function(data) {
+			let a = data.a;
+			let b = data.b;
+			let EAccessLevel = Lib.User.Group.EAccessLevel;
+			// Cannot edit self
+			if(a.user_id == b.user_id) return false;
+			// Cannot edit a user of same level, UNLESS president or developer
+			if(a.access_level == b.access_level && 
+				(a.access_level != EAccessLevel.DEVELOPER && a.access_level != EAccessLevel.PRESIDENT))return false;
+			// Cannot edit a user of lower access level
+			if(a.access_level > b.access_level)return false;
+			return true;
+		},
+		CanAssign: function(data) {
+			let a = data.a;
+			let b = data.b;
+			let g = data.g;
+			let EAccessLevel = Lib.User.Group.EAccessLevel;
+			if(!Lib.User.Group.CanEdit({a: a, b: b}))return false;
+			if(a.access_level == g.access_level && 
+				(a.access_level != EAccessLevel.DEVELOPER && a.access_level != EAccessLevel.PRESIDENT))return false;
+			if(a.access_level > g.access_level)return false;
+			return true;
 		}
 	}
 });

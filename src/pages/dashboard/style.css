@@ -32,8 +32,6 @@
 	font-weight: 100;
 }
 .populate {
-	height: calc(100vh - 64px - 59px - 61px - 34px - 72px - 25px);
-
 	overflow-y: scroll;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -58,11 +56,17 @@
 	background-color: #fff;
 	transition: background-color 0.5s ease;
 }
-.populate>ul>li:hover {
+.populate>ul>li:not([inactive]):not([selected]):hover {
 	background-color: #FAFAFA;
 }
 .populate>ul>li[selected] {
 	background-color: lightgrey;
+}
+/* REMOVE INACTIVE */
+.populate>ul>li[inactive] {
+	background-color: darkgrey;
+	pointer-events: none;
+	display: none;
 }
 .populate>ul>li:last-child {
 	margin-bottom: 0;
