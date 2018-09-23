@@ -3,9 +3,11 @@ require_once("lib/core/database.php");
 require_once("lib/core/exception.php");
 require_once("lib/framework/auth/session.php");
 
+require_once("scripts/dashboard/dashboard_config.php");
+
 $session_token = (string)$_COOKIE['session_token'];
 $index = $inputs['index'] ? (int)$inputs['index'] : 0;
-$count = $inputs['count'] ? (int)$inputs['count'] : 10;
+$count = $inputs['count'] ? (int)$inputs['count'] : QUERY_COUNT_DEFAULT;
 $search_query = $inputs['search_query'] ?: "";
 
 try {

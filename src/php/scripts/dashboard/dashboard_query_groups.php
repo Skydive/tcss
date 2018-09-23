@@ -3,9 +3,11 @@ require_once("lib/core/database.php");
 require_once("lib/core/exception.php");
 require_once("lib/framework/auth/session.php");
 
+require_once("scripts/dashboard/dashboard_config.php");
+
 $session_token = (string)$_COOKIE['session_token'];
 $index = $inputs['index'] ? (int)$inputs['index'] : 0;
-$count = $inputs['count'] ? (int)$inputs['count'] : 10;
+$count = $inputs['count'] ? (int)$inputs['count'] : QUERY_COUNT_DEFAULT;
 $search_query = $inputs['search_query'] ?: "";
 
 try {
@@ -25,7 +27,7 @@ try {
 		group_id, name, display_name, access_level 
 	FROM groups 
 	WHERE LOWER(display_name) LIKE LOWER(:display_name) 
-	AND 0 < access_level AND access_level <= 100
+	AND ".BOUNDING_RANGE_MIN." <= access_level AND access_level <= ".BOUNDING_RANGE_MAX."
 	ORDER BY access_level ASC
 	LIMIT $count OFFSET $index";
 

@@ -43,7 +43,7 @@ hAM+a6/30F5fdkWpE1smPyrfASyXRfWE4Ccn1RVgYX9u
 -----END CERTIFICATE-----
 ";
 	const CLOCK_SKEW = 1;
-	// Increase if latency
+	// Increase if latency exists??? (1 is acceptable)
 	const REQUEST_LIFETIME = 1;
 };
 

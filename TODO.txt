@@ -1,0 +1,49 @@
+Written on 22-12-18:
+Plan:
+
+25-12-18/26-12-18:
+- Flip the user configuration menu - make it group oriented
+	- Left: Group selection (Add+Delete)
+	- Right: 
+		- Top: Group editing/information 
+		- Bottom: Members (Add+Delete)
+			- On Add (CYCLE the interface)
+			- On Delete (Select + Confirm)
+				- (Modal to review jQ-UI)
+	- Tweaks:
+		- (ContentTools Merge [LATER]) for group editing (Desktop)
+
+26-12-18/27-12-18:
+- Finish the TCSS booklet with speaker names from either Ruslan/Luke
+
+28-12-18:
+- Write ALL OF ContentTools (News)
+	- Reverse engineer to add sub-instances... (CoffeeScript... :/)
+	- (+) -> Add article
+	- (E) -> Edit existing article
+	- Time/Date FILTER
+
+29-12-18:
+- Add pagination and a dashboard navbar for further options
+	- Note: possible structural changes to build system/tool
+- Make everything mobile friendly
+	- Note: Time consuming (good practice)
+
+- Bugfixes:
+	- Fix build tool .html <script> inline js not minifying upon deploy
+	- Speed up deploy (callbacks aren't managed properly in the pipeline)
+	- Use PUMP at some point
+
+- Future Features:
+	- Code the ContentTools (news) editing (HARD - rewrite their coffeescript???)
+		- Should I support image uploading?!?!?
+	- Code a society management pinboard?!?!? (Fucking TRELLO)
+	- Code the theming of the dashboard to scale
+	- Think of additional features to add
+	- Think of a way to PIVOT all of this even further
+		- TCSS --> All Societies --> ??? ??? ???
+	- Add info bubbles everywhere
+
+- Scalability concerns:
+	- Atlas doesn't scale past 3 years...
+	- This is an intrinsic problem with the cambridge system

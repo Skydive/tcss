@@ -18,9 +18,9 @@ Object.assign(Lib.Ajax, {
 				search_query: data.search_query
 			}, null, "json");
 		},
-		AssignGroup: function(data) {
+		GroupAssign: function(data) {
 			return $.post(Lib.Ajax.ENTRY_POINT, {
-				action: "dashboard_assign_group",
+				action: "dashboard_group_assign",
 				user_id: data.user_id,
 				group_id: data.group_id
 			}, null, "json");

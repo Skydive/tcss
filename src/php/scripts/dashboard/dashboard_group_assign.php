@@ -4,11 +4,11 @@ require_once("lib/core/exception.php");
 require_once("lib/framework/auth/session.php");
 require_once("lib/framework/group/group.php");
 
+require_once("scripts/dashboard/dashboard_config.php");
+
 $session_token = (string)$_COOKIE['session_token'];
 $other_user_id = $inputs['user_id'];
 $group_id = $inputs['group_id'];
-
-$BOUNDING_RANGE = [0, 100];
 
 try {
 	SKYException::CheckNULL($session_token, "session", "token_unspecified");
@@ -45,7 +45,7 @@ try {
 			'error' => 'invalid'
 		]);
 	}
-	if(!($BOUNDING_RANGE[0] < $group['access_level'] && $group['access_level'] <= $BOUNDING_RANGE[1])) {
+	if(!(BOUNDING_RANGE_MIN <= $group['access_level'] && $group['access_level'] <= BOUNDING_RANGE_MAX)) {
 		SKYException::Send([
 			'type' => 'access',
 			'error' => 'unauthorised'
