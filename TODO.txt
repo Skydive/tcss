@@ -38,6 +38,7 @@ Plan:
 	- FIX GLOBALS structure -> use an abstract class
 	- Fetch ALL information of user upon validating token
 		- Make this scale reasonably well
+	- Add loaders to ajax requests
 
 - Future Features:
 	- Code the ContentTools (news) editing (HARD - rewrite their coffeescript???)

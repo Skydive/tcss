@@ -78,8 +78,9 @@ $('#group-selection').on('load_entries', function(e) {
 
 				$('#group-users').data('group_data', group_data);
 				$('#group-users').trigger('update');
-				$('#group-users').trigger('clear_entries');
-				$('#group-users').trigger('load_entries');
+				$('#group-users').trigger('clear_entries', function() {
+					$('#group-users').trigger('load_entries');
+				});
 
 				/*Lib.Ajax.Dashboard.AssignGroup({
 					user_id: selected.user_id,
@@ -105,7 +106,7 @@ $('#group-selection').on('load_entries', function(e) {
 				});*/
 			});
 		});
-		$('#group-users').data('current_loaded', count+entries.length);
+		$('#group-selection').data('current_loaded', count+entries.length);
 
 	})
 }).trigger('load_entries');
@@ -138,8 +139,10 @@ $("#group-users .search>input").on('keyup', function(e) {
 	$("#group-users .populate>ul").empty();
 	$('#group-users').trigger('load_entries');
 });
-$('#group-users').on('clear_entries', function() {
+$('#group-users').on('clear_entries', function(e, cb) {
 	$(this).find('.populate>ul').empty();
+	console.log("cleared entries");
+	cb();
 });
 $('#group-users').on('load_entries', function(e) {
 	Lib.Ajax.Dashboard.QueryUsers({
@@ -148,6 +151,10 @@ $('#group-users').on('load_entries', function(e) {
 		index: $('#group-users').data('current_loaded'),
 		count: 10
 	}).done(function(json) {
+		console.log($('#group-users').data('current_loaded'));
+		console.log($('#group-users').data('group_data'));
+		console.log(json);
+
 		if(json.status !== 'success') {
 			if(json.type === "failure_session_token_invalid") {
 				alert("You're not authenticated :(");
@@ -169,7 +176,6 @@ $('#group-users').on('load_entries', function(e) {
 			div.find(".group").text(entry.group_name);
 			div.find(".avatar").attr('data-jdenticon-value', entry.username);
 
-
 			div.appendTo("#group-users .populate>ul");
 		});
 		$('#group-users').data('current_loaded', count+entries.length);
@@ -184,3 +190,21 @@ $('#group-users .populate').on('scroll', function() {
 		$('#group-users').trigger('load_entries');
 	}
 });
+
+$(function() {
+	$("#modal-group-add").dialog({
+		autoOpen: false,
+		modal: true,
+		buttons: {
+			"Create group": function() {
+				console.log("MEMES!");
+			},
+			Cancel: function() {
+				$("#modal-group-add").dialog("close");
+			}
+		},
+		close: function() {
+			//form[ 0 ].reset();
+		}
+	});
+})
