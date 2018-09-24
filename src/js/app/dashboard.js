@@ -7,7 +7,8 @@ Object.assign(Lib.Ajax, {
 				action: "dashboard_query_users",
 				index: data.index,
 				count: data.count,
-				search_query: data.search_query
+				search_query: data.search_query,
+				group_id: data.group_id
 			}, null, "json");
 		},
 		QueryGroups: function(data) {

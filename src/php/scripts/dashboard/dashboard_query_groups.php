@@ -27,7 +27,7 @@ try {
 		group_id, name, display_name, access_level 
 	FROM groups 
 	WHERE LOWER(display_name) LIKE LOWER(:display_name) 
-	AND ".BOUNDING_RANGE_MIN." <= access_level AND access_level <= ".BOUNDING_RANGE_MAX."
+	AND ".Query::ACCESS_LEVEL_MIN." <= access_level AND access_level <= ".Query::ACCESS_LEVEL_MAX."
 	ORDER BY access_level ASC
 	LIMIT $count OFFSET $index";
 

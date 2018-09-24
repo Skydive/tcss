@@ -1,82 +1,3 @@
-$('#user-selection').data('current_loaded', 0);
-$('#user-selection').data('search_query', '');
-$("#user-selection .search>input").on('keyup', function(e) {
-	if(e.keyCode !== 13) return;
-	$('#user-selection').data('search_query', $(this).val());
-	$('#user-selection').data('current_loaded', 0);
-	$("#user-selection .populate>ul").empty();
-	$('#user-selection').trigger('load_entries');
-});
-$('#user-selection').on('load_entries', function(e) {
-	Lib.Ajax.Dashboard.QueryUsers({
-		search_query: $('#user-selection').data('search_query'),
-		index: $('#user-selection').data('current_loaded'),
-		count: 10
-	}).done(function(json) {
-		if(json.status !== 'success') {
-			if(json.type === "failure_session_token_invalid") {
-				alert("You're not authenticated :(");
-				window.location.href = '/login';
-			}
-			return;
-		}
-		let entries = json.out;
-		 $('#user-selection').data('last-selected', null);
-		let count = $('#user-selection').data('current_loaded');
-		entries.map(function(entry) {
-			let div = $("#template-user-selection-item").clone().show();
-			div.removeAttr('id');
-			div.attr('user_id', entry.user_id);
-			div.on('click', function() {
-				let last = $('#user-selection').data('last-selected');
-				if(last)last.removeAttr("selected"); // TODO: fix this trash
-				$('#user-selection').data('last-selected', $(this));
-				$(this).attr("selected","");
-
-				$("#user-editing li").removeAttr("selected");
-				$("#user-editing li[group_id="+entry.group_id+"]").attr("selected", '');
-				$("#user-editing").trigger('update', entry);
-				div.trigger('refresh');
-			});
-			div.on('refresh', function() {
-				Lib.Ajax.Dashboard.QueryUsers({
-					search_query: div.data('user_data').username,
-					index: 0,
-					count: 1
-				}).done(function(json) {
-					if(json.status !== 'success') return;
-					if(json.out === null) return;
-					div.data('user_data', json.out[0]);
-					div.trigger('update');
-				});
-			});
-			div.on('update', function() {
-				let data = div.data('user_data');
-				div.attr('user_id', data.user_id);
-				div.find(".title").text(data.display_name);
-				div.find(".college").text(data.college + " ("+data.username+")");
-				div.find(".group").text(data.group_name);
-				div.find(".avatar").attr('data-jdenticon-value', data.username);
-
-				$("#user-editing").trigger('update', data);
-			})
-			div.data('user_data', entry);
-			div.trigger('update');
-			div.appendTo("#user-selection .populate>ul");
-		});
-		$('#user-selection').data('current_loaded', count+entries.length);
-	});
-}).trigger('load_entries');
-$('#user-selection .populate').on('scroll', function() {
-	let th = $(this).find('ul').height();
-	let vh = $(this).height();
-	let s = $(this).scrollTop();
-	let f = s/(th-vh);
-	if(f > 0.95) { // check browser support ?!?!?
-		$('#user-selection').trigger('load_entries');
-	}
-});
-
 $("#user-editing").on('update', function(e, entry) {
 	$(this).find(".info .title").text(entry.display_name);
 	$(this).find(".info .college").text(entry.college+" ("+entry.username+")");
@@ -108,21 +29,21 @@ $("#user-editing").on('update', function(e, entry) {
 	});
 });
 
-$("#user-editing").data('current_loaded', 0);
-$("#user-editing").data('search_query', '');
-$("#user-editing .search>input").on('keyup', function(e) {
+$("#group-selection").data('current_loaded', 0);
+$("#group-selection").data('search_query', '');
+$("#group-selection .search>input").on('keyup', function(e) {
 	if(e.keyCode !== 13) return;
-	$('#user-editing').data('search_query', $(this).val());
-	$('#user-editing').data('current_loaded', 0);
-	$("#user-editing .populate>ul").empty();
-	$('#user-editing').trigger('load_entries');
+	$('#group-selection').data('search_query', $(this).val());
+	$('#group-selection').data('current_loaded', 0);
+	$('#group-selection .populate>ul').empty();
+	$('#group-selection').trigger('load_entries');
 });
 
 
-$('#user-editing').on('load_entries', function(e) {
+$('#group-selection').on('load_entries', function(e) {
 	Lib.Ajax.Dashboard.QueryGroups({
-		search_query: $('#user-editing').data('search_query'),
-		index: $('#user-editing').data('current_loaded'),
+		search_query: $('#group-selection').data('search_query'),
+		index: $('#group-selection').data('current_loaded'),
 		count: 50
 	}).done(function(json) {
 		if(json.status !== 'success') {
@@ -133,8 +54,8 @@ $('#user-editing').on('load_entries', function(e) {
 			return;
 		}
 		let entries = json.out;
-		$('#user-editing').data('last-selected', null);
-		let count = $('#user-editing').data('current_loaded');
+		$('#group-selection').data('last-selected', null);
+		let count = $('#group-selection').data('current_loaded');
 		entries.map(function(entry) {
 			let div = $("#template-user-selection-item").clone().show();
 			div.removeAttr('id');
@@ -144,12 +65,23 @@ $('#user-editing').on('load_entries', function(e) {
 			div.find(".college").text("Level: "+entry.access_level);
 			div.find(".avatar").attr('data-jdenticon-value', entry.name);
 
-			div.appendTo("#user-editing .populate>ul");
-
+			div.appendTo("#group-selection .populate>ul");
 
 			div.on('click', function() {
-				let selected = $('#user-selection').data('last-selected').data('user_data');
-				Lib.Ajax.Dashboard.AssignGroup({
+				let last = $('#group-selection').data('last-selected');
+				if(last)last.removeAttr("selected"); // TODO: fix this trash
+				$('#group-selection').data('last-selected', $(this));
+
+				let group_data = $('#group-selection').data('last-selected').data('group_data');
+				$('#group-selection li').removeAttr('selected');
+				$('#group-selection li[group_id='+entry.group_id+']').attr('selected', '');
+
+				$('#group-users').data('group_data', group_data);
+				$('#group-users').trigger('update');
+				$('#group-users').trigger('clear_entries');
+				$('#group-users').trigger('load_entries');
+
+				/*Lib.Ajax.Dashboard.AssignGroup({
 					user_id: selected.user_id,
 					group_id: entry.group_id
 				}).done(function(json) {
@@ -170,20 +102,85 @@ $('#user-editing').on('load_entries', function(e) {
 						alert('Cannot modify self');
 						break;
 					}
-
-				});
+				});*/
 			});
 		});
-		$('#user-editing').data('current_loaded', count+entries.length);
+		$('#group-users').data('current_loaded', count+entries.length);
 
 	})
 }).trigger('load_entries');
-$('#user-editing .populate').on('scroll', function() {
+$('#group-selection .populate').on('scroll', function() {
 	let th = $(this).find('ul').height();
 	let vh = $(this).height();
 	let s = $(this).scrollTop();
 	let f = s/(th-vh);
 	if(f > 0.95) { // check browser support ?!?!?
-		$('#user-editing').trigger('load_entries');
+		$('#group-selection').trigger('load_entries');
+	}
+});
+
+$('#group-users').on('update', function() {
+	let group_data = $(this).data('group_data');
+	$(this).find('.group-info .avatar').attr('data-jdenticon-value', group_data.name);
+	$(this).find('.group-info .title').text(group_data.display_name);
+	$(this).find('.group-info .college').text("Level: "+group_data.access_level);
+
+	let user_data = $(this).data('user_data');
+
+});
+
+$('#group-users').data('current_loaded', 0);
+$('#group-users').data('search_query', '');
+$("#group-users .search>input").on('keyup', function(e) {
+	if(e.keyCode !== 13) return;
+	$('#group-users').data('search_query', $(this).val());
+	$('#group-users').data('current_loaded', 0);
+	$("#group-users .populate>ul").empty();
+	$('#group-users').trigger('load_entries');
+});
+$('#group-users').on('clear_entries', function() {
+	$(this).find('.populate>ul').empty();
+});
+$('#group-users').on('load_entries', function(e) {
+	Lib.Ajax.Dashboard.QueryUsers({
+		search_query: $('#group-users').data('search_query'),
+		group_id: $('#group-users').data('group_data').group_id,
+		index: $('#group-users').data('current_loaded'),
+		count: 10
+	}).done(function(json) {
+		if(json.status !== 'success') {
+			if(json.type === "failure_session_token_invalid") {
+				alert("You're not authenticated :(");
+				window.location.href = '/login';
+			}
+			return;
+		}
+		let entries = json.out;
+		 $('#group-users').data('last-selected', null);
+		let count = $('#user-selection').data('current_loaded');
+		entries.map(function(entry) {
+			let div = $("#template-user-selection-item").clone().show();
+			div.removeAttr('id');
+			div.attr('user_id', entry.user_id);
+			div.data('user_data', entry);
+
+			div.find(".title").text(entry.display_name);
+			div.find(".college").text(entry.college+" ("+entry.username+")");
+			div.find(".group").text(entry.group_name);
+			div.find(".avatar").attr('data-jdenticon-value', entry.username);
+
+
+			div.appendTo("#group-users .populate>ul");
+		});
+		$('#group-users').data('current_loaded', count+entries.length);
+	});
+});
+$('#group-users .populate').on('scroll', function() {
+	let th = $(this).find('ul').height();
+	let vh = $(this).height();
+	let s = $(this).scrollTop();
+	let f = s/(th-vh);
+	if(f > 0.95) { // check browser support ?!?!?
+		$('#group-users').trigger('load_entries');
 	}
 });

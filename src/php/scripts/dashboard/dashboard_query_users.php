@@ -9,7 +9,7 @@ $session_token = (string)$_COOKIE['session_token'];
 $index = $inputs['index'] ? (int)$inputs['index'] : 0;
 $count = $inputs['count'] ? (int)$inputs['count'] : QUERY_COUNT_DEFAULT;
 $search_query = $inputs['search_query'] ?: "";
-
+$group_id = array_key_exists('group_id', $inputs) ? (int)$inputs['group_id'] : -1;
 try {
 	SKYException::CheckNULL($session_token, "session", "token_unspecified");
 	
@@ -23,7 +23,8 @@ try {
 
 	// MASSIVE TRIPLE JOIN RAINBOW QUERY
 	// I want consistency of libraries over schema
-	$query = "SELECT
+	// Dynamically construct query
+	/*$query = "SELECT
 		a.user_id, a.username,
 		c.group_id, c.display_name AS group_name, c.access_level,
 		b.display_name, b.surname, b.college
@@ -33,19 +34,39 @@ try {
 	WHERE
 		LOWER(b.crsid) LIKE LOWER(:crsid)
 	OR	LOWER(b.display_name) LIKE LOWER(:display_name)
-	OR	LOWER(c.display_name) LIKE LOWER(:group_name)
-	ORDER BY NULLIF(LOWER(b.surname), '') ASC, b.crsid ASC NULLS LAST LIMIT $count OFFSET $index";
+	ORDER BY NULLIF(LOWER(b.surname), '') ASC, b.crsid ASC NULLS LAST LIMIT $count OFFSET $index";*/
 
+	$pairings = [];
+	$query = "SELECT
+		a.user_id, a.username,
+		c.group_id, c.display_name AS group_name, c.access_level,
+		b.display_name, b.surname, b.college
+	FROM users a
+	INNER JOIN atlas b ON b.crsid = a.username
+	INNER JOIN groups c ON c.group_id = a.group_id";
+	if($group_id != -1
+	|| $search_query != "") {
+		$query = "$query WHERE ";
+	}
+	if($search_query != "") {
+		$query = "$query LOWER(b.crsid) LIKE LOWER(:crsid)
+				  OR LOWER(b.display_name) LIKE LOWER(:display_name)";
+		$pairings['crsid'] = "%{$search_query}%";
+		$pairings['display_name'] = "%{$search_query}%";
+		if($group_id != -1) {
+			$query = "$query AND ";
+		}
+	}
+	if($group_id != -1) {
+		$query = "$query a.group_id = :group_id";
+		$pairings['group_id'] = $group_id;
+	}
+	$query = "$query ORDER BY NULLIF(LOWER(b.surname), '') ASC, b.crsid ASC NULLS LAST LIMIT $count OFFSET $index";
 	$stmt = $db->prepare($query);
-	$result = $stmt->execute([
-		'crsid' => "%{$search_query}%",
-		'display_name' => "%{$search_query}%",
-		'group_name' => "%{$search_query}%"
-	]);
+	$result = $stmt->execute($pairings);
 	SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
 
 	$out = $stmt->fetchAll();
-
 	Output::SetNotify('status', 'success');
 	Output::SetNotify('out', $out);
 } catch (SKYException $e) {
@@ -65,4 +86,5 @@ try {
 			break;
 	}
 }
+
 ?>
