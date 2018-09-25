@@ -204,7 +204,17 @@ $(function() {
 			}
 		},
 		close: function() {
-			//form[ 0 ].reset();
+			$("#modal-group-add>form")[0].reset();
 		}
 	});
-})
+	$("#modal-group-add .access-level-slider").slider({
+		min: 1,
+		max: 10,
+		create: function() {
+			$(this).find('.ui-slider-handle').text($(this).slider("value") );
+	    },
+	    slide: function(e, ui) {
+	    	$(this).find('.ui-slider-handle').text(ui.value);
+		}
+	});
+});

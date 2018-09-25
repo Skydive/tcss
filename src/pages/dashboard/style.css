@@ -114,3 +114,16 @@
 .group-options button {
 	height: 34px;
 }
+
+.access-level-slider {
+	margin: 20px 30px 20px 10px;
+}
+
+.access-level-slider>.ui-slider-handle {
+	width: 3em;
+	height: 1.6em;
+	top: 50%;
+	margin-top: -.8em;
+	text-align: center;
+	line-height: 1.6em;
+}
