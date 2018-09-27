@@ -60,6 +60,7 @@ Object.assign(Lib.User, {
 			STUDENT: 100,
 			UNASSIGNED: 255
 		},
+		EDIT_RANGE: [1, 100],
 		Init: function() {
 			$(window).on('user_group_validate', function() {
 				console.log("[DEBUG] Querying Atlas with session_token");
@@ -90,8 +91,11 @@ Object.assign(Lib.User, {
 			let a = data.a;
 			let b = data.b;
 			let EAccessLevel = Lib.User.Group.EAccessLevel;
+			let edit_range = Lib.User.Group.EDIT_RANGE;
 			// Cannot edit self
 			if(a.user_id == b.user_id) return false;
+			// Bounding range
+			if(b.access_level < edit_range[0] || edit_range[1] < b.access_level)return false;
 			// Cannot edit a user of same level, UNLESS president or developer
 			if(a.access_level == b.access_level && 
 				(a.access_level != EAccessLevel.DEVELOPER && a.access_level != EAccessLevel.PRESIDENT))return false;
@@ -104,7 +108,9 @@ Object.assign(Lib.User, {
 			let b = data.b;
 			let g = data.g;
 			let EAccessLevel = Lib.User.Group.EAccessLevel;
+			let edit_range = Lib.User.Group.EDIT_RANGE;
 			if(!Lib.User.Group.CanEdit({a: a, b: b}))return false;
+			if(g.access_level < edit_range[0] || edit_range[1] < g.access_level)return false;
 			if(a.access_level == g.access_level && 
 				(a.access_level != EAccessLevel.DEVELOPER && a.access_level != EAccessLevel.PRESIDENT))return false;
 			if(a.access_level > g.access_level)return false;

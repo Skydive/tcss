@@ -6,6 +6,10 @@ body, html {
 	font-family: 'Montserrat', sans-serif;
 	color: #333;
 }
+div, span {
+	font-family: 'Montserrat', sans-serif;
+	color: #333;
+}
 
 .header {
 	font-weight: 200;

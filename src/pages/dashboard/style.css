@@ -7,15 +7,15 @@
 	font-weight: 200;
 	padding-top: 25px;
 }
-.content .title {
+.entry .title {
 	font-size: 20px;
 	font-weight: 200;
 }
-.content .college {
+.entry .college {
 	font-size: 16px;
 	font-weight: 200;
 }
-.content .group {
+.entry .group {
 	font-size: 16px;
 	font-weight: 100;
 }
@@ -66,7 +66,6 @@
 .populate>ul>li[inactive] {
 	background-color: darkgrey;
 	pointer-events: none;
-	display: none;
 }
 .populate>ul>li:last-child {
 	margin-bottom: 0;
@@ -74,6 +73,9 @@
 .populate>ul>li>.left>.avatar{
 	width: 64px;
 	height: 64px;
+	border-radius: 50%;
+    background-color: white;
+    padding: 4px;
 }
 .populate>ul>li>.right {
 	padding-left: 12px;
@@ -90,9 +92,8 @@
 
 .group-options {
 	display: flex;
-	flex-direction: row;
+	flex-direction: row-reverse;
 	flex-wrap: wrap;
-	justify-content: space-around;
 	align-items: center;
 	height: 84px;
 }

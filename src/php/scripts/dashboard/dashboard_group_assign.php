@@ -45,7 +45,7 @@ try {
 			'error' => 'invalid'
 		]);
 	}
-	if(!(BOUNDING_RANGE_MIN <= $group['access_level'] && $group['access_level'] <= BOUNDING_RANGE_MAX)) {
+	if(!(Assign::ACCESS_LEVEL_MIN <= $group['access_level'] && $group['access_level'] <= Assign::ACCESS_LEVEL_MAX)) {
 		SKYException::Send([
 			'type' => 'access',
 			'error' => 'unauthorised'
@@ -90,6 +90,7 @@ try {
 	$db->commit();
 
 	Output::SetNotify('status', 'success');
+	Output::SetNotify('group_id', $group_id);
 } catch (SKYException $e) {
 	if($db) $db->rollback();
 	$options = $e->GetOptions();

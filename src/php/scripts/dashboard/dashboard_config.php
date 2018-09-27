@@ -13,7 +13,11 @@ abstract class Query {
 	const DEFAULT_COUNT = 10;
 };
 abstract class Modify {
-	const ACCESS_LEVEL_MIN = 1;
+	const ACCESS_LEVEL_MIN = 2;
 	const ACCESS_LEVEL_MAX = 99;
+};
+abstract class Assign {
+	const ACCESS_LEVEL_MIN = 1;
+	const ACCESS_LEVEL_MAX = 100;
 };
 ?>
