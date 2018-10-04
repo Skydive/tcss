@@ -8,7 +8,7 @@ body, html {
 }
 div, span {
 	font-family: 'Montserrat', sans-serif;
-	color: #333;
+	color: inherit;
 }
 
 .header {
@@ -132,7 +132,6 @@ div, span {
 	flex-direction: row;
 	align-items: left;
 	justify-content: left;
-
 
 	padding: 0 25px;
 	line-height: 72px;

@@ -1,0 +1,25 @@
+<!--@output-begin index.html -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--@import /requires/head.html -->
+		<div id="page-head">
+			<!--@import head.html -->
+		</div>
+	</head>
+	<body>
+		<!--@import /requires/body.html -->
+		<div id="page-content-body" class="page-content output" dest="content.html">
+			<!--@output-begin content.html -->
+			<!--@import /pages/dashboard/nav.html -->
+			<!--@import body.html -->
+			<!--@import style.css -->
+			<!--@import script.js -->
+			<!--@output-end content.html -->
+		</div>
+		<footer>
+			<!--@import /requires/footer.html -->
+		</footer>
+	</body>
+</html>
+<!--@output-end index.html -->

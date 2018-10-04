@@ -70,7 +70,12 @@ try {
 	$self = $stmt->fetch();
 
 	// TODO: fix president SELF assignment - should be possible
-	if($self['access_level'] >= $other['access_level'] || $self['access_level'] >= $group['access_level']) {
+	// Can assign IF
+	// (new AL and current AL) is higher than current (or higher/equal to current if I AM PRESIDENT)
+	if(!($self['access_level'] < $other['access_level'] && $self['access_level'] < $group['access_level']
+	|| ($self['access_level'] == EAccessLevel::PRESIDENT
+		&& $self['access_level'] <= $other['access_level'] && $self['access_level'] <= $group['access_level'])
+	)) {
 		SKYException::Send([
 			'type' => 'access',
 			'error' => 'unauthorised'

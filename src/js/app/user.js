@@ -96,9 +96,9 @@ Object.assign(Lib.User, {
 			if(a.user_id == b.user_id) return false;
 			// Bounding range
 			if(b.access_level < edit_range[0] || edit_range[1] < b.access_level)return false;
-			// Cannot edit a user of same level, UNLESS president or developer
+			// Cannot edit a user of same level, UNLESS president
 			if(a.access_level == b.access_level && 
-				(a.access_level != EAccessLevel.DEVELOPER && a.access_level != EAccessLevel.PRESIDENT))return false;
+				(a.access_level != EAccessLevel.PRESIDENT))return false;
 			// Cannot edit a user of lower access level
 			if(a.access_level > b.access_level)return false;
 			return true;
@@ -112,7 +112,7 @@ Object.assign(Lib.User, {
 			if(!Lib.User.Group.CanEdit({a: a, b: b}))return false;
 			if(g.access_level < edit_range[0] || edit_range[1] < g.access_level)return false;
 			if(a.access_level == g.access_level && 
-				(a.access_level != EAccessLevel.DEVELOPER && a.access_level != EAccessLevel.PRESIDENT))return false;
+				(a.access_level != EAccessLevel.PRESIDENT))return false;
 			if(a.access_level > g.access_level)return false;
 			return true;
 		}

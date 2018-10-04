@@ -20,4 +20,12 @@ abstract class Assign {
 	const ACCESS_LEVEL_MIN = 1;
 	const ACCESS_LEVEL_MAX = 100;
 };
+
+abstract class EAccessLevel {
+	const DEVELOPER = 0;
+	const PRESIDENT = 10;
+	const COMMITTEE = 20;
+	const STUDENT = 100;
+	const UNASSIGNED = 255;
+}
 ?>

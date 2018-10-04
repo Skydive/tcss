@@ -89,6 +89,9 @@ $('#group-users').on('update', function() {
 			access_level: group_data.access_level
 		}
 	});
+	console.log("Process: "+group_data.display_name);
+	console.log("INFO: "+Lib.User.Group.State.access_level+" "+group_data.access_level);
+	console.log("Result: "+result);
 
 	result ? $('.group-options').show() : $('.group-options').hide();
 });
