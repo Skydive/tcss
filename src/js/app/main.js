@@ -1,6 +1,20 @@
 window.jdenticon_config = {
 	replaceMode: "observe"
 };
+
+PAGE_CONFIGURATION = [
+	{
+		'path': "/",
+		'handler': 'page-content-body',
+		'file': 'content.html'
+	},
+	{
+		'path': '/dashboard',
+		'handler': 'nav-content-body',
+		'file': 'nav-content.html'
+	}
+];
+
 $(function() {
 	setTimeout(function() {
 		$("#global-loader").fadeOut(500);

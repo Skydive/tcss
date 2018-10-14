@@ -1,0 +1,25 @@
+.dashboard .title {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 200;
+	padding: 25px 0;
+}
+
+.dashboard .list {
+	margin: 0 20px;
+}
+
+.dashboard .list .entry {
+	padding: 10px 20px;
+	background-color: #fafafa;
+
+	font-size: 16px;
+	font-weight: 200;
+	text-align: left;
+}
+
+.dashboard .list .entry:hover {
+	background-color: #f6f6f6;
+	transition: background-color 0.25s ease-in;
+
+}

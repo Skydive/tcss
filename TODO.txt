@@ -1,21 +1,10 @@
-Written on 22-12-18:
-Plan:
 
-25-12-18/26-12-18:
-- Flip the user configuration menu - make it group oriented
-	- Left: Group selection (Add+Delete)
-	- Right: 
-		- Top: Group editing/information 
-		- Bottom: Members (Add+Delete)
-			- On Add (CYCLE the interface)
-			- On Delete (Select + Confirm)
-				- (Modal to review jQ-UI)
-	- Tweaks:
-		- (ContentTools Merge [LATER]) for group editing (Desktop)
 
-26-12-18/27-12-18:
-- Finish the TCSS booklet with speaker names from either Ruslan/Luke
-
+- Add pagination and a dashboard navbar for further options
+	- Note: possible structural changes to build system/tool
+- Make everything mobile friendly
+	- Note: Time consuming (good practice)
+	- Implement by own bootstrap media queries and input boxes (steal what is necessary)
 28-12-18:
 - Write ALL OF ContentTools (News)
 	- Reverse engineer to add sub-instances... (CoffeeScript... :/)
@@ -23,11 +12,7 @@ Plan:
 	- (E) -> Edit existing article
 	- Time/Date FILTER
 
-29-12-18:
-- Add pagination and a dashboard navbar for further options
-	- Note: possible structural changes to build system/tool
-- Make everything mobile friendly
-	- Note: Time consuming (good practice)
+- fix userid precision loss on client
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy

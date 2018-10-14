@@ -11,6 +11,13 @@ div, span {
 	color: inherit;
 }
 
+.content>div>div>.title {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 200;
+	padding-top: 25px;
+}
+
 .header {
 	font-weight: 200;
 
@@ -72,11 +79,6 @@ div, span {
 	font-weight: 100;
 }
 
-#philosophy {
-	width: 100%;
-	text-align: left;
-}
-
 @media (min-width: 768px) {
 	.content {
 	    max-width: 730px;
@@ -111,10 +113,14 @@ div, span {
 	color: orange;
 }
 
-
+/* ---- DISPLAY HEIGHT MANAGEMENT ---- */
 #page-content-body {
-	/*padding-top: 64px;*/
+	position: relative;
 	min-height: calc(100vh - 64px - 72px);
+}
+.fit {
+	display: block;
+	height: calc(100vh - 64px - 72px);
 }
 
 .footer {
@@ -135,15 +141,4 @@ div, span {
 
 	padding: 0 25px;
 	line-height: 72px;
-}
-
-
-.container {
-	display: flex;
-}
-.container.row {
-	flex-direction: row;
-}
-.container.col {
-	flex-direction: column;
 }

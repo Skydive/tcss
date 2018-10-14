@@ -9,9 +9,6 @@ const path = require('path');
 
 const {build_html, parse_template} = require('./build.js');
 
-const TEMPLATE_INDEX = fs.readFileSync(require.resolve('./structure_index.html'), 'utf-8');
-const TEMPLATE_CONTENT = fs.readFileSync(require.resolve('./structure_content.html'), 'utf-8');
-
 module.exports = function(data, config) {
 	// TODO: add config for template <---> output, requires for template
 	let deploy_tasks = [];
@@ -92,19 +89,9 @@ module.exports = function(data, config) {
 	gulp.task(`deploy:${task_group}`, deploy_tasks);
 	gulp.task(`build:${task_group}`, build_tasks);
 	gulp.task(`watch:${task_group}`, watch_tasks);
-
-	gulp.task('watch:requires', function(cb) {
-		let requires_paths = options.requires.map((x) => `${config.content_path}/${x}`);
-		watch(requires_paths, function() {
-				console.log(`watch:requires --> Changed`);
-				gulp.start(`build:${task_group}`);
-			});
-		cb()
-	});
-
 	return {
 		deploy_tasks: [`deploy:${task_group}`],
 		build_tasks: [`build:${task_group}`],
-		watch_tasks: [`watch:${task_group}`, 'watch:requires']
+		watch_tasks: [`watch:${task_group}`]
 	};
 };

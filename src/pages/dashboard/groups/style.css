@@ -2,11 +2,6 @@
 	box-sizing: border-box;
 	padding-bottom: 25px;
 }
-.content>div>div>.title {
-	font-size: 24px;
-	font-weight: 200;
-	padding-top: 25px;
-}
 .entry .title {
 	font-size: 20px;
 	font-weight: 200;

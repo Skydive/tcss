@@ -7,19 +7,13 @@
 			"processor": "pages",
 			"options": {
 				"prefix": "pages",
-				"dest": "",
-				"requires": [
-					"requires/body.html",
-					"requires/footer.html",
-					"requires/head.html",
-					"script.js",
-					"style.css"
-				]
+				"dest": ""
 			},
 			"content": [
 				"",
 				"dashboard",
-				"atlas"		
+				"dashboard/groups",
+				"atlas"
 			]
 		},
 		"js": {

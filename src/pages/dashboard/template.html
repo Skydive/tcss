@@ -11,12 +11,23 @@
 		<!--@import /requires/body.html -->
 		<div id="page-content-body" class="page-content output" dest="content.html">
 			<!--@output-begin content.html -->
-			<!--@import /pages/dashboard/nav.html -->
-			<!--@import body.html -->
-			<!--@import style.css -->
-			<!--@import script.js -->
+			<!--@import /pages/dashboard/dashboard.css -->
+			<div class="fit">
+				<div style="display:flex;flex-direction:row;height:100%">
+					<div id="page-nav" style="min-width:240px;border-right:solid 1px grey;">
+						<!--@import /pages/dashboard/nav.html -->
+					</div>
+					<div id="nav-content-body" class="nav-content" style="flex-grow: 1;">
+						<!--@output-begin nav-content.html -->
+						<!--@import body.html -->
+						<!--@import style.css -->								
+						<!--@import script.js -->
+						<!--@output-end nav-content.html -->
+					</div>
+				</div>
+			</div>
 			<!--@output-end content.html -->
-		</div>
+		</div>	
 		<footer>
 			<!--@import /requires/footer.html -->
 		</footer>
