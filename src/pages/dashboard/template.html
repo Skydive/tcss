@@ -14,15 +14,23 @@
 			<!--@import /pages/dashboard/dashboard.css -->
 			<div class="fit">
 				<div style="display:flex;flex-direction:row;height:100%">
-					<div id="page-nav" style="min-width:240px;border-right:solid 1px grey;">
+					<div id="dashboard-nav" style="min-width:240px;border-right:solid 1px grey;">
 						<!--@import /pages/dashboard/nav.html -->
 					</div>
-					<div id="nav-content-body" class="nav-content" style="flex-grow: 1;">
-						<!--@output-begin nav-content.html -->
+					<div id="dashboard-" page='' class="dashboard-content" style="display:none;flex-grow: 1;">
 						<!--@import body.html -->
 						<!--@import style.css -->								
 						<!--@import script.js -->
-						<!--@output-end nav-content.html -->
+					</div>
+					<div id="dashboard-users" page='users' class="dashboard-content" style="display:none;flex-grow: 1;">
+						<!--@import users/body.html -->
+						<!--@import users/style.css -->								
+						<!--@import users/script.js -->
+					</div>
+					<div id="dashboard-groups" page='groups' class="dashboard-content" style="display:none;flex-grow: 1;">
+						<!--@import groups/body.html -->
+						<!--@import groups/style.css -->
+						<!--@import groups/script.js -->
 					</div>
 				</div>
 			</div>

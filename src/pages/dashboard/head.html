@@ -1,1 +1,17 @@
 <title>Dashboard</title>
+<script>
+$(window).on('dashboard_content_load', function() {
+	let page_list = $('.dashboard-content').map((k, v) => $(v).attr('page')).toArray();
+	let url = window.location.href;
+	let page = (new URL(url)).searchParams.get('page');
+	page = page_list.includes(page) ? page : '';
+	$('.dashboard-content').hide();
+	$('#dashboard-'+page).show();
+});
+$(function() {
+	$(window).trigger('dashboard_content_load');
+});
+$(SKY.History).on('construct', function() {
+	$(window).trigger('dashboard_content_load');
+});
+</script>

@@ -12,7 +12,6 @@
 			"content": [
 				"",
 				"dashboard",
-				"dashboard/groups",
 				"atlas"
 			]
 		},
@@ -27,6 +26,7 @@
 					"js.cookie-2.2.0.min.js",
 					"jquery-3.3.1.min.js",
 					"jquery-ui.min.js",
+					"jquery-url.min.js",
 					"native.history.js",
 					"moment.js",
 					"jdenticon-2.1.0.min.js",

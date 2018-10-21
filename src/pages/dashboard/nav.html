@@ -1,9 +1,17 @@
 <div class="dashboard nav">
 	<div class="title">Dashboard</div>
 	<div class="list">
-		<div class="entry">Home</div>
-		<div class="entry">Users</div>
-		<div class="entry">Groups</div>
+		<div class="entry" path='/dashboard'>Home</div>
+		<div class="entry" path='/dashboard?page=users'>Users</div>
+		<div class="entry" path='/dashboard?page=groups'>Groups</div>
 	</div>
 </div>
- 
+<script>
+	$('.entry').each((k, v) => 
+		$(v).on('click', function() {
+			SKY.History.pushState({
+				'nocontent': true
+			}, $(v).attr('path'));
+		})
+	);
+</script>

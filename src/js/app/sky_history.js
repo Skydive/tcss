@@ -44,7 +44,15 @@ SKY.History = {
 		if(SKY.History.Ajax)SKY.History.Ajax.abort();
  
 		var path = options['dataPath'];
- 
+
+		console.log(options);
+		var ops = options['nocontent'];
+		if(ops) {
+			console.log('eee');
+			if(options['callback'])options['callback']();
+			return;
+		}
+
 		$('.page-content').css({
 			opacity:0.5,
 			pointerEvents:'none'
@@ -173,6 +181,7 @@ History.Adapter.bind(window, 'statechange', function(e) {
  
 		SKY.History.PageSwitch({
 			dataPath:state['data']['dataPath'] || state['urlObj']['origin']+state['urlObj']['pathname'],
+			nocontent:state['data']['nocontent'],
 			callback:function(){
 				var state = History.getState();
 				if(debug)console.log("History: page switch", state['url']);
