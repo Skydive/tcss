@@ -3,10 +3,9 @@
 CONTAINERS=( pgsql nginx php-fpm )
 PREFIX="precess-io"
 
-docker network create $PREFIX
+cd "$(dirname "$0")"
 
 declare -A CONTAINER_FRIENDLY_NAMES
-
 for i in "${CONTAINERS[@]}"; do
 	CONTAINER_FRIENDLY_NAMES[$i]="$PREFIX-$i"
 done
@@ -71,7 +70,7 @@ function command_restart() {
 	fi
 	if ! name_valid $1; then
 		echo "Invalid name $1"
-		return;
+		return
 	fi
 	command_start $1
 }
@@ -79,7 +78,7 @@ function command_stop() {
 	if container_valid $1; then
 		echo "Stopping container: $1"
         docker rm -f $(containerid $1)
-		return;
+		return
 	fi
 	echo "Invalid container $1"
 }
@@ -87,7 +86,7 @@ function command_remove() {
 	if container_valid $1; then
 		echo "Removing container: $1"
         docker rm -f $(containerid $1)
-		return;
+		return
 	fi
 	echo "Invalid container $1"
 }
@@ -100,15 +99,15 @@ function command_start() {
 			if container_stopped $1; then
 				echo "Restarting container: $1"
 				docker restart $(containerid $1)	
-				return;
+				return
 			fi
 			echo "Container $1 already running"
-			return;
+			return
 		fi
 		short=$(fulltoshort $1)
 		echo "Starting container from image: $1"
 		$short/start $PREFIX $short
-		return;
+		return
 	fi
 	echo "Invalid name $1"
 }
@@ -146,6 +145,14 @@ function command_list() {
 	echo -e "$short -> $STATE"
 }
 
+function command_network() {
+	if [[ "up" =~ "$1" ]]; then
+		docker network create $PREFIX
+		return
+	fi
+	docker network rm $PREFIX
+}
+
 function command_help() {
 	echo "list	- list containers"
 	echo "state	- print status information of containers"
@@ -157,7 +164,7 @@ function command_help() {
 }
 
 # MAIN LOOP
-declare -A COMMAND_LIST=(
+declare -A CONTAINER_COMMAND_LIST=(
 	["start"]=command_start
 	["stop"]=command_stop
 	["disable"]=command_remove
@@ -168,7 +175,11 @@ declare -A COMMAND_LIST=(
 	["help"]=commmand_help
 )
 
-command_parser() {
+declare -A COMMAND_LIST=(
+	["network"]=command_network
+)
+
+function command_parser() {
 	if [ -z "$1" ]; then
 		return
 	fi
@@ -180,26 +191,40 @@ command_parser() {
 		return
 	fi
 
-	for k in "${!COMMAND_LIST[@]}"; do 
-		local v=${COMMAND_LIST[$k]}
+	for k in "${!CONTAINER_COMMAND_LIST[@]}"; do 
+		local v=${CONTAINER_COMMAND_LIST[$k]}
 		if [ "$k" = "$1" ]; then
 			for n in ${@:2}; do 
 				$v ${CONTAINER_FRIENDLY_NAMES[$n]}
 			done
-			return;
+			return
+		fi
+	done
+
+	for k in "${!COMMAND_LIST[@]}"; do 
+		local v=${COMMAND_LIST[$k]}
+		if [ "$k" = "$1" ]; then
+			for n in ${@:2}; do 
+				$v $n
+			done
+			return
 		fi
 	done
 	echo "Command $1 does not exist";
 }
 
+if [ $# -eq 0 ]; then
+	CURRENT_COMMAND=""
+	echo -e "\e[92mWelcome to Skystack!\e[39m"
+	while [ "$CURRENT_COMMAND" != "quit" ]; do
+		command_parser $CURRENT_COMMAND
+		echo -ne "\e[96m[$PREFIX]\e[39m: "
+		read CURRENT_COMMAND
+	done
+	echo "Bye!"
+else
+	command_parser $@
+fi
 
-cd "$(dirname "$0")"
-CURRENT_COMMAND=""
 
-echo -e "\e[92mWelcome to Skystack!\e[39m"
-while [ "$CURRENT_COMMAND" != "quit" ]; do
-	command_parser $CURRENT_COMMAND
-	echo -ne "\e[96m[$PREFIX]\e[39m: "
-	read CURRENT_COMMAND
-done
-echo "Bye!"
+
