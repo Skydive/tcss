@@ -36,7 +36,7 @@
 					"sky_history.js",
 					"ajax.js",
 					"user.js",
-					"dashboard.js",
+					"dashboard/dash_ajax.js",
 					"main.js"		
 				]
 			}

@@ -11,11 +11,13 @@
 		<!--@import /requires/body.html -->
 		<div id="page-content-body" class="page-content output" dest="content.html">
 			<!--@output-begin content.html -->
-			<!--@import /pages/dashboard/dashboard.css -->
+			<!--@import dashboard.css -->
+			<!--@import requires/modals.html -->
+			<!--@import requires/templates.html -->
 			<div class="fit">
 				<div style="display:flex;flex-direction:row;height:100%">
-					<div id="dashboard-nav" style="min-width:240px;border-right:solid 1px grey;">
-						<!--@import /pages/dashboard/nav.html -->
+					<div id="dashboard-nav" style="min-width:240px;">
+						<!--@import nav.html -->
 					</div>
 					<div id="dashboard-" page='' class="dashboard-content" style="display:none;flex-grow: 1;">
 						<!--@import body.html -->

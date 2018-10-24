@@ -9,7 +9,8 @@ $GLOBALS['auth_providers'] = [
 	'raven' => 1
 ];
 
-$GLOBALS['hostname'] = DEVELOPMENT_MODE ? 'dev.precess.io' : $_SERVER['HTTP_HOST'];
+// DEVELOPMENT_MODE ? 'dev.precess.io' : 
+$GLOBALS['hostname'] = $_SERVER['HTTP_HOST'];
 
 $GLOBALS['project_name'] = 'precess-io';
 $GLOBALS['dsn'] = 'pgsql'; // or pgsql
@@ -19,12 +20,13 @@ $GLOBALS['databases'] = [
 		"username" => "precess-io",
 		"password" => "xaxaxaxa",
 		"params" => [
-			"host" => "172.17.0.1",
+			"host" => "precess-io-pgsql",
 			"dbname" => $GLOBALS['project_name']
 			//$charset = 'utf8mb4';
 		]
 	]
 ];
+
 $GLOBALS['hashsalts'] = [
 	'base' => '617wvX3uA8eQVU',
 	'password' => '617wvX3uA8eQVU!2&Xcn',

@@ -1,104 +1,189 @@
-<div style="position:relative;">
-	<div class="content" style="height:300px;padding-top:60px;" >
-		<div class="container" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
-			<div class="item" style="display:flex;flex-direction:column;min-height:300px;">
-				<div style="font-size:36px;font-weight:200;margin-bottom:25px;">precess.io</div>
-				<div style="font-size:18px;font-weight:200;">Cutting-edge, industry-grade website production</div>
-			</div>
+<section id="top" style="height:calc(100vh - 64px);">
+	<div class="content" style="position:relative;height:100%;">
+		<div style="position:absolute;top:50%;left:50%;transform: translate(-50%,calc(-50% - 80px));">
+			<div style="font-size:36px;font-weight:200;margin-bottom:25px;">precess.io</div>
+			<div style="font-size:18px;font-weight:200;">Cutting-edge, industry-grade website production</div>
 		</div>
 	</div>
-</div>
-<style>
-	
-</style>
-<div class="invert">
-	<div class="content" style="padding-bottom: 25px;">
+</section>
+<section id="features" class="invert">
+	<div class="content tile-region" style="padding-bottom: 25px;">
 		<div class="row" style="margin:0;">
 			<h1 style="font-weight:400;padding-top:50px;margin:0;">Features</h1>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<div class="icon">
-						<div style="background-image:url('/static/inkscape/raven.svg');filter:invert(1);"></div>
-					</div>
-				<span class="title">Raven Integration</span>
+			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
+				<img class="icon" src="/static/inkscape/raven.svg" width="256" height="256"></img>
+				<div class="title">Raven Integration</div>
 				<p class="desc">
 					Secure, raven-based authentication system for all university accounts
 				</p>
 			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<div class="icon">
-						<div style="background-image:url('/static/inkscape/eagle.svg');filter:invert(1);"></div>
-					</div>
-				<span class="title">Access Management</span>
+			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
+				<img class="icon" src="/static/inkscape/mobile.svg" width="256" height="256"></img>
+				<div class="title">Mobile Friendly</div>
 				<p class="desc">
-					Mark society members to administrate and edit the website
+					Designed to work seamlessly on mobile devices
 				</p>
 			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<div class="icon">
-					<div style="background-image:url('/static/inkscape/key.svg');filter:invert(1);"></div>
-				</div>
-				<span class="title">RSA Secure</span>
+			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
+				<img class="icon" src="/static/inkscape/key.svg" width="256" height="256"></img>
+				<div class="title">RSA Secure</div>
 				<p class="desc">
 					Login system protected by RSA signature verification
 				</p>
 			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<div class="icon">
-					<div style="background-image:url('/static/inkscape/clock.svg');filter:invert(1);"></div>
-				</div>
-				<span class="title">Low Latency</span>
+			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
+				<img class="icon" src="/static/inkscape/clock.svg" width="256" height="256"></img>
+				<div class="title">Low Latency</div>
 				<p class="desc">
 					Speed is prioritised - no bulky frameworks or libraries
 				</p>
 			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<div class="icon">
-					<div class="img" style="background-image:url('/static/inkscape/custom.svg');filter:invert(1);"></div>
-				</div>
-				<span class="title">Custom Built</span>
+			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
+				<img class="icon" src="/static/inkscape/custom.svg" width="256" height="256"></img>
+				<div class="title">Custom Built</div>
 				<p class="desc">
 					Time and care taken to tender for your society's specific requirements
 				</p>
 			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<div class="icon">
-						<div style="background-image:url('/static/inkscape/skull.svg');filter:invert(1);"></div>
-					</div>
-				<span class="title">Longevity</span>
+			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
+				<img class="icon" src="/static/inkscape/skull.svg" width="256" height="256"></img>
+				<div class="title">Longevity</div>
 				<p class="desc">
 					Written to survive for many years to come
 				</p>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 <style>
 .invert {
 	color: #fff;
 	background-color: #333;
 }
 
-.entry {
-	padding: 25px;
+.invert .tile-region .icon {
+	filter:invert(1);
 }
-.entry .title {
+
+.tile-region .entry {
+	padding: 0 70px 25px 70px;
+}
+.tile-region .entry .name {
+	padding-bottom: 5px;
+	margin-top: 20px;	
+}
+.tile-region .entry .name-hr {
+	width: 128px;
+	margin: 0 auto;
+	border-bottom: 1px solid lightgrey;
+	margin-bottom: 5px;
+}
+.tile-region .entry .title-big {
 	font-size: 24px;
+	font-weight: 200;
 }
-.entry .desc {
+.tile-region .entry .title-small {
+	font-size: 18px;
+	font-weight: 200;
+}
+.tile-region .entry .desc {
 	font-size: 14px;
 }
 
-.entry .icon {
+.team.tile-region .entry .desc {
+	font-weight: 200;
+}
+
+.tile-region .entry .icon {
 	margin: 0 auto;
 
 	width: 256px;
 	height: 256px;
 }
 
-.entry .icon>div {
-	width:100%;
-	height:100%;
-
-	background: center / contain no-repeat;
+.team.tile-region .entry .icon {
+	width: 172px;
+	height: 172px;
+	border-radius:50%;
+	border: 3px solid lightgray;
+}
+section {
+	scroll-behavior: smooth;
 }
 </style>
+<!-- <section id="technology" class="invert">
+	<div class="content team tile-region" style="padding-bottom: 25px;">
+		<div class="row" style="margin:0;">
+			<h1 style="font-weight:300;padding-top:50px;margin:0;">Technologies</h1>
+			<div class="entry col-xs-12 col-sm-6">
+				<span class="title">Nginx</span>
+				<p class="desc">
+					HTML CSS Javascript
+				</p>
+			</div>
+			<div class="entry col-xs-12 col-sm-6">
+				<span class="title">PostgreSQL</span>
+				<p class="desc">
+					PHP SQL
+				</p>
+			</div>
+			<div class="entry col-xs-12 col-sm-6">
+				<span class="title">AWS</span>
+				<p class="desc">
+					Docker Linux
+				</p>
+			</div>
+			<div class="entry col-xs-12 col-sm-6">
+				<span class="title">PHP</span>
+				<p class="desc">
+					All of the above
+				</p>
+			</div>
+		</div>
+	</div>
+</section> -->
+<section>
+	<div id="team" class="content team tile-region" style="margin-bottom: 25px;">
+		<div class="row" style="margin:0;">
+			<h1 style="font-weight:300;margin-top:50px;">The Team</h1>
+			<div class="entry col-xs-12 col-sm-6 col-md-4">
+				<img class="icon" src="/static/me/me1.png" width="256" height="256"></img>
+				<div class="name title-big">Khalid</div>
+				<div class="name-hr"></div>
+				<div class="title-small">Frontend Developer</div>
+				<p class="desc">
+					HTML CSS Javascript
+				</p>
+			</div>
+			<div class="entry col-xs-12 col-sm-6 col-md-4">
+				<img class="icon" src="/static/me/me2.png" width="256" height="256"></img>
+				<div class="name title-big">'Timothy'</div>
+				<div class="name-hr"></div>
+				<div class="title-small">Backend Developer</div>
+				<p class="desc">
+					PHP SQL
+				</p>
+			</div>
+			<div class="entry col-xs-12 col-sm-6 col-md-4">
+				<img class="icon" src="/static/me/me3.png" width="256" height="256"></img>
+				<div class="name title-big">Aleem</div>
+				<div class="name-hr"></div>
+				<div class="title-small">System Administrator</div>
+				<p class="desc">
+					Linux
+				</p>
+			</div>
+			<div class="entry col-xs-12 col-sm-6 col-md-4"></div>
+			<div class="entry col-xs-12 col-sm-6 col-md-4">
+				<img class="icon" src="/static/me/me4.png" width="256" height="256"></img>
+				<div class="name title-big">Khalid 'Timothy' Aleem</div>
+				<div class="name-hr"></div>
+				<div class="title-small">Full Stack Engineer</div>
+				<p class="desc">
+					All of the above
+				</p>
+			</div>
+			<div class="entry col-xs-12 col-sm-6 col-md-4"></div>
+		</div>
+	</div>
+</section>

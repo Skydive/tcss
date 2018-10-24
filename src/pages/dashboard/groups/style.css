@@ -1,16 +1,14 @@
-#user-selection {
-	box-sizing: border-box;
-	padding-bottom: 25px;
-}
-.entry .title {
+
+
+.atlas-entry .title {
 	font-size: 20px;
 	font-weight: 200;
 }
-.entry .college {
+.atlas-entry .college {
 	font-size: 16px;
 	font-weight: 200;
 }
-.entry .group {
+.atlas-entry .group {
 	font-size: 16px;
 	font-weight: 100;
 }

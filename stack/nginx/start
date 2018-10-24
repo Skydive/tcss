@@ -1,0 +1,16 @@
+#!/bin/bash
+SCRIPT=$(readlink -f $0)
+SCRIPTPATH=`dirname $SCRIPT`
+docker run -dt --rm \
+	--hostname $1-$2 \
+	--name $1-$2 \
+	--network $1 \
+	-v $SCRIPTPATH/../../build/:/www/dev.precess.io/ \
+	-v $SCRIPTPATH/../../deploy/:/www/precess.io/ \
+	-v $SCRIPTPATH/config/:/data/nginx/config/ \
+	-v $SCRIPTPATH/log/:/data/nginx/log/ \
+	-v $SCRIPTPATH/ssl/:/data/nginx/ssl/ \
+	-p 80:80/tcp \
+	-p 443:443/tcp \
+	-p 8080:8080/tcp \
+	$1-$2

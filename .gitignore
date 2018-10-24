@@ -1,3 +1,5 @@
+stack/pgsql/db/*
+!stack/pgsql/db/.gitkeep
 node_modules/*
 package-lock.json
 deploy/*
