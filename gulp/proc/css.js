@@ -3,6 +3,7 @@ const watch = require('gulp-watch');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const rev = require('gulp-rev');
+const runSequence = require('run-sequence');
 
 function swallow_error(error) {
 	console.log(error.toString());
@@ -54,7 +55,7 @@ module.exports = function(data, config) {
 		build_tasks.push(build_task_name);
 		watch_tasks.push(watch_task_name);
 	}
-	gulp.task(`deploy:${task_group}`, deploy_tasks);
+	gulp.task(`deploy:${task_group}`, (cb) => runSequence(...deploy_tasks, cb));
 	gulp.task(`build:${task_group}`, build_tasks);
 	gulp.task(`watch:${task_group}`, watch_tasks);
 

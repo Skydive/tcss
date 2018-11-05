@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@khalidaleem.com:precess-io"
+    "url": "git@personal.precess.io:precess-io"
   },
   "author": "Khalid Aleem",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "gulp-rm": "^1.0.5",
     "gulp-uglify": "^3.0.1",
     "gulp-watch": "^5.0.1",
-    "pump": "^3.0.0"
+    "pump": "^3.0.0",
+    "run-sequence": "^2.2.1"
   }
 }

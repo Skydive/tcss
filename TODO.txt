@@ -13,6 +13,7 @@
 	- Time/Date FILTER
 
 - fix userid precision loss on client
+- session_id useragent comparison
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy

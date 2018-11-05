@@ -88,10 +88,10 @@ Object.assign(Lib.User, {
 				2.3. Cannot assign if group g access level is lower than user a 
 		*/
 		CanEdit: function(data) {
-			let a = data.a;
-			let b = data.b;
-			let EAccessLevel = Lib.User.Group.EAccessLevel;
-			let edit_range = Lib.User.Group.EDIT_RANGE;
+			var a = data.a;
+			var b = data.b;
+			var EAccessLevel = Lib.User.Group.EAccessLevel;
+			var edit_range = Lib.User.Group.EDIT_RANGE;
 			// Cannot edit self
 			if(a.user_id == b.user_id) return false;
 			// Bounding range
@@ -104,11 +104,11 @@ Object.assign(Lib.User, {
 			return true;
 		},
 		CanAssign: function(data) {
-			let a = data.a;
-			let b = data.b;
-			let g = data.g;
-			let EAccessLevel = Lib.User.Group.EAccessLevel;
-			let edit_range = Lib.User.Group.EDIT_RANGE;
+			var a = data.a;
+			var b = data.b;
+			var g = data.g;
+			var EAccessLevel = Lib.User.Group.EAccessLevel;
+			var edit_range = Lib.User.Group.EDIT_RANGE;
 			if(!Lib.User.Group.CanEdit({a: a, b: b}))return false;
 			if(g.access_level < edit_range[0] || edit_range[1] < g.access_level)return false;
 			if(a.access_level == g.access_level && 

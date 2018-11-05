@@ -70,7 +70,7 @@ try {
 
 	$redirect_url = array_key_exists('redirect_url', $obj['params']) ? $obj['params']['redirect_url'] : "https://{$GLOBALS['hostname']}/";
 
-	print_r("test");
+	//die($redirect_url);
 	header("Location: $redirect_url");
 	// TODO: fix this cascade mess
 	setcookie('session_token', $session['session_token'], 0, "/");

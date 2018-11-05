@@ -1,6 +1,6 @@
 #!/bin/bash
 # PREPROCESSING....
-CONTAINERS=( pgsql nginx php-fpm )
+CONTAINERS=( pgsql php-fpm nginx )
 PREFIX="precess-io"
 
 cd "$(dirname "$0")"
@@ -225,6 +225,3 @@ if [ $# -eq 0 ]; then
 else
 	command_parser $@
 fi
-
-
-
