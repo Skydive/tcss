@@ -49,6 +49,14 @@
 			},
 			"content": {
 				"vendor": [
+					"animate.min.css",
+					"bootstrap.min.css",
+					"bootstrap-theme.min.css",
+					"font-awesome.min.css",
+					"jquery-ui.min.css",
+					"jquery-ui.structure.min.css",
+					"jquery-ui.theme.min.css",
+					"content-tools.min.css"
 				],
 				"app": [
 					"**/*.css"
