@@ -42,7 +42,7 @@ W7fgOEEsI4FoLOjQbJgIrgdYR2NIJh6pKKEf+9Ts2q/fuWv2xOLw7w29PIICeFIF
 hAM+a6/30F5fdkWpE1smPyrfASyXRfWE4Ccn1RVgYX9u
 -----END CERTIFICATE-----
 ";
-	const CLOCK_SKEW = 1;
+	const CLOCK_SKEW = 5;
 	// Increase if latency exists??? (1 is acceptable)
 	const REQUEST_LIFETIME = 1;
 };
@@ -52,7 +52,7 @@ abstract class EWLSToken {
 	const VERSION	= 0;
 	const STATUS 	= 1; // (default 200)
 	const MESSAGE	= 2;
-	const ISSUE		= 3; 
+	const ISSUE		= 3;
 	const ID 		= 4;
 	const URL 		= 5;
 	const PRINCIPAL	= 6;
@@ -170,6 +170,10 @@ class WLSToken {
 		$cur_time = time();
 		$skew = WLSGlobal::CLOCK_SKEW; // TODO: Allow this to be set in the query...
 		if($result > $cur_time+$skew) {
+            echo("Test memes!");
+            echo("!!!!");
+            echo("\nCur T: $cur_time");
+            echo("\nIssue: $result");
 			throw new WLSException([
 				'code' => '600',
 				'message' => 'The request appears to be coming from the future...',

@@ -1,12 +1,14 @@
 
-
+- Atlas fallback
+- Raven crsid - uniqueness of username clash
 - Add pagination and a dashboard navbar for further options
 	- Note: possible structural changes to build system/tool
+
 - Make everything mobile friendly
 	- Note: Time consuming (good practice)
 	- Implement by own bootstrap media queries and input boxes (steal what is necessary)
-28-12-18:
-- Write ALL OF ContentTools (News)
+
+- Write ALL OF ContentTools
 	- Reverse engineer to add sub-instances... (CoffeeScript... :/)
 	- (+) -> Add article
 	- (E) -> Edit existing article
@@ -14,6 +16,7 @@
 
 - fix userid precision loss on client
 - session_id useragent comparison
+- ajax timeout, callback
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy

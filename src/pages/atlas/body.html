@@ -14,15 +14,8 @@
 	</div>
 </div>
 <script>
-$(window).on('atlas_success.atlas', function(e, data) {
-	$(".precess").text("Atlas: Login Success");
-});
-$(window).on('session_destroyed.atlas', function(e, data) {
-	$(".atlas.large").hide();
-});
-$(SKY.History).on('deconstruct', function() {
-	$(window).off('atlas_success.atlas');
-	$(window).off('group_success.atlas');
-	$(window).off('session_destroyed.atlas');
+$(function() {
+	if(Lib.User.Atlas.State)
+		$(window).trigger('user_atlas_success', Lib.User.Atlas.State);
 });
 </script>

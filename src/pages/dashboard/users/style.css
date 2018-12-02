@@ -1,0 +1,167 @@
+.atlas-user-info.large {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	padding: 5px;
+	padding-bottom: 25px;
+	box-sizing: border-box;
+}
+.atlas-user-info>.content {
+	flex-grow:1;
+
+	padding:5px 0 0 15px;
+
+	display: flex;
+	flex-direction: column;
+	
+}
+.atlas-user-info.large>.content {
+	align-items: center;
+	justify-content: center;
+
+	text-align:center;
+}
+
+.atlas-user-info.bg {
+	background-color: #EFEFEF;
+}
+
+.atlas-user-info.large>.content>.title {
+	font-size: 72px;
+	font-weight: 200;
+}
+.atlas-user-info.large>.content>.college {
+	font-size: 48px;
+	font-weight: 200;
+
+}
+.atlas-user-info.large>.content>.group {
+	font-size: 48px;
+	font-weight: 200;
+}
+
+
+
+.atlas-entry .title {
+	font-size: 20px;
+	font-weight: 200;
+}
+.atlas-entry .college {
+	font-size: 16px;
+	font-weight: 200;
+}
+.atlas-entry .group {
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.selection input {	
+	border: none;
+	outline: none;
+
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+	
+	font-size: 20px;
+	font-weight: 100;
+}
+.populate {
+	overflow-y: scroll;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.populate>ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+}
+.populate>ul>li {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 0;
+
+	padding: 6px 14px;
+	margin-bottom: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	min-height: 64px;
+	background-color: #fff;
+	transition: background-color 0.5s ease;
+}
+.populate>ul>li:not([inactive]):not([selected]):hover {
+	background-color: #FAFAFA;
+}
+.populate>ul>li[selected] {
+	background-color: lightgrey;
+}
+/* REMOVE INACTIVE */
+.populate>ul>li[inactive] {
+	background-color: darkgrey;
+	pointer-events: none;
+}
+.populate>ul>li:last-child {
+	margin-bottom: 0;
+}
+.populate>ul>li>.left>.avatar{
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+    background-color: white;
+    padding: 4px;
+}
+.populate>ul>li>.right {
+	padding-left: 12px;
+	text-align: left;
+	flex-grow: 1;
+}
+.populate>ul>li>.right>.container {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: left;
+}
+
+.group-options {
+	display: flex;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
+	align-items: center;
+	height: 84px;
+}
+.group-options .icon {
+	height: 32px;
+	width: 32px;
+	line-height: 32px;
+
+	margin: 10px 20px;
+	background-color: #EFEFEF;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	transition: background-color 0.5s ease;
+}
+.group-options .icon:hover {
+	background-color: lightgrey;
+}
+
+.group-options button {
+	height: 34px;
+}
+
+.access-level-slider {
+	margin: 20px 30px 20px 10px;
+}
+
+.access-level-slider>.ui-slider-handle {
+	width: 3em;
+	height: 1.6em;
+	top: 50%;
+	margin-top: -.8em;
+	text-align: center;
+	line-height: 1.6em;
+}
