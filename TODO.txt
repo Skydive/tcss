@@ -3,7 +3,6 @@
 - Raven crsid - uniqueness of username clash
 - Add pagination and a dashboard navbar for further options
 	- Note: possible structural changes to build system/tool
-
 - Make everything mobile friendly
 	- Note: Time consuming (good practice)
 	- Implement by own bootstrap media queries and input boxes (steal what is necessary)
@@ -17,6 +16,7 @@
 - fix userid precision loss on client
 - session_id useragent comparison
 - ajax timeout, callback
+- UUID REE
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy
