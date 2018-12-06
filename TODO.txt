@@ -1,5 +1,8 @@
 
-- Atlas fallback
+- EXCEPTION CONFIG SEPARATION
+- VERSION LOCK STACK
+- Atlas fallback (remove atlas entirely?!?)
+- Generate atlas on user generation?
 - Raven crsid - uniqueness of username clash
 - Add pagination and a dashboard navbar for further options
 	- Note: possible structural changes to build system/tool

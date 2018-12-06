@@ -367,3 +367,205 @@
 2018/12/02 23:21:52 [error] 9#9: *3714 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.18.0.4, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
 2018/12/02 23:21:58 [error] 9#9: *3739 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.18.0.4, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
 2018/12/02 23:21:58 [error] 9#9: *3740 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.18.0.4, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/04 20:11:29 [error] 6#6: *6 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.4, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/04 20:11:29 [error] 6#6: *16 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.4, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/04 20:11:29 [error] 6#6: *19 open() "/www/dev.precess.io/favicon.ico" failed (2: No such file or directory), client: 172.19.0.4, server: dev.precess.io, request: "GET /favicon.ico HTTP/1.0", host: "dev.precess.io", referrer: "https://dev.precess.io/"
+2018/12/04 20:47:56 [error] 6#6: *25 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.4, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/04 20:47:56 [error] 6#6: *35 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.4, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/04 21:16:39 [error] 6#6: *1 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.4, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/04 21:16:39 [error] 6#6: *2 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.4, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/04 23:41:21 [error] 7#7: *7 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected '$metadata' (T_VARIABLE) in /www/dev.precess.io/php/scripts/blk/blk_create.php on line 26" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_create&friendly_name=Testing&access_level=0 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_create&friendly_name=Testing&access_level=0"
+2018/12/04 23:42:16 [error] 7#7: *9 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at end of input
+LINE 8:   $3
+            ^ in /www/dev.precess.io/php/scripts/blk/blk_create.php:41
+Stack trace:
+#0 /www/dev.precess.io/php/scripts/blk/blk_create.php(41): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/index.php(30): require_once('/www/dev.preces...')
+#2 {main}
+  thrown in /www/dev.precess.io/php/scripts/blk/blk_create.php on line 41" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_create&friendly_name=Testing&access_level=0 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_create&friendly_name=Testing&access_level=0"
+2018/12/04 23:44:46 [error] 7#7: *11 FastCGI sent in stderr: "PHP message: PHP Warning:  require_once(scripts/raven/blk_create.php): failed to open stream: No such file or directory in /www/dev.precess.io/php/index.php on line 33
+PHP message: PHP Fatal error:  require_once(): Failed opening required 'scripts/raven/blk_create.php' (include_path='.:') in /www/dev.precess.io/php/index.php on line 33" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_create&friendly_name=Testing&access_level=0 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_create&friendly_name=Testing&access_level=0"
+2018/12/05 16:00:26 [error] 7#7: *21 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: :blk_ref_id in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:37
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(37): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(37): Content_Blk_Ref::Create('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 37" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing"
+2018/12/05 16:01:24 [error] 7#7: *23 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected ''data'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 39" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing"
+2018/12/05 16:01:37 [error] 7#7: *25 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "blk_ref_id" violates not-null constraint
+DETAIL:  Failing row contains (1, null, 3023818020590624, "{}", testing). in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:40
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(40): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(37): Content_Blk_Ref::Create('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 40" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing"
+2018/12/05 16:02:31 [error] 7#7: *29 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'Content' not found in /www/dev.precess.io/php/lib/blk/content_blk.php:60
+Stack trace:
+#0 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(44): Content_Blk::RefreshHash(Array)
+#1 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#2 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk.php on line 60" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing"
+2018/12/05 16:02:45 [error] 7#7: *31 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near ")"
+LINE 8:   )
+          ^ in /www/dev.precess.io/php/lib/blk/content_blk.php:51
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk.php(51): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/lib/blk/content_blk.php(62): Content_Blk::Fetch_Blk_Refs_From_Blk(Array)
+#2 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(44): Content_Blk::RefreshHash(Array)
+#3 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#4 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk.php on line 51" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing"
+2018/12/05 23:41:32 [error] 7#7: *39 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Cannot access self:: when no class scope is active in /www/dev.precess.io/php/scripts/blk/blk_fetch.php:16
+Stack trace:
+#0 /www/dev.precess.io/php/index.php(32): require_once()
+#1 {main}
+  thrown in /www/dev.precess.io/php/scripts/blk/blk_fetch.php on line 16" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_id=3023818020590624 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_fetch&blk_id=3023818020590624"
+2018/12/06 00:04:53 [error] 7#7: *57 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected ''metadata'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /www/dev.precess.io/php/scripts/blk/blk_ref_update.php on line 36" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:07:23 [error] 7#7: *59 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected ''metadata'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /www/dev.precess.io/php/scripts/blk/blk_ref_update.php on line 36" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:16:48 [error] 7#7: *71 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "blk_hash" does not exist
+LINE 1: SELECT blk_ref_id,blk_id,blk_hash,metadata FROM content_blk_...
+                                 ^ in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:97
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(97): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(60): Content_Blk_Ref::Query(Array)
+#2 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#3 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#4 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 97" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:17:03 [error] 7#7: *73 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "metadata"
+LINE 3:    metadata = jsonb_merge(metadata, $2)
+           ^ in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:76
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(76): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 76" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:17:11 [error] 7#7: *75 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "metadata"
+LINE 3:    metadata = jsonb_merge(metadata, $2)
+           ^ in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:76
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(76): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 76" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:18:31 [error] 7#7: *77 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "metadata"
+LINE 3:    metadata = metadata || $2
+           ^ in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:76
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(76): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 76" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:19:24 [error] 7#7: *79 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "metadata"
+LINE 3:    metadata = metadata || $2
+           ^ in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:77
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(77): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 77" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:19:44 [error] 7#7: *81 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "metadata"
+LINE 3:    metadata = metadata || $2::jsonb
+           ^ in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:77
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(77): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 77" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:20:04 [error] 7#7: *83 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type boolean: "testing" in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:77
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(77): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 77" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:20:39 [error] 7#7: *85 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42883]: Undefined function: 7 ERROR:  function jsonb_merge(jsonb, unknown) does not exist
+LINE 3:    metadata = jsonb_merge(metadata, $2)
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts. in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:77
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(77): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 77" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:20:49 [error] 7#7: *87 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42883]: Undefined function: 7 ERROR:  function json_merge(jsonb, unknown) does not exist
+LINE 3:    metadata = json_merge(metadata, $2)
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts. in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:77
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(77): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 77" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:22:13 [error] 7#7: *89 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type boolean: "testing" in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:77
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(77): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 77" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:22:54 [error] 7#7: *91 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: :data in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:77
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(77): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update('testing')
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 77" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:23:18 [error] 7#7: *93 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: :data in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:76
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(76): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update(Array)
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 76" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=testing&blk_ref_id=1383821607105134"
+2018/12/06 00:52:23 [error] 7#7: *121 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:52:23 [error] 7#7: *125 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:52:23 [error] 7#7: *128 open() "/www/dev.precess.io/favicon.ico" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /favicon.ico HTTP/1.0", host: "dev.precess.io", referrer: "https://dev.precess.io/dev/blk/"
+2018/12/06 00:54:52 [error] 7#7: *135 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:54:52 [error] 7#7: *139 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:55:34 [error] 7#7: *150 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:55:34 [error] 7#7: *154 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:56:27 [error] 7#7: *167 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:56:27 [error] 7#7: *171 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:56:50 [error] 7#7: *182 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:56:50 [error] 7#7: *186 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:57:45 [error] 7#7: *199 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:57:45 [error] 7#7: *203 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:58:07 [error] 7#7: *214 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 00:58:07 [error] 7#7: *218 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:08:05 [error] 7#7: *223 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type json
+DETAIL:  Token "'" is invalid.
+CONTEXT:  JSON data, line 1: {'... in /www/dev.precess.io/php/lib/blk/content_blk_ref.php:76
+Stack trace:
+#0 /www/dev.precess.io/php/lib/blk/content_blk_ref.php(76): PDOStatement->execute(Array)
+#1 /www/dev.precess.io/php/scripts/blk/blk_ref_update.php(29): Content_Blk_Ref::Update(Array)
+#2 /www/dev.precess.io/php/index.php(32): require_once('/www/dev.preces...')
+#3 {main}
+  thrown in /www/dev.precess.io/php/lib/blk/content_blk_ref.php on line 76" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=%3Cb%3ETesting%20Memes%20Repeat%3C/b%3E&blk_ref_id=1383821607105134&metadata=%7B%27name%27:%20%27testing%27%7D HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_ref_update&blk_id=3023818020590624&data=%3Cb%3ETesting%20Memes%20Repeat%3C/b%3E&blk_ref_id=1383821607105134&metadata=%7B%27name%27:%20%27testing%27%7D"
+2018/12/06 01:10:38 [error] 7#7: *229 FastCGI sent in stderr: "PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56
+PHP message: PHP Warning:  Attempt to assign property 'metadata' of non-object in /www/dev.precess.io/php/lib/blk/content_blk.php on line 56" while reading response header from upstream, client: 172.19.0.5, server: dev.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_id=3023818020590624 HTTP/1.0", upstream: "fastcgi://172.19.0.3:9000", host: "dev.precess.io", referrer: "http://dev.precess.io/php/index.php?action=blk_fetch&blk_id=3023818020590624"
+2018/12/06 01:12:45 [error] 7#7: *251 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:12:45 [error] 7#7: *255 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:13:51 [error] 7#7: *272 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:13:51 [error] 7#7: *276 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:13:54 [error] 7#7: *287 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:13:54 [error] 7#7: *291 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:14:36 [error] 7#7: *302 open() "/www/dev.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.precess.io"
+2018/12/06 01:14:36 [error] 7#7: *306 open() "/www/dev.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.19.0.5, server: dev.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.precess.io"

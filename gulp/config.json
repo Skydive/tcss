@@ -12,7 +12,8 @@
 			"content": [
 				"",
 				"dashboard",
-				"atlas"
+				"atlas",
+				"dev/blk"
 			]
 		},
 		"js": {
@@ -31,6 +32,9 @@
 					"moment.js",
 					"jdenticon-2.1.0.min.js",
 					"content-tools.min.js"
+				],
+				"sky": [
+					"sky-blk.js"
 				],
 				"app": [
 					"sky_history.js",

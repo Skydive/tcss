@@ -1,0 +1,21 @@
+<html>
+<div ref_name="testing">Placeholder...</div>
+</html>
+<script>
+// 
+var ACCESS_BLK = "3023818020590624";
+$(function() {
+	var refs = SKY.Ajax.Blk.RefsFetch({
+		'blk_id': ACCESS_BLK
+	}).done(function(json) {
+		var refs = json.blk_refs;
+		for(var i in refs) {
+			var ref = refs[i];
+			var md = JSON.parse(ref.ref_md);			
+			if(!md)continue;
+			if('name' in md)
+				$('[ref_name='+md.name+']').html(ref.data);
+		}
+	});
+})
+</script>

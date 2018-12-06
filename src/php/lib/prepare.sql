@@ -155,7 +155,7 @@ CREATE TABLE content_blk (
 	id SERIAL NOT NULL PRIMARY KEY,
 	blk_id BIGINT NOT NULL,
 	blk_hash CHAR(8) NOT NULL,
-	metadata JSON NULL DEFAULT NULL
+	metadata JSONB NULL DEFAULT '{}'::JSONB
 );
 CREATE UNIQUE INDEX index_content_blk_id ON content_blk (blk_id);
 
@@ -163,7 +163,7 @@ CREATE TABLE content_blk_ref (
 	id SERIAL NOT NULL PRIMARY KEY,
 	blk_ref_id BIGINT NOT NULL,
 	blk_id BIGINT NOT NULL,
-	metadata JSON NULL DEFAULT NULL,
+	metadata JSONB NULL DEFAULT '{}'::JSONB,
 	data TEXT DEFAULT NULL
 );
 CREATE UNIQUE INDEX index_content_blk_ref_blk_ref_id ON content_blk_ref (blk_ref_id);

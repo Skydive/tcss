@@ -26,6 +26,11 @@ switch($action) {
 	case 'dashboard_group_remove':
 		require_once("scripts/dashboard/$action.php");
 		break;
+	case 'blk_create':
+	case 'blk_fetch':
+	case 'blk_ref_update':
+		require_once("scripts/blk/$action.php");
+		break;
 	case 'raven_session': // This is a DIRECT entrypoint - no AJAX
 	case 'raven_redirect': // depends on raven_verify
 		require_once("scripts/raven/$action.php");
