@@ -7,8 +7,10 @@ Object.assign(SKY.Ajax, {
 		RefUpdate: function(data) {
 			return $.post(SKY.Ajax.ENTRY_POINT, {
 				action: "blk_ref_update",
-				blk_id: data.username,
-				blk_ref_id: data.password
+				blk_id: data.blk_id,
+				blk_ref_id: data.blk_ref_id,
+				metadata: data.metadata,
+				data: data.data
 			}, null, "json");
 		},
 		RefsFetch: function(data) {

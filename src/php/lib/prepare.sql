@@ -163,6 +163,7 @@ CREATE TABLE content_blk_ref (
 	id SERIAL NOT NULL PRIMARY KEY,
 	blk_ref_id BIGINT NOT NULL,
 	blk_id BIGINT NOT NULL,
+	blk_ref_name VARCHAR(64) NOT NULL,
 	metadata JSONB NULL DEFAULT '{}'::JSONB,
 	data TEXT DEFAULT NULL
 );

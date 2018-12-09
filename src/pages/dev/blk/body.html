@@ -1,21 +1,35 @@
 <html>
-<div ref_name="testing">Placeholder...</div>
+TSET
+<div blk_id="3023818020590624">
+	<div blk_ref_name="testing memes" contenteditable>Placeholder...</div>
+</div>
 </html>
 <script>
-// 
-var ACCESS_BLK = "3023818020590624";
 $(function() {
-	var refs = SKY.Ajax.Blk.RefsFetch({
-		'blk_id': ACCESS_BLK
-	}).done(function(json) {
-		var refs = json.blk_refs;
-		for(var i in refs) {
-			var ref = refs[i];
-			var md = JSON.parse(ref.ref_md);			
-			if(!md)continue;
-			if('name' in md)
-				$('[ref_name='+md.name+']').html(ref.data);
-		}
+	$('[blk_id]').map(function(k, v) {
+		var blk_id = $(v).attr('blk_id');
+		var refs = SKY.Ajax.Blk.RefsFetch({
+			'blk_id': blk_id
+		}).done(function(json) {
+			console.log(json);
+			var refs = json.blk_refs;
+			json.blk_refs.map(function(ref) {
+				$('[blk_ref_name]').map(function(k2, v2) {
+					if($(v2).attr('blk_ref_name') == ref.blk_ref_name) {
+						$(v2).html(ref.data);						
+						$(v2).on('focusout', function(e) {
+							SKY.Ajax.Blk.RefUpdate({
+								'blk_id': ref.blk_id,
+								'blk_ref_id': ref.blk_ref_id,
+								'data': $(this).html()
+							}).done(function(json) {
+								console.log(json);
+							});
+						});
+					}
+				});
+			});
+		});
 	});
 })
 </script>

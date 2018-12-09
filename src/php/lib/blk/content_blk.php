@@ -41,7 +41,7 @@ class Content_Blk {
 		$index = array_key_exists('index', $data) ? (int)$data['index'] : 0;
 		$query = "SELECT 
 			a.blk_id, a.blk_hash, a.metadata AS blk_md,
-			b.blk_ref_id, b.metadata AS ref_md, b.data 
+			b.blk_ref_id, b.blk_ref_name, b.metadata AS ref_md, b.data 
 			FROM content_blk a
 			INNER JOIN content_blk_ref b ON a.blk_id = b.blk_id
 			WHERE a.blk_id = :blk_id
