@@ -65,7 +65,7 @@ class Content_Blk {
 		// RECHECKSUM
 		$blk_hash = '';
 		foreach($blk_refs as $ref) {
-			$blk_hash = hash('crc32b', $blk_hash.$ref->data);
+			$blk_hash = hash('crc32b', $blk_hash.$ref['data']);
 		}
 
 		$query = "UPDATE content_blk
@@ -77,6 +77,10 @@ class Content_Blk {
 			'blk_hash' => $blk_hash
 		]);
 		SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
+
+		return [
+			'blk_hash' => $blk_hash
+		];
 	}
 
 	// public static function Fetch($data) {

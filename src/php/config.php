@@ -2,6 +2,8 @@
 date_default_timezone_set('UTC');
 // MAKE THIS WITH CONST CLASS VARS
 // TODO: use an actual preprocessor for this single argument
+
+// TODO: DEV_LEVEL + ENUMS
 DEFINE('DEVELOPMENT_MODE', true);
 
 $GLOBALS['auth_providers'] = [
@@ -33,4 +35,14 @@ $GLOBALS['hashsalts'] = [
 	'token' => '617wvX3uA8eQVU!2@Xcn'
 ];
 
+$GLOBALS['exceptions'] = [
+	'access',
+	'blk',
+	'dashboard',
+	'session'
+
+];
+$GLOBALS['dev_exceptions'] = [
+	'db'
+];
 ?>

@@ -28,6 +28,7 @@ switch($action) {
 		break;
 	case 'blk_create':
 	case 'blk_fetch':
+	case 'blk_hash_fetch':
 	case 'blk_ref_update':
 		require_once("scripts/blk/$action.php");
 		break;

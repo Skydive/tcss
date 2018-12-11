@@ -2,57 +2,6 @@
 require_once("lib/core/security.php");
 require_once("lib/core/database.php");
 
-trait DatabaseQuery {
-	public static function Update($data) {
-		$db = $data['db'];
-		$update_for = array_intersect(array_keys($data), self::UPDATE_SAFE);
-
-		$key = self::UPDATE_KEY;
-		$tbl = self::QUERY_TABLE;
-		$query = "UPDATE $tbl";
-		$updates = implode(',', array_map(function($q){return " $q = :$q";}, $update_for));
-		$query = "$query SET $updates WHERE $key = :$key";
-
-		$execute = []; 
-		$execute[$key] = $data[$key];
-		foreach($update_for as $q) {
-			$execute[$q] = $data[$q];
-		}
-
-		$stmt = $db->prepare($query);
-		$result = $stmt->execute($execute);
-		SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
-	}
-}
-trait DatabaseUpdate {
-	public static function Query($data) {
-		$db = $data['db'];
-		$query_for = array_key_exists('requests', $data) ? array_intersect(self::QUERY_SAFE_REQUESTS, $data['requests']) : self::QUERY_SAFE_REQUESTS;
-		$limit = array_key_exists('limit', $data) ? (int)$data['limit'] : 1;
-		$selection = implode(',', $query_for);
-		
-		foreach(self::QUERY_BY_SAFE as $q) {
-			if(array_key_exists($q, $data)) {
-				$tbl = self::QUERY_TABLE;
-				$query = "SELECT $selection FROM $tbl WHERE $q=:$q LIMIT $limit";
-
-				$stmt = $db->prepare($query);
-				$result = $stmt->execute([
-					"$q" => $data[$q]
-				]);
-				SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
-				if($stmt->rowCount() == 0) {
-					return null;
-				}
-				return $limit == 1 ? $stmt->fetch() : $stmt->fetchAll();
-				break;
-			}
-			
-		}
-		return null;
-	}
-}
-
 class Content_Blk_Ref {
 	const DATABASE_TABLE = 'content_blk_ref';
 

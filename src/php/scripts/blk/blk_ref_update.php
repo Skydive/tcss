@@ -4,18 +4,18 @@ require_once("lib/core/exception.php");
 require_once("lib/blk/blk.php");
 
 
-$session_token = (string)$_COOKIE['session_token'];
-
 $data = $inputs['data'];
 $blk_id = (int)$inputs['blk_id'];
 $blk_ref_id = (int)$inputs['blk_ref_id'];
 $blk_ref_name = $inputs['blk_ref_name'];
-$metadata = $inputs['metadata'] ? (string)$inputs['metadata'] : "{}";
 
 try {
+	SKYException::CheckNULL($blk_id, "blk", "blk_id_unspecified");
+	SKYException::CheckNULL($blk_ref_id, "blk", "blk_ref_id_unspecified");
+
+
 	$db = Database::Connect($GLOBALS['project_name']);
-	$db->beginTransaction();
-	
+	$db->beginTransaction();	
 
 	$ref = Content_Blk_Ref::Query([
 		'db' => $db,
@@ -27,7 +27,6 @@ try {
 		Content_Blk_Ref::Update([
 			'db' => $db,
 			'blk_ref_id' => $blk_ref_id,
-			'metadata' => $metadata,
 			'data' => $data
 		]);
 		Output::SetNotify('mode', 'updated');
@@ -48,15 +47,15 @@ try {
 		Output::SetNotify('mode', 'created');		
 	}
 	
-	Content_Blk::RefreshHash([
+	$refresh_result = Content_Blk::RefreshHash([
 		'db' => $db,
 		'blk_id' => $blk_id
 	]);
-	
+
 	Output::SetNotify('status', 'success');
 	Output::SetNotify('blk_id', $blk_id);
 	Output::SetNotify('blk_ref_id', $blk_ref_id);
-
+	Output::SetNotify('blk_hash', $refresh_result['blk_hash']);
 	
 	$db->commit();
 } catch (SKYException $e) {

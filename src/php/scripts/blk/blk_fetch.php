@@ -4,7 +4,6 @@ require_once("lib/core/exception.php");
 require_once("lib/blk/blk.php");
 
 
-$session_token = (string)$_COOKIE['session_token'];
 $blk_id = (int)$inputs['blk_id'];
 
 try {
@@ -17,8 +16,13 @@ try {
 		'db' => $db,
 		'blk_id' => $blk_id
 	]);
+	if(!$blk_refs) {
+		SKYException::Send([
+			'type' => 'blk',
+			'error' => 'id_missing'
+		]);
+	}
 
-	
 	Output::SetNotify('status', 'success');
 	Output::SetNotify('blk_id', $blk_id);
 	Output::SetNotify('blk_refs', $blk_refs);
@@ -26,22 +30,6 @@ try {
 	$db->commit();
 } catch (SKYException $e) {
 	if($db) $db->rollback();
-	$options = $e->GetOptions();
-	switch($options['type']) {
-		case 'db':
-			if(!DEVELOPMENT_MODE) {
-				Output::SetNotify("type", "failure_internal_error");
-				break;
-			}
-		case 'access':
-		case 'blk':
-		case 'dashboard':
-		case 'session':
-			Output::SetNotify("type", "failure_{$options['type']}_{$options['error']}");
-			break;
-		default:
-			Output::SetNotify("type", "failure_unspecified");
-			break;
-	}
+	SKYException::Notify();
 }
 ?>
