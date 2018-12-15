@@ -3,22 +3,15 @@ body, html {
 	height:100%;
 	margin:0;
 
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	color: #333;
 }
 div, span {
-	font-family: 'Montserrat', sans-serif;
+	font-family: inherit;
 	color: inherit;
 }
 
-.content>div>div>.title {
-	text-align: center;
-	font-size: 24px;
-	font-weight: 200;
-	padding-top: 25px;
-}
-
-.header {
+header>.header {
 	font-weight: 200;
 
 	width: 100%;
@@ -26,7 +19,7 @@ div, span {
 	background-color: #FAFAFA;
 	
 }
-.header .content {
+header>.header>.content {
 	height: 100%;
 
 	display: flex;
@@ -38,7 +31,7 @@ div, span {
 	padding: 0 25px;
 }
 
-.header .button {
+header>.header .button {
 	line-height: 64px;
 	height: 100%;
 	padding: 0 10px;
@@ -47,17 +40,19 @@ div, span {
 	flex-shrink: 1;
 }
 
-.header a.button {
+header>.header a.button {
 	display: block;
 	text-decoration: none;
 	color: inherit;
 }
 
-.header .title {
-	flex-grow: 1;
+header>.header .title {
 	text-align: left;
 	padding-left: 25px;
 	word-wrap: break-word;
+
+	font-family: 'EB Garamond', serif;
+	font-size: 30px;
 }
 
 #page-content-body {
@@ -123,7 +118,7 @@ div, span {
 	height: calc(100vh - 64px - 72px);
 }
 
-.footer {
+footer>.footer {
 	font-weight: 200;
 
 	width: 100%;
@@ -131,7 +126,7 @@ div, span {
 	background-color: #FAFAFA;
 	
 }
-.footer .content {
+footer>.footer .content {
 	height: 100%;
 
 	display: flex;

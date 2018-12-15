@@ -39,3 +39,7 @@
 [data-editable] .text-right {
     text-align: right;
 }
+
+[data-editable] [contenteditable] {
+    background-color: aliceblue;
+}

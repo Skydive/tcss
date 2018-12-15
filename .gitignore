@@ -3,4 +3,6 @@ stack/pgsql/db/*
 node_modules/*
 package-lock.json
 deploy/*
+!deploy/.gitkeep
 build/*
+!build/.gitkeep

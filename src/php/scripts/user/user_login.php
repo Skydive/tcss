@@ -12,7 +12,7 @@ try {
 	SKYException::CheckNULL($username, "user", "username_unspecified");
 	SKYException::CheckNULL($password, "user", "password_unspecified");
 	
-	$db = Database::Connect($GLOBALS['project_name']);
+	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	$db->beginTransaction();
 	
 	$data = User::CredentialsValidate([
@@ -33,20 +33,6 @@ try {
 	Output::SetNotify("session_token", $login_result['session_token']);
 } catch (SKYException $e) {
 	if($db) $db->rollback();
-	
-	$options = $e->GetOptions();
-	switch($options['type']) {
-		case 'db':
-			if(!DEVELOPMENT_MODE) {
-				Output::SetNotify("type", "failure_internal_error");
-				break;
-			}
-		case 'user':
-			Output::SetNotify("type", "failure_{$options['type']}_{$options['error']}");
-			break;
-		default:
-			Output::SetNotify("type", "failure_unspecified");
-			break;
-	}
+	SKYException::Notify();
 }
 ?>

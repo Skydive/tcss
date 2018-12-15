@@ -8,7 +8,7 @@ $redirect_url = array_key_exists('redirect_url', $inputs) ? $inputs['redirect_ur
 
 try {
 	$auth_url = WebAuth::GenerateURL([
- 		'url' => "https://{$GLOBALS['hostname']}/php/index.php?action=raven_session",
+ 		'url' => "https://{$GLOBALS['cfg']['hostname']}/php/index.php?action=raven_session",
  		'params' => [
  			'redirect_url' => $redirect_url
  		]
@@ -16,13 +16,6 @@ try {
 	Output::SetNotify("type", "success");
 	Output::SetNotify("auth_url", $auth_url);
 } catch (SKYException $e) {
-	if($db) $db->rollback();
-	
-	$options = $e->GetOptions();
-	switch($options['type']) {
-		default:
-			Output::SetNotify("type", "failure_unspecified");
-			break;
-	}
+	SKYException::Notify();
 }
 ?>

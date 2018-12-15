@@ -11,8 +11,8 @@ class Security {
 		
 		$saltname = $options['salt_id'] ? $options['salt_id'] : "default"; // anti fuckup
 		
-		$base_salt = $GLOBALS['hashsalts']['base'] ? $GLOBALS['hashsalts']['base'] : Security::$fallover_salts['base'];
-		$salt = $GLOBALS['hashsalts'][$saltname] ? $GLOBALS['hashsalts'][$saltname] : Security::$fallover_salts[$saltname];
+		$base_salt = $GLOBALS['cfg']['hashsalts']['base'] ? $GLOBALS['cfg']['hashsalts']['base'] : Security::$fallover_salts['base'];
+		$salt = $GLOBALS['cfg']['hashsalts'][$saltname] ? $GLOBALS['cfg']['hashsalts'][$saltname] : Security::$fallover_salts[$saltname];
 		$extra_salt = $options['extra_salt'] ? $options['extra_salt'] : "";
 		
 		// TODO: Perhaps use hmac??
@@ -21,7 +21,7 @@ class Security {
 		return $hash;
 	}
 	public static function GenerateUniqueInteger() {
-		return str_pad(crc32(uniqid(rand(100000,999999),true)), 10, '0', STR_PAD_RIGHT).rand(100000,999999);
+		return rand(100000,899999).str_pad(crc32(uniqid(rand(100000,899999),true)), 10, '0', STR_PAD_RIGHT);
 	}
 }
 ?>

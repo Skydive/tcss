@@ -13,6 +13,8 @@
 				"",
 				"dashboard",
 				"atlas",
+				"events",
+				"sponsors",
 				"dev/blk"
 			]
 		},
@@ -31,7 +33,8 @@
 					"native.history.js",
 					"moment.js",
 					"jdenticon-2.1.0.min.js",
-					"content-tools.min.js"
+					"content-tools.min.js",
+					"masonry.pkgd.min.js"
 				],
 				"sky": [
 					"sky-blk.js"
@@ -43,6 +46,9 @@
 					"dashboard/dashboard_ajax.js",
 					"dashboard/dashboard_users.js",
 					"dashboard/dashboard_groups.js",
+					"events/events_ajax.js",
+					"events/events_blk.js",
+					"events/events_ui.js",
 					"main.js"		
 				]
 			}

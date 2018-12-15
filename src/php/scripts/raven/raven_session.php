@@ -25,7 +25,7 @@ try {
 
 	$crsid = $obj['token']->principal;
 
-	$db = Database::Connect($GLOBALS['project_name']);
+	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	// Check if user exists (functionify this at some point)
 	// TODO: dilemma of uniqueness
 	$query = "SELECT user_id FROM users WHERE username=:username AND auth_provider=:auth_provider LIMIT 1";
@@ -76,25 +76,7 @@ try {
 	setcookie('session_token', $session['session_token'], 0, "/");
 } catch (SKYException $e) {
 	if($db) $db->rollback();
-	
-	$options = $e->GetOptions();
-	switch($options['type']) {
-		case 'db':
-			if(!DEVELOPMENT_MODE) {
-				Output::SetNotify("type", "failure_internal_error");
-				break;
-			}
-		case 'raven':
-			Output::SetNotify("message", "{$options['message']}");
-			Output::SetNotify("code", "{$options['code']}");
-		case 'session':
-		case 'user':
-			Output::SetNotify("type", "failure_{$options['type']}_{$options['error']}");
-			break;
-		default:
-			Output::SetNotify("type", "failure_unspecified");
-			break;
-	}
+	SKYException::Notify();
 	Output::PrintOutput();
 	die();
 }

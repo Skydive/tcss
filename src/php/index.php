@@ -32,6 +32,12 @@ switch($action) {
 	case 'blk_ref_update':
 		require_once("scripts/blk/$action.php");
 		break;
+	case 'events_fetch':
+	case 'events_hash_fetch':
+	case 'events_create':
+	case 'events_update':
+		require_once("scripts/events/$action.php");
+		break;
 	case 'raven_session': // This is a DIRECT entrypoint - no AJAX
 	case 'raven_redirect': // depends on raven_verify
 		require_once("scripts/raven/$action.php");

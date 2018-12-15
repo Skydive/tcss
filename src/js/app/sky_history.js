@@ -1,6 +1,6 @@
 if(!SKY)var SKY = {};
 SKY.History = {
-	Debug:1,
+	Debug:0,
 	Vars:{
 		Ignore:0
 	},
@@ -45,7 +45,7 @@ SKY.History = {
  
 		var path = options['dataPath'];
 
-		console.log(options);
+		//console.log(options);
 		var ops = options['nocontent'];
 		if(ops) {
 			console.log('eee');

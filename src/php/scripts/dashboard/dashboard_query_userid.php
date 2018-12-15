@@ -11,7 +11,7 @@ try {
 	SKYException::CheckNULL($session_token, "session", "token_unspecified");
 	SKYException::CheckNULL($user_id_list, "dashboard", "user_id_list_unspecified");
 
-	$db = Database::Connect($GLOBALS['project_name']);
+	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	SKYException::CheckNULL($db, "db", "null");
 
 	$token_data = Session::TokenValidate([
@@ -46,21 +46,8 @@ try {
 	Output::SetNotify('status', 'success');
 	Output::SetNotify('out', $out);
 } catch (SKYException $e) {
-	$options = $e->GetOptions();
-	switch($options['type']) {
-		case 'db':
-			if(!DEVELOPMENT_MODE) {
-				Output::SetNotify("type", "failure_internal_error");
-				break;
-			}
-		case 'dashboard':
-		case 'session':
-			Output::SetNotify("type", "failure_{$options['type']}_{$options['error']}");
-			break;
-		default:
-			Output::SetNotify("type", "failure_unspecified");
-			break;
-	}
+	if($db) $db->rollback();
+	SKYException::Notify();
 }
 
 ?>

@@ -19,7 +19,7 @@ try {
 	SKYException::CheckNULL($name, "dashboard", "name_unspecified");
 	SKYException::CheckNULL($access_level, "dashboard", "access_level_unspecified");
 
-	$db = Database::Connect($GLOBALS['project_name']);
+	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	$db->beginTransaction();
 
 	SKYException::CheckNULL($db, "db", "null");
@@ -81,21 +81,6 @@ try {
 
 } catch (SKYException $e) {
 	if($db) $db->rollback();
-	$options = $e->GetOptions();
-	switch($options['type']) {
-		case 'db':
-			if(!DEVELOPMENT_MODE) {
-				Output::SetNotify("type", "failure_internal_error");
-				break;
-			}
-		case 'dashboard':
-		case 'session':
-		case 'access':
-			Output::SetNotify("type", "failure_{$options['type']}_{$options['error']}");
-			break;
-		default:
-			Output::SetNotify("type", "failure_unspecified");
-			break;
-	}
+	SKYException::Notify();
 }
 ?>

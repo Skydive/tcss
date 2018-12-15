@@ -9,7 +9,7 @@ $blk_id = (int)$inputs['blk_id'];
 try {
 	SKYException::CheckNULL($blk_id, "blk", "blk_id_unspecified");
 	
-	$db = Database::Connect($GLOBALS['project_name']);
+	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	$db->beginTransaction();
 	
 	$blk_refs = Content_Blk::Fetch_Blk_Refs_From_Blk([

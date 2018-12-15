@@ -1,5 +1,5 @@
 <?php
-chdir("/home/khalid/Git/precess-io/src/php");
+chdir("/www/dev.tcss.precess.io/php");
 require_once("config.php");
 require_once("lib/core/database.php");
 require_once("lib/core/security.php");
@@ -7,7 +7,7 @@ require_once("lib/core/security.php");
 $handle = fopen("lib/atlas/csv.txt", "r");
 if ($handle) {
 	$date = date("Y-m-d G:i:s");
-    $db = Database::Connect($GLOBALS['project_name']);
+    $db = Database::Connect($GLOBALS['cfg']['project_name']);
     while (($line = fgets($handle)) !== false) {
     	$db->beginTransaction();
         $arr = explode(',', $line);

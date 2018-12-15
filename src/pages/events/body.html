@@ -1,0 +1,40 @@
+<div id="template-event-card" style="display:none;" class="event parent col-xs-12 col-md-6 col-lg-4">
+	<div class="event card">
+		<div style="position:relative;">
+			<h4 class="date"></h4>
+			<div class="btn edit">
+				<i style="font-size:20px;" class="fa fa-pencil"></i>
+			</div>
+		</div><hr/>
+		<div data-editable class="header" style="padding-bottom:5px;"></div><hr/>
+		<div data-editable class="body" style="display:none;"></div><hr class="expanded" style="display:none;"/>
+		<div data-editable class="loc" style="padding-bottom:5px;"></div>
+		<div data-editable class="btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
+	</div>
+</div>
+<section id="events-section">
+	<div class="content">
+		<h1>Upcoming Events</h1>
+		<div class="row event upcoming populate"></div>
+	</div>
+	<div class="content">
+		<h1>Past Events</h1>
+		<div class="row event past populate"></div>
+	</div>
+</section>
+<script>
+$("#events-section").on('init', function() {
+	Lib.Events.UI.Init({
+		events_section: $("#events-section"),
+		template_event_card: $("#template-event-card"),
+		modal_event_card: $("#modal-event-card")
+	});
+});
+// TODO: merge success calls
+$(window).on('user_group_success user_group_failure', function() {
+	$("#events-section").triggerHandler('init');
+});
+$(SKY.History).on('construct', function(e, data) {
+	$("#events-section").triggerHandler('init');
+});
+</script>

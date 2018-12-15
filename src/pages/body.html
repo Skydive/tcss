@@ -1,189 +1,39 @@
 <section id="top" style="height:calc(100vh - 64px);">
 	<div class="content" style="position:relative;height:100%;">
 		<div style="position:absolute;top:50%;left:50%;transform: translate(-50%,calc(-50% - 80px));">
-			<div style="font-size:36px;font-weight:200;margin-bottom:25px;">precess.io</div>
-			<div style="font-size:18px;font-weight:200;">Cutting-edge, industry-grade website production</div>
+			<img src="/static/colleges/TRIN.svg" width="256" style="margin-bottom:25px;"></img>
+			<div style="font-size:36px;font-weight:200;margin-bottom:25px;font-family:'EB Garamond', serif;">Trinity College Science Society</div>
+			<div style="font-size:18px;font-weight:200;">The most active science society in Cambridge, providing a rich programme of seminar series, panel discussions, film nights, and other social events. While based in Trinity College, all talks are free and open to all members of the university and the general public, and are accompanied by generous refreshments. Browse through our programme for the coming year to see the remarkable speakers and events we have lined up.</div>
 		</div>
 	</div>
 </section>
-<section id="features" class="invert">
-	<div class="content tile-region" style="padding-bottom: 25px;">
-		<div class="row" style="margin:0;">
-			<h1 style="font-weight:400;padding-top:50px;margin:0;">Features</h1>
-			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
-				<img class="icon" src="/static/inkscape/raven.svg" width="256" height="256"></img>
-				<div class="title">Raven Integration</div>
-				<p class="desc">
-					Secure, raven-based authentication system for all university accounts
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
-				<img class="icon" src="/static/inkscape/mobile.svg" width="256" height="256"></img>
-				<div class="title">Mobile Friendly</div>
-				<p class="desc">
-					Designed to work seamlessly on mobile devices
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
-				<img class="icon" src="/static/inkscape/key.svg" width="256" height="256"></img>
-				<div class="title">RSA Secure</div>
-				<p class="desc">
-					Login system protected by RSA signature verification
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
-				<img class="icon" src="/static/inkscape/clock.svg" width="256" height="256"></img>
-				<div class="title">Low Latency</div>
-				<p class="desc">
-					Speed is prioritised - no bulky frameworks or libraries
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
-				<img class="icon" src="/static/inkscape/custom.svg" width="256" height="256"></img>
-				<div class="title">Custom Built</div>
-				<p class="desc">
-					Time and care taken to tender for your society's specific requirements
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4" style="height: 415px;">
-				<img class="icon" src="/static/inkscape/skull.svg" width="256" height="256"></img>
-				<div class="title">Longevity</div>
-				<p class="desc">
-					Written to survive for many years to come
-				</p>
-			</div>
+<section class="invert">
+	<div style="display:flex;flex-direction:column;align-items:center;margin:10px;">
+		<h3 class="title info">Notices</h3>
+		<div class="home card" style="width:400px;background-color:white;">
+			<div><h4 class="date"></h4></div><hr/>
+			<div data-editable class="header" style="padding-bottom:5px;"></div><hr/>
+			<!-- <div data-editable class="body" style="display:none;"></div><hr/> -->
+			<div data-editable class="loc" style="padding-bottom:5px;"></div>
 		</div>
 	</div>
 </section>
-<style>
-.invert {
-	color: #fff;
-	background-color: #333;
-}
+<script>
+$(function() {
+	// Load Upcoming Events
+	Lib.Events.EventsFetchRange({
+		date_start: 0,
+		date_end: moment.now(),
+		count: 1
+	}, function(events) {
+		var first = events[0];
+		var card = $(".home.card");
+		card.find('.header').html(first.blk.blk_refs['header']);
+		card.find('.loc').html(first.blk.blk_refs['location']);
+		card.find('.body').html(first.blk.blk_refs['body']);
 
-.invert .tile-region .icon {
-	filter:invert(1);
-}
-
-.tile-region .entry {
-	padding: 0 10px 25px 10px;
-}
-.tile-region .entry .name {
-	padding-bottom: 5px;
-	margin-top: 20px;	
-}
-.tile-region .entry .name-hr {
-	width: 128px;
-	margin: 0 auto;
-	border-bottom: 1px solid lightgrey;
-	margin-bottom: 5px;
-}
-.tile-region .entry .title-big {
-	font-size: 24px;
-	font-weight: 200;
-}
-.tile-region .entry .title-small {
-	font-size: 18px;
-	font-weight: 200;
-}
-.tile-region .entry .desc {
-	font-size: 14px;
-}
-
-.team.tile-region .entry .desc {
-	font-weight: 200;
-}
-
-.tile-region .entry .icon {
-	margin: 0 auto;
-
-	width: 256px;
-	height: 256px;
-}
-
-.team.tile-region .entry .icon {
-	width: 172px;
-	height: 172px;
-	border-radius:50%;
-	border: 3px solid lightgray;
-}
-section {
-	scroll-behavior: smooth;
-}
-</style>
-<!-- <section id="technology" class="invert">
-	<div class="content team tile-region" style="padding-bottom: 25px;">
-		<div class="row" style="margin:0;">
-			<h1 style="font-weight:300;padding-top:50px;margin:0;">Technologies</h1>
-			<div class="entry col-xs-12 col-sm-6">
-				<span class="title">Nginx</span>
-				<p class="desc">
-					HTML CSS Javascript
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6">
-				<span class="title">PostgreSQL</span>
-				<p class="desc">
-					PHP SQL
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6">
-				<span class="title">AWS</span>
-				<p class="desc">
-					Docker Linux
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6">
-				<span class="title">PHP</span>
-				<p class="desc">
-					All of the above
-				</p>
-			</div>
-		</div>
-	</div>
-</section> -->
-<section>
-	<div id="team" class="content team tile-region" style="margin-bottom: 25px;">
-		<div class="row" style="margin:0;">
-			<h1 style="font-weight:300;margin-top:50px;">The Team</h1>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<img class="icon" src="/static/me/me1.png" width="256" height="256"></img>
-				<div class="name title-big">Khalid</div>
-				<div class="name-hr"></div>
-				<div class="title-small">Frontend Developer</div>
-				<p class="desc">
-					HTML CSS Javascript
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<img class="icon" src="/static/me/me2.png" width="256" height="256"></img>
-				<div class="name title-big">'Timothy'</div>
-				<div class="name-hr"></div>
-				<div class="title-small">Backend Developer</div>
-				<p class="desc">
-					PHP SQL
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<img class="icon" src="/static/me/me3.png" width="256" height="256"></img>
-				<div class="name title-big">Aleem</div>
-				<div class="name-hr"></div>
-				<div class="title-small">System Administrator</div>
-				<p class="desc">
-					Linux
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4"></div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4">
-				<img class="icon" src="/static/me/me4.png" width="256" height="256"></img>
-				<div class="name title-big">Khalid 'Timothy' Aleem</div>
-				<div class="name-hr"></div>
-				<div class="title-small">Full Stack Engineer</div>
-				<p class="desc">
-					All of the above
-				</p>
-			</div>
-			<div class="entry col-xs-12 col-sm-6 col-md-4"></div>
-		</div>
-	</div>
-</section>
+		var date = moment(first.event_date).fromNow();
+		card.find('.date').html("Latest Event — "+date);
+	});
+})
+</script>

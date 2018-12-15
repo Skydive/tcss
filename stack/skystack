@@ -1,7 +1,7 @@
 #!/bin/bash
 # PREPROCESSING....
 CONTAINERS=( pgsql php-fpm nginx )
-PREFIX="precess-io"
+PREFIX="tcss"
 
 cd "$(dirname "$0")"
 

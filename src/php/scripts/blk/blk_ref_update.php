@@ -11,10 +11,9 @@ $blk_ref_name = $inputs['blk_ref_name'];
 
 try {
 	SKYException::CheckNULL($blk_id, "blk", "blk_id_unspecified");
-	SKYException::CheckNULL($blk_ref_id, "blk", "blk_ref_id_unspecified");
 
 
-	$db = Database::Connect($GLOBALS['project_name']);
+	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	$db->beginTransaction();	
 
 	$ref = Content_Blk_Ref::Query([
@@ -39,12 +38,11 @@ try {
 			'db' => $db,
 			'blk_id' => $blk_id,
 			'blk_ref_name' => $blk_ref_name,
-			'metadata' => $metadata,
 			'data' => $data
 		]);
 		$blk_ref_id = $row['blk_ref_id'];
 		Output::SetNotify('blk_ref_name', $blk_ref_name);
-		Output::SetNotify('mode', 'created');		
+		Output::SetNotify('mode', 'created');
 	}
 	
 	$refresh_result = Content_Blk::RefreshHash([

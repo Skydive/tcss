@@ -21,8 +21,8 @@ class SKYException extends Exception {
 
 	public static function Notify() {
 		$options = SKYException::$_options;
-		if((DEVELOPMENT_MODE && in_array($options['type'], $GLOBALS['dev_exceptions']))
-		|| in_array($options['type'], $GLOBALS['exceptions'])) {
+		if((DEVELOPMENT_MODE && in_array($options['type'], $GLOBALS['security']['exceptions']['dev']))
+		|| in_array($options['type'], $GLOBALS['security']['exceptions']['default'])) {
 			Output::SetNotify("type", "failure_{$options['type']}_{$options['error']}");
 			return;
 		}

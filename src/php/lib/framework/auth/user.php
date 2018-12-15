@@ -5,7 +5,7 @@ require_once("lib/core/database.php");
 class User {
 	public static function Create($data) {
 		$data['auth_provider'] = array_key_exists('auth_provider', $data) ? $data['auth_provider'] : "default";
-		$auth_provider = array_key_exists($data['auth_provider'], $GLOBALS['auth_providers']) ? $GLOBALS['auth_providers'][$data['auth_provider']] : 0;
+		$auth_provider = array_key_exists($data['auth_provider'], $GLOBALS['cfg']['auth_providers']) ? $GLOBALS['cfg']['auth_providers'][$data['auth_provider']] : 0;
 		$data['password'] = array_key_exists('password', $data) ? $data['password'] : Security::GenerateUniqueInteger();
 
 		$db = $data['db'];
@@ -39,7 +39,7 @@ class User {
 			'extra_salt' => "$user_id"
 		]);
 		
-		$creation_date = date();
+		$creation_date = date("Y-m-d G:i:s", time());
 		
 		$query = "INSERT INTO users(
 				user_id,
@@ -73,7 +73,7 @@ class User {
 	}
 
 	public static function CredentialsValidate($data) {
-		$auth_provider = array_key_exists('default', $GLOBALS['auth_providers']) ? $GLOBALS['auth_providers']['default'] : 0;
+		$auth_provider = array_key_exists('default', $GLOBALS['cfg']['auth_providers']) ? $GLOBALS['cfg']['auth_providers']['default'] : 0;
 
 		$db = $data['db'];
 

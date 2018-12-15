@@ -27,9 +27,13 @@
 }
 
 .spinner {
-	background-color: #333;
-	border-radius: 50%;
 	animation: sk-rotateplane 2.5s infinite cubic-bezier(.5, -1, .5, 2);
+	background-image: url(/static/inkscape/crest.svg);
+	
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position:center;
+
 }
 .spinner.m50 {
 	margin: 50px auto;
@@ -46,10 +50,7 @@
 @keyframes sk-rotateplane {
 	0% { 
 		transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-	} 50% { 
-		transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
-		border-radius: 0%;
 	} 100% { 
-		transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+		transform: perspective(120px) rotateX(0deg) rotateY(-180deg);
 	}
 }

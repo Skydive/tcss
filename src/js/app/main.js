@@ -2,51 +2,6 @@ window.jdenticon_config = {
 	replaceMode: "observe"
 };
 
-/*PAGE_CONFIG = {
-	'name': '',
-	'handler': 'page-content-body',
-	'file': 'content.html',
-	'subpages': [{
-		'name': 'dashboard',
-		'handler': 'nav-content-body',
-		'file': 'nav-content.html',
-		'subpages': []
-	}]
-};
-
-let BUILD_TREE = function(obj, parent) {
-	new_node = function(data, children) {return {data:data, children:children};};
-	let p_path = (parent === undefined ? '' : parent.data.path);
-	let head = {
-		data: {
-			name: obj.name,
-			parent: parent,
-			path: p_path+obj.name+'/',
-			handler: obj.handler,
-			file: obj.file
-		}
-	};
-	head.children = obj['subpages'].map((x) => BUILD_TREE(x, head));
-	return head;
-};
-PAGE_CONFIG_TREE = BUILD_TREE(PAGE_CONFIG);
-PAGE_CONFIG_TREE_GET_PATH = function(href) {
-	let urlObj = new URL(href);
-	let head = PAGE_CONFIG_TREE;
-	let pathname = urlObj.pathname;
-	if(pathname == '/') return head;
-	let names = pathname.split('/');
-	names.shift(); // ''
-	names.pop(); // ''
-	while(names.length > 0) {
-		let name = names.shift();
-		let heads = head.children.filter(x => x.data.name == name);
-		if(heads && heads.length > 0)
-			head = heads[0];
-	}
-	return head;
-};*/
-
 $(function() {
 	setTimeout(function() {
 		$("#global-loader").fadeOut(500);

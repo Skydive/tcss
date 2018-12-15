@@ -1,14 +1,51 @@
+Sunday:
+- fix group permission management
+	- (Simplify - force TECH and above for editing all content) (PRIORI SPEED)
+- generalise block editing - trash Events:: backend
+	- blk_perms, blk_by_date
+	- create NEWS
+Wednesday:
+- code uploading of images
+- blk_image_ref
+- code blk_free_edit for blk_perms
+	- CODE EDITING POPUP?
+- code committee page
+Thursday:
+	- GENERAL BUGFIX
+Saturday,Sunday: RECODE WEBSITE FULLY
 
 - EXCEPTION CONFIG SEPARATION
 - VERSION LOCK STACK
+
+
 - Atlas fallback (remove atlas entirely?!?)
 - Generate atlas on user generation?
-- Raven crsid - uniqueness of username clash
+
+
+
 - Add pagination and a dashboard navbar for further options
 	- Note: possible structural changes to build system/tool
 - Make everything mobile friendly
 	- Note: Time consuming (good practice)
 	- Implement by own bootstrap media queries and input boxes (steal what is necessary)
+
+
+- Bugfixes:
+	- Fix build tool .html <script> inline js not minifying upon deploy
+	- Speed up deploy (callbacks aren't managed properly in the pipeline)
+	- Use PUMP at some point
+	- Raven crsid - uniqueness of username clash
+	- EVENTS user_owner --> group_owner
+	- CAM account WIPE redundancy...
+
+- Tweaks:
+	- FIX GLOBALS structure -> use an abstract class
+	- Fetch ALL information of user upon validating token
+		- Make this scale reasonably well
+	- Add loaders to ajax requests
+	- ajax timeout, callback
+	- session_id useragent comparison
+
 
 - Write ALL OF ContentTools
 	- Reverse engineer to add sub-instances... (CoffeeScript... :/)
@@ -16,23 +53,7 @@
 	- (E) -> Edit existing article
 	- Time/Date FILTER
 
-- fix userid precision loss on client
-- session_id useragent comparison
-- ajax timeout, callback
-- UUID REE
-
-- Bugfixes:
-	- Fix build tool .html <script> inline js not minifying upon deploy
-	- Speed up deploy (callbacks aren't managed properly in the pipeline)
-	- Use PUMP at some point
-
-- Tweaks:
-	- FIX GLOBALS structure -> use an abstract class
-	- Fetch ALL information of user upon validating token
-		- Make this scale reasonably well
-	- Add loaders to ajax requests
-
-- Future Features:
+- Future Features: (AIM TO FINISH)
 	- Code the ContentTools (news) editing (HARD - rewrite their coffeescript???)
 		- Should I support image uploading?!?!?
 	- Code a society management pinboard?!?!? (Fucking TRELLO)
@@ -42,6 +63,10 @@
 		- TCSS --> All Societies --> ??? ??? ???
 	- Add info bubbles everywhere
 
-- Scalability concerns:
+
+- Scalability:
 	- Atlas doesn't scale past 3 years...
 	- This is an intrinsic problem with the cambridge system
+
+- FIXED:
+	- fix userid precision loss on client (FIX)

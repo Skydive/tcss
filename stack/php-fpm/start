@@ -5,8 +5,8 @@ docker run -dt \
 	--hostname $1-$2 \
 	--name $1-$2 \
 	--network $1 \
-	-v $SCRIPTPATH/../../build/:/www/dev.precess.io/ \
-	-v $SCRIPTPATH/../../deploy/:/www/precess.io/ \
+	-v $SCRIPTPATH/../../build/:/www/dev.tcss.precess.io/ \
+	-v $SCRIPTPATH/../../deploy/:/www/tcss.precess.io/ \
 	-v $SCRIPTPATH/config/:/data/php-fpm/config/ \
 	-v $SCRIPTPATH/log/:/data/php-fpm/log/ \
 	$1-$2

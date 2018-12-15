@@ -10,7 +10,7 @@ $session_token = (string)$_COOKIE['session_token'];
 try {
 	SKYException::CheckNULL($session_token, "session", "token_unspecified");
 	
-	$db = Database::Connect($GLOBALS['project_name']);
+	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	SKYException::CheckNULL($db, "db", "null");
 
 	$token_data = Session::TokenValidate([
@@ -52,21 +52,6 @@ try {
 	}
 } catch (SKYException $e) {
 	if($db) $db->rollback();
-	
-	$options = $e->GetOptions();
-	switch($options['type']) {
-		case 'db':
-			if(!DEVELOPMENT_MODE) {
-				Output::SetNotify("type", "failure_internal_error");
-				break;
-			}
-		case 'session':
-		case 'atlas':
-			Output::SetNotify("type", "failure_{$options['type']}_{$options['error']}");
-			break;
-		default:
-			Output::SetNotify("type", "failure_unspecified");
-			break;
-	}
+	SKYException::Notify();
 }
 ?>
