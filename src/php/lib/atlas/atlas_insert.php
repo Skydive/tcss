@@ -1,5 +1,5 @@
 <?php
-chdir("/www/dev.tcss.precess.io/php");
+chdir("/www/build/php");
 require_once("config.php");
 require_once("lib/core/database.php");
 require_once("lib/core/security.php");
@@ -38,7 +38,7 @@ if ($handle) {
 				$db->rollBack();
 				continue;
 			}
-			print_r("{$e->getMessage()}\n");
+			echo("{$e->getMessage()}\n");
 			die();
 		}
 		$query = "INSERT INTO users(
@@ -46,13 +46,15 @@ if ($handle) {
 					username,
 					password_hash,
 					auth_provider,
-					creation_date
+					creation_date,
+					group_id
 				) VALUES (
 					:user_id,
 					:username,
 					:password_hash,
 					:auth_provider,
-					:creation_date
+					:creation_date,
+					:group_id
 				)";
 		$stmt = $db->prepare($query);
 
@@ -60,15 +62,17 @@ if ($handle) {
 		$password_hash = Security::GenerateHash([
 			'data' => Security::GenerateUniqueInteger(),
 			'salt_id' => 'password',
-			'extra_salt' => "$user_id"
+			'extra_salt' => "$user_id",
+			'algo' => 'sha512'
 		]);
 
 		$stmt->execute([
 				'user_id' => Security::GenerateUniqueInteger(),
 				'username' => $arr[0],
 				'password_hash' => $password_hash,
-				'auth_provider' => 1,
-				'creation_date' => $date
+				'auth_provider' => $GLOBALS['cfg']['auth_providers']['raven'],
+				'creation_date' => $date,
+				'group_id' => 3
 			]);
 
 	    $db->commit();

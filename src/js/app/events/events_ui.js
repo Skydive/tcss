@@ -5,12 +5,70 @@ Object.assign(Lib.Events.UI, {
 	Init: function(data) {
 		var el_section = data.events_section;
 		var el_template_card = data.template_event_card;
+		var feed_type = data.feed_type || 'events';
+
+		Lib.Events.UI.InitPopulate(data);
+		//Lib.Events.UI.InitCreate(data);
+		// Load Upcoming Events
+		Lib.Feed.FeedFetchRange({
+			feed_type: feed_type,
+			date_start: moment.now(),
+			date_end: moment.now()*2
+		}, function(events) {
+			var el_populate = el_section.find('.event.upcoming.populate');
+			if(events.length == 0) {
+				el_populate.parent().hide();
+				return;
+			}
+			for(var i in events) {
+				var event = events[i];
+				el_section.trigger('populate', {
+					event: event,
+					el_populate: el_populate
+				});
+			}
+			el_populate.masonry({
+				"itemSelector": ".event.parent",
+				"columnWidth": ".event.parent"
+			});
+		});
+
+		// Load Past Events
+		Lib.Feed.FeedFetchRange({
+			feed_type: feed_type,
+			date_start: 0,
+			date_end: moment.now()
+		}, function(events) {
+			var el_populate = el_section.find('.event.past.populate');
+			if(events.length == 0) {
+				el_populate.parent().hide();
+				return;
+			}
+			for(var i in events) {
+				var event = events[i];
+				el_section.trigger('populate', {
+					event: event,
+					el_populate: el_populate
+				});	
+			}
+			el_populate.masonry({
+				"itemSelector": ".event.parent",
+				"columnWidth": ".event.parent"
+			});
+		});
+	},
+	InitPopulate: function(data) {
+		var el_section = data.events_section;
+		var el_template_card = data.template_event_card;
 
 		el_section.on('populate', function(e, data) {
 			var event = data.event;
+			var ev_meta = JSON.parse(event.metadata);
+
 			var el_clone = el_template_card.clone()
 				.show()
-				.attr('id', '');
+				.attr('id', '')
+				.attr('feed_date', ev_meta.feed_date);
 
 			el_clone.data('event', event);
 			el_clone.data('expanded', false);
@@ -30,13 +88,15 @@ Object.assign(Lib.Events.UI, {
 
 			el_clone.on('update', function(e) {
 				var event = $(this).data('event');
-				var date = moment(event.event_date).format("Do MMM YYYY - HH:mm");
+				var md = JSON.parse(event.metadata);
+				var date = moment.unix(md.feed_date).format("Do MMM YYYY - HH:mm");
 				$(this).find('.date').html(date);
 				
-				var refs = event.blk.blk_refs;
-				$(this).find('.header').html(refs.header);
-				$(this).find('.body').html(refs.body);
-				$(this).find('.loc').html(refs.location);
+				var refs = event.blk_refs;
+				if(!refs)return;
+				if(refs.header)$(this).find('.header').html(refs.header.data);
+				if(refs.body)$(this).find('.body').html(refs.body.data);
+				if(refs.location)$(this).find('.loc').html(refs.location.data);
 			}).triggerHandler('update');
 
 			data.el_populate.append(el_clone);
@@ -126,8 +186,8 @@ Object.assign(Lib.Events.UI, {
 				content['body'] = el_clone.find('.body').html();
 				content['location'] = el_clone.find('.loc').html();
 
-				Lib.Ajax.Events.Update({
-					event_id: event['event_id'],
+				Lib.Ajax.Feed.Update({
+					blk_id: event['blk_id'],
 					content: content
 				});
 			});
@@ -150,52 +210,6 @@ Object.assign(Lib.Events.UI, {
 				$(this).find('.btn.bottom>i')
 					.removeClass('fa-angle-down fa-save')
 					.addClass('fa-angle-up');
-			});
-		});
-
-		// Load Upcoming Events
-		Lib.Events.EventsFetchRange({
-			date_start: moment.now(),
-			date_end: moment.now()*2
-		}, function(events) {
-			var el_populate = el_section.find('.event.upcoming.populate');
-			if(events.length == 0) {
-				el_populate.parent().hide();
-				return;
-			}
-			for(var i in events) {
-				var event = events[i];
-				el_section.trigger('populate', {
-					event: event,
-					el_populate: el_populate
-				});
-			}
-			el_populate.masonry({
-				"itemSelector": ".event.parent",
-				"columnWidth": ".event.parent"
-			});
-		});
-
-		// Load Past Events
-		Lib.Events.EventsFetchRange({
-			date_start: 0,
-			date_end: moment.now()
-		}, function(events) {
-			var el_populate = el_section.find('.event.past.populate');
-			if(events.length == 0) {
-				el_populate.parent().hide();
-				return;
-			}
-			for(var i in events) {
-				var event = events[i];
-				el_section.trigger('populate', {
-					event: event,
-					el_populate: el_populate
-				});	
-			}
-			el_populate.masonry({
-				"itemSelector": ".event.parent",
-				"columnWidth": ".event.parent"
 			});
 		});
 	}

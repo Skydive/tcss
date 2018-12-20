@@ -11,6 +11,7 @@ try {
 	SKYException::CheckNULL($session_token, "session", "token_unspecified");
 	
 	$db = Database::Connect($GLOBALS['cfg']['project_name']);
+	$db->beginTransaction();
 	SKYException::CheckNULL($db, "db", "null");
 
 	$token_data = Session::TokenValidate([
@@ -24,22 +25,22 @@ try {
 		"requests" => ['username', 'user_id'],
 		"limit" => 1
 	]);
-	if($user === null) {
+	if(!$user) {
 		SKYException::Send([
 			'type' => 'user',
 			'error' => 'unmatched_user_id'
 		]);
 	}
-
+	
 	$atlas = Atlas::Query([
 		"db" => $db,
 		"crsid" => $user['username'],
 		"limit" => 1
 	]);
-	if($atlas === null) {
+	if(!$atlas) {
 		SKYException::Send([
 			'type' => 'atlas',
-			'error' => 'atlas_crsid_unknown'
+			'error' => 'crsid_unknown'
 		]);
 	}
 
@@ -50,6 +51,8 @@ try {
 	foreach($user as $k => $v) {
 		Output::SetNotify($k, $v);
 	}
+
+	$db->commit();
 } catch (SKYException $e) {
 	if($db) $db->rollback();
 	SKYException::Notify();

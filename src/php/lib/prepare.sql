@@ -60,38 +60,40 @@ CREATE UNIQUE INDEX index_atlas_crsid ON atlas (crsid);
 CREATE INDEX index_atlas_surname ON atlas (surname);
 
 
-CREATE TABLE content_blk (
+CREATE TABLE blk (
 	id SERIAL NOT NULL PRIMARY KEY,
 	blk_id BIGINT NOT NULL,
-	blk_hash CHAR(8) NOT NULL
+	hash CHAR(8) NOT NULL,
+	metadata JSONB NOT NULL DEFAULT '{}'::JSONB,
+	active BOOLEAN NOT NULL DEFAULT 1::BOOLEAN
 );
-CREATE UNIQUE INDEX index_content_blk_id ON content_blk (blk_id);
+CREATE UNIQUE INDEX index_blk_id ON blk (blk_id);
 
-CREATE TABLE content_blk_ref (
+CREATE TABLE blk_ref (
 	id SERIAL NOT NULL PRIMARY KEY,
 	blk_ref_id BIGINT NOT NULL,
 	blk_id BIGINT NOT NULL,
-	blk_ref_name VARCHAR(64) NOT NULL,
+	name VARCHAR(64) NOT NULL,
 	data TEXT DEFAULT NULL
 );
-CREATE UNIQUE INDEX index_content_blk_ref_blk_ref_id ON content_blk_ref (blk_ref_id);
-CREATE UNIQUE INDEX index_content_blk_ref_blk_ref_name ON content_blk_ref (blk_ref_name);
-CREATE INDEX index_content_blk_ref_blk_id ON content_blk_ref (blk_id);
+CREATE UNIQUE INDEX index_blk_ref_blk_ref_id ON blk_ref (blk_ref_id);
+CREATE INDEX index_blk_ref_name ON blk_ref (name);
+CREATE INDEX index_blk_ref_blk_id ON blk_ref (blk_id);
 
-CREATE TABLE events (
-	id SERIAL NOT NULL PRIMARY KEY,
-	event_id BIGINT NOT NULL,
-	blk_id BIGINT NOT NULL,
-	user_owner BIGINT NOT NULL,
-	event_date TIMESTAMP NOT NULL,
-	active BOOLEAN NOT NULL DEFAULT 1::BOOLEAN
-);
-CREATE UNIQUE INDEX index_events_event_id ON events (event_id);
-CREATE INDEX index_events_event_date ON events (event_date);
+-- CREATE TABLE events (
+-- 	id SERIAL NOT NULL PRIMARY KEY,
+-- 	event_id BIGINT NOT NULL,
+-- 	blk_id BIGINT NOT NULL,
+-- 	user_owner BIGINT NOT NULL,
+-- 	event_date TIMESTAMP NOT NULL,
+-- 	active BOOLEAN NOT NULL DEFAULT 1::BOOLEAN
+-- );
+-- CREATE UNIQUE INDEX index_events_event_id ON events (event_id);
+-- CREATE INDEX index_events_event_date ON events (event_date);
 
-CREATE TABLE dyn_c (
-	id SERIAL NOT NULL PRIMARY KEY,
-	event_id BIGINT NOT NULL,
-	blk_id BIGINT NOT NULL,
-	user_owner BIGINT NOT NULL
-)
+
+CREATE INDEX index_blk_meta_handler ON blk ((metadata ->> 'handler'))
+	WHERE (metadata ->> 'handler') IS NOT NULL;
+
+CREATE INDEX index_blk_meta_data_feed_date ON blk (((metadata ->> 'feed_date')::BIGINT))
+	WHERE (metadata ->> 'feed_date') IS NOT NULL;

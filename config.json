@@ -1,7 +1,8 @@
 {
-	"content_path": "./src",
-	"build_path": "./build",
-	"deploy_path": "./deploy",
+	"base_path": "..",
+	"content_path": "src",
+	"build_path": "build",
+	"deploy_path": "deploy",
 	"lib": {
 		"html": {
 			"processor": "pages",
@@ -46,8 +47,8 @@
 					"dashboard/dashboard_ajax.js",
 					"dashboard/dashboard_users.js",
 					"dashboard/dashboard_groups.js",
-					"events/events_ajax.js",
-					"events/events_blk.js",
+					"feed/feed_ajax.js",
+					"feed/feed_blk.js",
 					"events/events_ui.js",
 					"main.js"		
 				]

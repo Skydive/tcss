@@ -4,28 +4,26 @@ require_once("lib/core/exception.php");
 require_once("lib/blk/blk.php");
 
 
-$blk_id = (int)$inputs['blk_id'];
+$blk_ids = json_decode($inputs['blk_ids']);
 
 try {
-	SKYException::CheckNULL($blk_id, "blk", "blk_id_unspecified");
+	SKYException::CheckNULL($blk_ids, "blk", "blk_ids_unspecified");
 	
 	$db = Database::Connect($GLOBALS['cfg']['project_name']);
 	$db->beginTransaction();
 	
-	$blk_refs = Content_Blk::Fetch_Blk_Refs_From_Blk([
-		'db' => $db,
-		'blk_id' => $blk_id
-	]);
-	if(!$blk_refs) {
-		SKYException::Send([
-			'type' => 'blk',
-			'error' => 'id_missing'
+	$blks = [];
+	foreach($blk_ids as $blk_id) {
+		$blk = Blk::FetchBlkFull([
+			'db' => $db,
+			'blk_id' => $blk_id
 		]);
+		if(!$blk)continue;
+		$blks[] = $blk;
 	}
 
 	Output::SetNotify('status', 'success');
-	Output::SetNotify('blk_id', $blk_id);
-	Output::SetNotify('blk_refs', $blk_refs);
+	Output::SetNotify('blks', json_encode($blks));
 	
 	$db->commit();
 } catch (SKYException $e) {

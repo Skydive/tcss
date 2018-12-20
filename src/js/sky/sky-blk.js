@@ -1,6 +1,7 @@
 if(!SKY)var SKY={};
 if(!SKY.Blk)SKY.Blk={};
 if(!SKY.Ajax)SKY.Ajax={};
+
 Object.assign(SKY.Ajax, {
 	ENTRY_POINT: "/php/index.php", 
 	Blk: {
@@ -15,7 +16,7 @@ Object.assign(SKY.Ajax, {
 		RefsFetch: function(data) {
 			return $.post(SKY.Ajax.ENTRY_POINT, {
 				action: "blk_fetch",
-				blk_id: data.blk_id,
+				blk_ids: JSON.stringify(data.blk_ids),
 				count: data.count,
 				index: data.index
 			}, null, "json");
@@ -28,12 +29,13 @@ Object.assign(SKY.Ajax, {
 		}
 	}
 });
+
 Object.assign(SKY.Blk, {
 	Init: function() {
 		$('[blk_id]').map(function(k, v) {
 			var blk_id = $(v).attr('blk_id');
 			var refs = SKY.Blk.CachedRefsFetch({
-				'blk_id': blk_id
+				'blk_ids': [blk_id]
 			}, function(refs) {
 				for(var i in refs) {
 					var ref = refs[i];
@@ -66,7 +68,7 @@ Object.assign(SKY.Blk, {
 				}
 			}
 			SKY.Ajax.Blk.RefsFetch({
-				blk_id: data.blk_id
+				'blk_ids': [data.blk_id]
 			}).done(function(json) {
 				// Reset hash
 				localStorage.setItem("blk-"+data.blk_id+"-hash", blk.blk_hash);

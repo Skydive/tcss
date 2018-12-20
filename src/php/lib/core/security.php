@@ -21,7 +21,7 @@ class Security {
 		return $hash;
 	}
 	public static function GenerateUniqueInteger() {
-		return rand(100000,899999).str_pad(crc32(uniqid(rand(100000,899999),true)), 10, '0', STR_PAD_RIGHT);
+		return rand(100000,899999).str_pad(crc32(uniqid(rand(100000,999999),true)), 10, '0', STR_PAD_RIGHT);
 	}
 }
 ?>

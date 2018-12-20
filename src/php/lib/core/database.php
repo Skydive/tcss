@@ -64,7 +64,7 @@ trait DatabaseCreate {
 	}
 }
 
-trait DatabaseQuery {
+trait DatabaseUpdate {
 	// TODO: $data['update'] specify fields, if NULL ignore
 	public static function Update($data) {
 		$db = $data['db'];
@@ -95,7 +95,7 @@ trait DatabaseQuery {
 	}
 }
 
-trait DatabaseUpdate {
+trait DatabaseQuery {
 	public static function Query($data) {
 		$db = $data['db'];
 		$query_for = array_key_exists('requests', $data) ? array_intersect(self::QUERY_SAFE_REQUESTS, $data['requests']) : self::QUERY_SAFE_REQUESTS;

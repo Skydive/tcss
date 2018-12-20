@@ -1511,3 +1511,590 @@ Stack trace:
 2018/12/15 20:32:51 [error] 8#8: *13246 open() "/www/dev.tcss.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
 2018/12/15 20:34:10 [error] 8#8: *13262 open() "/www/dev.tcss.precess.io/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
 2018/12/15 20:34:10 [error] 8#8: *13264 open() "/www/dev.tcss.precess.io/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:10:20 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:10:20 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:10:20 [error] 9#9: *11 open() "/www/build/favicon.ico" failed (2: No such file or directory), client: 172.21.0.1, server: dev.tcss.precess.io, request: "GET /favicon.ico HTTP/1.1", host: "dev.tcss.precess.io:8080", referrer: "http://dev.tcss.precess.io:8080/"
+2018/12/19 17:10:33 [error] 9#9: *11 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.21.0.1, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.1", host: "dev.tcss.precess.io:8080"
+2018/12/19 17:10:33 [error] 9#9: *11 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.1, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.1", host: "dev.tcss.precess.io:8080"
+2018/12/19 17:10:49 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:10:49 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:10:56 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:10:56 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:10:59 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:10:59 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:11:00 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:11:01 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:11:14 [error] 9#9: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:12:36 [error] 8#8: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:12:37 [error] 8#8: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:12:37 [error] 8#8: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:12:39 [error] 8#8: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:12:40 [error] 8#8: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
+2018/12/19 17:20:44 [error] 8#8: *4 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.21.0.1, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.1", host: "dev.tcss.precess.io:8080"
+2018/12/19 17:20:44 [error] 8#8: *4 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.1, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.1", host: "dev.tcss.precess.io:8080"
+2018/12/19 17:24:03 [error] 9#9: *3 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.21.0.1, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.1", host: "dev.tcss.precess.io:8080"
+2018/12/19 17:24:03 [error] 9#9: *3 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.1, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.1", host: "dev.tcss.precess.io:8080"
+2018/12/19 17:38:01 [error] 8#8: *8 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:38:02 [error] 8#8: *10 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:38:02 [error] 8#8: *15 open() "/www/build/favicon.ico" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /favicon.ico HTTP/1.0", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 17:38:05 [error] 8#8: *29 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:38:06 [error] 8#8: *31 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:39:16 [error] 8#8: *67 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:39:16 [error] 8#8: *69 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.21.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:45:53 [error] 8#8: *8 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.22.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 17:45:53 [error] 8#8: *10 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.22.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:54:23 [error] 8#8: *22 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.24.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:54:23 [error] 8#8: *23 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.24.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:57:42 [error] 8#8: *8 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:57:43 [error] 8#8: *10 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:57:46 [error] 8#8: *31 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:57:46 [error] 8#8: *33 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:58:44 [error] 8#8: *81 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 18:58:49 [error] 8#8: *90 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:58:49 [error] 8#8: *92 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 18:58:49 [error] 8#8: *95 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 19:02:41 [error] 8#8: *102 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 19:31:41 [error] 8#8: *111 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:31:41 [error] 8#8: *113 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:31:42 [error] 8#8: *116 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 19:31:46 [error] 8#8: *129 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:31:46 [error] 8#8: *130 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:31:46 [error] 8#8: *136 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/atlas/"
+2018/12/19 19:31:49 [error] 8#8: *140 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 19:31:52 [error] 8#8: *147 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events"
+2018/12/19 19:31:52 [error] 8#8: *145 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events"
+2018/12/19 19:33:00 [error] 8#8: *156 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:33:00 [error] 8#8: *157 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:33:01 [error] 8#8: *163 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/19 19:33:01 [error] 8#8: *167 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/19 19:33:01 [error] 8#8: *165 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/19 19:33:22 [error] 8#8: *185 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:33:22 [error] 8#8: *187 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/19 19:33:22 [error] 8#8: *198 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/dashboard/?page=users"
+2018/12/19 23:39:43 [error] 8#8: *204 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 23:40:14 [error] 8#8: *207 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/19 23:40:30 [error] 8#8: *210 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events"
+2018/12/19 23:40:30 [error] 8#8: *211 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events"
+2018/12/20 01:11:01 [error] 8#8: *221 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 01:11:02 [error] 8#8: *223 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 01:11:02 [error] 8#8: *228 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 01:11:02 [error] 8#8: *232 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 01:11:02 [error] 8#8: *230 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "events" does not exist
+LINE 3:   b.blk_id, b.blk_hash FROM events a
+                                    ^ in /www/build/php/scripts/events/events_hash_fetch.php:23
+Stack trace:
+#0 /www/build/php/scripts/events/events_hash_fetch.php(23): PDOStatement->execute(Array)
+#1 /www/build/php/index.php(39): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/events/events_hash_fetch.php on line 23" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 13:27:53 [error] 8#8: *248 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/"
+2018/12/20 13:27:55 [error] 8#8: *252 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 13:27:55 [error] 8#8: *253 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 13:39:49 [error] 8#8: *256 FastCGI sent in stderr: "PHP message: PHP Warning:  Invalid argument supplied for foreach() in /www/build/php/scripts/blk/blk_fetch.php on line 28" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 13:40:24 [error] 8#8: *258 FastCGI sent in stderr: "PHP message: PHP Warning:  Invalid argument supplied for foreach() in /www/build/php/scripts/blk/blk_fetch.php on line 28" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 13:41:18 [error] 8#8: *260 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'as' (T_AS), expecting ';' in /www/build/php/scripts/blk/blk_fetch.php on line 28" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 13:41:57 [error] 8#8: *262 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'as' (T_AS), expecting ';' in /www/build/php/scripts/blk/blk_fetch.php on line 29" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 13:41:59 [error] 8#8: *264 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'as' (T_AS), expecting ';' in /www/build/php/scripts/blk/blk_fetch.php on line 29" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 13:42:15 [error] 8#8: *266 FastCGI sent in stderr: "PHP message: PHP Warning:  Invalid argument supplied for foreach() in /www/build/php/scripts/blk/blk_fetch.php on line 28" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 13:42:28 [error] 8#8: *268 FastCGI sent in stderr: "PHP message: PHP Warning:  Invalid argument supplied for foreach() in /www/build/php/scripts/blk/blk_fetch.php on line 29" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 13:42:35 [error] 8#8: *270 FastCGI sent in stderr: "PHP message: PHP Warning:  Invalid argument supplied for foreach() in /www/build/php/scripts/blk/blk_fetch.php on line 30" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 16:16:33 [error] 8#8: *280 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Cannot redeclare Blk::FetchBlkFull() in /www/build/php/lib/blk/blk.php on line 76" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234] HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=blk_fetch&blk_ids=[5868042593305857,%204399891392847234]"
+2018/12/20 16:24:11 [error] 8#8: *286 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: :handler in /www/build/php/lib/blk/feed/feed.php:59
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(59): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(27): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 59" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=feed_hash_fetch&index=0&count=100&date_start=2001-10-01%2000:00:00&date_end=2018-12-30%2000:00:00 HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=feed_hash_fetch&index=0&count=100&date_start=2001-10-01%2000:00:00&date_end=2018-12-30%2000:00:00"
+2018/12/20 16:56:48 [error] 8#8: *359 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:56:48 [error] 8#8: *361 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:56:48 [error] 8#8: *366 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 16:56:50 [error] 8#8: *374 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:56:50 [error] 8#8: *376 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:56:50 [error] 8#8: *381 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 16:57:18 [error] 8#8: *389 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:57:18 [error] 8#8: *395 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 16:57:18 [error] 8#8: *397 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:58:37 [error] 8#8: *400 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  value "1545325117893" is out of range for type integer in /www/build/php/lib/blk/feed/feed.php:60
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(60): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(20): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 60" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 16:58:41 [error] 8#8: *402 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  value "1545325121416" is out of range for type integer in /www/build/php/lib/blk/feed/feed.php:60
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(60): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(20): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 60" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 16:59:31 [error] 8#8: *411 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:59:31 [error] 8#8: *412 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 16:59:31 [error] 8#8: *417 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 16:59:33 [error] 8#8: *419 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  value "1545325173286" is out of range for type integer in /www/build/php/lib/blk/feed/feed.php:60
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(60): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(20): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 60" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:01:50 [error] 8#8: *427 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:01:50 [error] 8#8: *429 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:01:51 [error] 8#8: *434 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:17:35 [error] 8#8: *442 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:17:35 [error] 8#8: *444 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:17:35 [error] 8#8: *449 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:17:36 [error] 8#8: *451 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  value "1545326256545" is out of range for type integer in /www/build/php/lib/blk/feed/feed.php:60
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(60): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(20): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 60" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:18:05 [error] 8#8: *453 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  value "1545326285798" is out of range for type integer in /www/build/php/lib/blk/feed/feed.php:60
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(60): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(20): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 60" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:18:07 [error] 8#8: *462 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:18:08 [error] 8#8: *463 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:18:08 [error] 8#8: *468 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:18:09 [error] 8#8: *470 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  value "1545326289434" is out of range for type integer in /www/build/php/lib/blk/feed/feed.php:60
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(60): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(20): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 60" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:18:10 [error] 8#8: *472 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  value "1545326290917" is out of range for type integer in /www/build/php/lib/blk/feed/feed.php:60
+Stack trace:
+#0 /www/build/php/lib/blk/feed/feed.php(60): PDOStatement->execute(Array)
+#1 /www/build/php/scripts/feed/feed_hash_fetch.php(20): Feed::FetchHashDateRange(Array)
+#2 /www/build/php/index.php(38): require_once('/www/build/php/...')
+#3 {main}
+  thrown in /www/build/php/lib/blk/feed/feed.php on line 60" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:18:59 [error] 8#8: *480 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:18:59 [error] 8#8: *482 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:18:59 [error] 8#8: *487 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:35:41 [error] 8#8: *497 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:35:41 [error] 8#8: *499 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:35:41 [error] 8#8: *504 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:36:13 [error] 8#8: *516 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:13 [error] 8#8: *518 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:13 [error] 8#8: *523 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:36:13 [error] 8#8: *531 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:13 [error] 8#8: *533 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:13 [error] 8#8: *538 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:36:15 [crit] 8#8: *542 open() "/var/tmp/nginx/fastcgi/1/00/0000000001" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:36:19 [crit] 8#8: *546 open() "/var/tmp/nginx/fastcgi/2/00/0000000002" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:36:48 [error] 8#8: *556 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:48 [error] 8#8: *558 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:48 [error] 8#8: *563 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:36:52 [crit] 8#8: *567 open() "/var/tmp/nginx/fastcgi/3/00/0000000003" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:36:57 [error] 8#8: *575 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:57 [error] 8#8: *577 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:36:57 [error] 8#8: *582 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:37:02 [error] 8#8: *590 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:37:02 [error] 8#8: *592 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:37:02 [error] 8#8: *597 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:37:04 [crit] 8#8: *601 open() "/var/tmp/nginx/fastcgi/4/00/0000000004" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:37:05 [crit] 8#8: *605 open() "/var/tmp/nginx/fastcgi/5/00/0000000005" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:43:02 [error] 8#8: *613 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:43:02 [error] 8#8: *615 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:43:03 [error] 8#8: *620 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:43:04 [crit] 8#8: *624 open() "/var/tmp/nginx/fastcgi/6/00/0000000006" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:43:27 [error] 8#8: *632 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:43:27 [error] 8#8: *634 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:43:27 [error] 8#8: *639 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: There is no active transaction in /www/build/php/scripts/atlas/atlas_fetch.php:54
+Stack trace:
+#0 /www/build/php/scripts/atlas/atlas_fetch.php(54): PDO->rollBack()
+#1 /www/build/php/index.php(17): require_once('/www/build/php/...')
+#2 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 54" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:44:14 [error] 8#8: *647 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:44:14 [error] 8#8: *649 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:44:33 [error] 8#8: *662 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:44:33 [error] 8#8: *664 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:54:47 [error] 8#8: *677 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:54:47 [error] 8#8: *679 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:54:47 [error] 8#8: *684 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined method Atlas::Query() in /www/build/php/scripts/atlas/atlas_fetch.php:35
+Stack trace:
+#0 /www/build/php/index.php(17): require_once()
+#1 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 35" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:55:42 [error] 8#8: *692 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:55:42 [error] 8#8: *694 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:55:42 [error] 8#8: *699 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined method Atlas::Query() in /www/build/php/scripts/atlas/atlas_fetch.php:35
+Stack trace:
+#0 /www/build/php/index.php(17): require_once()
+#1 {main}
+  thrown in /www/build/php/scripts/atlas/atlas_fetch.php on line 35" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:56:24 [error] 8#8: *707 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:56:24 [error] 8#8: *709 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:57:47 [error] 8#8: *722 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:57:47 [error] 8#8: *724 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:58:02 [error] 8#8: *737 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:58:02 [error] 8#8: *739 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:58:39 [error] 8#8: *752 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:58:39 [error] 8#8: *754 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:58:43 [crit] 8#8: *763 open() "/var/tmp/nginx/fastcgi/7/00/0000000007" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:58:48 [crit] 8#8: *767 open() "/var/tmp/nginx/fastcgi/8/00/0000000008" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 17:59:25 [error] 8#8: *775 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 17:59:25 [error] 8#8: *777 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:03:45 [crit] 8#8: *786 open() "/var/tmp/nginx/fastcgi/9/00/0000000009" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 18:04:18 [error] 8#8: *794 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:04:18 [error] 8#8: *796 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:04:19 [crit] 8#8: *805 open() "/var/tmp/nginx/fastcgi/0/01/0000000010" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 18:04:27 [error] 8#8: *813 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:04:27 [error] 8#8: *815 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:04:32 [crit] 8#8: *824 open() "/var/tmp/nginx/fastcgi/1/01/0000000011" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 18:05:57 [error] 8#8: *832 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:05:57 [error] 8#8: *834 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:06:07 [error] 8#8: *847 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:06:07 [error] 8#8: *849 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:06:09 [crit] 8#8: *858 open() "/var/tmp/nginx/fastcgi/2/01/0000000012" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 18:06:30 [error] 8#8: *869 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:06:30 [error] 8#8: *870 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:06:33 [crit] 8#8: *877 open() "/var/tmp/nginx/fastcgi/3/01/0000000013" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 18:07:26 [crit] 8#8: *881 open() "/var/tmp/nginx/fastcgi/4/01/0000000014" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 18:07:31 [error] 8#8: *889 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:07:31 [error] 8#8: *891 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:07:33 [crit] 8#8: *900 open() "/var/tmp/nginx/fastcgi/5/01/0000000015" failed (13: Permission denied) while reading upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "POST /php/index.php HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "https://dev.tcss.precess.io/events/"
+2018/12/20 18:08:40 [error] 8#8: *908 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:08:40 [error] 8#8: *910 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:09:28 [error] 8#8: *928 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:09:28 [error] 8#8: *929 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:14:22 [error] 8#8: *946 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:14:22 [error] 8#8: *948 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:14:50 [error] 8#8: *961 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:14:50 [error] 8#8: *963 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:14:58 [error] 8#8: *980 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:14:58 [error] 8#8: *982 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:15:48 [error] 8#8: *999 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:15:48 [error] 8#8: *1001 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:16:08 [error] 8#8: *1024 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:16:08 [error] 8#8: *1026 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:17:59 [error] 8#8: *1039 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:18:00 [error] 8#8: *1041 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:19:55 [error] 8#8: *1055 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:19:55 [error] 8#8: *1056 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:20:31 [error] 8#8: *1084 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:20:31 [error] 8#8: *1085 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:20:44 [error] 8#8: *1093 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:20:44 [error] 8#8: *1095 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:21:15 [error] 8#8: *1114 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:21:15 [error] 8#8: *1117 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:21:27 [error] 8#8: *1133 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:21:27 [error] 8#8: *1135 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:21:57 [error] 8#8: *1153 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:21:57 [error] 8#8: *1155 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:22:13 [error] 8#8: *1173 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:22:13 [error] 8#8: *1175 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:23:21 [error] 8#8: *1194 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:23:21 [error] 8#8: *1195 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:24:45 [error] 8#8: *1234 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:24:45 [error] 8#8: *1235 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:25:25 [error] 8#8: *1243 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:25:25 [error] 8#8: *1245 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:28:44 [error] 8#8: *1274 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:28:44 [error] 8#8: *1275 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:44:06 [error] 8#8: *1276 FastCGI sent in stderr: "PHP message: PHP Warning:  require_once(lib/blk/feed.php): failed to open stream: No such file or directory in /www/build/php/scripts/feed/feed_update.php on line 11
+PHP message: PHP Fatal error:  require_once(): Failed opening required 'lib/blk/feed.php' (include_path='.:') in /www/build/php/scripts/feed/feed_update.php on line 11" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=feed_update&blk_id=8727853852892534&content=%7B%20%22title%22:%20%22Memes%22,%20%20%22body%22:%20%22Hello,%20world%21%21%21%22%7D HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=feed_update&blk_id=8727853852892534&content=%7B%20%22title%22:%20%22Memes%22,%20%20%22body%22:%20%22Hello,%20world!!!%22%7D"
+2018/12/20 18:45:17 [error] 8#8: *1288 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:45:17 [error] 8#8: *1289 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:46:17 [error] 8#8: *1312 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:46:17 [error] 8#8: *1314 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:46:36 [error] 8#8: *1334 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:46:36 [error] 8#8: *1336 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:46:50 [error] 8#8: *1354 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:46:50 [error] 8#8: *1356 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:48:33 [error] 8#8: *1375 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:48:33 [error] 8#8: *1377 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:49:30 [error] 8#8: *1398 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:49:30 [error] 8#8: *1400 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:50:04 [error] 8#8: *1421 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:50:04 [error] 8#8: *1423 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:50:11 [error] 8#8: *1444 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:50:11 [error] 8#8: *1446 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:50:16 [error] 8#8: *1467 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 18:50:16 [error] 8#8: *1469 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:05:16 [error] 8#8: *1490 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:05:16 [error] 8#8: *1492 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:05:52 [error] 8#8: *1511 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:05:52 [error] 8#8: *1512 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:06:09 [error] 8#8: *1533 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:06:09 [error] 8#8: *1535 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:06:15 [error] 8#8: *1556 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:06:15 [error] 8#8: *1558 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:06:59 [error] 8#8: *1577 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:06:59 [error] 8#8: *1579 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:07:06 [error] 8#8: *1600 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:07:06 [error] 8#8: *1602 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:07:25 [error] 8#8: *1625 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:07:25 [error] 8#8: *1627 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:10:24 [error] 8#8: *1650 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:10:24 [error] 8#8: *1652 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:11:07 [error] 8#8: *1666 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:11:07 [error] 8#8: *1668 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:12:15 [error] 8#8: *1684 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:12:15 [error] 8#8: *1686 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:12:31 [error] 8#8: *1702 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:12:31 [error] 8#8: *1704 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:13:37 [error] 8#8: *1720 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:13:37 [error] 8#8: *1722 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:14:16 [error] 8#8: *1738 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:14:16 [error] 8#8: *1740 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:14:41 [error] 8#8: *1756 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:14:41 [error] 8#8: *1758 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:18:05 [error] 8#8: *1784 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:18:05 [error] 8#8: *1786 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:18:35 [error] 8#8: *1799 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:18:35 [error] 8#8: *1801 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:25:59 [error] 8#8: *1835 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:25:59 [error] 8#8: *1837 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:26:05 [error] 8#8: *1877 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:26:05 [error] 8#8: *1878 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:26:17 [error] 8#8: *1896 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:26:17 [error] 8#8: *1898 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:32:27 [error] 8#8: *1919 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 19:32:27 [error] 8#8: *1921 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:05:53 [error] 8#8: *1934 FastCGI sent in stderr: "PHP message: PHP Warning:  require_once(lib/blk/feed.php): failed to open stream: No such file or directory in /www/build/php/scripts/feed/feed_create.php on line 9
+PHP message: PHP Fatal error:  require_once(): Failed opening required 'lib/blk/feed.php' (include_path='.:') in /www/build/php/scripts/feed/feed_create.php on line 9" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=feed_create&event_date=10000&content=%7B%20%22header%22:%20%22Memes%22,%20%20%22content%22:%20%22Hello%21%22%7D HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=feed_create&event_date=10000&content=%7B%20%22header%22:%20%22Memes%22,%20%20%22content%22:%20%22Hello!%22%7D"
+2018/12/20 20:06:30 [error] 8#8: *1938 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'Content_Blk' not found in /www/build/php/scripts/feed/feed_create.php:59
+Stack trace:
+#0 /www/build/php/index.php(39): require_once()
+#1 {main}
+  thrown in /www/build/php/scripts/feed/feed_create.php on line 59" while reading response header from upstream, client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /php/index.php?action=feed_create&event_date=10000&content=%7B%20%22header%22:%20%22Memes%22,%20%20%22content%22:%20%22Hello%21%22%7D HTTP/1.0", upstream: "fastcgi://172.27.0.3:9000", host: "dev.tcss.precess.io", referrer: "http://dev.tcss.precess.io/php/index.php?action=feed_create&event_date=10000&content=%7B%20%22header%22:%20%22Memes%22,%20%20%22content%22:%20%22Hello!%22%7D"
+2018/12/20 20:11:17 [error] 8#8: *1952 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:11:17 [error] 8#8: *1954 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:17:15 [error] 8#8: *1974 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:17:15 [error] 8#8: *1976 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:17:32 [error] 8#8: *1996 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:17:32 [error] 8#8: *1998 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:17:36 [error] 8#8: *2016 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:17:36 [error] 8#8: *2018 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:21:24 [error] 8#8: *2038 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:21:24 [error] 8#8: *2040 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:22:46 [error] 8#8: *2060 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:22:46 [error] 8#8: *2061 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:23:25 [error] 8#8: *2081 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:23:25 [error] 8#8: *2083 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:23:59 [error] 8#8: *2103 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:23:59 [error] 8#8: *2104 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:24:10 [error] 8#8: *2128 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:24:10 [error] 8#8: *2131 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:24:18 [error] 8#8: *2152 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:24:18 [error] 8#8: *2154 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:30:19 [error] 8#8: *2177 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:30:19 [error] 8#8: *2179 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:30:39 [error] 8#8: *2197 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:30:39 [error] 8#8: *2199 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:30:50 [error] 8#8: *2217 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:30:50 [error] 8#8: *2219 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:32:11 [error] 8#8: *2237 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:32:11 [error] 8#8: *2238 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:32:38 [error] 8#8: *2258 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:32:38 [error] 8#8: *2260 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:32:59 [error] 8#8: *2278 open() "/www/build/static/js/jdenticon-2.1.0.min.js.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/js/jdenticon-2.1.0.min.js.map HTTP/1.0", host: "dev.tcss.precess.io"
+2018/12/20 20:32:59 [error] 8#8: *2280 open() "/www/build/static/css/bootstrap-theme.min.css.map" failed (2: No such file or directory), client: 172.27.0.5, server: dev.tcss.precess.io, request: "GET /static/css/bootstrap-theme.min.css.map HTTP/1.0", host: "dev.tcss.precess.io"

@@ -32,13 +32,28 @@
 	padding: 0 10px;
 }
 
-.event.card .btn.bottom {
+.event.card .btn {
 	cursor:pointer;
-	width:100%;
 	transition:background-color 0.25s ease-in;
+}
+.event.card .btn:hover {
+	background-color: #eee;
+}
+
+
+.event.card .btn.bottom {
+	width:100%;
 }
 .event.card .btn.bottom:hover {
 	background-color: #eee;
+}
+
+.event.card .btn.cal {
+	position:absolute;
+	left:0px;
+	top:-10px;
+	height:40px;
+	width:45px;
 }
 
 .event.card .btn.edit {
@@ -46,12 +61,7 @@
 	right:0px;
 	top:-10px;
 	height:40px;
-
-	cursor:pointer;
-	transition:background-color 0.25s ease-in;
-}
-.event.card .btn.edit:hover {
-	background-color: #eee;
+	width:45px;
 }
 
 .event.card.modal {

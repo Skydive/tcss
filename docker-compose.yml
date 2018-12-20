@@ -1,0 +1,38 @@
+version: '3.5'
+services:
+  nginx:
+    build: ./docker-alpine/nginx/
+    command: ["nginx", "-g", "daemon off;", "-c", "/data/config/nginx.conf"]
+    volumes:
+      - ./build/:/www/build/
+      - ./deploy/:/www/deploy/
+      - ./stack/nginx/:/data/
+    hostname: "tcss-nginx"
+    networks:
+      - tcss
+    depends_on:
+      - php-fpm
+      - pgsql
+  php-fpm:
+    build: ./docker-alpine/php-fpm/
+    command: ["php-fpm7", "-F", "-c", "/data/config/php.ini", "-y", "/data/config/php-fpm.conf"]
+    volumes:
+      - ./build/:/www/build/
+      - ./deploy/:/www/deploy/
+      - ./stack/php-fpm/:/data/
+    hostname: "tcss-php-fpm"
+    networks:
+      - tcss
+  pgsql:
+    build: ./docker-alpine/pgsql/
+    command: ["postgres", "-D", "/data/db"]
+    volumes:
+      - ./build/:/www/build/
+      - ./deploy/:/www/deploy/
+      - ./stack/pgsql/:/data/
+    hostname: "tcss-pgsql"
+    networks:
+      - tcss
+networks:
+  tcss:
+    name: tcss

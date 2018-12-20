@@ -1,0 +1,8 @@
+[submodule "docker-alpine"]
+	path = docker-alpine
+	url = git@personal.precess.io:docker-alpine
+	branch = master
+[submodule "gulp"]
+	path = gulp
+	url = git@personal.precess.io:build-tool
+	branch = master

@@ -5,7 +5,7 @@ Object.assign(Lib.Dashboard.UI, {
 	Groups: {
 		State: {},
 		Init: function(options) {
-			Lib.Dashboard.UI.Users.State = {options};
+			Lib.Dashboard.UI.Users.State = {options: options};
 			var self = Lib.Dashboard.UI.Groups;
 			self.SelectionInit(options);
 			self.UserInit(options);

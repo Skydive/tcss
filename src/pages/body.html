@@ -21,18 +21,20 @@
 <script>
 $(function() {
 	// Load Upcoming Events
-	Lib.Events.EventsFetchRange({
+	Lib.Feed.FeedFetchRange({
+		feed_type: 'events',
 		date_start: 0,
 		date_end: moment.now(),
 		count: 1
 	}, function(events) {
 		var first = events[0];
 		var card = $(".home.card");
-		card.find('.header').html(first.blk.blk_refs['header']);
-		card.find('.loc').html(first.blk.blk_refs['location']);
-		card.find('.body').html(first.blk.blk_refs['body']);
+		card.find('.header').html(first.blk_refs.header.data);
+		card.find('.loc').html(first.blk_refs.location.data);
+		card.find('.body').html(first.blk_refs.body.data);
 
-		var date = moment(first.event_date).fromNow();
+		var md = JSON.parse(first.metadata);
+		var date = moment.unix(md.feed_date).fromNow();
 		card.find('.date').html("Latest Event — "+date);
 	});
 })

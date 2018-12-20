@@ -26,17 +26,17 @@ switch($action) {
 	case 'dashboard_group_remove':
 		require_once("scripts/dashboard/$action.php");
 		break;
-	case 'blk_create':
+	//case 'blk_create':
 	case 'blk_fetch':
 	case 'blk_hash_fetch':
-	case 'blk_ref_update':
+	//case 'blk_ref_update':
 		require_once("scripts/blk/$action.php");
 		break;
-	case 'events_fetch':
-	case 'events_hash_fetch':
-	case 'events_create':
-	case 'events_update':
-		require_once("scripts/events/$action.php");
+	case 'feed_hash_fetch':
+	case 'feed_create':
+	case 'feed_update':
+	case 'feed_delete':
+		require_once("scripts/feed/$action.php");
 		break;
 	case 'raven_session': // This is a DIRECT entrypoint - no AJAX
 	case 'raven_redirect': // depends on raven_verify

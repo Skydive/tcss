@@ -21,7 +21,7 @@ $GLOBALS['cfg']['databases'] = [
 		"username" => "tcss",
 		"password" => "xaxaxaxa",
 		"params" => [
-			"host" => "tcss-pgsql",
+			"host" => "pgsql",
 			"dbname" => $GLOBALS['cfg']['project_name']
 			//$charset = 'utf8mb4';
 		]
@@ -42,12 +42,18 @@ $GLOBALS['cfg']['auth_providers'] = [
 $GLOBALS['security']['exceptions'] = [];
 $GLOBALS['security']['exceptions']['default'] = [
 	'access',
+	'atlas',
 	'blk',
 	'dashboard',
-	'session'
-
+	'session',
+	'feed'
 ];
 $GLOBALS['security']['exceptions']['dev'] = [
 	'db'
 ];
+
+$GLOBALS['feed']['valid'] = [
+	'events',
+	'news'
+]
 ?>
