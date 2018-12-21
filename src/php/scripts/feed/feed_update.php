@@ -44,7 +44,6 @@ try {
 		]);
 	}
 
-
 	$blk = Blk::FetchBlkFull([
 		'db' => $db,
 		'blk_id' => $blk_id
@@ -72,16 +71,40 @@ try {
 		}
 	}
 
-	if($metadata) {
-		$cur_metadata = json_decode($blk['metadata']);
-		$merged_metadata = array_merge($cur_metadata, $metadata);
-		Blk::Update([
-			'db' => $db,
-			'blk_id' => $blk['blk_id'],
-			'metadata' => json_encode($merged_metadata)
-		]);
-		$salt = json_encode($merged_metadata);
-	}
+	if(!$metadata)$metadata = [];
+
+	$query = "SELECT
+		a.user_id, a.username,
+		b.display_name AS group_name, b.access_level,
+		c.display_name AS display_name
+	FROM users a
+	INNER JOIN groups b ON a.group_id = b.group_id
+	INNER JOIN atlas c ON a.username = c.crsid
+	WHERE a.user_id = :user_id";
+	$stmt = $db->prepare($query);
+	$result = $stmt->execute([
+		'user_id' => $user_id
+	]);
+	$row = $stmt->fetch();
+	SKYException::CheckNULL($result, 'feed', 'user_id_missing');
+	$metadata = array_merge((array)$metadata, [
+		'owner_id' => $row['user_id'],
+		'owner_username' => $row['username'],
+		'owner_display_name' => $row['display_name'],
+		'owner_group_name' => $row['group_name']
+	]);
+
+
+	$cur_metadata = json_decode($blk['metadata'], true);
+	$merged_metadata = array_merge((array)$cur_metadata, (array)$metadata);
+	Blk::Update([
+		'db' => $db,
+		'blk_id' => $blk['blk_id'],
+		'metadata' => json_encode($merged_metadata)
+	]);
+	$salt = json_encode($merged_metadata);
+
+
 	$refresh_result = Blk::RefreshHash([
 		'db' => $db,
 		'blk_id' => $blk['blk_id'],

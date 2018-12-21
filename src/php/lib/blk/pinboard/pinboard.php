@@ -6,11 +6,11 @@ require_once("lib/framework/auth/user.php");
 require_once("lib/blk/blk.php");
 require_once("lib/blk/blk_ref.php");
 
-class Feed {
+class Pinboard {
 	public static function Create($data) {
 		$db = $data['db'];
-		$feed_type = $data['feed_type'];
-		$feed_date = $data['feed_date'];
+		$pinboard_type = $data['pinboard_type'];
+		$pinboard_pos = $data['pinboard_pos'];
 
 		$query = "SELECT
 			a.user_id, a.username,
@@ -30,8 +30,9 @@ class Feed {
 		$blk = Blk::Create([
 			'db' => $db,
 			'metadata' => json_encode([
-				'handler' => $feed_type,
-				'feed_date' => $feed_date,
+				'handler' => $pinboard_type,
+				'position' => $pinboard_pos,
+
 				'owner_id' => $row['user_id'],
 				'owner_username' => $row['username'],
 				'owner_display_name' => $row['display_name'],
@@ -43,25 +44,21 @@ class Feed {
 		return $blk;
 	}
 
-	public static function FetchHashDateRange($data) {
+	public static function FetchHashes($data) {
 		$db = $data['db'];
-		$feed_type = $data['feed_type'];
-		$date_start = $data['date_start'];
-		$date_end = $data['date_end'];
+		$pinboard_type = $data['pinboard_type'];
 
 		$query = "SELECT
 			blk_id, hash, metadata
 		FROM blk
 		WHERE (metadata ->> 'handler') = :handler
-		AND (metadata ->> 'feed_date')::bigint > :date_start
-		AND	(metadata ->> 'feed_date')::bigint < :date_end
-		AND active = TRUE";
+		AND (metadata ->> 'position') IS NOT NULL
+		AND active = TRUE
+		ORDER BY (metadata ->> 'position') ASC";
 
 		$stmt = $db->prepare($query);
 		$result = $stmt->execute([
-			'handler' => $data['feed_type'],
-			'date_start' => $data['date_start'],
-			'date_end' => $data['date_end']
+			'handler' => $data['pinboard_type']
 		]);
 		SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
 		$rows = $stmt->fetchAll();

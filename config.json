@@ -35,7 +35,9 @@
 					"moment.js",
 					"jdenticon-2.1.0.min.js",
 					"content-tools.min.js",
-					"masonry.pkgd.min.js"
+					"masonry.pkgd.min.js",
+					"bootstrap.min.js",
+					"bootstrap-datetimepicker.js"
 				],
 				"sky": [
 					"sky-blk.js"

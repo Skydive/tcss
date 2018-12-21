@@ -56,7 +56,8 @@
 	width:45px;
 }
 
-.event.card .btn.edit {
+.event.card .btn.edit,
+.event.card .btn.exit {
 	position:absolute;
 	right:0px;
 	top:-10px;
@@ -64,14 +65,15 @@
 	width:45px;
 }
 
-.event.card.modal {
-	z-index:200;
-	position:fixed;
-	top:100px;
-	
-	left:50%;
-	transform:translateX(-50%);
+.event.card .btn.delete {
+	position:absolute;
+	right:45px;
+	top:-10px;
+	height:40px;
+	width:45px;
+}
 
-	width:500px;
-	background-color:#fff;
+
+.event.card .editing {
+	display:none;
 }

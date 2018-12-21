@@ -1,15 +1,17 @@
 <div id="template-event-card" style="display:none;" class="event parent col-xs-12 col-md-6 col-lg-4">
 	<div class="event card">
 		<div style="position:relative;">
-			<h4 class="date"></h4>
-			<div class="editing btn cal"><i style="font-size:20px;" class="fa fa-calendar"></i></div>
+			<div class="date-edit"><h2 class="date"></h2></div>
 			<div class="default btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
-			<div class="editing btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
+			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
+			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
 		</div><hr/>
 		<div data-editable class="header" style="padding-bottom:5px;"></div><hr/>
 		<div data-editable class="body" style="display:none;"></div><hr class="expanded" style="display:none;"/>
 		<div data-editable class="loc" style="padding-bottom:5px;"></div>
-		<div data-editable class="btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
+		<!-- ATLAS -->
+		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
+		<div data-editable class="editing btn bottom"><i class="fa fa-save" style="font-size:20px;"></i></div>
 	</div>
 </div>
 <section id="events-section">
@@ -25,6 +27,7 @@
 <script>
 $("#events-section").on('init', function() {
 	Lib.Events.UI.Init({
+		feed_type: 'events',
 		events_section: $("#events-section"),
 		template_event_card: $("#template-event-card"),
 		modal_event_card: $("#modal-event-card")

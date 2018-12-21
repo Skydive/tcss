@@ -101,34 +101,43 @@ Object.assign(Lib.Events.UI, {
 
 			data.el_populate.append(el_clone);
 
-			el_clone.find('.btn.bottom').on('click', function(e) {
+			el_clone.find('.default.btn.bottom').on('click', function(e) {
+				if(!el_clone.data('expanded')) { // expand
+					el_clone.triggerHandler('expand');
+				} else {
+					el_clone.triggerHandler('deflate');
+				}
+			});
+			el_clone.find('.editing.btn.bottom').on('click', function(e) {
 				if(el_clone.data('editing')) { // save
 					el_clone.triggerHandler('save');
-				} else {
-					if(!el_clone.data('expanded')) { // expand
-						el_clone.triggerHandler('expand');
-					} else {
-						el_clone.triggerHandler('deflate');
-					}
-				};		
+				}
 			});
-
 			el_clone.find('.btn.edit').on('click', function(e) {
 				if(!el_clone.data('editing')) { 
 					if(!el_clone.data('expanded')) {
 						el_clone.triggerHandler('expand');
 					}
 					el_clone.triggerHandler('edit');
-				} else { 
+				}
+			});
+			el_clone.find('.btn.exit').on('click', function(e) {
+				if(el_clone.data('editing')) { 
 					el_clone.triggerHandler('no-save');
 				}
 			});
 
+			el_clone.find('.btn.delete').on('click', function(e) {
+				if(el_clone.data('editing')) { 
+					el_clone.triggerHandler('delete');
+				}
+			});
+
+
 			el_clone.on('expand', function(e) {
 				$(this).find('.expanded').show();
-				$(this).find('.footer').show();
 				$(this).find('.body').show();
-				$(this).find('.btn.bottom>i')
+				$(this).find('.default.btn.bottom>i')
 					.removeClass('fa-angle-down')
 					.addClass('fa-angle-up');
 				data.el_populate.masonry();
@@ -139,7 +148,7 @@ Object.assign(Lib.Events.UI, {
 				$(this).find('.body').hide();
 				$(this).find('.expanded').hide();
 				$(this).find('.footer').hide();
-				$(this).find('.btn.bottom>i')
+				$(this).find('.default.btn.bottom>i')
 					.removeClass('fa-angle-up')
 					.addClass('fa-angle-down');
 				data.el_populate.masonry();
@@ -148,23 +157,20 @@ Object.assign(Lib.Events.UI, {
 
 			el_clone.on('edit', function(e) {
 				$(this).data('editing', true);
+				$(this).find('.default').hide();
+				$(this).find('.editing').show();
+				console.log($(this).find('.default'));
 				if(el_section.data('editing_el')) {
 					el_section.data('editing_el').triggerHandler('unedit');
 				}
 				$(this).css('z-index', 100);
 				el_section.data('editing_el', $(this));
-				
-				$(this).find('.btn.edit>i')
-					.removeClass('fa-pencil')
-					.addClass('fa-trash');
-				$(this).find('.btn.bottom>i')
-					.removeClass('fa-angle-down fa-angle-up')
-					.addClass('fa-save');
 
 				var edit_elements = [
 					$(this).find('.header')[0],
 					$(this).find('.body')[0],
 					$(this).find('.loc')[0],
+					$(this).find('.date-edit')[0]
 				]
 
 				var editor = ContentTools.EditorApp.get();
@@ -177,6 +183,18 @@ Object.assign(Lib.Events.UI, {
 				editor.start();
 
 			});
+			el_clone.on('unedit', function(e) {
+				var editor = ContentTools.EditorApp.get();
+				editor.stop(true);
+
+				el_clone.data('editing', false);
+				$(this).find('.default').show();
+				$(this).find('.editing').hide();
+
+				el_section.data('editing_el', null);
+				data.el_populate.masonry();
+				$(this).css('z-index', 1);
+			});
 
 			el_clone.on('save', function(e) {
 				el_clone.triggerHandler('unedit');
@@ -186,30 +204,38 @@ Object.assign(Lib.Events.UI, {
 				content['body'] = el_clone.find('.body').html();
 				content['location'] = el_clone.find('.loc').html();
 
+				// DATE
+				var event = $(this).data('event');
+				var md = JSON.parse(event.metadata);
+				var new_meta = {};
+				var m = moment(el_clone.find('.date').text(), 'Do MMM YYYY - HH:mm');
+				if(!m.isValid()) {
+					alert("Date invalid!");
+					var date = moment.unix(md.feed_date).format("Do MMM YYYY [-] HH:mm");
+					$(this).find('.date').html(date);
+				} else {
+					unix = m.unix();
+					new_meta = {
+						feed_date: unix
+					};
+					$(this).attr('feed_date', unix);
+					// $(data.el_populate).sort(function(a, b) {
+					// 	var contentA = parseInt($(a).attr('feed_date'));
+					// 	var contentB = parseInt($(b).attr('feed_date'));
+					// 	return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+					// });
+					data.el_populate.masonry();
+				}
 				Lib.Ajax.Feed.Update({
 					blk_id: event['blk_id'],
-					content: content
+					content: content,
+					metadata: new_meta
 				});
 			});
 			el_clone.on('no-save', function(e) {
 				// REVERT CHANGES
 				el_clone.triggerHandler('update');
 				el_clone.triggerHandler('unedit');
-			});
-			el_clone.on('unedit', function(e) {
-				var editor = ContentTools.EditorApp.get();
-				editor.stop(true);
-
-				el_clone.data('editing', false);
-				el_section.data('editing_el', null);
-				data.el_populate.masonry();
-				$(this).css('z-index', 1);
-				$(this).find('.btn.edit>i')
-					.removeClass('fa-trash')
-					.addClass('fa-pencil');
-				$(this).find('.btn.bottom>i')
-					.removeClass('fa-angle-down fa-save')
-					.addClass('fa-angle-up');
 			});
 		});
 	}
