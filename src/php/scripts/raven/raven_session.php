@@ -42,8 +42,13 @@ try {
 
 	// If user doesn't exist - create new one
 	$user_id = -1;
-	if($stmt->rowCount() == 0) {  
-		$user = User::Create([
+	if($stmt->rowCount() == 0) {
+	// TODO: FIX
+		SKYException::Send([
+			'type' => 'raven',
+			'error' => 'user_invalid'
+		]);
+		/*$user = User::Create([
 			'db' => $db,
 			'username' => $crsid,
 			'auth_provider' => "raven"
@@ -54,7 +59,7 @@ try {
 			'db' => $db,
 			'user_id' => $user_id,
 			'group_id' => 2,
-		]);
+		]);*/
 	} else {
 		$row_user = $stmt->fetch();
 		$user_id = $row_user['user_id'];

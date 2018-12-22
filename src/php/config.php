@@ -46,7 +46,8 @@ $GLOBALS['security']['exceptions']['default'] = [
 	'blk',
 	'dashboard',
 	'session',
-	'feed'
+	'feed',
+	'singleton'
 ];
 $GLOBALS['security']['exceptions']['dev'] = [
 	'db'

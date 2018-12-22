@@ -1,41 +1,66 @@
-<section id="top" style="height:calc(100vh - 64px);">
-	<div class="content" style="position:relative;height:100%;">
-		<div style="position:absolute;top:50%;left:50%;transform: translate(-50%,calc(-50% - 80px));">
-			<img src="/static/colleges/TRIN.svg" width="256" style="margin-bottom:25px;"></img>
-			<div style="font-size:36px;font-weight:200;margin-bottom:25px;font-family:'EB Garamond', serif;">Trinity College Science Society</div>
-			<div style="font-size:18px;font-weight:200;">The most active science society in Cambridge, providing a rich programme of seminar series, panel discussions, film nights, and other social events. While based in Trinity College, all talks are free and open to all members of the university and the general public, and are accompanied by generous refreshments. Browse through our programme for the coming year to see the remarkable speakers and events we have lined up.</div>
+<section id="top" style="background-image:url(/static/backgrounds/bk1.png);color:white;">
+	<div class="content" style="position:relative;padding:25px 0;">
+		<div class="row">
+			<div class="col-xs-12 col-md-6" style="height:100%;display:flex;flex-direction:column;align-items:center;">
+				<h1>Trinity College Science Society</h1><br>
+				<img src="/static/colleges/TRIN.svg" width="196" style="margin-bottom:25px;"></img>
+				<!-- <div style="font-size:18px;font-weight:200;">The most active science society in Cambridge, providing a rich programme of seminar series, panel discussions, film nights, and other social events. While based in Trinity College, all talks are free and open to all members of the university and the general public, and are accompanied by generous refreshments. Browse through our programme for the coming year to see the remarkable speakers and events we have lined up.</div> -->
+			</div>
+			<div class="col-xs-12 col-md-6 event-loc" style="height:100%;display:flex;flex-direction:column;align-items:center;">
+				<h2><span class="evtitle"></span></h2>
+				<div class="header"></div>
+				<div class="loc"></div>
+			</div>
 		</div>
 	</div>
 </section>
-<section class="invert">
-	<div style="display:flex;flex-direction:column;align-items:center;margin:10px;">
-		<h3 class="title info">Notices</h3>
-		<div class="home card" style="width:400px;background-color:white;">
-			<div><h4 class="date"></h4></div><hr/>
-			<div data-editable class="header" style="padding-bottom:5px;"></div><hr/>
-			<!-- <div data-editable class="body" style="display:none;"></div><hr/> -->
-			<div data-editable class="loc" style="padding-bottom:5px;"></div>
-		</div>
+<section style="padding-top:15px;">
+	<div class="col-xs-12 col-md-6 col-lg-4">
+		<h3>Very Active</h3>
+		<p>We are incredibly active, providing weekly talks with distinguished speakers.</p>
+	</div>
+	<div class="col-xs-12 col-md-6 col-lg-4">
+		<h3>Annual Symposium & Dinner</h3>
+	</div>
+	<div class="col-xs-12 col-md-6 col-lg-4">
+		<h3>Free of Charge</h3>
+		<p>While based in Trinity College, all talks are free of charge and open to all members of the university and the general public, and are accompanied with generous refreshments.</p>
 	</div>
 </section>
 <script>
 $(function() {
-	// Load Upcoming Events
+	var cur_date = Math.round(moment.now()/1000);
 	Lib.Feed.FeedFetchRange({
 		feed_type: 'events',
 		date_start: 0,
-		date_end: moment.now(),
-		count: 1
+		date_end: cur_date*1000,
+		count: 100
 	}, function(events) {
-		var first = events[0];
-		var card = $(".home.card");
-		card.find('.header').html(first.blk_refs.header.data);
-		card.find('.loc').html(first.blk_refs.location.data);
-		card.find('.body').html(first.blk_refs.body.data);
-
-		var md = JSON.parse(first.metadata);
-		var date = moment.unix(md.feed_date).fromNow();
-		card.find('.date').html("Latest Event — "+date);
+		var first_after = null;
+		var card = $(".event-loc");
+		for(var i in events) {
+			var event = events[i];
+			var md = JSON.parse(event.metadata);
+			var date = md.feed_date;
+			if(date < cur_date) {
+				if(i > 0) { // ascend forward in time, until AFTER pivot, fetch before.
+					md = JSON.parse(events[i-1].metadata);
+					date = moment.unix(md.feed_date).fromNow();
+					card.find('.evtitle').html("Next Event — "+date);
+					first_after = events[i-1];
+					break;
+				} else { // event furthest in time is after pivot
+					date = moment.unix(date).fromNow();
+					card.find('.evtitle').html("Latest Event — "+date);
+					first_after = event;
+					break;
+				}
+			}
+		}
+		if(!first_after)return;
+		card.attr('blk_id', first_after.blk_id);
+		if(first_after.blk_refs.header)card.find('.header').html(first_after.blk_refs.header.data);
+		if(first_after.blk_refs.location)card.find('.location').html(first_after.blk_refs.location.data);
 	});
 })
 </script>

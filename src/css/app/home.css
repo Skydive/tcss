@@ -1,44 +1,8 @@
-.home.card {
-	color: black;
-	background-color: #EFEFEF;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
-	margin-top: 10px;
-	margin-bottom: 30px;
-	transition: 0.2s;
-}
-.home.card:hover {
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+
+.event-loc .header h1 {
+	font-size: 32px;
 }
 
-.home.card hr {
-	margin-top: 3px;
-	margin-bottom: 3px;
-}
-.home.card h1 {
-	font-size: 16px;
-}
-.home.card h3 {
-	font-size: 16px;
-}
-.home.card h2 {
-	font-size: 14px;
-}
-.home.card h4 {
-	font-size: 14px;
-}
-
-.home.card .header {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding: 0 10px;
-}
-.home.card .body {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding: 0 10px;
-}
-
-.invert {
-	color: white;
-	background-color: maroon;
+.event-loc .header h2 {
+	font-size: 24px;
 }

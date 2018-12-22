@@ -8,7 +8,7 @@ try {
 	$db->beginTransaction();
 
 
-	$row = Content_Blk::Create([
+	$row = Blk::Create([
 		'db' => $db
 	]);
 	

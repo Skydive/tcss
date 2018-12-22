@@ -59,12 +59,6 @@ class Blk {
 		foreach($rows as $row) {
 			$blk_refs[$row['name']] = $row;
 		}
-		if(!$blk_refs) {
-			SKYException::Send([
-				'type' => 'blk',
-				'error' => 'id_missing'
-			]);
-		}
 		return [
 			'blk_id' => $blk_id,
 			'hash' => $blk['hash'],

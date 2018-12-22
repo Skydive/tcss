@@ -14,10 +14,10 @@ class Feed {
 
 		$query = "SELECT
 			a.user_id, a.username,
-			b.display_name AS group_name, b.access_level
+			b.display_name AS group_name, b.access_level,
 			c.display_name AS display_name
 		FROM users a
-		INNER JOIN groups b ON a.group_id = b.group_id,
+		INNER JOIN groups b ON a.group_id = b.group_id
 		INNER JOIN atlas c ON a.username = c.crsid
 		WHERE a.user_id = :user_id";
 		$stmt = $db->prepare($query);
@@ -44,29 +44,7 @@ class Feed {
 	}
 
 	public static function FetchHashDateRange($data) {
-		$db = $data['db'];
-		$feed_type = $data['feed_type'];
-		$date_start = $data['date_start'];
-		$date_end = $data['date_end'];
-
-		$query = "SELECT
-			blk_id, hash, metadata
-		FROM blk
-		WHERE (metadata ->> 'handler') = :handler
-		AND (metadata ->> 'feed_date')::bigint > :date_start
-		AND	(metadata ->> 'feed_date')::bigint < :date_end
-		AND active = TRUE";
-
-		$stmt = $db->prepare($query);
-		$result = $stmt->execute([
-			'handler' => $data['feed_type'],
-			'date_start' => $data['date_start'],
-			'date_end' => $data['date_end']
-		]);
-		SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
-		$rows = $stmt->fetchAll();
-
-		return $rows;
+		
 	}
 }
 ?>

@@ -2,6 +2,31 @@ window.jdenticon_config = {
 	replaceMode: "observe"
 };
 
+if(!Lib)var Lib={};
+if(!Lib.App)Lib.App={};
+Object.assign(Lib.App, {
+	Notify(data) {
+		SKY.UI.Notify.Show({
+			el: $('#notifyarea'),
+			title: data.title,
+			content: data.content,
+			icon: data.icon,
+			animation: 'fadeInRight',
+			animationSpeed: 300,
+			expandTime: 50,
+			fade: {
+				in: 500,
+				wait: data.wait,
+				out: 200
+			},
+			style: {
+				background: '#fafafa',
+				color:	'black'
+			}
+		});
+	}
+});
+
 $(function() {
 	setTimeout(function() {
 		$("#global-loader").fadeOut(500);

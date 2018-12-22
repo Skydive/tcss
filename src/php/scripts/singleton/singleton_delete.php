@@ -8,8 +8,6 @@ require_once("lib/framework/group/group.php");
 require_once("lib/blk/blk.php");
 require_once("lib/blk/blk_ref.php");
 
-require_once("lib/blk/feed/feed.php");
-
 require_once("scripts/dashboard/dashboard_config.php");
 
 $session_token = (string)$_COOKIE['session_token'];
@@ -34,7 +32,7 @@ try {
 	
 	if($user_group['access_level'] > EAccessLevel::COMMITTEE) {
 		SKYException::Send([
-			'type' => 'feed',
+			'type' => 'singleton',
 			'error' => 'access_denied'
 		]);
 	}
@@ -51,7 +49,7 @@ try {
 	$result = $stmt->execute([
 		'blk_id' => $blk_id
 	]);
-	SKYException::CheckNULL($result, 'feed', 'blk_id_missing');
+	SKYException::CheckNULL($result, 'singleton', 'blk_id_missing');
 
 	$db->commit();
 

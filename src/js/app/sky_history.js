@@ -187,8 +187,8 @@ History.Adapter.bind(window, 'statechange', function(e) {
 				if(debug)console.log("History: page switch", state['url']);
 				if(debug)console.log("state", state['data']);
  			
- 				$(SKY.History).trigger('construct');
 
+ 				$(SKY.History).trigger('construct');
 				if(state['data']['initCallback'] == 1){
 					if(debug)console.log('History: Callback after load');
 					//if(SKY.App && SKY.App.Page.Init)SKY.App.Page.Init();

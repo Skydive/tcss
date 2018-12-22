@@ -95,5 +95,8 @@ CREATE INDEX index_blk_ref_blk_id ON blk_ref (blk_id);
 CREATE INDEX index_blk_meta_handler ON blk ((metadata ->> 'handler'))
 	WHERE (metadata ->> 'handler') IS NOT NULL;
 
-CREATE INDEX index_blk_meta_data_feed_date ON blk (((metadata ->> 'feed_date')::BIGINT))
+CREATE INDEX index_blk_metadata_feed_date ON blk (((metadata ->> 'feed_date')::BIGINT))
 	WHERE (metadata ->> 'feed_date') IS NOT NULL;
+
+CREATE INDEX index_blk_metadata_position ON blk (((metadata ->> 'position')::BIGINT))
+	WHERE (metadata ->> 'position') IS NOT NULL;

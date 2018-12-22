@@ -61,7 +61,7 @@ Object.assign(SKY.Blk, {
 			blk_id: data.blk_id
 		}).done(function(blk) {
 			if(cached_blk_hash === blk.blk_hash) {
-				var cached_blk = JSON.parse(localStorage.getItem("blk-"+data.blk_id)) || {};
+				var cached_blk = JSON.parse(LZString.decompress(localStorage.getItem("blk-"+data.blk_id)) || {}) || {};
 				if(cached_blk) {
 					cb(cached_blk.blk_refs);
 					return;
@@ -83,7 +83,7 @@ Object.assign(SKY.Blk, {
 					var ref = json.blk_refs[i];
 					store_blk.blk_refs[ref.blk_ref_name] = ref;
 				}
-				localStorage.setItem("blk-"+data.blk_id, JSON.stringify(store_blk));
+				localStorage.setItem("blk-"+data.blk_id, LZString.compress(JSON.stringify(store_blk)));
 				cb(store_blk.blk_refs);
 			});
 		});

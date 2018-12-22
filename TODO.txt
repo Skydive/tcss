@@ -17,21 +17,8 @@ Saturday,Sunday: RECODE WEBSITE FULLY
 - EXCEPTION CONFIG SEPARATION
 - VERSION LOCK STACK
 
-
 - Atlas fallback (remove atlas entirely?!?)
 - Generate atlas on user generation?
- "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-rev": "^8.1.1",
-    "gulp-rev-rewrite": "^1.1.3",
-    "gulp-rm": "^1.0.5",
-    "gulp-uglify": "^3.0.1",
-    "gulp-watch": "^5.0.1",
-    "pump": "^3.0.0",
-    "run-sequence": "^2.2.1"
-
 
 - Add pagination and a dashboard navbar for further options
 	- Note: possible structural changes to build system/tool

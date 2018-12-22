@@ -1,9 +1,153 @@
-<div data-editable data-name="main-content">
-    <blockquote>
-        Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.
-    </blockquote>
-    <p>John F. Woods</p>
+<div id="template-news-card" style="display:none;" class="news parent col-xs-12">
+	<div class="news card">
+		<div style="position:relative;">
+			<div class="date-edit"><h2 class="date"></h2></div>
+			<div class="default btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
+			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
+			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
+		</div><hr/>
+		<div data-editable class="header" style="padding-bottom:5px;"></div><hr/>
+		<div data-editable class="expanded body" style="display:none;"></div><hr class="expanded" style="display:none;"/>
+		<!-- <div data-editable class="location" style="padding-bottom:5px;"></div> -->
+		<!-- ATLAS -->
+		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
+		<div data-editable class="editing btn bottom"><i class="fa fa-save" style="font-size:20px;"></i></div>
+	</div>
 </div>
+<section id="news-section">
+	<div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100%;z-index:100;background-color:white;">
+		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
+			<h4>LOADING NEWS...</h4>
+			<div class="lds-ellipsis">
+				<div></div><div></div><div></div><div></div>
+			</div>
+		</div>
+	</div>
+	<div class="c-content" style="display:none;">
+		<div class="container">
+			<h1>News <span class="news add" style="display:none;"><i class="fa fa-plus-circle"></i></span></h1>
+			<div class="input-group">
+				<div class="input-group-addon"><i class="fa fa-search"></i></div>
+				<input type="text" class="form-control news search" placeholder="Search news">
+			</div>
+			<div class="row news populate"></div>
+		</div>
+	</div>
+</section>
 <script>
+$("#news-section").on('displaycontent', function() {
+	$(".c-content").show();
+	$(".c-loader").fadeOut(150);
+});
+$("#news-section").on('cleanup', function() {
+	Lib.Feed.UI.Cleanup();
+});
+$("#news-section").on('init', function() {
+	var el_section = $("#news-section");
+	Lib.Feed.UI.Init({
+		feed_type: 'news',
+		feed_section: el_section,
+		feed_template: $("#template-news-card"),
+		ref_names: {
+			load: ['header', 'body'],
+			edit: ['header', 'body', 'date'],
+			save: ['header', 'body']
+		}
+	});
 
+	if(Lib.User.State.type == "success") {
+		var access_level = (Lib.User.Group.State.access_level);
+		if(access_level < Lib.User.Group.EAccessLevel.COMMITTEE) {
+			$(this).find('.news.add').show();
+		}
+	}
+	// Load Events
+	Lib.Feed.FeedFetchRange({
+		feed_type: 'news',
+		date_start: 0,
+		date_end: moment.now(),
+		count: 10
+	}, function(blks) {
+		for(var i in blks) {
+			var blk = blks[i];
+			console.log(blk);
+			var feed_date = JSON.parse(blk.metadata).feed_date;
+			var el_populate = el_section.find('.news.populate');
+			el_section.trigger('generate', {
+				blk: blk,
+				cb: function(data) {
+					$(this).triggerHandler('expand');
+					el_populate.append(this);
+					$(this).on('edit delete unedit expand deflate', function() {
+						el_populate.masonry();
+					});
+				}
+			});
+		}
+		el_section.triggerHandler('displaycontent');
+		el_section.find('.news.populate').masonry({
+			"itemSelector": ".news.parent",
+			"columnWidth": ".news.parent"
+		});
+	});
+});
+
+
+$(".news.search").on('keyup', function(e) {
+	var value = $(this).val().toLowerCase();
+	$(".news.populate").children().filter(function() {
+		if($(this).text().toLowerCase().indexOf(value) > -1) {
+			$(this).show().addClass('showsort');
+		} else {
+			$(this).hide().removeClass('showsort');
+		}
+    });
+  	$(".news.populate").masonry({"itemSelector": ".news.parent.showsort", "columnWidth": ".news.parent.showsort"});
+});
+
+$(".event.add.upcoming").on('click', function() {
+	var el_populate = $("#events-section").find('.event.upcoming.populate');
+	$("#events-section").triggerHandler('generate_dummy', {
+		blk_refs: {
+			'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
+			'body': {"data": "<p>Body</p>"},
+			'location': {"data": "<h2>Location</h2>"}
+		},
+		feed_date: Math.round(moment.now()/1000)*2,
+		cb: function(data) {
+			el_populate.append(this);
+			el_populate.masonry('prepended', this);
+			el_populate.masonry('layout');
+			$(this).triggerHandler('edit');
+		}
+	});
+});
+$(".news.add").on('click', function() {
+	var el_populate = $("#news-section").find('.news.populate');
+	$("#news-section").triggerHandler('generate_dummy', {
+		blk_refs: {
+			'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
+			'body': {"data": "<p>Body</p>"}
+		},
+		feed_date: Math.round(moment.now()/1000),
+		cb: function(data) {
+			el_populate.append(this);
+			el_populate.masonry('prepended', this);
+			el_populate.masonry('layout');
+			$(this).triggerHandler('edit');
+		}
+	});
+});
+
+// TODO: merge success calls
+$(window).on('user_group_success user_group_failure', function() {
+	$("#news-section").triggerHandler('init');
+});
+$(SKY.History).on('construct.news', function(e, data) {
+	$("#news-section").triggerHandler('init');
+});
+$(SKY.History).on('deconstruct', function(e, data) {
+	$("#news-section").triggerHandler('cleanup');
+	$(SKY.History).off('construct.news');
+});
 </script>

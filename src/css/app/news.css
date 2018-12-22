@@ -1,4 +1,4 @@
-.event.populate .event.card {
+.news.populate .news.card {
 	overflow: auto;
 
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -6,49 +6,49 @@
 	margin: 10px;
 	background-color: #FAFAFA;
 }
-.event.populate .event.card:hover {
+.news.populate .news.card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.event.card hr {
+.news.card hr {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-.event.card h1 {
+.news.card h1 {
 	font-size: 24px;
 }
-.event.card h2 {
+.news.card h2 {
 	font-size: 18px;
 }
 
-.event.card .header {
+.news.card .header {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 0 10px;
 }
-.event.card .body {
+.news.card .body {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 0 10px;
 }
 
-.event.card .btn {
+.news.card .btn {
 	cursor:pointer;
 	transition:background-color 0.25s ease-in;
 }
-.event.card .btn:hover {
+.news.card .btn:hover {
 	background-color: #eee;
 }
 
 
-.event.card .btn.bottom {
+.news.card .btn.bottom {
 	width:100%;
 }
-.event.card .btn.bottom:hover {
+.news.card .btn.bottom:hover {
 	background-color: #eee;
 }
 
-.event.card .btn.cal {
+.news.card .btn.cal {
 	position:absolute;
 	left:0px;
 	top:-10px;
@@ -56,8 +56,8 @@
 	width:45px;
 }
 
-.event.card .btn.edit,
-.event.card .btn.exit {
+.news.card .btn.edit,
+.news.card .btn.exit {
 	position:absolute;
 	right:0px;
 	top:-10px;
@@ -65,7 +65,7 @@
 	width:45px;
 }
 
-.event.card .btn.delete {
+.news.card .btn.delete {
 	position:absolute;
 	right:45px;
 	top:-10px;
@@ -74,11 +74,11 @@
 }
 
 
-.event.card .editing {
+.news.card .editing {
 	display:none;
 }
 
-.event.add {
+.news.add {
 	font-size: inherit;
 	cursor: pointer;
 }

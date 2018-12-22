@@ -20,7 +20,7 @@ Object.assign(Lib.Feed, {
 				var date = md.feed_date;;
 				var cached_hash = localStorage.getItem("blk-"+feed.blk_id+"-hash") || "";
 				if(feed['hash'] == cached_hash) {
-					var cached_blk = JSON.parse(localStorage.getItem("blk-"+feed.blk_id)) || {};
+					var cached_blk = JSON.parse(LZString.decompress(localStorage.getItem("blk-"+feed.blk_id)) || {})  || {};
 					feed_out.push(Object.assign(feed, {
 						'feed_date': md.feed_date,
 						'blk_refs': cached_blk.blk_refs
@@ -37,7 +37,7 @@ Object.assign(Lib.Feed, {
 					b = new Date(b.feed_date);
 					return a>b ? -1 : a<b ? 1 : 0;
 				});
-				console.log('cacheall');
+				//console.log('cacheall');
 				if(cb)cb(feed_out);
 				return;
 			}
@@ -55,7 +55,7 @@ Object.assign(Lib.Feed, {
 						blk_refs: {}
 					};
 					var md = JSON.parse(feed.metadata);
-					localStorage.setItem("blk-"+feed.blk_id, JSON.stringify(feed));
+					localStorage.setItem("blk-"+feed.blk_id, LZString.compress(JSON.stringify(feed)));
 					localStorage.setItem("blk-"+feed.blk_id+"-hash", feed.hash);
 					feed_out.push(Object.assign(feed, {
 						'feed_date': md.feed_date
@@ -76,7 +76,7 @@ Object.assign(Lib.Feed, {
 			blk_id: data.blk_id
 		}).done(function(blk) {
 			if(cached_hash === blk.hash) {
-				var cached_blk = JSON.parse(localStorage.getItem("blk-"+data.blk_id)) || {};
+				var cached_blk = JSON.parse(LZString.decompress(localStorage.getItem("blk-"+data.blk_id)) || {}) || {};
 				if(cached_blk) {
 					cb(cached_blk.blk_refs);
 					return;
@@ -98,7 +98,7 @@ Object.assign(Lib.Feed, {
 					var ref = json.blk_refs[i];
 					store_blk.blk_refs[ref.blk_ref_name] = ref;
 				}
-				localStorage.setItem("blk-"+data.blk_id, JSON.stringify(store_blk));
+				localStorage.setItem("blk-"+data.blk_id, LZString.compress(JSON.stringify(store_blk)));
 				cb(store_blk.blk_refs);
 			});
 		});

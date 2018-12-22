@@ -31,13 +31,7 @@ class Pinboard {
 			'db' => $db,
 			'metadata' => json_encode([
 				'handler' => $pinboard_type,
-				'position' => $pinboard_pos,
-
-				'owner_id' => $row['user_id'],
-				'owner_username' => $row['username'],
-				'owner_display_name' => $row['display_name'],
-				'owner_group_name' => $row['group_name'],
-				'access_level' => $row['access_level']
+				'position' => $pinboard_pos
 			])
 		]);
 

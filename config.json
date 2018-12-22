@@ -15,7 +15,9 @@
 				"dashboard",
 				"atlas",
 				"events",
+				"news",
 				"sponsors",
+				"committee",
 				"dev/blk"
 			]
 		},
@@ -36,11 +38,13 @@
 					"jdenticon-2.1.0.min.js",
 					"content-tools.min.js",
 					"masonry.pkgd.min.js",
-					"bootstrap.min.js",
-					"bootstrap-datetimepicker.js"
+					"lz-string.min.js"
 				],
 				"sky": [
-					"sky-blk.js"
+					"sky-blk.js",
+					"sky-jquery.js",
+					"sky-contenttools.js",
+					"sky-notify.js"
 				],
 				"app": [
 					"sky_history.js",
@@ -49,9 +53,11 @@
 					"dashboard/dashboard_ajax.js",
 					"dashboard/dashboard_users.js",
 					"dashboard/dashboard_groups.js",
+					"singleton/singleton_ajax.js",
+					"singleton/singleton_ui.js",
 					"feed/feed_ajax.js",
 					"feed/feed_blk.js",
-					"events/events_ui.js",
+					"feed/feed_ui.js",
 					"main.js"		
 				]
 			}
@@ -72,6 +78,9 @@
 					"jquery-ui.structure.min.css",
 					"jquery-ui.theme.min.css",
 					"content-tools.min.css"
+				],
+				"sky": [
+					"sky-notify.css"
 				],
 				"app": [
 					"**/*.css"

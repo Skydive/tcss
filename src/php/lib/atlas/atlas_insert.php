@@ -72,7 +72,7 @@ if ($handle) {
 				'password_hash' => $password_hash,
 				'auth_provider' => $GLOBALS['cfg']['auth_providers']['raven'],
 				'creation_date' => $date,
-				'group_id' => 3
+				'group_id' => 2
 			]);
 
 	    $db->commit();

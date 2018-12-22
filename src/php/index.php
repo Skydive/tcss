@@ -32,9 +32,11 @@ switch($action) {
 	//case 'blk_ref_update':
 		require_once("scripts/blk/$action.php");
 		break;
+	case 'singleton_update':
+	case 'singleton_delete': // FEED/PINBOARD/SINGLETON (GENERALISED)
+		require_once("scripts/singleton/$action.php");
+		break;
 	case 'feed_hash_fetch':
-	case 'feed_create':
-	case 'feed_update':
 	case 'feed_delete':
 		require_once("scripts/feed/$action.php");
 		break;
@@ -42,6 +44,8 @@ switch($action) {
 	case 'raven_redirect': // depends on raven_verify
 		require_once("scripts/raven/$action.php");
 		break;
+	case 'ct_image_upload':
+		require_once("scripts/contenttools/$action.php");
 	default:
 		die("invalid action: $action");
 		break;

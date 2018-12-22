@@ -1,0 +1,10 @@
+.sky-notify {
+  border-radius:10px;
+}
+
+.sky-notify .title {
+	font-weight: 400;
+}
+.sky-notify .content {
+	font-weight: 100;
+}
