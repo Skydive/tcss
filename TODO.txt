@@ -67,3 +67,10 @@ Saturday,Sunday: RECODE WEBSITE FULLY
 
 - FIXED:
 	- fix userid precision loss on client (FIX)
+
+
+LONG TERM TODO:
+
+- BEAUTIFY
+- LOAD EXTRA BELOW (count/index) generalise
+- FINISH README

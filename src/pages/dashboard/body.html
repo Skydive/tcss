@@ -1,3 +1,19 @@
-<div class="col-xs-12" style="width:100%;">
-	<div class="dashboard title">Dashboard General</div>
+<div class="row">
+	<div class="col-xs-12" style="width:100%;">
+		<div class="dashboard title">Dashboard Home</div>
+	</div>
+	<div class="col-xs-12" style="padding-top:50px;">
+		<button type="button" class="logouteee btn btn-primary"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Logout</button>
+	</div>
 </div>
+<script>
+$(function() {
+		console.log("[DEBUG] ae");
+
+	$("button.logouteee").on('click', function() {
+		console.log("[DEBUG] Loged out");
+		Lib.Ajax.Session.Destroy();
+		window.location.href = "/";
+	});
+});
+</script>

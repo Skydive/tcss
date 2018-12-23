@@ -63,6 +63,13 @@ Object.assign(Lib.Feed.UI, {
 				var blk_metadata = JSON.parse(blk.metadata);
 				var date = moment.unix(blk_metadata.feed_date).format("Do MMM YYYY [-] HH:mm");
 				el_singleton.find('.date').html("<h2>"+date+"</h2>");
+
+				if(blk.blk_id && blk.blk_id != "DUMMY") {
+					el_singleton.find('.btn.link').show()
+						.attr('href', "/single-feed/?blk_id="+blk.blk_id);
+				} else {
+					el_singleton.find('.btn.link').hide();	
+				}
 			}).triggerHandler('update');
 
 			el_singleton.on('expand', function() {
@@ -155,7 +162,6 @@ Object.assign(Lib.Feed.UI, {
 					});
 				}
 			});
-
 			if(data.cb)data.cb.bind(el_singleton)(data);
 		});
 	}

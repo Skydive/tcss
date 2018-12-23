@@ -1,4 +1,4 @@
-.event.populate .event.card {
+.populate .event.card {
 	overflow: auto;
 
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -6,7 +6,7 @@
 	margin: 10px;
 	background-color: #FAFAFA;
 }
-.event.populate .event.card:hover {
+.populate .event.card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -30,6 +30,8 @@
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 0 10px;
+
+	text-align: left;
 }
 
 .event.card .btn {
@@ -58,21 +60,33 @@
 
 .event.card .btn.edit,
 .event.card .btn.exit {
-	position:absolute;
-	right:0px;
-	top:-10px;
-	height:40px;
-	width:45px;
+    position: absolute;
+    right: 0px;
+    top: -20px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
 }
 
 .event.card .btn.delete {
-	position:absolute;
-	right:45px;
-	top:-10px;
-	height:40px;
-	width:45px;
+    position: absolute;
+	right: 50px;
+    top: -20px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
 }
 
+.event.card .btn.link {
+	text-decoration: none;
+	color: inherit;
+    position: absolute;
+	left: 0px;
+    top: -20px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
 
 .event.card .editing {
 	display:none;

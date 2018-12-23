@@ -2,6 +2,7 @@
 	<div class="news card">
 		<div style="position:relative;">
 			<div class="date-edit"><h2 class="date"></h2></div>
+			<a class="btn link"><i style="font-size:20px;" class="fa fa-link"></i></a>
 			<div class="default btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
 			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
 			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
@@ -15,7 +16,7 @@
 	</div>
 </div>
 <section id="news-section">
-	<div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100%;z-index:100;background-color:white;">
+	<div class="c-loader" style="position:fixed;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
 		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
 			<h4>LOADING NEWS...</h4>
 			<div class="lds-ellipsis">
@@ -37,7 +38,7 @@
 <script>
 $("#news-section").on('displaycontent', function() {
 	$(".c-content").show();
-	$(".c-loader").fadeOut(150);
+	$(".c-loader").fadeOut(1000);
 });
 $("#news-section").on('cleanup', function() {
 	Lib.Feed.UI.Cleanup();
@@ -70,7 +71,6 @@ $("#news-section").on('init', function() {
 	}, function(blks) {
 		for(var i in blks) {
 			var blk = blks[i];
-			console.log(blk);
 			var feed_date = JSON.parse(blk.metadata).feed_date;
 			var el_populate = el_section.find('.news.populate');
 			el_section.trigger('generate', {
@@ -140,7 +140,7 @@ $(".news.add").on('click', function() {
 });
 
 // TODO: merge success calls
-$(window).on('user_group_success user_group_failure', function() {
+$(window).on('user_group_success user_group_failure user_session_destroyed', function() {
 	$("#news-section").triggerHandler('init');
 });
 $(SKY.History).on('construct.news', function(e, data) {

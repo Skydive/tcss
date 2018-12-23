@@ -13,12 +13,9 @@
 			"content": [
 				"",
 				"dashboard",
-				"atlas",
 				"events",
 				"news",
-				"sponsors",
-				"committee",
-				"dev/blk"
+				"single-feed"
 			]
 		},
 		"js": {

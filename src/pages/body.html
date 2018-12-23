@@ -9,24 +9,48 @@
 			<div class="col-xs-12 col-md-6 event-loc" style="height:100%;display:flex;flex-direction:column;align-items:center;">
 				<h2><span class="evtitle"></span></h2>
 				<div class="header"></div>
-				<div class="loc"></div>
+				<div class="location"></div>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 news-loc" style="height:100%;display:flex;flex-direction:column;align-items:center;">
+				<h2><span class="nstitle"></span></h2>
+				<div class="header"></div>
+				<div class="body"></div>
 			</div>
 		</div>
 	</div>
 </section>
 <section style="padding-top:15px;">
-	<div class="col-xs-12 col-md-6 col-lg-4">
-		<h3>Very Active</h3>
-		<p>We are incredibly active, providing weekly talks with distinguished speakers.</p>
-	</div>
-	<div class="col-xs-12 col-md-6 col-lg-4">
-		<h3>Annual Symposium & Dinner</h3>
-	</div>
-	<div class="col-xs-12 col-md-6 col-lg-4">
-		<h3>Free of Charge</h3>
-		<p>While based in Trinity College, all talks are free of charge and open to all members of the university and the general public, and are accompanied with generous refreshments.</p>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<h3>Very Active</h3>
+				<div class="lsticon"><img src="/static/inkscape/clock.svg" width="256"></img></div>
+				<p>We are incredibly active, providing weekly talks with distinguished speakers.</p>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<h3>Annual Symposium & Dinner</h3>
+				<div class="lsticon"><img src="/static/inkscape/eagle.svg" width="256"></img></div>
+				<p>Symposium galore!</p>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<h3>Free of Charge</h3>
+				<div class="lsticon"><img src="/static/inkscape/sterling.svg" width="196"></img></div>
+				<p>While based in Trinity College, all talks are free of charge and open to all members of the university and the general public, and are accompanied with generous refreshments.</p>
+			</div>
+		</div>
 	</div>
 </section>
+<style>
+.lsticon {
+	display:flex;flex-direction:column;align-items:center;justify-content:center;height:256px;
+}
+</style>
 <script>
 $(function() {
 	var cur_date = Math.round(moment.now()/1000);
@@ -60,6 +84,32 @@ $(function() {
 		if(!first_after)return;
 		card.attr('blk_id', first_after.blk_id);
 		if(first_after.blk_refs.header)card.find('.header').html(first_after.blk_refs.header.data);
+		if(first_after.blk_refs.location)card.find('.location').html(first_after.blk_refs.location.data);
+	});
+
+	Lib.Feed.FeedFetchRange({
+		feed_type: 'news',
+		date_start: 0,
+		date_end: cur_date*1000,
+		count: 100
+	}, function(events) {
+		var first_after = null;
+		var card = $(".news-loc");
+		for(var i in events) {
+			var event = events[i];
+			var md = JSON.parse(event.metadata);
+			var date = md.feed_date;
+			if(date < cur_date) { // event furthest in time is after pivot
+				date = moment.unix(date).fromNow();
+				card.find('.nstitle').html("Latest News — "+date);
+				first_after = event;
+				break;
+			}
+		}
+		if(!first_after)return;
+		card.attr('blk_id', first_after.blk_id);
+		if(first_after.blk_refs.header)card.find('.header').html(first_after.blk_refs.header.data);
+		if(first_after.blk_refs.body)card.find('.body').html(first_after.blk_refs.body.data);
 		if(first_after.blk_refs.location)card.find('.location').html(first_after.blk_refs.location.data);
 	});
 })

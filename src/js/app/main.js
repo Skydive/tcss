@@ -5,7 +5,7 @@ window.jdenticon_config = {
 if(!Lib)var Lib={};
 if(!Lib.App)Lib.App={};
 Object.assign(Lib.App, {
-	Notify(data) {
+	Notify: function(data) {
 		SKY.UI.Notify.Show({
 			el: $('#notifyarea'),
 			title: data.title,

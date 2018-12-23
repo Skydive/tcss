@@ -14,6 +14,8 @@ Object.assign(Lib.User, {
 				switch(json.type) {
 				case "success":
 					$(window).trigger('user_session_created', json);
+					$(window).trigger('user_group_validate');
+					$(window).trigger('user_atlas_validate');
 					break;
 				default:
 					$(window).trigger('user_session_destroyed', json);
@@ -22,8 +24,7 @@ Object.assign(Lib.User, {
 			});
 		});
 		$(window).on('user_session_created', function() {
-			$(window).trigger('user_group_validate');
-			$(window).trigger('user_atlas_validate');
+			
 		});
 		$(window).on('user_session_destroyed', function() {
 
