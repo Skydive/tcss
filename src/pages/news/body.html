@@ -7,8 +7,8 @@
 			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
 			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
 		</div><hr/>
-		<div data-editable class="header" style="padding-bottom:5px;"></div><hr/>
-		<div data-editable class="expanded body" style="display:none;"></div><hr class="expanded" style="display:none;"/>
+		<div data-editable class="header" style="padding-bottom:5px;"></div><hr class="expanded"/>
+		<div data-editable class="expanded body" style="display:none;"></div>
 		<!-- <div data-editable class="location" style="padding-bottom:5px;"></div> -->
 		<!-- ATLAS -->
 		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
@@ -79,15 +79,14 @@ $("#news-section").on('init', function() {
 					$(this).triggerHandler('expand');
 					el_populate.append(this);
 					$(this).on('edit delete unedit expand deflate', function() {
-						el_populate.masonry();
+						el_populate.isotope();
 					});
 				}
 			});
 		}
 		el_section.triggerHandler('displaycontent');
-		el_section.find('.news.populate').masonry({
-			"itemSelector": ".news.parent",
-			"columnWidth": ".news.parent"
+		el_section.find('.news.populate').isotope({
+			"itemSelector": ".news.parent"
 		});
 	});
 });
@@ -95,33 +94,13 @@ $("#news-section").on('init', function() {
 
 $(".news.search").on('keyup', function(e) {
 	var value = $(this).val().toLowerCase();
-	$(".news.populate").children().filter(function() {
-		if($(this).text().toLowerCase().indexOf(value) > -1) {
-			$(this).show().addClass('showsort');
-		} else {
-			$(this).hide().removeClass('showsort');
-		}
-    });
-  	$(".news.populate").masonry({"itemSelector": ".news.parent.showsort", "columnWidth": ".news.parent.showsort"});
-});
-
-$(".event.add.upcoming").on('click', function() {
-	var el_populate = $("#events-section").find('.event.upcoming.populate');
-	$("#events-section").triggerHandler('generate_dummy', {
-		blk_refs: {
-			'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
-			'body': {"data": "<p>Body</p>"},
-			'location': {"data": "<h2>Location</h2>"}
-		},
-		feed_date: Math.round(moment.now()/1000)*2,
-		cb: function(data) {
-			el_populate.append(this);
-			el_populate.masonry('prepended', this);
-			el_populate.masonry('layout');
-			$(this).triggerHandler('edit');
+  	$(".news.populate").isotope({
+		filter: function() {
+			return $(this).text().toLowerCase().indexOf(value) > -1;
 		}
 	});
 });
+
 $(".news.add").on('click', function() {
 	var el_populate = $("#news-section").find('.news.populate');
 	$("#news-section").triggerHandler('generate_dummy', {
@@ -132,8 +111,8 @@ $(".news.add").on('click', function() {
 		feed_date: Math.round(moment.now()/1000),
 		cb: function(data) {
 			el_populate.append(this);
-			el_populate.masonry('prepended', this);
-			el_populate.masonry('layout');
+			el_populate.isotope('prepended', this);
+			el_populate.isotope('layout');
 			$(this).triggerHandler('edit');
 		}
 	});

@@ -15,6 +15,7 @@
 				"dashboard",
 				"events",
 				"news",
+				"committee",
 				"single-feed"
 			]
 		},
@@ -34,7 +35,7 @@
 					"moment.js",
 					"jdenticon-2.1.0.min.js",
 					"content-tools.min.js",
-					"masonry.pkgd.min.js",
+					"isotope.pkgd.min.js",
 					"lz-string.min.js"
 				],
 				"sky": [
@@ -55,6 +56,10 @@
 					"feed/feed_ajax.js",
 					"feed/feed_blk.js",
 					"feed/feed_ui.js",
+					"pinboard/pinboard.js",
+					"pinboard/pinboard_ajax.js",
+					"pinboard/pinboard_blk.js",
+					"pinboard/pinboard_ui.js",
 					"main.js"		
 				]
 			}

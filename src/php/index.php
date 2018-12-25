@@ -34,11 +34,10 @@ switch($action) {
 		break;
 	case 'singleton_update':
 	case 'singleton_delete': // FEED/PINBOARD/SINGLETON (GENERALISED)
-		require_once("scripts/singleton/$action.php");
-		break;
+	case 'singleton_fetch':
 	case 'feed_hash_fetch':
-	case 'feed_delete':
-		require_once("scripts/feed/$action.php");
+	case 'pinboard_hash_fetch':
+		require_once("scripts/singleton/$action.php");
 		break;
 	case 'raven_session': // This is a DIRECT entrypoint - no AJAX
 	case 'raven_redirect': // depends on raven_verify

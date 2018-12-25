@@ -19,13 +19,12 @@ Object.assign(Lib.Pinboard.UI, {
 		var ref_names = data.ref_names;
 
 		el_section.on('generate_dummy', function(e, data) {
-			var feed_date = data.feed_date;
 			el_section.triggerHandler('generate', {
 				blk: {
 					blk_id: 'DUMMY',
 					metadata: JSON.stringify({
 						handler: feed_type,
-						feed_date: data.feed_date
+						pinboard_position: data.pinboard_position
 					}),
 					blk_refs: data.blk_refs
 				},
@@ -56,13 +55,12 @@ Object.assign(Lib.Pinboard.UI, {
 				ref_names: ref_names,
 				singleton_template: el_template_card
 			});
-			el_singleton.attr('feed_date', blk_metadata.feed_date);
+			el_singleton.attr('pinboard_position', blk_metadata.pinboard_position);
 
 			el_singleton.on('update', function() {
 				var blk = el_singleton.data('blk');
 				var blk_metadata = JSON.parse(blk.metadata);
-				var date = moment.unix(blk_metadata.feed_date).format("Do MMM YYYY [-] HH:mm");
-				el_singleton.find('.date').html("<h2>"+date+"</h2>");
+				$(this).attr('pinboard_position', blk_metadata.pinboard_position);
 			}).triggerHandler('update');
 
 			el_singleton.on('expand', function() {
@@ -78,65 +76,55 @@ Object.assign(Lib.Pinboard.UI, {
 			el_singleton.on('save_post', function(e, json) {
 				if(json.type != "success") {
 					Lib.App.Notify({
-						title: "Feed save failed...",
+						title: "Pinboard save failed...",
 						content: "Error: "+json.type,
 						wait: 0,
 						icon: 'fa fa-times'
 					});
 					return;
 				}
-				Lib.App.Notify({
-					title: "Feed content save success",
-					content: "Header, body and location saved successfully",
-					wait: 2000,
-					icon: 'fa fa-check'
-				});
-
-				var blk = el_singleton.data('blk');
-
-				var date_txt = el_singleton.find('.date').text();
-				var date_m = moment(date_txt, 'Do MMM YYYY - HH:mm');				
 				
-				if(date_m.isValid() && date_m.get('year') > 1970 && date_m.get('year') < 3000) {
-					Lib.Ajax.Singleton.Update({
-						blk_id: blk.blk_id,
-						metadata: {
-							handler: feed_type,
-							feed_date: date_m.unix()
-						}
-					}).done(function(json) {
-						if(json.type == "success") {
-							el_singleton.data('blk', json.blk_new);
-							el_singleton.trigger('update');
-							Lib.App.Notify({
-								title: "Date modification success",
-								content: "Date updated to: "+date_m.format('Do MMM YYYY - HH:mm'),
-								wait: 1000,
-								icon: 'fa fa-check'
-							});
-						} else {
-							Lib.App.Notify({
-								title: "Date modification failed...",
-								content: "Error: "+json.type,
-								wait: 0,
-								icon: 'fa fa-times'
-							});
-						}
-					});
-					return;
-				} else {
-					Lib.App.Notify({
-						title: "Date modification failed...",
-						content: "You had entered an invalid date. The date has been reverted to its original value.",
-						wait: 0,
-						icon: 'fa fa-times'
-					});
-					blk_metadata = JSON.parse(blk.metadata);
-                    var date = moment.unix(blk_metadata.feed_date).format("Do MMM YYYY [-] HH:mm");
-                    el_singleton.find('.date').html("<h2>"+date+"</h2>");
-				}
+				var blk = el_singleton.data('blk');
+				Lib.Ajax.Singleton.Update({
+					blk_id: blk.blk_id,
+					metadata: {
+						handler: feed_type
+					}
+				}).done(function(json) {
+					if(json.type == "success") {
+						$(el_singleton).triggerHandler('save_position');
+						Lib.App.Notify({
+							title: "Pinboard content save success",
+							content: "Header, body and location saved successfully",
+							wait: 2000,
+							icon: 'fa fa-check'
+						});
+					} else {
+						Lib.App.Notify({
+							title: "Pinboard save failed...",
+							content: "Error: "+json.type,
+							wait: 0,
+							icon: 'fa fa-times'
+						});
+					}
+				});
 			});
 			
+			el_singleton.on('save_position', function() {
+				var blk = el_singleton.data('blk');
+				Lib.Ajax.Singleton.Update({
+					blk_id: blk.blk_id,
+					metadata: {
+						pinboard_position: parseInt($(this).attr('pinboard_position'))
+					}
+				}).done(function(json) {
+					if(json.type == "success") {
+						console.log(json.blk_new);
+						$(el_singleton).data('blk', json.blk_new);
+					}
+				});
+			});
+
 			el_singleton.on('delete_post', function(e, json) {
 				if(json.type == "success") {
 					Lib.App.Notify({
@@ -154,6 +142,10 @@ Object.assign(Lib.Pinboard.UI, {
 						icon: 'fa fa-times'
 					});
 				}
+			});
+
+			el_singleton.on('create_right', function() {
+				
 			});
 
 			if(data.cb)data.cb.bind(el_singleton)(data);

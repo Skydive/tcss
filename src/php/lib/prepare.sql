@@ -98,5 +98,5 @@ CREATE INDEX index_blk_meta_handler ON blk ((metadata ->> 'handler'))
 CREATE INDEX index_blk_metadata_feed_date ON blk (((metadata ->> 'feed_date')::BIGINT))
 	WHERE (metadata ->> 'feed_date') IS NOT NULL;
 
-CREATE INDEX index_blk_metadata_position ON blk (((metadata ->> 'position')::BIGINT))
-	WHERE (metadata ->> 'position') IS NOT NULL;
+CREATE INDEX index_blk_metadata_pinboard_position ON blk (((metadata ->> 'pinboard_position')::BIGINT))
+	WHERE (metadata ->> 'pinboard_position') IS NOT NULL;

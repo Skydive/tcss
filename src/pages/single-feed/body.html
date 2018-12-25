@@ -30,8 +30,8 @@
 			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
 			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
 		</div><hr/>
-		<div data-editable class="header" style="padding-bottom:5px;"></div><hr/>
-		<div data-editable class="expanded body" style="display:none;"></div><hr class="expanded" style="display:none;"/>
+		<div data-editable class="header" style="padding-bottom:5px;"></div><hr class="expanded"/>
+		<div data-editable class="expanded body" style="display:none;"></div><hr class="expanded"/>
 		<!-- <div data-editable class="location" style="padding-bottom:5px;"></div> -->
 		<!-- ATLAS -->
 		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
@@ -113,7 +113,7 @@ el_section.on('cleanup', function() {
 });
 
 
-$(window).on('user_group_success user_group_failure', function() {
+$(window).on('user_group_success user_group_failure user_session_destroyed', function() {
 	el_section.triggerHandler('init');
 });
 $(SKY.History).on('construct.events', function(e, data) {

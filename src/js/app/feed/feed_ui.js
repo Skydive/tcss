@@ -46,7 +46,6 @@ Object.assign(Lib.Feed.UI, {
 
 			var el_clone = el_template_card.clone()
 				.show()
-				.addClass('showsort')
 				.attr('id', '')
 				.attr('blk_id', blk.blk_id);
 			

@@ -16,21 +16,18 @@ try {
 		blk_id, hash, metadata
 	FROM blk
 	WHERE (metadata ->> 'handler') = :handler
-	AND (metadata ->> 'feed_date')::bigint > :date_start
-	AND	(metadata ->> 'feed_date')::bigint < :date_end
-	AND active = TRUE";
+	AND (metadata ->> 'pinboard_position')::bigint IS NOT NULL
+	AND active = TRUE ORDER BY (metadata ->> 'pinboard_position')::bigint ASC";
 
 	$stmt = $db->prepare($query);
 	$result = $stmt->execute([
-		'handler' => $feed_type,
-		'date_start' => $date_start,
-		'date_end' => $date_end
+		'handler' => $feed_type
 	]);
 	SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
 	$hashes = $stmt->fetchAll();
 	
 	Output::SetNotify('status', 'success');
-	Output::SetNotify('feed_hashes', $hashes);
+	Output::SetNotify('pinboard_hashes', $hashes);
 	
 	$db->commit();
 } catch (SKYException $e) {

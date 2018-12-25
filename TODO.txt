@@ -70,7 +70,6 @@ Saturday,Sunday: RECODE WEBSITE FULLY
 
 
 LONG TERM TODO:
-
 - BEAUTIFY
 - LOAD EXTRA BELOW (count/index) generalise
 - FINISH README

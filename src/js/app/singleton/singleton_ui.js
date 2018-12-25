@@ -81,15 +81,19 @@ Object.assign(Lib.Singleton.UI, {
 		});
 		el_singleton.on('expand', function(e) {
 			$(this).find('.expanded').show();
+			$(this).find('.deflated').hide();
 			$(this).data('expanded', true);
 		});
 
 		el_singleton.on('deflate', function(e) {
 			$(this).find('.expanded').hide();
+			$(this).find('.deflated').show();
 			$(this).data('expanded', false);
 		});
 
 		el_singleton.on('edit', function(e) {
+			if(!el_singleton.data('expanded'))
+				$(this).triggerHandler('expand');
 			$(this).data('editing', true);
 			$(this).find('.default').hide();
 			$(this).find('.editing').show();
@@ -117,6 +121,7 @@ Object.assign(Lib.Singleton.UI, {
 		el_singleton.on('unedit', function(e) {
 			var editor = ContentTools.EditorApp.get();
 			editor.stop(true);
+			editor.destroy();
 
 			$(this).data('editing', false);
 			$(this).find('.default').show();

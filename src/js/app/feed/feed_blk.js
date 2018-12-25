@@ -15,11 +15,10 @@ Object.assign(Lib.Feed, {
 			var feed_out = [];
 			for(var i in feed_hashes) {
 				var feed = feed_hashes[i];
-				var md = JSON.parse(feed.metadata);
 
-				var date = md.feed_date;;
 				var cached_hash = localStorage.getItem("blk-"+feed.blk_id+"-hash") || "";
 				if(feed['hash'] == cached_hash) {
+					var md = JSON.parse(feed.metadata);
 					var cached_blk = JSON.parse(LZString.decompress(localStorage.getItem("blk-"+feed.blk_id)) || {})  || {};
 					feed_out.push(Object.assign(feed, {
 						'feed_date': md.feed_date,

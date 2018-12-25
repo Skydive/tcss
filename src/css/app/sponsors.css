@@ -1,0 +1,147 @@
+.populate .sponsors.card {
+	overflow: auto;
+
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.2s;
+	margin: 10px;
+	background-color: #FAFAFA;
+}
+.populate .sponsors.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.sponsors.card hr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.news.card h1 {
+	font-size: 24px;
+}
+.sponsors.card h2 {
+	font-size: 18px;
+}
+
+.sponsors.card .top.priori {
+	height:45px;
+}
+
+.sponsors.card .header {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 0 10px;
+}
+.sponsors.card .body {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 0 10px;
+}
+.sponsors.card .body p,
+.sponsors.card .body li {
+	text-align: left;
+}
+
+.sponsors.card .btn {
+	cursor:pointer;
+	transition:background-color 0.25s ease-in;
+}
+.sponsors.card .btn:hover {
+	background-color: #eee;
+}
+
+
+.sponsors.card .btn.bottom {
+	width:100%;
+}
+.sponsors.card .btn.bottom:hover {
+	background-color: #eee;
+}
+
+.sponsors.card .btn.edit,
+.sponsors.card .btn.exit {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+
+.sponsors.card .btn.exit {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+
+
+.sponsors.card .btn.exit {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+
+.sponsors.card .btn.delete {
+    position: absolute;
+	right: 50px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+
+.sponsors.card .btn.mov-left {
+    position: absolute;
+	left: 0px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+.sponsors.card .btn.add-left {
+    position: absolute;
+	left: 50px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+
+.sponsors.card .btn.mov-right {
+    position: absolute;
+	right: 0px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+.sponsors.card .btn.add-right {
+    position: absolute;
+	right: 50px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+
+.sponsors.card .btn.edit {
+    position: absolute;
+    right: 100px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+}
+
+.sponsors.card .editing {
+	display:none;
+}
+
+.sponsors.add {
+	font-size: inherit;
+	cursor: pointer;
+}
