@@ -1,31 +1,7 @@
-Sunday:
-- fix group permission management
-	- (Simplify - force TECH and above for editing all content) (PRIORI SPEED)
-- generalise block editing - trash Events:: backend
-	- blk_perms, blk_by_date
-	- create NEWS
-Wednesday:
-- code uploading of images
-- blk_image_ref
-- code blk_free_edit for blk_perms
-	- CODE EDITING POPUP?
-- code committee page
-Thursday:
-	- GENERAL BUGFIX
-Saturday,Sunday: RECODE WEBSITE FULLY
 
-- EXCEPTION CONFIG SEPARATION
-- VERSION LOCK STACK
-
-- Atlas fallback (remove atlas entirely?!?)
-- Generate atlas on user generation?
-
-- Add pagination and a dashboard navbar for further options
-	- Note: possible structural changes to build system/tool
-- Make everything mobile friendly
-	- Note: Time consuming (good practice)
-	- Implement by own bootstrap media queries and input boxes (steal what is necessary)
-
+- BUILD TOOL, SPLIT PRODUCTION/DEVELOPMENT
+- SPONSORS PAGE (Migrate event handlers to pinboard_ui.js)
+- SRCF DEMO
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy
@@ -33,7 +9,7 @@ Saturday,Sunday: RECODE WEBSITE FULLY
 	- Use PUMP at some point
 	- Raven crsid - uniqueness of username clash
 	- EVENTS user_owner --> group_owner
-	- CAM account WIPE redundancy...
+	- CAM account WIPE redundancy...(???)
 
 - Tweaks:
 	- FIX GLOBALS structure -> use an abstract class
@@ -42,31 +18,6 @@ Saturday,Sunday: RECODE WEBSITE FULLY
 	- Add loaders to ajax requests
 	- ajax timeout, callback
 	- session_id useragent comparison
-
-
-- Write ALL OF ContentTools
-	- Reverse engineer to add sub-instances... (CoffeeScript... :/)
-	- (+) -> Add article
-	- (E) -> Edit existing article
-	- Time/Date FILTER
-
-- Future Features: (AIM TO FINISH)
-	- Code the ContentTools (news) editing (HARD - rewrite their coffeescript???)
-		- Should I support image uploading?!?!?
-	- Code a society management pinboard?!?!? (Fucking TRELLO)
-	- Code the theming of the dashboard to scale
-	- Think of additional features to add
-	- Think of a way to PIVOT all of this even further
-		- TCSS --> All Societies --> ??? ??? ???
-	- Add info bubbles everywhere
-
-
-- Scalability:
-	- Atlas doesn't scale past 3 years...
-	- This is an intrinsic problem with the cambridge system
-
-- FIXED:
-	- fix userid precision loss on client (FIX)
 
 
 LONG TERM TODO:

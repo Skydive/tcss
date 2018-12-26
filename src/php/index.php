@@ -8,9 +8,10 @@ $inputs = $_POST ? $_POST : $_GET;
 $action = $inputs['action'];
 switch($action) {
 	case 'user_login':
-	case 'user_create':
+	//case 'user_create':
 	case 'user_verify':
 	case 'user_logout':
+	case 'user_pass_change':
 		require_once("scripts/user/$action.php");
 		break;
 	case 'atlas_fetch':
@@ -45,6 +46,7 @@ switch($action) {
 		break;
 	case 'ct_image_upload':
 		require_once("scripts/contenttools/$action.php");
+		break;
 	default:
 		die("invalid action: $action");
 		break;

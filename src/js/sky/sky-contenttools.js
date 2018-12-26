@@ -17,15 +17,19 @@ ContentTools.DEFAULT_TOOLS = [
         'unindent',
         'line-break'
     ], [
-        //'image',
+        'image',
         'video',
-        'preformatted',
-        'remove'
+        'preformatted'
     ], [
+        'remove',
         'undo',
         'redo',
     ]
 ];
+ContentTools.StylePalette.add([
+    new ContentTools.Style('Circle', 'circle', ['img']),
+    new ContentTools.Style('Border', 'border', ['img'])
+]);
 
 function imageUploader(dialog) {
      var image, xhr, xhrComplete, xhrProgress;
@@ -79,7 +83,10 @@ function imageUploader(dialog) {
                     };
 
                 // Populate the dialog
-                dialog.populate(image.url, image.size);
+                console.log(dialog);
+                //dialog.populate(image.url, image.size);
+                console.log(image.size);
+                dialog.save(image.url, image.size,{ 'alt': 'custom image...', 'data-ce-max-width': "600" });
 
             } else {
                 // The request failed, notify the user
@@ -105,4 +112,4 @@ function imageUploader(dialog) {
     });
     // Set up the event handlers
 }
-//ContentTools.IMAGE_UPLOADER = imageUploader;
+ContentTools.IMAGE_UPLOADER = imageUploader;

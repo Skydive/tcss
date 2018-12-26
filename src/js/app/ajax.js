@@ -9,6 +9,12 @@ Object.assign(Lib.Ajax, {
 				username: data.username,
 				password: data.password
 			}, null, "json");
+		},
+		PassChange: function(data) {
+			return $.post(Lib.Ajax.ENTRY_POINT, {
+				action: "user_pass_change",
+				password: data.password
+			}, null, "json");
 		}
 	},
 	Session: {
@@ -17,14 +23,7 @@ Object.assign(Lib.Ajax, {
 				action: "user_login",
 				username: data.username,
 				password: data.password
-			}, null, "json").done(function(json) {
-				if(json.type == "success") {
-					Cookies.set("session_token", json.session_token, {
-						expire: 365,
-						path: '/'
-					});
-				}
-			});
+			}, null, "json");
 		},
 		Destroy: function(data) {
 			return $.post(Lib.Ajax.ENTRY_POINT, {

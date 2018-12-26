@@ -7,7 +7,6 @@ require_once("lib/framework/auth/user.php");
 $username = (string)$inputs['username'];
 $password = (string)$inputs['password'];
 
-
 try {
 	SKYException::CheckNULL($username, "user", "username_unspecified");
 	SKYException::CheckNULL($password, "user", "password_unspecified");

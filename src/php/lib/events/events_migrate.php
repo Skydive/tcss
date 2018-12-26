@@ -31,7 +31,7 @@ foreach($evs as $ev) {
 			'owner_username' => 'rk582',
 			'owner_display_name' => 'Ruslan Kotlyarov',
 			'owner_group_name' => 'President',
-			'access_level' => 10
+			'owner_last_edit_date' => time()
 		])
 	]);
 	foreach($content as $refname => $refdata) {

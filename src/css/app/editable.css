@@ -43,3 +43,18 @@
 [data-editable] [contenteditable] {
     background-color: aliceblue;
 }
+
+[data-editable] .circle {
+    border-radius: 50%;
+}
+
+[data-editable] .border {
+    border: 2px solid lightgrey;
+}
+
+[data-editable] table {
+    width: 100%;
+}
+[data-editable] table * {
+    text-align: left;
+}

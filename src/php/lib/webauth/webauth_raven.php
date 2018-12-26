@@ -66,11 +66,11 @@ abstract class EWLSToken {
 }
 
 class WLSException extends Exception {
-	public const UNKNOWN_ERROR = 'An unknown error has occured. This is not ideal';
+	const UNKNOWN_ERROR = 'An unknown error has occured. This is not ideal';
 	// Why are we using a deprecated model like error codes?
 	// Perhaps it is a good idea to pay homage to the classical apache code,
 	// especially when in reality most of these errors will NEVER occur
-	public const ERROR_MESSAGES = [
+	const ERROR_MESSAGES = [
 		'200' => 'OK',
 		'410' => 'Authentication cancelled at user\'s request',
 		'510' => 'No mutually acceptable types of authentication available',
@@ -116,7 +116,7 @@ class WLSException extends Exception {
 
 
 class WLSToken {
-	private const SIG_BASE = [
+	const SIG_BASE = [
 		EWLSToken::VERSION,
 		EWLSToken::STATUS,
 		EWLSToken::MESSAGE,
@@ -170,10 +170,6 @@ class WLSToken {
 		$cur_time = time();
 		$skew = WLSGlobal::CLOCK_SKEW; // TODO: Allow this to be set in the query...
 		if($result > $cur_time+$skew) {
-            echo("Test memes!");
-            echo("!!!!");
-            echo("\nCur T: $cur_time");
-            echo("\nIssue: $result");
 			throw new WLSException([
 				'code' => '600',
 				'message' => 'The request appears to be coming from the future...',

@@ -2,6 +2,28 @@ if(!Lib)var Lib={};
 if(!Lib.User)Lib.User={};
 Object.assign(Lib.User, {
 	State: {},
+	PerformLogin: function(data) {
+		Lib.Ajax.Session.Login({
+			username: data.username,
+			password: data.password
+		}).done(function(json) {
+			if(json.type == "success") {
+				Cookies.set("session_token", json.session_token, {
+					expire: 365,
+					path: '/'
+				});
+				window.location.href = "/";
+				return;
+			} else {
+				Lib.App.Notify({
+					title: "Login failure...",
+					content: "Error: "+json.type,
+					wait: 2000,
+					icon: 'fa fa-times'
+				});
+			}
+		});
+	},
 	Init: function() {
 		// TODO: Deferred event for post_validation like
 		// $.when('user_token_validate user_atlas_validate user_group_validate')

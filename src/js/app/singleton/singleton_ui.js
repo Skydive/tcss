@@ -156,19 +156,20 @@ Object.assign(Lib.Singleton.UI, {
 
 		el_singleton.on('delete', function(e) {
 			var blk = $(this).data('blk');
-
-			$(this).triggerHandler('revert');
-			if(!$(this).attr('blk_id') || $(this).attr('blk_id') == "DUMMY") {
-				$(this).triggerHandler('delete_post', {
-					type: 'success'
-				});
-			} else {
-				Lib.Ajax.Singleton.Delete({
-					blk_id: blk.blk_id
-				}).done(function(json) {
-					el_singleton.triggerHandler('delete_post', json);
-				});
-			}
+			if (window.confirm("Are you sure you want to delete this element?")) {
+				$(this).triggerHandler('revert');
+				if(!$(this).attr('blk_id') || $(this).attr('blk_id') == "DUMMY") {
+					$(this).triggerHandler('delete_post', {
+						type: 'success'
+					});
+				} else {
+					Lib.Ajax.Singleton.Delete({
+						blk_id: blk.blk_id
+					}).done(function(json) {
+						el_singleton.triggerHandler('delete_post', json);
+					});
+				}
+        	}
 		});
 		return el_singleton;
 	}

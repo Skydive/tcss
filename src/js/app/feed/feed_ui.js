@@ -69,6 +69,17 @@ Object.assign(Lib.Feed.UI, {
 				} else {
 					el_singleton.find('.btn.link').hide();	
 				}
+
+				var lst = el_singleton.find('.last-edited');
+				if(blk_metadata.owner_username == null)lst.hide();
+				lst.find('.avatar').attr('data-jdenticon-value', blk_metadata.owner_username);
+				lst.find('.upper').text(blk_metadata.owner_display_name+" ("+blk_metadata.owner_username+")");
+				lst.find('.lower').text(blk_metadata.owner_group_name);
+				
+				var date = moment.unix(blk_metadata.owner_last_edit_date);
+				if(blk_metadata.owner_last_edit_date && date.isValid()) {
+					el_singleton.find('.lst-date').text(date.format("[at] HH:mm [on] DD[-]MM[-]YY"));
+				}
 			}).triggerHandler('update');
 
 			el_singleton.on('expand', function() {

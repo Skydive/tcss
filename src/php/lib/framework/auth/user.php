@@ -73,16 +73,13 @@ class User {
 	}
 
 	public static function CredentialsValidate($data) {
-		$auth_provider = array_key_exists('default', $GLOBALS['cfg']['auth_providers']) ? $GLOBALS['cfg']['auth_providers']['default'] : 0;
-
 		$db = $data['db'];
 
-		$query = "SELECT user_id, password_hash FROM users WHERE username=:username AND auth_provider=:auth_provider AND active=true LIMIT 1";
+		$query = "SELECT user_id, password_hash FROM users WHERE username=:username AND active=true LIMIT 1";
 		$stmt = $db->prepare($query);
 
 		$result = $stmt->execute([
-			'username' => $data['username'],
-			'auth_provider' => $auth_provider
+			'username' => $data['username']
 		]);
 		SKYException::CheckNULL($result, "db", $stmt->errorInfo()[2]);
 
@@ -106,7 +103,7 @@ class User {
 		]);
 
 		return [
-			'user_id' => $user_row-['user_id']
+			'user_id' => $user_row['user_id']
 		];
 	}
 

@@ -16,7 +16,7 @@
 			<!-- <a style="text-align:center;" href="javascript:SKY.History.pushState({}, '/sponsors');" class="button r">SPONSORS</a> -->
 			<!-- <a style="text-align:center;" href="javascript:SKY.History.pushState({}, '/sponsors');" class="button r">SPONSORS</a>
 			<a style="text-align:center;padding:0 10px;" href="javascript:SKY.History.pushState({}, '/committee');" class="button r">COMMITTEE</a> -->
-			<a href="javascript:Lib.Ajax.Raven.Redirect({redirect_url: 'https://'+window.location.hostname+'/'}).done(function(json) {window.location.href=json.auth_url;});" class="login button r">LOGIN</a>
+			<a class="hidden-xs login button r" href="javascript:SKY.History.pushState({}, '/login');">LOGIN</a>
 			<div class="indicator logout" style="font-family: 'Open Sans', sans-serif;padding: 0 25px 0 15px;display:flex;flex-direction:row;background-color:#555;align-items:center;justify-content:center;height:64px;cursor:pointer;">
 				<svg class="avatar" style="margin-right:12px;width:42px;height:42px;background-color:white;border-radius:50%;"></svg>
 				<div class="content" style="display:flex;flex-direction:column;">

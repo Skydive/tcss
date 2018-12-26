@@ -47,7 +47,9 @@ $GLOBALS['security']['exceptions']['default'] = [
 	'dashboard',
 	'session',
 	'feed',
-	'singleton'
+	'singleton',
+	'user',
+	'ct'
 ];
 $GLOBALS['security']['exceptions']['dev'] = [
 	'db'
@@ -56,5 +58,10 @@ $GLOBALS['security']['exceptions']['dev'] = [
 $GLOBALS['feed']['valid'] = [
 	'events',
 	'news'
-]
+];
+
+$GLOBALS['cfg']['web_root'] = "/www/build";
+$GLOBALS['cfg']['upload_dir_rel'] = "/uploads";
+$GLOBALS['cfg']['upload_dir'] = $GLOBALS['cfg']['web_root'].$GLOBALS['cfg']['upload_dir_rel'];
+
 ?>

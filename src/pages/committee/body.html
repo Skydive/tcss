@@ -93,8 +93,6 @@ $("#committee-section").on('init', function() {
 		$(el_singleton).find('.default.btn.mov-right').on('click', function() {
 			var item_list = el_populate.data('isotope').filteredItems;
 			if(el_singleton[0] === item_list[item_list.length-1].element)return;
-			var item_list = el_populate.data('isotope').filteredItems;
-			if(el_singleton[0] === item_list[0].element)return;
 			// find location	
 			var i = 0;
 			for(i=0;i<item_list.length;i++){if(el_singleton[0] === item_list[i].element)break;}
@@ -124,13 +122,14 @@ $("#committee-section").on('init', function() {
 				var pi = parseInt($(item_list[i].element).attr('pinboard_position'));
 				var pj = parseInt($(item_list[j].element).attr('pinboard_position'));
 				var mp = Lib.Pinboard.CREATE_POSITION(pi, pj);
-				if(mp == pi) {
+				if(Math.abs(mp - pi) <= 1) {
 					Lib.App.Notify({
 						title: "PINBOARD SATURATION --- SEVERE ERROR!",
-						content: "RECREATE THE ENTIRE AREA - DELETE EVERYTHING",
+						content: "RECREATING THE ENTIRE AREA",
 						wait: 0,
 						icon: 'fa fa-times'
 					});
+					el_section.triggerHandler('saturation_react');
 					return;
 				}
 				pinboard_position = mp;
@@ -170,13 +169,14 @@ $("#committee-section").on('init', function() {
 				var pi = parseInt($(item_list[i].element).attr('pinboard_position'));
 				var pj = parseInt($(item_list[j].element).attr('pinboard_position'));
 				var mp = Lib.Pinboard.CREATE_POSITION(pi, pj);
-				if(mp == pi) {
+				if(Math.abs(mp - pi) <= 1) {
 					Lib.App.Notify({
 						title: "PINBOARD SATURATION --- SEVERE ERROR!",
-						content: "RECREATE THE ENTIRE AREA - DELETE EVERYTHING",
+						content: "RECREATING THE ENTIRE AREA",
 						wait: 0,
 						icon: 'fa fa-times'
 					});
+					el_section.triggerHandler('saturation_react');
 					return;
 				}
 				pinboard_position = mp;
@@ -203,7 +203,23 @@ $("#committee-section").on('init', function() {
 		});
 		$(el_singleton).find('.priori').show();
 	});
+	$(el_section).on('saturation_react', function() {
+			var item_list = el_populate.data('isotope').filteredItems;
+			var j = 0;
+			for(var i in item_list) {
+				var el = item_list[i].element;
+				var blk = $(el).data('blk');
+				Lib.Ajax.Singleton.Update({
+					blk_id: blk.blk_id,
+					metadata: {
+						pinboard_position: j
+					}
+				});
+				j += Lib.Pinboard.CREATE_INTERVAL;
 
+			}
+		});
+	
 	// Load Events
 	Lib.Pinboard.Fetch({
 		feed_type: 'committee',
