@@ -59,6 +59,7 @@
 .populate>ul>li[inactive] {
 	background-color: darkgrey;
 	pointer-events: none;
+	display: none;
 }
 .populate>ul>li:last-child {
 	margin-bottom: 0;

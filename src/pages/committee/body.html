@@ -59,7 +59,7 @@ $("#committee-section").on('init', function() {
 	var committee_member = false;
 	if(Lib.User.State.type == "success") {
 		var access_level = (Lib.User.Group.State.access_level);
-		if(access_level < Lib.User.Group.EAccessLevel.COMMITTEE) {
+		if(access_level <= Lib.User.Group.EAccessLevel.COMMITTEE) {
 			$(this).find('.committee.add').show();
 			committee_member = true;
 		}
@@ -68,10 +68,13 @@ $("#committee-section").on('init', function() {
 		var el_singleton = data.el_singleton;
 		var el_populate = data.el_populate;
 		el_populate.append(el_singleton);
+
 		$(el_singleton).on('edit delete unedit expand deflate', function() {
 			el_populate.isotope('layout');
 		});
 		if(!committee_member)return;
+
+
 
 		$(el_singleton).find('.default.btn.mov-left').on('click', function() {
 			var item_list = el_populate.data('isotope').filteredItems;
@@ -255,7 +258,7 @@ $(".committee.add").on('click', function() {
 	var committee_member = false;
 	if(Lib.User.State.type == "success") {
 		var access_level = (Lib.User.Group.State.access_level);
-		if(access_level < Lib.User.Group.EAccessLevel.COMMITTEE) {
+		if(access_level <= Lib.User.Group.EAccessLevel.COMMITTEE) {
 			committee_member = true;
 		}
 	}

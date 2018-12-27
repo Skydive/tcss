@@ -47,7 +47,6 @@ INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'stud
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'President', 10);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'General Committee', 20);
 
-
 CREATE TABLE atlas (
 	id SERIAL NOT NULL PRIMARY KEY,
 	crsid VARCHAR(16) NOT NULL,

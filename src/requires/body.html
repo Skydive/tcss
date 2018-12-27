@@ -32,6 +32,10 @@
 <script>
 $(function() {
 	$(".header .indicator.logout").on('click', function() {
+		if(!Lib.User.Group.State.access_level
+		|| Lib.User.Group.State.access_level > Lib.User.Group.EAccessLevel.COMMITTEE) {
+			return;
+		}
 		SKY.History.pushState({}, '/dashboard');
 	});
 })

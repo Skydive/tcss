@@ -91,7 +91,7 @@
 			}
 		},
 		"php": {
-			"processor": "clone",
+			"processor": "php",
 			"options": {
 				"prefix": "php",
 				"dest": "php"

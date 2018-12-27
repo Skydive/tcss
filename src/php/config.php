@@ -6,10 +6,6 @@ date_default_timezone_set('UTC');
 // TODO: DEV_LEVEL + ENUMS
 DEFINE('DEVELOPMENT_MODE', true);
 
-
-
-// DEVELOPMENT_MODE ? 'dev.precess.io' : 
-
 $GLOBALS['cfg'] = [];
 $GLOBALS['cfg']['hostname'] = $_SERVER['HTTP_HOST'];
 
