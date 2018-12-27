@@ -68,7 +68,7 @@ $("#news-section").on('init', function() {
 
 	if(Lib.User.State.type == "success") {
 		var access_level = (Lib.User.Group.State.access_level);
-		if(access_level < Lib.User.Group.EAccessLevel.COMMITTEE) {
+		if(access_level <= Lib.User.Group.EAccessLevel.COMMITTEE) {
 			$(this).find('.news.add').show();
 		}
 	}
