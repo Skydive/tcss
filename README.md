@@ -1,6 +1,17 @@
 TCSS website
 Started in July 2018, finished (mostly) in early 2019
 
+Broadly speaking, everything should work on the system.
+
+Any changes to a page will require a re-run of the build tool (which may not work on the srcf)
+
+
+
+
+
+
+
+
 The most complicated features of this project are:
 - Docker container
 - Custom HTML build tool

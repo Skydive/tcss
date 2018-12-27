@@ -1,7 +1,7 @@
 
-- BUILD TOOL, SPLIT PRODUCTION/DEVELOPMENT
-- SPONSORS PAGE (Migrate event handlers to pinboard_ui.js)
-- SRCF DEMO
+- BUILD TOOL, SPLIT PRODUCTION/DEVELOPMENT 27
+- SPONSORS PAGE (Migrate event handlers to pinboard_ui.js) 28
+- SRCF DEMO - 30
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy
