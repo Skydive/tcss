@@ -45,9 +45,10 @@
 		<div data-editable class="editing btn bottom"><i class="fa fa-save" style="font-size:20px;"></i></div>
 	</div>
 </div>
-<section id="top" style="background-image:url(/static/backgrounds/bk1.png);background-size:cover;background-repeat:no-repeat;background-position:top center;background-attachment: fixed;color:white;height:calc(100vh - 64px);">
-	<div class="content" style="position:relative;padding:25px 0;">
+<section id="top" style="background-image:url(/static/backgrounds/bk1.png);background-size:cover;background-repeat:no-repeat;background-position:top center;background-attachment: fixed;color:white;min-height:calc(100vh - 64px);">
+	<div class="container" style="position:relative;">
 		<div class="row">
+			<div style="height:50px"></div>
 			<div class="col-xs-12" style="height:100%;display:flex;flex-direction:column;align-items:center;">
 				<h1>Trinity College Science Society</h1><br>
 				<img src="/static/colleges/TRIN.svg" width="196" style="margin-bottom:25px;"></img>
@@ -68,8 +69,8 @@
 		</div>
 	</div>
 </section>
-<section id="news-section">
-	<div class="c-loader" style="position:fixed;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
+<section id="news-section" style="position:relative;">
+	<div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
 		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
 			<h4>LOADING NEWS...</h4>
 			<div class="lds-ellipsis">
@@ -84,8 +85,8 @@
 		</div>
 	</div>
 </section>
-<section id="committee-section">
-	<div class="c-loader" style="position:fixed;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
+<section id="committee-section" style="position:relative;">
+	<div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
 		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
 			<h4>LOADING SPONSORS...</h4>
 			<div class="lds-ellipsis">
@@ -102,42 +103,57 @@
 </section>
 <section style="padding:15px 0;">
 	<div class="container">
-		<div class="row">
+		<div class="row" class="lst">
 			<div class="col-xs-12 col-md-6 col-lg-4">
 				<h3>Very Active</h3>
 				<div class="lsticon"><i class="fa fa-smile-o"></i></div>
-				<p>We are incredibly active, providing weekly talks with distinguished speakers.</p>
+				<div class="lstdesc">
+					<p>We are incredibly active, providing weekly talks with distinguished speakers.</p>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-6 col-lg-4">
 				<h3>Annual Symposium & Dinner</h3>
 				<div class="lsticon"><i class="fa fa-university"></i></div>
-				<p>TCSS hosts an annual symposium, where all members of the university and public can attend talks. This is followed by our annual dinner.</p>
+				<div class="lstdesc">
+					<p>TCSS hosts an annual symposium, where all members of the university and public can attend talks. This is followed by our annual dinner.</p>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-6 col-lg-4">
 				<h3>Free of Charge</h3>
 				<div class="lsticon"><i class="fa fa-heart-o"></i></div>
-				<p>While based in Trinity College, all talks are free of charge and open to all members of the university and the general public, and are accompanied with generous refreshments.</p>
+				<div class="lstdesc">
+					<p>All talks are free of charge and open to all members of the university and the general public.</p>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-6 col-lg-4">
 				<h3>Calendar</h3>
 				<div class="lsticon"><i class="fa fa-calendar-o"></i></div>
-				<p>As a student, you can also subscribe to our official calendar of our events
+				<div class="lstdesc">
+					<p>As a student, you can also subscribe to our official calendar of our events
 					<a href="http://talks.cam.ac.uk/show/index/28326">here.</a></p>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-6 col-lg-4">
 				<h3>Mailing List</h3>
 				<div class="lsticon"><i class="fa fa-envelope-o"></i></div>
-				<p>Click <a href="http://talks.cam.ac.uk/show/index/28326">here</a> to join our mailing list or change subscription details.</p>
+				<div class="lstdesc">
+					<p>Click <a href="http://talks.cam.ac.uk/show/index/28326">here</a> to join our mailing list or change subscription details.</p>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-6 col-lg-4">
 				<h3>Facebook</h3>
 				<div class="lsticon"><i class="fa fa-facebook"></i></div>
-				<p>Click <a href="https://www.facebook.com/trinitycollegesciencesociety/">here</a> to be redirected to our facebook page for additional information.</p>
+				<div class="lstdesc">
+					<p>Click <a href="https://www.facebook.com/trinitycollegesciencesociety/">here</a> to be redirected to our facebook page for additional information.</p>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 <style>
+.lstdesc {
+	height: 64px;
+}
 .lsticon {
 	display:flex;flex-direction:column;align-items:center;justify-content:center;height:256px;
 	font-size: 196px;
@@ -194,7 +210,6 @@ $("#news-section").on('init', function() {
 		if(!first_after) {
 			$("#news-section").hide();
 		}
-		console.log('test');
 		var el_populate = el_section.find('.news.populate');
 		el_section.trigger('generate', {
 			blk: first_after,
