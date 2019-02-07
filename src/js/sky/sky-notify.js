@@ -66,9 +66,7 @@ SKY.UI = {
 				
 				if(!animation && fadeIn){
 					el.fadeIn(fadeIn);
-				}
-				else
-				{
+				} else {
 					el.show();
 				}
 
@@ -109,43 +107,3 @@ SKY.UI = {
 		}
 	},
 };
-
-$('.btn1').on('click',function(){
-	SKY.UI.Notify.Show({
-		el:$('#notifyarea'),
-		title:'Persistent Example!',
-		content:'This notification requires the user to press the <b>X</b> button to close',
-		icon:'fas fa-info',
-		animation:'fadeInRight',
-		animationSpeed:'300',
-		expandTime:50,
-		fade:{
-			in:500,
-			wait:0,
-			out:200
-		},
-		style:{
-			background:'#1da1f2'
-		}
-	});
-});
-
-$('.btn2').on('click',function(){
-	SKY.UI.Notify.Show({
-		el:$('#notifyarea'),
-		title:'Timed Example!',
-		content:'This notification will fade away in 5 seconds',
-		icon:'fas fa-info',
-		animation:'fadeInRight',
-		animationSpeed:'300',
-		expandTime:50,
-		fade:{
-			in:500,
-			wait:5000,
-			out:200
-		},
-		style:{
-			background:'#ff5050'
-		}
-	});
-});

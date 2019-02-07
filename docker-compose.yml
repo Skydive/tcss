@@ -8,8 +8,9 @@ services:
       - ./deploy/:/www/deploy/
       - ./stack/nginx/:/data/
     hostname: "tcss-nginx"
-    networks:
-      - tcss
+    ports:
+      - "80:80"
+      - "443:443"
     depends_on:
       - php-fpm
       - pgsql
@@ -21,8 +22,6 @@ services:
       - ./deploy/:/www/deploy/
       - ./stack/php-fpm/:/data/
     hostname: "tcss-php-fpm"
-    networks:
-      - tcss
   pgsql:
     build: ./docker-alpine/pgsql/
     command: ["postgres", "-D", "/data/db"]
@@ -30,9 +29,6 @@ services:
       - ./build/:/www/build/
       - ./deploy/:/www/deploy/
       - ./stack/pgsql/:/data/
+    ports:
+      - "5432:5432"
     hostname: "tcss-pgsql"
-    networks:
-      - tcss
-networks:
-  tcss:
-    name: tcss

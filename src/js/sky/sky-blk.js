@@ -1,7 +1,21 @@
+/*
+	Blk Manager
+	Date created: 3-12-18
+	
+	We seek methods to allow dynamic data to work correctly, and notably
+	reduce the amount of data exchanged with the server. 
+
+	Teaches a profound lesson on the concept of 'reverse scaling',
+	using localStorage, and no lzo compression. This method of
+	storing dynamic content will fail within a year.
+*/
+
+//-------------------- GLOBALS --------------------
 if(!SKY)var SKY={};
 if(!SKY.Blk)SKY.Blk={};
 if(!SKY.Ajax)SKY.Ajax={};
 
+//--------------- BACKEND INTERFACE ---------------
 Object.assign(SKY.Ajax, {
 	ENTRY_POINT: "/php/index.php", 
 	Blk: {
@@ -30,6 +44,7 @@ Object.assign(SKY.Ajax, {
 	}
 });
 
+//-------------------- BLK CLASS ------------------
 Object.assign(SKY.Blk, {
 	Init: function() {
 		$('[blk_id]').map(function(k, v) {

@@ -102,7 +102,7 @@ Object.assign(Lib.User, {
 		},
 		/*
 			The editing of users can be broken down into two distinct stages.
-			1. Can a actually edit b
+			1. Can user a actually edit b
 				1.1. Cannot edit SELF
 				1.2. Cannot edit a user of the same access level (unless a is DEVELOPER or PRESIDENT)
 				1.3. Cannot edit a user of lower access level

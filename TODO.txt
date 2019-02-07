@@ -3,21 +3,19 @@
 - SPONSORS PAGE (Migrate event handlers to pinboard_ui.js) 28
 - SRCF DEMO - 30
 
+
+
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy
-	- Speed up deploy (callbacks aren't managed properly in the pipeline)
-	- Use PUMP at some point
-	- Raven crsid - uniqueness of username clash
-	- EVENTS user_owner --> group_owner
-	- CAM account WIPE redundancy...(???)
-
+	- Image rescaling problem
+	
 - Tweaks:
 	- FIX GLOBALS structure -> use an abstract class
 	- Fetch ALL information of user upon validating token
 		- Make this scale reasonably well
 	- Add loaders to ajax requests
 	- ajax timeout, callback
-	- session_id useragent comparison
+	- session_id useragent comparison (Not EXACTLY necessary)
 
 
 LONG TERM TODO:

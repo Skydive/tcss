@@ -1,15 +1,24 @@
+/*
+	Ajax Object
+	
+	Contains the interface for communicating with the backend for user modification, and session management.
+*/
+
+//-------------------- GLOBALS --------------------
 if(!Lib)var Lib = {};
 if(!Lib.Ajax)Lib.Ajax={};
+
+//--------------- BACKEND INTERFACE ---------------
 Object.assign(Lib.Ajax, {
 	ENTRY_POINT: "/php/index.php", 
 	User: {
-		Create: function(data) {
+		/* Create: function(data) {
 			return $.post(Lib.Ajax.ENTRY_POINT, {
 				action: "user_create",
 				username: data.username,
 				password: data.password
 			}, null, "json");
-		},
+		}, */
 		PassChange: function(data) {
 			return $.post(Lib.Ajax.ENTRY_POINT, {
 				action: "user_pass_change",
