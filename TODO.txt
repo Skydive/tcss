@@ -1,14 +1,14 @@
 
-- BUILD TOOL, SPLIT PRODUCTION/DEVELOPMENT 27
-- SPONSORS PAGE (Migrate event handlers to pinboard_ui.js) 28
-- SRCF DEMO - 30
-
 
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy
 	- Image rescaling problem
-	
+	- Dashboard
+	- Mobile menu
+	- Pinboard check
+	- Group priority rundown
+		
 - Tweaks:
 	- FIX GLOBALS structure -> use an abstract class
 	- Fetch ALL information of user upon validating token

@@ -6,7 +6,7 @@
 //	Thanks To:	https://github.com/cambridgeuniversity/mod_ucam_webauth/blob/master/mod_ucam_webauth.c
 //	No More Of:	https://github.com/cambridgeuniversity/ucam-webauth-php/blob/master/ucam_webauth.php
 //	Stripped out all of the session_cookie handling code - I am very uninterested in letting raven
-//	handle sessions for me, while I am perfectly able to. This is a merely remnant of the apache module
+//	handle sessions for me, while I am perfectly able to. This is merely a remnant of the apache module
 //	where it was necessary for file access :)
 // ---------------------------------------
 

@@ -45,6 +45,7 @@ INSERT INTO groups (group_id, name, display_name, access_level) VALUES (1, 'unas
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'student', 'Student', 100);
 
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'President', 10);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'Website Officer', 15);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'General Committee', 20);
 
 CREATE TABLE atlas (
@@ -57,7 +58,6 @@ CREATE TABLE atlas (
 );
 CREATE UNIQUE INDEX index_atlas_crsid ON atlas (crsid);
 CREATE INDEX index_atlas_surname ON atlas (surname);
-
 
 CREATE TABLE blk (
 	id SERIAL NOT NULL PRIMARY KEY,
@@ -78,18 +78,6 @@ CREATE TABLE blk_ref (
 CREATE UNIQUE INDEX index_blk_ref_blk_ref_id ON blk_ref (blk_ref_id);
 CREATE INDEX index_blk_ref_name ON blk_ref (name);
 CREATE INDEX index_blk_ref_blk_id ON blk_ref (blk_id);
-
--- CREATE TABLE events (
--- 	id SERIAL NOT NULL PRIMARY KEY,
--- 	event_id BIGINT NOT NULL,
--- 	blk_id BIGINT NOT NULL,
--- 	user_owner BIGINT NOT NULL,
--- 	event_date TIMESTAMP NOT NULL,
--- 	active BOOLEAN NOT NULL DEFAULT 1::BOOLEAN
--- );
--- CREATE UNIQUE INDEX index_events_event_id ON events (event_id);
--- CREATE INDEX index_events_event_date ON events (event_date);
-
 
 CREATE INDEX index_blk_meta_handler ON blk ((metadata ->> 'handler'))
 	WHERE (metadata ->> 'handler') IS NOT NULL;
