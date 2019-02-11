@@ -9,7 +9,7 @@
 
 abstract class Query {
 	const ACCESS_LEVEL_MIN = 1;
-	const ACCESS_LEVEL_MAX = 256;
+	const ACCESS_LEVEL_MAX = 100;
 	const DEFAULT_COUNT = 10;
 };
 abstract class Modify {

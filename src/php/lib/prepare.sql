@@ -45,8 +45,11 @@ INSERT INTO groups (group_id, name, display_name, access_level) VALUES (1, 'unas
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'student', 'Student', 100);
 
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'President', 10);
-INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'Website Officer', 15);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'General Committee', 20);
+
+
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (5, 'techmology', 'Website Maintenance', 15);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (6, 'publicity', 'Publicity Officer', 15);
 
 CREATE TABLE atlas (
 	id SERIAL NOT NULL PRIMARY KEY,

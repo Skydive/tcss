@@ -1,34 +1,8 @@
-
-
-.atlas-entry .title {
-	font-size: 20px;
-	font-weight: 200;
-}
-.atlas-entry .college {
-	font-size: 16px;
-	font-weight: 200;
-}
-.atlas-entry .group {
-	font-size: 16px;
-	font-weight: 100;
-}
-
-.selection input {	
-	border: none;
-	outline: none;
-
-	padding-left: 10px;
-	height: 24px;
-	line-height: 24px;
-	
-	font-size: 20px;
-	font-weight: 100;
-}
-.populate {
+#dashboard-groups .populate {
 	overflow-y: scroll;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 }
-.populate>ul {
+#dashboard-groups .populate>ul {
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-left: 0;
@@ -37,7 +11,7 @@
 	flex-direction: column;
 	list-style: none;
 }
-.populate>ul>li {
+#dashboard-groups .populate>ul>li {
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 0;
@@ -49,34 +23,33 @@
 	background-color: #fff;
 	transition: background-color 0.5s ease;
 }
-.populate>ul>li:not([inactive]):not([selected]):hover {
+#dashboard-groups .populate>ul>li:not([inactive]):not([selected]):hover {
 	background-color: #FAFAFA;
 }
-.populate>ul>li[selected] {
+#dashboard-groups .populate>ul>li[selected] {
 	background-color: lightgrey;
 }
 /* REMOVE INACTIVE */
-.populate>ul>li[inactive] {
+#dashboard-groups .populate>ul>li[inactive] {
 	background-color: darkgrey;
 	pointer-events: none;
-	display: none;
 }
-.populate>ul>li:last-child {
+#dashboard-groups .populate>ul>li:last-child {
 	margin-bottom: 0;
 }
-.populate>ul>li>.left>.avatar{
+#dashboard-groups .populate>ul>li>.left>.avatar{
 	width: 64px;
 	height: 64px;
 	border-radius: 50%;
     background-color: white;
     padding: 4px;
 }
-.populate>ul>li>.right {
+#dashboard-groups .populate>ul>li>.right {
 	padding-left: 12px;
 	text-align: left;
 	flex-grow: 1;
 }
-.populate>ul>li>.right>.container {
+#dashboard-groups .populate>ul>li>.right>.container {
 	text-align: left;
 	display: flex;
 	flex-direction: column;
@@ -84,14 +57,14 @@
 	justify-content: left;
 }
 
-.group-options {
+#dashboard-groups .group-options {
 	display: flex;
 	flex-direction: row-reverse;
 	flex-wrap: wrap;
 	align-items: center;
 	height: 84px;
 }
-.group-options .icon {
+#dashboard-groups .group-options .icon {
 	height: 32px;
 	width: 32px;
 	line-height: 32px;
@@ -102,23 +75,10 @@
 	border-radius: 5px;
 	transition: background-color 0.5s ease;
 }
-.group-options .icon:hover {
+#dashboard-groups .group-options .icon:hover {
 	background-color: lightgrey;
 }
 
-.group-options button {
+#dashboard-groups .group-options button {
 	height: 34px;
-}
-
-.access-level-slider {
-	margin: 20px 30px 20px 10px;
-}
-
-.access-level-slider>.ui-slider-handle {
-	width: 3em;
-	height: 1.6em;
-	top: 50%;
-	margin-top: -.8em;
-	text-align: center;
-	line-height: 1.6em;
 }

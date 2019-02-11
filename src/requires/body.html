@@ -32,7 +32,7 @@
 <script>
 $(function() {
 	$(".header .indicator.logout").on('click', function() {
-		if(!Lib.User.Group.State.access_level
+		if(!Lib.User.Group.State
 		|| Lib.User.Group.State.access_level > Lib.User.Group.EAccessLevel.COMMITTEE) {
 			return;
 		}
@@ -53,7 +53,7 @@ $(window).on('user_session_destroyed', function(e, data) {
 
 $(window).on('user_atlas_success', function(e, data) {
 	$(".logout.indicator .upper").text(data.display_name+" ("+data.crsid+")");
-	$(".logout.indicator .avatar").attr('data-jdenticon-value', data.crsid);
+	$(".logout.indicator .avatar").jdenticon(data.crsid);
 });
 $(window).on('user_group_success', function(e, data) {
 	$(".logout.indicator .lower").text(data.display_name);

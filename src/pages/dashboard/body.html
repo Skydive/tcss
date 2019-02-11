@@ -41,13 +41,13 @@ $(function() {
 });
 
 $(SKY.History).on('construct', function() {
-	if(!Lib.User.Group.State.access_level
+	if(!Lib.User.Group.State
 	|| Lib.User.Group.State.access_level > Lib.User.Group.EAccessLevel.COMMITTEE) {
 		window.location.href = "/";
 	}
 });
 $(window).on('user_group_success user_group_failure user_session_destroyed', function() {
-	if(!Lib.User.Group.State.access_level
+	if(!Lib.User.Group.State
 	|| Lib.User.Group.State.access_level > Lib.User.Group.EAccessLevel.COMMITTEE) {
 		window.location.href = "/";
 	}

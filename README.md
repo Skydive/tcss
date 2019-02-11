@@ -192,8 +192,11 @@ __Relevant Links__
 [PHP authenticator](https://github.com/cambridgeuniversity/ucam-webauth-php) 
 [WAA2WLS Protocol](https://raven.cam.ac.uk/project/waa2wls-protocol.txt)
 
+### History Hooks
+The build tool, as described earlier, generates an `index.html` and `content.html` file. Page transitions are managed by `/src/js/app/sky_history.js`, and only the `content.html` section of the page is dynamically loaded in. This allows for seamless page transitions, and prevents the website from flickering when the page is changed, as only the necessary sections are reloaded.
+
 ### Sessions
-Session management is vital for persistent logins. The pgsql database contains a `logins` table, recording necessary information about successful authentications. Upon a successful login, a random `SHA-512` hash is generated, and stored as a cookie with key `session_cookie`. This is sent to the server to authenticate future requests instead of 
+Session management is vital for persistent logins. The pgsql database contains a `logins` table, recording necessary information about successful authentications. Upon a successful login, a random `SHA-512` hash is generated, and stored as a cookie with key `session_cookie`. This is sent to the server to authenticate all future requests, until the session_token has been invalidated due to expiration, or the user logging out.
 
 __Relevant Source Files__
 Session management: `/src/php/lib/framework/auth/session.php`
@@ -212,7 +215,7 @@ Consider a web page consisting of 100 seperate news articles. Each article consi
 Each individual header, content and footer. Each news article may be assigned a seperate id, crc32 hash and then cached in browser localstorage. This is a total of 300 hash comparisons, and 300+ fields in localstorage. Incredibly impractical.
 
 __BLK__
-Introduce the concept of a blk. A blk contains within it, references to the header, footer and body of the news article. The blk stores a combined hash, of everything it refers to. When a single reference of the blk has its data changed, the hash of the blk will then be recalculated, and everything it references will be fetched again by clients. 
+A blk contains within it, references to the header, footer and body of the news article. The blk stores a combined hash, of everything it refers to. When a single reference of the blk has its data changed, the hash of the blk will then be recalculated, and everything it references will be fetched again by clients. 
 
 The stored _blks_ on the client are lzo compressed, as json is an inefficient format for storing data. This ensures that the ~8MB localstorage cap will not be exceeded.
 
@@ -234,15 +237,15 @@ The featureset required is not met with WordPress. Raven authentication and user
 Making a website quickly in wordpress has no educational aspect to it. I am fortunate to still be young and not in full time work, and to have the spare time to actually pursue the acquisition of new skills and knowledge. Given that I have the time and that the skills acquired would greatly benefit me immediate future and later in life. It is a task that is optimal for a holiday project, and surely the university should be supportive of this endeavor.
 
 ## Personal Background
-I am a student who is genuinely passionate about software development, and I have been programming, primarily as a hobby, from a young age.
+My name is Khalid Aleem (ka476). I am a student who is genuinely passionate about software development, and I have been programming, primarily as a hobby, from a very young age.
 
-Given that I've spent over 2000 hours, over the course of 9 years learning how to code. (See https://github.com/Skydive/), 
+Given that I've spent over 2000 hours, over the course of 9 years, learning how to code. (See https://github.com/Skydive/), I feel as if I have the necessary skillset to make a new website for TCSS.
 
 Past projects include:
-- A Steam Chatbot (Written in C#)
-- C 3D Rendering Engine
-- WebGL Sprite Ship Game
-- C Neural Network (MNIST ~80% coverage)
+- A Steam Chatbot (Written in C#) (2013-14)
+- C++ 3D Rendering Engine (2015)
+- WebGL Sprite Ship Game (2017)
+- C++ Neural Network (MNIST ~80% coverage) (2017)
 
 Recently, I've spent over 100 hours in the summer holiday period writing code for relevant web technologies and developing a familiarity with these languages: `PHP/HTML/JS/SQL`. 
 I've spent some time reading dev/techblogs to understand the best and necessary practices.
@@ -254,8 +257,9 @@ The internet is the inevitable future of technology. Developing the necessary sk
 ## Aims for the society
 The current website is incredibly old and unmaintainable. I feel it sets an incredibly negative image to those who are also passionate about software development and web technologies, especially in industry.
 
-The dynamically generated php pages, overall lack of static content, and 
-Furthermore, the admin section involves inserting raw html code.
+The dynamically generated php pages, overall lack of static content, and poorly done stylesheet makes the TCSS website visually resemble something from the 1990s, and functionally it resembles the first incarnation of facebook.
+
+Furthermore, the admin section involves inserting raw html code. This demonstrates the unmaintainability of the website. Editing raw code should not be necessary to modify the content of the site.
 
 Moreover, I feel a deep sense of fulfillment for improving it.
 
@@ -268,6 +272,12 @@ Making a website for TCSS, gives me a greater ability to compete, and demonstrat
 
 Given this very personal connection, it is also in my best interest to maintain the site and ensure it is up.
 
-## Time Spent
-Raven authentication - 3 days
-Atlas fetching - 2 days
+## Time Spent  
+Users/Sessions - 3 days
+Raven authentication - 3 days  
+Atlas fetching - 1 day
+Dynamic content - 1 week
+
+To retain the degree of concentration necessary to write and design the new website, I resided in college over the Winter vacation. I therefore propose that the society reimburses me money equivalent to, or greater than my winter room rent. (£1000)
+
+Given that the society recently applied for £1500 to get a contractor to make a new website, this is significantly undercutting that amount.

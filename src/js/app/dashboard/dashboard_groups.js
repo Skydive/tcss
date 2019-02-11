@@ -45,7 +45,7 @@ Object.assign(Lib.Dashboard.UI, {
 				div.attr('group_id', entry.group_id);
 				div.find(".title").text(entry.display_name);
 				div.find(".college").text("Level: "+entry.access_level);
-				div.find(".avatar").attr('data-jdenticon-value', entry.name);
+				div.find(".avatar").jdenticon(entry.name);
 
 				div.appendTo(el_selection.find('.populate>ul'));
 
@@ -134,7 +134,18 @@ Object.assign(Lib.Dashboard.UI, {
 				div.find(".title").text(entry.display_name+" ("+entry.username+")");
 				div.find(".college").text(entry.college);
 				//div.find(".group").text(entry.group_name);
-				div.find(".avatar").attr('data-jdenticon-value', entry.username);
+				div.find(".avatar").jdenticon(entry.username);
+
+				Lib.User.Group.CanEdit({
+					a: {
+						user_id: Lib.User.State.user_id,
+						access_level: Lib.User.Group.State.access_level
+					},
+					b: {
+						user_id: -1,
+						access_level: entry.access_level
+					}
+				}) ? div.find('.group-options').show() : div.find('.group-options').hide();
 
 				div.appendTo(el_users.find('.populate>ul'));
 
@@ -173,7 +184,7 @@ Object.assign(Lib.Dashboard.UI, {
 
 			el_users.on('update', function() {
 				var group_data = $(this).data('group_data');
-				el_users.find('.group-info .avatar').attr('data-jdenticon-value', group_data.name);
+				el_users.find('.group-info .avatar').jdenticon(group_data.name);
 				el_users.find('.group-info .title').text(group_data.display_name);
 				el_users.find('.group-info .college').text("Level: "+group_data.access_level);
 
@@ -269,7 +280,7 @@ Object.assign(Lib.Dashboard.UI, {
 					div.find(".title").text(entry.display_name+" ("+entry.username+")");
 					div.find(".college").text(entry.college);
 					div.find(".group").text(entry.group_name);
-					div.find(".avatar").attr('data-jdenticon-value', entry.username);
+					div.find(".avatar").jdenticon(entry.username);
 
 					div.appendTo(modal_ua.find('.populate>ul'));
 
@@ -415,7 +426,7 @@ Object.assign(Lib.Dashboard.UI, {
 					div.attr('group_id', entry.group_id);
 					div.find(".title").text(entry.display_name);
 					div.find(".college").text("Level: "+entry.access_level);
-					div.find(".avatar").attr('data-jdenticon-value', entry.name);
+					div.find(".avatar").jdenticon(entry.name);
 					div.appendTo(modal_ga.find('.populate>ul'));
 
 					var selected_user = modal_ga.data('user_data');
@@ -493,7 +504,7 @@ Object.assign(Lib.Dashboard.UI, {
 						var entry = modal_ga.data('user_data');
 						modal_ga.find('.title').text(entry.display_name+" ("+entry.username+")");
 						modal_ga.find('.college').text(entry.college);
-						modal_ga.find('.avatar').attr('data-jdenticon-value', entry.username);
+						modal_ga.find('.avatar').jdenticon(entry.username);
 
 						modal_ga.find('.search>input').val('');
 						modal_ga.data('search_query', '');

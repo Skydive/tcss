@@ -4,6 +4,11 @@ window.jdenticon_config = {
 	replaceMode: "observe"
 };
 
+// FORCE SSL
+// if(location.protocol != 'https:') {
+// 	location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+// }
+
 if(!Lib)var Lib={};
 if(!Lib.App)Lib.App={};
 Object.assign(Lib.App, {

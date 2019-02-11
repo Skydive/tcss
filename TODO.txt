@@ -1,5 +1,6 @@
 
-
+EDIT IF (ABOVE) General Committee
+FIX PICTURE SCALE CONTENTTOOLS (edit SINGLETON!?)
 
 - Bugfixes:
 	- Fix build tool .html <script> inline js not minifying upon deploy

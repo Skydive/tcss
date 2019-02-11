@@ -46,7 +46,7 @@ Object.assign(Lib.Dashboard.UI, {
 				div.find(".title").text(entry.display_name+" ("+entry.username+")");
 				div.find(".college").text(entry.college);
 				div.find(".group").text(entry.group_name);
-				div.find(".avatar").attr('data-jdenticon-value', entry.username);
+				div.find(".avatar").jdenticon(entry.username);
 				div.appendTo(el_selection.find('.populate>ul'));
 
 				var result = Lib.User.Group.CanEdit({
@@ -135,7 +135,7 @@ Object.assign(Lib.Dashboard.UI, {
 				$(this).find(".atlas-user-info .college").text(user_data.college+" ("+user_data.username+")");
 				$(this).find(".atlas-user-info .group").text(user_data.group_name);
 
-				$(this).find(".atlas-user-info .avatar").attr('data-jdenticon-value', user_data.username);
+				$(this).find(".atlas-user-info .avatar").jdenticon(user_data.username);
 				//$(".atlas .avatar").jdenticon(data.crsid);
 			});
 		},
@@ -197,7 +197,7 @@ Object.assign(Lib.Dashboard.UI, {
 					div.attr('group_id', entry.group_id);
 					div.find(".title").text(entry.display_name);
 					div.find(".college").text("Level: "+entry.access_level);
-					div.find(".avatar").attr('data-jdenticon-value', entry.name);
+					div.find(".avatar").jdenticon(entry.name);
 					div.appendTo(modal_ga.find('.populate>ul'));
 
 					var selected_user = modal_ga.data('user_data');
@@ -279,7 +279,7 @@ Object.assign(Lib.Dashboard.UI, {
 						var entry = modal_ga.data('user_data');
 						modal_ga.find('.title').text(entry.display_name+" ("+entry.username+")");
 						modal_ga.find('.college').text(entry.college);
-						modal_ga.find('.avatar').attr('data-jdenticon-value', entry.username);
+						modal_ga.find('.avatar').jdenticon(entry.username);
 
 						modal_ga.find('.search>input').val('');
 						modal_ga.data('search_query', '');

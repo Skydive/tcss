@@ -72,7 +72,7 @@ Object.assign(Lib.Feed.UI, {
 
 				var lst = el_singleton.find('.last-edited');
 				if(blk_metadata.owner_username == null)lst.hide();
-				lst.find('.avatar').attr('data-jdenticon-value', blk_metadata.owner_username);
+				lst.find('.avatar').jdenticon(blk_metadata.owner_username);
 				lst.find('.upper').text(blk_metadata.owner_display_name+" ("+blk_metadata.owner_username+")");
 				lst.find('.lower').text(blk_metadata.owner_group_name);
 				

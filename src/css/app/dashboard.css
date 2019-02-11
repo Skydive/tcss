@@ -23,3 +23,75 @@
 	transition: background-color 0.25s ease-in;
 
 }
+
+.atlas-entry .title {
+	font-size: 20px;
+	font-weight: 200;
+}
+.atlas-entry .college {
+	font-size: 16px;
+	font-weight: 200;
+}
+.atlas-entry .group {
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.dashboard-content .populate {
+	overflow-y: scroll;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.dashboard-content .populate>ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+}
+.dashboard-content .populate>ul>li {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 0;
+
+	padding: 6px 14px;
+	margin-bottom: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	min-height: 64px;
+	background-color: #fff;
+	transition: background-color 0.5s ease;
+}
+.dashboard-content .populate>ul>li:not([inactive]):not([selected]):hover {
+	background-color: #FAFAFA;
+}
+.dashboard-content .populate>ul>li[selected] {
+	background-color: lightgrey;
+}
+/* REMOVE INACTIVE */
+.dashboard-content .populate>ul>li[inactive] {
+	background-color: darkgrey;
+	pointer-events: none;
+}
+.dashboard-content .populate>ul>li:last-child {
+	margin-bottom: 0;
+}
+.dashboard-content .populate>ul>li>.left>.avatar{
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+    background-color: white;
+    padding: 4px;
+}
+.dashboard-content .populate>ul>li>.right {
+	padding-left: 12px;
+	text-align: left;
+	flex-grow: 1;
+}
+.dashboard-content .populate>ul>li>.right>.container {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: left;
+}
