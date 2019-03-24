@@ -1,8 +1,8 @@
 
 // A jdenticon can be set by assigning an attribute to the respective svg element.
-window.jdenticon_config = {
-	replaceMode: "observe"
-};
+// window.jdenticon_config = {
+// 	replaceMode: "observe"
+// };
 
 // FORCE SSL
 // if(location.protocol != 'https:') {

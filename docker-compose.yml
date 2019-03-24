@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  nginx:
+  tcss-nginx:
     build: ./docker-alpine/nginx/
     command: ["nginx", "-g", "daemon off;", "-c", "/data/config/nginx.conf"]
     volumes:
@@ -12,9 +12,9 @@ services:
       - "80:80"
       - "443:443"
     depends_on:
-      - php-fpm
-      - pgsql
-  php-fpm:
+      - tcss-php-fpm
+      - tcss-pgsql
+  tcss-php-fpm:
     build: ./docker-alpine/php-fpm/
     command: ["php-fpm7", "-F", "-c", "/data/config/php.ini", "-y", "/data/config/php-fpm.conf"]
     volumes:
@@ -22,7 +22,7 @@ services:
       - ./deploy/:/www/deploy/
       - ./stack/php-fpm/:/data/
     hostname: "tcss-php-fpm"
-  pgsql:
+  tcss-pgsql:
     build: ./docker-alpine/pgsql/
     command: ["postgres", "-D", "/data/db"]
     volumes:

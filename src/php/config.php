@@ -17,7 +17,7 @@ $GLOBALS['cfg']['databases'] = [
 		"username" => "tcss",
 		"password" => "xaxaxaxa",
 		"params" => [
-			"host" => "pgsql",
+			"host" => "tcss-pgsql",
 			"dbname" => $GLOBALS['cfg']['project_name']
 			//$charset = 'utf8mb4';
 		]
