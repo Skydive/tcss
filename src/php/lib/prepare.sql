@@ -1,10 +1,14 @@
-CREATE DATABASE "tcss" WITH ENCODING "UTF8" LC_COLLATE="en_US.UTF-8" LC_CTYPE="en_US.UTF-8" TEMPLATE="template0";
-CREATE ROLE "tcss" WITH LOGIN ENCRYPTED PASSWORD 'xaxaxaxa';
-GRANT ALL PRIVILEGES ON DATABASE "tcss" TO "tcss";
+CREATE DATABASE "soc" WITH ENCODING "UTF8" LC_COLLATE="en_US.UTF-8" LC_CTYPE="en_US.UTF-8" TEMPLATE="template0";
+CREATE ROLE "soc" WITH LOGIN ENCRYPTED PASSWORD 'xaxaxaxa';
+GRANT ALL PRIVILEGES ON DATABASE "soc" TO "soc";
 
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO tcss;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO tcss;
-GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO tcss;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO soc;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO soc;
+GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO soc;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO physics;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO physics;
+GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO physics;
 
 CREATE TABLE users (
 	id SERIAL NOT NULL PRIMARY KEY,
@@ -44,16 +48,14 @@ CREATE TABLE groups (
 );
 CREATE UNIQUE INDEX index_groups_group_id ON groups (group_id);
 
-INSERT INTO groups (group_id, name, display_name, access_level) VALUES (0, 'developer', 'Developer', 0);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (0, 'developer', 'Emperor', 0);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (1, 'unassigned', 'Unassigned', 255);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'student', 'Student', 100);
 
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (3, 'president', 'President', 10);
-INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'General Committee', 20);
-
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (4, 'committee', 'Committee', 20);
 
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (5, 'techmology', 'Website Maintenance', 15);
-INSERT INTO groups (group_id, name, display_name, access_level) VALUES (6, 'publicity', 'Publicity Officer', 15);
 
 CREATE TABLE atlas (
 	id SERIAL NOT NULL PRIMARY KEY,

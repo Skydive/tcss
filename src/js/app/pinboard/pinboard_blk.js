@@ -17,7 +17,7 @@ Object.assign(Lib.Pinboard, {
 				var cached_hash = localStorage.getItem("blk-"+feed.blk_id+"-hash") || "";
 				if(feed['hash'] == cached_hash) {
 					var md = JSON.parse(feed.metadata);
-					var cached_blk = JSON.parse(LZString.decompress(localStorage.getItem("blk-"+feed.blk_id)) || {})  || {};
+					var cached_blk = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("blk-"+feed.blk_id)) || {})  || {};
 					feed_out.push(Object.assign(feed, {
 						'pinboard_position': md.pinboard_position,
 						'blk_refs': cached_blk.blk_refs
@@ -51,7 +51,7 @@ Object.assign(Lib.Pinboard, {
 						metadata: '',
 						blk_refs: {}
 					};
-					localStorage.setItem("blk-"+feed.blk_id, LZString.compress(JSON.stringify(feed)));
+					localStorage.setItem("blk-"+feed.blk_id, LZString.compressToUTF16(JSON.stringify(feed)));
 					localStorage.setItem("blk-"+feed.blk_id+"-hash", feed.hash);
 					var md = JSON.parse(feed.metadata);
 					feed_out.push(Object.assign(feed, {

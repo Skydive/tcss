@@ -1,30 +1,3 @@
-<div id="template-news-card" style="display:none;" class="news parent col-xs-12">
-	<div class="news card">
-		<div style="position:relative;">
-			<div class="date-edit"><h2 class="date"></h2></div>
-			<a class="btn link"><i style="font-size:20px;" class="fa fa-link"></i></a>
-			<div class="default btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
-			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
-			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
-		</div><hr/>
-		<div data-editable class="header" style="padding-bottom:5px;"></div><hr class="expanded"/>
-		<div data-editable class="expanded body" style="display:none;"></div>
-		<!-- <div data-editable class="location" style="padding-bottom:5px;"></div> -->
-		<!-- ATLAS -->
-		<hr class="expanded" style="display:none;"/><div class="expanded last-edited" style="display:none;padding:0 20px;">
-			<div style="margin:0px auto;">Last Updated <span class="lst-date"></span></div>
-			<div class="indicator" style="margin:0px auto;color:black;padding: 0 25px 0 15px;display:flex;flex-direction:row;align-items:center;justify-content:center;height:64px;width:260px;">
-				<svg class="avatar" style="margin-right:12px;width:42px;height:42px;background-color:white;border-radius:50%;" data-jdenticon-value="test"></svg>
-				<div class="content" style="display:flex;flex-direction:column;text-align:left;">
-					<div class="upper" style="width:100%;font-size:14px;"></div>
-					<div class="lower" style="width:100%;font-size:12px;"></div>
-				</div>
-			</div>
-		</div>
-		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
-		<div data-editable class="editing btn bottom"><i class="fa fa-save" style="font-size:20px;"></i></div>
-	</div>
-</div>
 <section id="news-section">
 	<div class="c-loader" style="position:fixed;left:0;top:64px;width:100%;height:calc(100vh - 64px);z-index:100;background-color:white;">
 		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
@@ -58,7 +31,7 @@ $("#news-section").on('init', function() {
 	Lib.Feed.UI.Init({
 		feed_type: 'news',
 		feed_section: el_section,
-		feed_template: $("#template-news-card"),
+		feed_template: $("#template-singleton-news"),
 		ref_names: {
 			load: ['header', 'body'],
 			edit: ['header', 'body', 'date'],

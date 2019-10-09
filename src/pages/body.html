@@ -1,50 +1,3 @@
-<div id="template-committee-card" style="display:none;" class="committee parent col-xs-12 col-md-6 col-lg-4">
-	<div class="committee card">
-		<div class="top priori" style="position:relative;display:none;">
-			<div class="default btn mov-left"><i style="font-size:20px;" class="fa fa-angle-left"></i></div>
-			<div class="default btn add-left"><i style="font-size:20px;" class="fa fa-plus"></i></div>
-			<div class="default btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
-			<div class="default btn add-right"><i style="font-size:20px;" class="fa fa-plus"></i></div>
-			<div class="default btn mov-right"><i style="font-size:20px;" class="fa fa-angle-right"></i></div>
-			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
-			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
-		</div>
-		<hr class="priori" style="display: none;"/>
-		<div data-editable class="header" style="padding-bottom:5px;"></div><hr class="expanded" style="display:none;"/>
-		<div data-editable class="expanded body" style="display:none;"></div>
-		<!-- <div data-editable class="location" style="padding-bottom:5px;"></div> -->
-		<!-- ATLAS -->
-		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
-		<div data-editable class="editing btn bottom"><i class="fa fa-save" style="font-size:20px;"></i></div>
-	</div>
-</div>
-<div id="template-news-card" style="display:none;" class="news parent col-xs-12">
-	<div class="news card">
-		<div style="position:relative;">
-			<div class="date-edit"><h2 class="date"></h2></div>
-			<a class="btn link"><i style="font-size:20px;" class="fa fa-link"></i></a>
-			<div class="default btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
-			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
-			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
-		</div><hr/>
-		<div data-editable class="header" style="padding-bottom:5px;"></div><hr class="expanded"/>
-		<div data-editable class="expanded body" style="display:none;"></div>
-		<!-- <div data-editable class="location" style="padding-bottom:5px;"></div> -->
-		<!-- ATLAS -->
-		<hr class="expanded" style="display:none;"/><div class="expanded last-edited" style="display:none;padding:0 20px;">
-			<div style="margin:0px auto;">Last Updated <span class="lst-date"></span></div>
-			<div class="indicator logout" style="margin:0px auto;color:black;padding: 0 25px 0 15px;display:flex;flex-direction:row;align-items:center;justify-content:center;height:64px;width:260px;">
-				<svg class="avatar" style="margin-right:12px;width:42px;height:42px;background-color:white;border-radius:50%;" data-jdenticon-value="test"></svg>
-				<div class="content" style="display:flex;flex-direction:column;text-align:left;">
-					<div class="upper" style="width:100%;font-size:14px;"></div>
-					<div class="lower" style="width:100%;font-size:12px;"></div>
-				</div>
-			</div>
-		</div>
-		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
-		<div data-editable class="editing btn bottom"><i class="fa fa-save" style="font-size:20px;"></i></div>
-	</div>
-</div>
 <section id="top" style="background-image:url(/static/backgrounds/bk1.png);background-size:cover;background-repeat:no-repeat;background-position:top center;background-attachment: fixed;color:white;min-height:calc(100vh - 64px);">
 	<div class="container" style="position:relative;">
 		<div class="row">
@@ -70,15 +23,83 @@
 		</div>
 	</div>
 </section>
+<section id="genesis-section" style="position:relative;">
+	<div class="c-content" style="display:none;">
+		<div class="container">
+			<h1>Homepage</h1>			
+			<div class="row genesis populate"></div>
+		</div>
+	</div>
+</section>
+<script>
+var el_section = $("#genesis-section");
+$("#genesis-section").on('displaycontent', function() {
+	 $(this).find(".c-content").show();
+	 //$(this).find(".c-loader").fadeOut(1000);
+ });
+
+el_section.on('init', function() {
+	console.log("[DEBUG] GENESIS INIT!");
+	var el_populate = el_section.find(".populate");
+	
+	Lib.Feed.UI.Init({
+		feed_type: 'genesis',
+		feed_section: el_section,
+		feed_template: $("#template-singleton-genesis"),
+		ref_names: {
+			load: ['header', 'body'],
+			edit: ['header', 'body'],
+			save: ['header', 'body']
+		}
+	});
+
+	Lib.Ajax.Singleton.GenesisFetch().done(function(json) {
+		console.log("[DEBUG] GenesisFetch!");
+		el_section.triggerHandler('generate', {
+			blk: JSON.parse(json.blk),
+			cb: function() {
+				el_populate.append(this);
+				$(this).find(".date")
+					.text("")
+					.removeAttr('data-editable')
+					.css('height',"19px")
+					.css('margin-top','20px')
+					.css('margin-bottom','10px'); // not news
+				$(this).data('populate_sec', el_populate);
+				$(this).on('edit delete_post unedit expand deflate', function() {
+					if($(this).data('populate_sec'))
+						$(this).data('populate_sec').isotope();
+				});
+			}
+		});
+		 el_section.triggerHandler('displaycontent');
+	});
+});
+el_section.on('cleanup', function() {
+	// Lib.Feed.UI.Cleanup();
+});
+
+
+$(window).on('user_group_success user_group_failure user_session_destroyed', function() {
+	el_section.triggerHandler('init');
+});
+$(SKY.History).on('construct.genesis', function(e, data) {
+	el_section.triggerHandler('init');
+});
+$(SKY.History).on('deconstruct', function(e, data) {
+	el_section.triggerHandler('cleanup');
+	$(SKY.History).off('construct.genesis');
+});
+</script>
 <section id="news-section" style="position:relative;">
-	<div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
+	<!-- <div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
 		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
 			<h4>LOADING NEWS...</h4>
 			<div class="lds-ellipsis">
 				<div></div><div></div><div></div><div></div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="c-content" style="display:none;">
 		<div class="container">
 			<h1>Latest News</h1>			
@@ -87,14 +108,14 @@
 	</div>
 </section>
 <section id="committee-section" style="position:relative;">
-	<div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
+	<!-- <div class="c-loader" style="position:absolute;left:0;top:0;width:100%;height:100vh;z-index:100;background-color:white;">
 		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
 			<h4>LOADING SPONSORS...</h4>
 			<div class="lds-ellipsis">
 				<div></div><div></div><div></div><div></div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="c-content" style="display:none;">
 		<div class="container">
 			<h1>Sponsors <span class="committee add" style="display:none;"><i class="fa fa-plus-circle"></i></span></h1>
@@ -161,73 +182,90 @@
 }
 </style>
 <script>
-$("#news-section").on('displaycontent', function() {
-	$(this).find(".c-content").show();
-	$(this).find(".c-loader").fadeOut(1000);
-});
-$("#news-section").on('cleanup', function() {
-	Lib.Feed.UI.Cleanup();
-});
-$("#news-section").on('init', function() {
-	var el_section = $("#news-section");
-	Lib.Feed.UI.Init({
-		feed_type: 'news',
-		feed_section: el_section,
-		feed_template: $("#template-news-card"),
-		ref_names: {
-			load: ['header', 'body'],
-			edit: ['header', 'body', 'date'],
-			save: ['header', 'body']
+ $("#news-section").on('displaycontent', function() {
+	 $(this).find(".c-content").show();
+	 //$(this).find(".c-loader").fadeOut(1000);
+ });
+ $("#news-section").on('cleanup', function() {
+	 Lib.Feed.UI.Cleanup();
+ });
+ $("#news-section").on('init', function() {
+ 	var isotopy_toggle = false;
+	var isotopy = function() {
+		if(isotopy_toggle) {
+			$("#news-section .populate").isotope();
+			isotopy_toggle = false;
 		}
-	});
+		setTimeout(isotopy, 1000);
+	};
+	setTimeout(isotopy, 1000);
 
-	if(Lib.User.State.type == "success") {
-		var access_level = (Lib.User.Group.State.access_level);
-		if(access_level < Lib.User.Group.EAccessLevel.COMMITTEE) {
-			$(this).find('.news.add').show();
-		}
-	}
-	// Load Events
-	var cur_date = moment.now()/1000;
-	Lib.Feed.FeedFetchRange({
-		feed_type: 'news',
-		date_start: 0,
-		date_end: cur_date,
-		count: 100
-	}, function(events) {
-		var first_after = null;
-		var card = $(".news-loc");
-		for(var i in events) {
-			var event = events[i];
-			var md = JSON.parse(event.metadata);
-			var date = md.feed_date;
-			if(date < cur_date) { // event furthest in time is after pivot
-				date = moment.unix(date).fromNow();
-				card.find('.nstitle').html("Latest News — "+date);
-				first_after = event;
-				break;
-			}
-		}
-		if(!first_after) {
-			$("#news-section").hide();
-		}
-		var el_populate = el_section.find('.news.populate');
-		el_section.trigger('generate', {
-			blk: first_after,
-			cb: function(data) {
-				$(this).triggerHandler('expand');
-				el_populate.append(this);
-				$(this).on('edit delete unedit expand deflate', function() {
-					el_populate.isotope();
+	 var el_section = $("#news-section");
+	 Lib.Feed.UI.Init({
+		 feed_type: 'news',
+		 feed_section: el_section,
+		 feed_template: $("#template-singleton-news"),
+		 ref_names: {
+			 load: ['header', 'body'],
+			 edit: ['header', 'body', 'date'],
+			 save: ['header', 'body']
+		 }
+	 });
+
+	 if(Lib.User.State.type == "success") {
+		 var access_level = (Lib.User.Group.State.access_level);
+		 if(access_level < Lib.User.Group.EAccessLevel.COMMITTEE) {
+			 $(this).find('.news.add').show();
+		 }
+	 }
+	 // Load Events
+	 var cur_date = moment.now()/1000;
+	 Lib.Feed.FeedFetchRange({
+		 feed_type: 'news',
+		 date_start: 0,
+		 date_end: cur_date,
+		 count: 100
+	 }, function(events) {
+		 var first_after = null;
+		 var card = $(".news-loc");
+		 for(var i in events) {
+			 var event = events[i];
+			 var md = JSON.parse(event.metadata);
+			 var date = md.feed_date;
+			 if(date < cur_date) { // event furthest in time is after pivot
+				 date = moment.unix(date).fromNow();
+				 card.find('.nstitle').html("Latest News — "+date);
+				 first_after = event;
+				 break;
+			 }
+		 }
+		 if(!first_after) {
+			 $("#news-section").hide();
+		 }
+		 var el_populate = el_section.find('.news.populate');
+		 el_section.trigger('generate', {
+			 blk: first_after,
+			 cb: function(data) {
+				 $(this).triggerHandler('expand');
+				 el_populate.append(this);
+				 $(this).on('edit delete unedit expand deflate', function() {
+					 el_populate.isotope();
+				 });
+				el_populate.find('div[data-editable] img')
+						  .each(function() {
+					$(this).one('load', function() {
+						if($(this).height() < 0) return;
+						isotopy_toggle = true;
+					});
 				});
-			}
-		});
-		el_section.triggerHandler('displaycontent');
-		el_section.find('.news.populate').isotope({
-			"itemSelector": ".news.parent"
-		});
-	});
-});
+			 }
+		 });
+		 el_section.triggerHandler('displaycontent');
+		 // el_section.find('.news.populate').isotope({
+			//  "itemSelector": ".news.parent"
+		 // });
+	 });
+ });
 $(function() {
 	var cur_date = Math.round(moment.now()/1000);
 	Lib.Feed.FeedFetchRange({
@@ -266,47 +304,58 @@ $(function() {
 </script>
 <script>
 $("#committee-section").on('displaycontent', function() {
-	$(this).find(".c-content").show();
-	$(this).find(".c-loader").fadeOut(1000);
-});
-$("#committee-section").on('cleanup', function() {
-	Lib.Pinboard.UI.Cleanup();
-});
-$("#committee-section").on('init', function() {
-	var el_section = $("#committee-section");
-
-	Lib.Pinboard.UI.Init({
-		feed_type: 'sponsors',
-		feed_section: el_section,
-		feed_template: $("#template-committee-card"),
-		ref_names: {
-			load: ['header', 'body'],
-			edit: ['header', 'body'],
-			save: ['header', 'body']
+	 $(this).find(".c-content").show();
+	 //$(this).find(".c-loader").fadeOut(1000);
+ });
+ $("#committee-section").on('cleanup', function() {
+	 Lib.Pinboard.UI.Cleanup();
+ });
+ $("#committee-section").on('init', function() {
+ 	var isotopy_toggle = false;
+	var isotopy = function() {
+		if(isotopy_toggle) {
+			$("#committee-section .populate").isotope();
+			isotopy_toggle = false;
 		}
-	});
+		setTimeout(isotopy, 1000);
+	};
+	setTimeout(isotopy, 1000);
 
-	var committee_member = false;
-	if(Lib.User.State.type == "success") {
-		var access_level = (Lib.User.Group.State.access_level);
-		if(access_level <= Lib.User.Group.EAccessLevel.COMMITTEE) {
-			$(this).find('.committee.add').show();
-			committee_member = true;
-		}
-	}
-	el_section.on('generate_post', function(e, data) {
-		var el_singleton = data.el_singleton;
-		var el_populate = data.el_populate;
-		el_populate.append(el_singleton);
+	 var el_section = $("#committee-section");
 
-		$(el_singleton).on('edit delete unedit expand deflate', function() {
-			el_populate.isotope('layout');
-		});
-		if(!committee_member)return;
+	 Lib.Pinboard.UI.Init({
+		 feed_type: 'sponsors',
+		 feed_section: el_section,
+		 feed_template: $("#template-singleton-pinboard"),
+		 ref_names: {
+			 load: ['header', 'body'],
+			 edit: ['header', 'body'],
+			 save: ['header', 'body']
+		 }
+	 });
 
-		
+	 var committee_member = false;
+	 if(Lib.User.State.type == "success") {
+		 var access_level = (Lib.User.Group.State.access_level);
+		 if(access_level <= Lib.User.Group.EAccessLevel.COMMITTEE) {
+			 $(this).find('.committee.add').show();
+			 committee_member = true;
+		 }
+	 }
+	 el_section.on('generate_post', function(e, data) {
+		 var el_singleton = data.el_singleton;
+		 var el_populate = data.el_populate;
+		 el_populate.append(el_singleton);
 
-		$(el_singleton).find('.default.btn.mov-left').on('click', function() {
+		 $(el_singleton).on('edit delete unedit expand deflate', function() {
+			 el_populate.isotope('layout');
+		 });
+		 if(!committee_member)return;
+
+
+		 $(el_singleton).find('.default.btn.mov-left').on('click', function() {
+		 	var el_populate = el_section.find('.populate');
+		 	console.log(el_populate);
 			var item_list = el_populate.data('isotope').filteredItems;
 			if(el_singleton[0] === item_list[0].element)return;
 			// find location	
@@ -322,8 +371,9 @@ $("#committee-section").on('init', function() {
 			$(item_list[i].element).trigger('save_position');
 			$(item_list[j].element).trigger('save_position');
 			el_populate.isotope('updateSortData').isotope({ sortBy: 'pinboard_position' });
-		});
-		$(el_singleton).find('.default.btn.mov-right').on('click', function() {
+		 });
+		 $(el_singleton).find('.default.btn.mov-right').on('click', function() {
+		 	var el_populate = el_section.find('.populate');
 			var item_list = el_populate.data('isotope').filteredItems;
 			if(el_singleton[0] === item_list[item_list.length-1].element)return;
 			// find location	
@@ -339,201 +389,210 @@ $("#committee-section").on('init', function() {
 			$(item_list[i].element).trigger('save_position');
 			$(item_list[j].element).trigger('save_position');
 			el_populate.isotope('updateSortData').isotope({ sortBy: 'pinboard_position' });
-		});
-		$(el_singleton).find('.default.btn.add-left').on('click', function() {
-			var el_populate = el_section.find('.committee.populate');
-			var pinboard_position = 0;
-			var item_list = el_populate.data('isotope').filteredItems;
-			if(el_singleton[0] === item_list[0].element) {
-				pinboard_position = parseInt(el_singleton.attr('pinboard_position'))-Lib.Pinboard.CREATE_INTERVAL;
-			} else {
-				// find location	
-				var i = 0;
-				for(i=0;i<item_list.length;i++){if(el_singleton[0] === item_list[i].element)break;}
-				if(i >= item_list.length)return;
-				var j = i-1;
-				var pi = parseInt($(item_list[i].element).attr('pinboard_position'));
-				var pj = parseInt($(item_list[j].element).attr('pinboard_position'));
-				var mp = Lib.Pinboard.CREATE_POSITION(pi, pj);
-				if(Math.abs(mp - pi) <= 1) {
-					Lib.App.Notify({
-						title: "PINBOARD SATURATION --- SEVERE ERROR!",
-						content: "RECREATING THE ENTIRE AREA",
-						wait: 0,
-						icon: 'fa fa-times'
+		 });
+		 $(el_singleton).find('.default.btn.add-left').on('click', function() {
+			 var el_populate = el_section.find('.populate');
+			 var pinboard_position = 0;
+			 var item_list = el_populate.data('isotope').filteredItems;
+			 if(el_singleton[0] === item_list[0].element) {
+				 pinboard_position = parseInt(el_singleton.attr('pinboard_position'))-Lib.Pinboard.CREATE_INTERVAL;
+			 } else {
+				 // find location	
+				 var i = 0;
+				 for(i=0;i<item_list.length;i++){if(el_singleton[0] === item_list[i].element)break;}
+				 if(i >= item_list.length)return;
+				 var j = i-1;
+				 var pi = parseInt($(item_list[i].element).attr('pinboard_position'));
+				 var pj = parseInt($(item_list[j].element).attr('pinboard_position'));
+				 var mp = Lib.Pinboard.CREATE_POSITION(pi, pj);
+				 if(Math.abs(mp - pi) <= 1) {
+					 Lib.App.Notify({
+						 title: "PINBOARD SATURATION --- SEVERE ERROR!",
+						 content: "RECREATING THE ENTIRE AREA",
+						 wait: 0,
+						 icon: 'fa fa-times'
+					 });
+					 el_section.triggerHandler('saturation_react');
+					 return;
+				 }
+				 pinboard_position = mp;
+			 }
+
+			 el_section.triggerHandler('generate_dummy', {
+				 blk_refs: {
+					 'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
+					 'body': {"data": "<p>Body</p>"}
+				 },
+				 pinboard_position: pinboard_position,
+				 cb: function(data) {
+					 el_section.triggerHandler('generate_post', {
+						 el_populate: el_populate,
+						 el_singleton: this
+					 });
+					 el_populate
+						 .isotope('prepended', this)
+						 .isotope('updateSortData')
+						 .isotope({ sortBy: 'pinboard_position' });
+					 $(this).triggerHandler('edit');
+				 }
+			 });
+		 });
+		 $(el_singleton).find('.default.btn.add-right').on('click', function() {
+			 var el_populate = el_section.find('.committee.populate');
+			 var pinboard_position = 0;
+			 var item_list = el_populate.data('isotope').filteredItems;
+			 if(el_singleton[0] === item_list[item_list.length-1].element) {
+				 pinboard_position = parseInt(el_singleton.attr('pinboard_position'))+Lib.Pinboard.CREATE_INTERVAL;
+			 } else {
+				 // find location	
+				 var i = 0;
+				 for(i=0;i<item_list.length;i++){if(el_singleton[0] === item_list[i].element)break;}
+				 if(i >= item_list.length)return;
+				 var j = i+1;
+				 var pi = parseInt($(item_list[i].element).attr('pinboard_position'));
+				 var pj = parseInt($(item_list[j].element).attr('pinboard_position'));
+				 var mp = Lib.Pinboard.CREATE_POSITION(pi, pj);
+				 if(Math.abs(mp - pi) <= 1) {
+					 Lib.App.Notify({
+						 title: "PINBOARD SATURATION --- SEVERE ERROR!",
+						 content: "RECREATING THE ENTIRE AREA",
+						 wait: 0,
+						 icon: 'fa fa-times'
+					 });
+					 el_section.triggerHandler('saturation_react');
+					 return;
+				 }
+				 pinboard_position = mp;
+			 }
+			 
+			 el_section.triggerHandler('generate_dummy', {
+				 blk_refs: {
+					 'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
+					 'body': {"data": "<p>Body</p>"}
+				 },
+				 pinboard_position: pinboard_position,
+				 cb: function(data) {
+					 el_section.triggerHandler('generate_post', {
+						 el_populate: el_populate,
+						 el_singleton: this
+					 });
+					 el_populate
+						 .isotope('prepended', this)
+						 .isotope('updateSortData')
+						 .isotope({ sortBy: 'pinboard_position' });
+					 $(this).triggerHandler('edit');
+				 }
+			 });
+		 });
+		 $(el_singleton).find('.priori').show();
+	 });
+	 $(el_section).on('saturation_react', function() {
+		 var el_populate = el_section.find('.committee.populate');
+		 var item_list = el_populate.data('isotope').filteredItems;
+		 var j = 0;
+		 var arr = [];
+
+		 for(var i in item_list) {
+			 var el = item_list[i].element;
+			 var blk = $(el).data('blk');
+			 arr.push({
+				 blk_id: blk.blk_id,
+				 metadata: { pinboard_position: j },
+				 update_owner: false
+			 });
+			 j += Lib.Pinboard.CREATE_INTERVAL;
+		 }
+		 Lib.Ajax.Singleton.UpdateMulti({
+			 data_array: arr
+		 });
+	 });
+
+	 // Load Events
+	 Lib.Pinboard.Fetch({
+		 feed_type: 'sponsors',
+		 count: 10
+	 }, function(blks) {
+		 for(var i in blks) {
+			 var blk = blks[i];
+			 var pinboard_position = JSON.parse(blk.metadata).pinboard_position;
+			 var el_populate = el_section.find('.committee.populate');
+			 el_section.trigger('generate', {
+				 blk: blk,
+				 cb: function(data) {
+					 el_section.triggerHandler('generate_post', {
+						 el_populate: el_populate,
+						 el_singleton: this
+					 });
+					 el_section.find('.committee.populate div[data-editable] img').each(function() {
+						 $(this).one('load', function() {
+							if($(this).height() < 0) return;
+							isotopy_toggle = true;
+						});
 					});
-					el_section.triggerHandler('saturation_react');
-					return;
-				}
-				pinboard_position = mp;
-			}
-			
-			el_section.triggerHandler('generate_dummy', {
-				blk_refs: {
-					'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
-					'body': {"data": "<p>Body</p>"}
-				},
-				pinboard_position: pinboard_position,
-				cb: function(data) {
-					el_section.triggerHandler('generate_post', {
-						el_populate: el_populate,
-						el_singleton: this
-					});
-					el_populate
-					.isotope('prepended', this)
-					.isotope('updateSortData')
-					.isotope({ sortBy: 'pinboard_position' });
-					$(this).triggerHandler('edit');
-				}
-			});
-		});
-		$(el_singleton).find('.default.btn.add-right').on('click', function() {
-			var el_populate = el_section.find('.committee.populate');
-			var pinboard_position = 0;
-			var item_list = el_populate.data('isotope').filteredItems;
-			if(el_singleton[0] === item_list[item_list.length-1].element) {
-				pinboard_position = parseInt(el_singleton.attr('pinboard_position'))+Lib.Pinboard.CREATE_INTERVAL;
-			} else {
-				// find location	
-				var i = 0;
-				for(i=0;i<item_list.length;i++){if(el_singleton[0] === item_list[i].element)break;}
-				if(i >= item_list.length)return;
-				var j = i+1;
-				var pi = parseInt($(item_list[i].element).attr('pinboard_position'));
-				var pj = parseInt($(item_list[j].element).attr('pinboard_position'));
-				var mp = Lib.Pinboard.CREATE_POSITION(pi, pj);
-				if(Math.abs(mp - pi) <= 1) {
-					Lib.App.Notify({
-						title: "PINBOARD SATURATION --- SEVERE ERROR!",
-						content: "RECREATING THE ENTIRE AREA",
-						wait: 0,
-						icon: 'fa fa-times'
-					});
-					el_section.triggerHandler('saturation_react');
-					return;
-				}
-				pinboard_position = mp;
-			}
-			
-			el_section.triggerHandler('generate_dummy', {
-				blk_refs: {
-					'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
-					'body': {"data": "<p>Body</p>"}
-				},
-				pinboard_position: pinboard_position,
-				cb: function(data) {
-					el_section.triggerHandler('generate_post', {
-						el_populate: el_populate,
-						el_singleton: this
-					});
-					el_populate
-					.isotope('prepended', this)
-					.isotope('updateSortData')
-					.isotope({ sortBy: 'pinboard_position' });
-					$(this).triggerHandler('edit');
-				}
-			});
-		});
-		$(el_singleton).find('.priori').show();
-	});
-	$(el_section).on('saturation_react', function() {
-			var item_list = el_populate.data('isotope').filteredItems;
-			var j = 0;
-			for(var i in item_list) {
-				var el = item_list[i].element;
-				var blk = $(el).data('blk');
-				Lib.Ajax.Singleton.Update({
-					blk_id: blk.blk_id,
-					metadata: {
-						pinboard_position: j
-					}
-				});
-				j += Lib.Pinboard.CREATE_INTERVAL;
+				 }
+			 });
+		 }
+		 el_section.triggerHandler('displaycontent');
+		 el_section.find('.committee.populate').isotope({
+			 "itemSelector": ".committee.parent",
+			 getSortData: {
+				 'pinboard_position': function(el) {return parseInt($(el).attr('pinboard_position'));},
+				 'blk_id': function(el) {return parseInt($(el).attr('blk_id'));},
+			 },
+			 sortBy: 'pinboard_position'
+		 });
+	 });
+ });
 
-			}
-		});
-	
-	// Load Events
-	Lib.Pinboard.Fetch({
-		feed_type: 'sponsors',
-		count: 10
-	}, function(blks) {
-		for(var i in blks) {
-			var blk = blks[i];
-			var pinboard_position = JSON.parse(blk.metadata).pinboard_position;
-			var el_populate = el_section.find('.committee.populate');
-			el_section.trigger('generate', {
-				blk: blk,
-				cb: function(data) {
-					el_section.triggerHandler('generate_post', {
-						el_populate: el_populate,
-						el_singleton: this
-					});
-				}
-			});
-		}
-		el_section.triggerHandler('displaycontent');
-		el_section.find('.committee.populate').isotope({
-			"itemSelector": ".committee.parent",
-			getSortData: {
-				'pinboard_position': function(el) {return parseInt($(el).attr('pinboard_position'));},
-				'blk_id': function(el) {return parseInt($(el).attr('blk_id'));},
-			},
-			sortBy: 'pinboard_position'
-		});
-	});
-});
+ $(".committee.add").on('click', function() {
+	 var committee_member = false;
+	 if(Lib.User.State.type == "success") {
+		 var access_level = (Lib.User.Group.State.access_level);
+		 if(access_level <= Lib.User.Group.EAccessLevel.COMMITTEE) {
+			 committee_member = true;
+		 }
+	 }
 
-$(".committee.add").on('click', function() {
-	var committee_member = false;
-	if(Lib.User.State.type == "success") {
-		var access_level = (Lib.User.Group.State.access_level);
-		if(access_level <= Lib.User.Group.EAccessLevel.COMMITTEE) {
-			committee_member = true;
-		}
-	}
+	 var el_populate = $("#committee-section").find('.committee.populate');
 
-	var el_populate = $("#committee-section").find('.committee.populate');
+	 var pinboard_position = 0;
+	 var first = el_populate.children().first();
+	 if(first.length)
+		 pinboard_position = parseInt(first.attr('pinboard_position'))-Lib.Pinboard.CREATE_INTERVAL;
 
-	var pinboard_position = 0;
-	var first = el_populate.children().first();
-	if(first.length)
-		pinboard_position = parseInt(first.attr('pinboard_position'))-Lib.Pinboard.CREATE_INTERVAL;
-	
+	 $("#committee-section").triggerHandler('generate_dummy', {
+		 blk_refs: {
+			 'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
+			 'body': {"data": "<p>Body</p>"}
+		 },
+		 pinboard_position: pinboard_position,
+		 cb: function(data) {
+			 el_populate.append(this);
+			 el_populate.isotope('prepended', this);
+			 el_populate.isotope('layout');
+			 $(this).triggerHandler('edit');
+			 if(committee_member)
+				 $(this).find('.priori').show();
+		 }
+	 });
+ });
 
-	$("#committee-section").triggerHandler('generate_dummy', {
-		blk_refs: {
-			'header': {"data": "<h1>Title</h1><h2>Title Sub</h2>"},
-			'body': {"data": "<p>Body</p>"}
-		},
-		pinboard_position: pinboard_position,
-		cb: function(data) {
-			el_populate.append(this);
-			el_populate.isotope('prepended', this);
-			el_populate.isotope('layout');
-			$(this).triggerHandler('edit');
-			if(committee_member)
-				$(this).find('.priori').show();
-		}
-	});
-});
-
-$(window).on('user_group_success user_group_failure user_session_destroyed', function() {
-	$("#committee-section").triggerHandler('init');
-	$("#news-section").triggerHandler('init');
-});
-$(SKY.History).on('construct.home', function(e, data) {
-	$("#committee-section").triggerHandler('init');
-	$("#news-section").triggerHandler('init');
-});
-$(SKY.History).on('deconstruct', function(e, data) {
-	$("#committee-section").triggerHandler('cleanup');
-	$("#news-section").triggerHandler('cleanup');
-	$(SKY.History).off('construct.home');
-});
-$("#move-down").on('click', function() {
+ $(window).on('user_group_success user_group_failure user_session_destroyed', function() {
+	 $("#committee-section").triggerHandler('init');
+	 $("#news-section").triggerHandler('init');
+ });
+ $(SKY.History).on('construct.home', function(e, data) {
+	 $("#committee-section").triggerHandler('init');
+	 $("#news-section").triggerHandler('init');
+ });
+ $(SKY.History).on('deconstruct', function(e, data) {
+	 $("#committee-section").triggerHandler('cleanup');
+	 $("#news-section").triggerHandler('cleanup');
+	 $(SKY.History).off('construct.home');
+ });
+ $("#move-down").on('click', function() {
 	 $('html,body').animate({ scrollTop: $(window).height() });
-});
+ });
 </script>
 <style>
 #move-down {

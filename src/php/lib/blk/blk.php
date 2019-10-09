@@ -23,7 +23,7 @@ class Blk {
 	const CREATE_REQUIRED = ['blk_id', 'hash'];
 	const CREATE_SAFE = ['metadata'];
 	public static function Create($data) {
-		$data['blk_id'] = Security::GenerateUniqueInteger();
+		$data['blk_id'] = array_key_exists('blk_id', $data) ? $data['blk_id'] : Security::GenerateUniqueInteger();
 		$time = time();
 		$data['hash'] = hash("crc32b", "$time");
 		$out = self::DBCreate($data);

@@ -48,7 +48,6 @@ Object.assign(Lib.Pinboard.UI, {
 				.addClass('showsort')
 				.attr('id', '')
 				.attr('blk_id', blk.blk_id);
-			
 
 			var el_singleton = Lib.Singleton.UI.Populate({
 				blk: blk,
@@ -82,8 +81,8 @@ Object.assign(Lib.Pinboard.UI, {
 						icon: 'fa fa-times'
 					});
 					return;
-				}
-				
+				};
+
 				var blk = el_singleton.data('blk');
 				Lib.Ajax.Singleton.Update({
 					blk_id: blk.blk_id,
@@ -109,7 +108,7 @@ Object.assign(Lib.Pinboard.UI, {
 					}
 				});
 			});
-			
+
 			el_singleton.on('save_position', function() {
 				var blk = el_singleton.data('blk');
 				Lib.Ajax.Singleton.Update({
@@ -119,7 +118,7 @@ Object.assign(Lib.Pinboard.UI, {
 					}
 				}).done(function(json) {
 					if(json.type == "success") {
-						console.log(json.blk_new);
+						//console.log(json.blk_new);
 						$(el_singleton).data('blk', json.blk_new);
 					}
 				});
@@ -142,10 +141,6 @@ Object.assign(Lib.Pinboard.UI, {
 						icon: 'fa fa-times'
 					});
 				}
-			});
-
-			el_singleton.on('create_right', function() {
-				
 			});
 
 			if(data.cb)data.cb.bind(el_singleton)(data);

@@ -35,6 +35,16 @@ $GLOBALS['cfg']['auth_providers'] = [
 	'raven' => 1
 ];
 
+$GLOBALS['cfg']['blk'] = [];
+$GLOBALS['cfg']['blk']['genesis'] = [
+	'blk_id' => 1337,
+	'metadata' => [],
+	'content' => [
+		'header'  => "<h1>Title</h1><h2>Title Sub</h2>",
+		'body'  => "<p>Body</p>"
+	]
+];
+
 $GLOBALS['security']['exceptions'] = [];
 $GLOBALS['security']['exceptions']['default'] = [
 	'access',

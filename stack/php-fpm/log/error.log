@@ -259,3 +259,34 @@
 [24-Mar-2019 23:41:17] NOTICE: exiting, bye-bye!
 [24-Mar-2019 23:42:17] NOTICE: fpm is running, pid 1
 [24-Mar-2019 23:42:17] NOTICE: ready to handle connections
+[25-Mar-2019 00:21:19] NOTICE: Terminating ...
+[25-Mar-2019 00:21:19] NOTICE: exiting, bye-bye!
+[07-Oct-2019 20:32:38] NOTICE: fpm is running, pid 1
+[07-Oct-2019 20:32:38] NOTICE: ready to handle connections
+[07-Oct-2019 20:36:01] NOTICE: Terminating ...
+[07-Oct-2019 20:36:01] NOTICE: exiting, bye-bye!
+[07-Oct-2019 22:04:50] NOTICE: fpm is running, pid 1
+[07-Oct-2019 22:04:50] NOTICE: ready to handle connections
+[07-Oct-2019 22:04:57] WARNING: [pool www] server reached pm.max_children setting (5), consider raising it
+[07-Oct-2019 22:17:16] NOTICE: Terminating ...
+[07-Oct-2019 22:17:16] NOTICE: exiting, bye-bye!
+[07-Oct-2019 22:17:40] NOTICE: fpm is running, pid 1
+[07-Oct-2019 22:17:40] NOTICE: ready to handle connections
+[07-Oct-2019 22:18:47] WARNING: [pool www] server reached pm.max_children setting (5), consider raising it
+[07-Oct-2019 22:19:30] WARNING: [pool www] server reached pm.max_children setting (5), consider raising it
+[07-Oct-2019 22:20:48] NOTICE: Terminating ...
+[07-Oct-2019 22:20:48] NOTICE: exiting, bye-bye!
+[07-Oct-2019 22:20:52] NOTICE: fpm is running, pid 1
+[07-Oct-2019 22:20:52] NOTICE: ready to handle connections
+[07-Oct-2019 22:22:12] NOTICE: Terminating ...
+[07-Oct-2019 22:22:12] NOTICE: exiting, bye-bye!
+[08-Oct-2019 23:09:23] NOTICE: fpm is running, pid 1
+[08-Oct-2019 23:09:23] NOTICE: ready to handle connections
+[09-Oct-2019 19:40:31] NOTICE: Terminating ...
+[09-Oct-2019 19:40:31] NOTICE: exiting, bye-bye!
+[09-Oct-2019 19:42:58] NOTICE: fpm is running, pid 1
+[09-Oct-2019 19:42:58] NOTICE: ready to handle connections
+[09-Oct-2019 20:14:18] NOTICE: Terminating ...
+[09-Oct-2019 20:14:18] NOTICE: exiting, bye-bye!
+[09-Oct-2019 20:14:46] NOTICE: fpm is running, pid 1
+[09-Oct-2019 20:14:46] NOTICE: ready to handle connections

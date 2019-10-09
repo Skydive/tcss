@@ -142,7 +142,7 @@ Object.assign(Lib.Singleton.UI, {
 				content: content
 			}).done(function(json) {
 				if(json.type == "success") {
-					console.log(json.blk_new);
+					//console.log(json.blk_new);
 					$(el_singleton).data('blk', json.blk_new);
 				}
 				$(el_singleton).triggerHandler('save_post', json);
