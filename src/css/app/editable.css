@@ -52,6 +52,10 @@
     border: 2px solid lightgrey;
 }
 
+[data-editable] .border-red {
+    border: 2px solid red;
+}
+
 [data-editable] table {
     width: 100%;
 }

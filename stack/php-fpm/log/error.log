@@ -290,3 +290,11 @@
 [09-Oct-2019 20:14:18] NOTICE: exiting, bye-bye!
 [09-Oct-2019 20:14:46] NOTICE: fpm is running, pid 1
 [09-Oct-2019 20:14:46] NOTICE: ready to handle connections
+[26-Oct-2019 08:16:15] NOTICE: Terminating ...
+[26-Oct-2019 08:16:15] NOTICE: exiting, bye-bye!
+[26-Oct-2019 08:16:21] NOTICE: fpm is running, pid 1
+[26-Oct-2019 08:16:21] NOTICE: ready to handle connections
+[26-Oct-2019 08:24:21] NOTICE: Terminating ...
+[26-Oct-2019 08:24:21] NOTICE: exiting, bye-bye!
+[26-Oct-2019 08:24:33] NOTICE: fpm is running, pid 1
+[26-Oct-2019 08:24:33] NOTICE: ready to handle connections

@@ -1,14 +1,20 @@
 CREATE DATABASE "soc" WITH ENCODING "UTF8" LC_COLLATE="en_US.UTF-8" LC_CTYPE="en_US.UTF-8" TEMPLATE="template0";
 CREATE ROLE "soc" WITH LOGIN ENCRYPTED PASSWORD 'xaxaxaxa';
+
+# JSON UPDATE
+UPDATE blk SET metadata = jsonb_set(metadata, '{"owner_group_name"}', '"Webmaster"', true) WHERE id IN (SELECT id FROM blk WHERE metadata @> '{"owner_group_name": "Emperor"}');
+
+
+
 GRANT ALL PRIVILEGES ON DATABASE "soc" TO "soc";
 
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO soc;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO soc;
 GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO soc;
 
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO physics;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO physics;
-GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO physics;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO tcss;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO tcss;
+GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO tcss;
 
 CREATE TABLE users (
 	id SERIAL NOT NULL PRIMARY KEY,
@@ -48,7 +54,7 @@ CREATE TABLE groups (
 );
 CREATE UNIQUE INDEX index_groups_group_id ON groups (group_id);
 
-INSERT INTO groups (group_id, name, display_name, access_level) VALUES (0, 'developer', 'Emperor', 0);
+INSERT INTO groups (group_id, name, display_name, access_level) VALUES (0, 'developer', 'Webmaster', 0);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (1, 'unassigned', 'Unassigned', 255);
 INSERT INTO groups (group_id, name, display_name, access_level) VALUES (2, 'student', 'Student', 100);
 

@@ -1,23 +1,5 @@
-<div id="template-committee-card" style="display:none;" class="committee parent col-xs-12 col-md-6 col-lg-4">
-	<div class="committee card">
-		<div class="top priori" style="position:relative;display:none;">
-			<div class="default btn mov-left"><i style="font-size:20px;" class="fa fa-angle-left"></i></div>
-			<div class="default btn add-left"><i style="font-size:20px;" class="fa fa-plus"></i></div>
-			<div class="default btn edit"><i style="font-size:20px;" class="fa fa-pencil"></i></div>
-			<div class="default btn add-right"><i style="font-size:20px;" class="fa fa-plus"></i></div>
-			<div class="default btn mov-right"><i style="font-size:20px;" class="fa fa-angle-right"></i></div>
-			<div class="editing btn exit"><i style="font-size:20px;" class="fa fa-times"></i></div>
-			<div class="editing btn delete"><i style="font-size:20px;" class="fa fa-trash"></i></div>
-		</div>
-		<hr class="priori" style="display: none;"/>
-		<div data-editable class="header" style="padding-bottom:5px;"></div><hr class="expanded" style="display:none;"/>
-		<div data-editable class="expanded body" style="display:none;"></div>
-		<!-- <div data-editable class="location" style="padding-bottom:5px;"></div> -->
-		<!-- ATLAS -->
-		<div data-editable class="default btn bottom"><i class="fa fa-angle-down" style="font-size:20px;"></i></div>
-		<div data-editable class="editing btn bottom"><i class="fa fa-save" style="font-size:20px;"></i></div>
-	</div>
-</div>
+<script>$(function(){document.title="Committee";});</script>
+
 <section id="committee-section">
 	<div class="c-loader" style="position:fixed;left:0;top:64px;width:100%;height:calc(100vh - 64px);z-index:100;background-color:white;">
 		<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;">
@@ -48,7 +30,7 @@ $("#committee-section").on('init', function() {
 	Lib.Pinboard.UI.Init({
 		feed_type: 'committee',
 		feed_section: el_section,
-		feed_template: $("#template-committee-card"),
+		feed_template: $("#template-singleton-pinboard"),
 		ref_names: {
 			load: ['header', 'body'],
 			edit: ['header', 'body'],
@@ -74,9 +56,8 @@ $("#committee-section").on('init', function() {
 		});
 		if(!committee_member)return;
 
-
-
 		$(el_singleton).find('.default.btn.mov-left').on('click', function() {
+			var el_populate = el_section.find('.populate');
 			var item_list = el_populate.data('isotope').filteredItems;
 			if(el_singleton[0] === item_list[0].element)return;
 			// find location	
@@ -94,9 +75,10 @@ $("#committee-section").on('init', function() {
 			el_populate.isotope('updateSortData').isotope({ sortBy: 'pinboard_position' });
 		});
 		$(el_singleton).find('.default.btn.mov-right').on('click', function() {
+			var el_populate = el_section.find('.populate');
 			var item_list = el_populate.data('isotope').filteredItems;
 			if(el_singleton[0] === item_list[item_list.length-1].element)return;
-			// find location	
+			// find location
 			var i = 0;
 			for(i=0;i<item_list.length;i++){if(el_singleton[0] === item_list[i].element)break;}
 			if(i >= item_list.length)return;
@@ -111,7 +93,7 @@ $("#committee-section").on('init', function() {
 			el_populate.isotope('updateSortData').isotope({ sortBy: 'pinboard_position' });
 		});
 		$(el_singleton).find('.default.btn.add-left').on('click', function() {
-			var el_populate = el_section.find('.committee.populate');
+			var el_populate = el_section.find('.populate');
 			var pinboard_position = 0;
 			var item_list = el_populate.data('isotope').filteredItems;
 			if(el_singleton[0] === item_list[0].element) {
@@ -158,7 +140,7 @@ $("#committee-section").on('init', function() {
 			});
 		});
 		$(el_singleton).find('.default.btn.add-right').on('click', function() {
-			var el_populate = el_section.find('.committee.populate');
+			var el_populate = el_section.find('.populate');
 			var pinboard_position = 0;
 			var item_list = el_populate.data('isotope').filteredItems;
 			if(el_singleton[0] === item_list[item_list.length-1].element) {
@@ -207,22 +189,25 @@ $("#committee-section").on('init', function() {
 		$(el_singleton).find('.priori').show();
 	});
 	$(el_section).on('saturation_react', function() {
-			var item_list = el_populate.data('isotope').filteredItems;
-			var j = 0;
-			for(var i in item_list) {
-				var el = item_list[i].element;
-				var blk = $(el).data('blk');
-				Lib.Ajax.Singleton.Update({
-					blk_id: blk.blk_id,
-					metadata: {
-						pinboard_position: j
-					}
-				});
-				j += Lib.Pinboard.CREATE_INTERVAL;
+		var el_populate = el_section.find('.populate');
+		var item_list = el_populate.data('isotope').filteredItems;
+		var j = 0;
+		var arr = [];
 
-			}
+		for(var i in item_list) {
+			var el = item_list[i].element;
+			var blk = $(el).data('blk');
+			arr.push({
+				blk_id: blk.blk_id,
+				metadata: { pinboard_position: j },
+				update_owner: false
+			});
+			j += Lib.Pinboard.CREATE_INTERVAL;
+		}
+		Lib.Ajax.Singleton.UpdateMulti({
+			data_array: arr
 		});
-	
+	});
 	// Load Events
 	Lib.Pinboard.Fetch({
 		feed_type: 'committee',
@@ -231,7 +216,7 @@ $("#committee-section").on('init', function() {
 		for(var i in blks) {
 			var blk = blks[i];
 			var pinboard_position = JSON.parse(blk.metadata).pinboard_position;
-			var el_populate = el_section.find('.committee.populate');
+			var el_populate = el_section.find('.populate');
 			el_section.trigger('generate', {
 				blk: blk,
 				cb: function(data) {
@@ -239,12 +224,23 @@ $("#committee-section").on('init', function() {
 						el_populate: el_populate,
 						el_singleton: this
 					});
+					el_section.find('.populate div[data-editable] img')
+							  .each(function() {
+						$(this).one('load', function() {
+							if($(this).height() < 0) return;
+
+							// Very hacky fix...
+							setTimeout(function() {
+								el_section.find('.populate').isotope();
+							}, 300);
+						});
+					});
 				}
 			});
 		}
 		el_section.triggerHandler('displaycontent');
-		el_section.find('.committee.populate').isotope({
-			"itemSelector": ".committee.parent",
+		el_section.find('.populate').isotope({
+			"itemSelector": ".singleton.parent",
 			getSortData: {
 				'pinboard_position': function(el) {return parseInt($(el).attr('pinboard_position'));},
 				'blk_id': function(el) {return parseInt($(el).attr('blk_id'));},
@@ -263,8 +259,7 @@ $(".committee.add").on('click', function() {
 		}
 	}
 
-	var el_populate = $("#committee-section").find('.committee.populate');
-
+	var el_populate = $("#committee-section").find('.populate');
 	var pinboard_position = 0;
 	var first = el_populate.children().first();
 	if(first.length)

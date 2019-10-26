@@ -28,7 +28,8 @@ ContentTools.DEFAULT_TOOLS = [
 ];
 ContentTools.StylePalette.add([
     new ContentTools.Style('Circle', 'circle', ['img']),
-    new ContentTools.Style('Border', 'border', ['img'])
+    new ContentTools.Style('Border Grey', 'border', ['img']),
+    new ContentTools.Style('Border Red', 'border-red', ['img'])
 ]);
 
 function imageUploader(dialog) {
