@@ -82,6 +82,12 @@ el_section.on('init', function() {
 			blk: feed,
 			cb: function() {
 				$(this).triggerHandler('expand');
+				switch(md.handler) {
+				case 'events':
+					$(this).removeClass('col-lg-4');
+					break;
+				}
+
 				el_populate.append(this);
 			}
 		});

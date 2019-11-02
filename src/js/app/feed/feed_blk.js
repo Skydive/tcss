@@ -16,10 +16,10 @@ Object.assign(Lib.Feed, {
 			for(var i in feed_hashes) {
 				var feed = feed_hashes[i];
 
-				var cached_hash = localStorage.getItem("blk-"+feed.blk_id+"-hash") || "";
+				var cached_hash = SKY.Blk.Storage.getItem("blk-"+feed.blk_id+"-hash") || "";
 				if(feed['hash'] == cached_hash) {
 					var md = JSON.parse(feed.metadata);
-					var cached_blk = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("blk-"+feed.blk_id)) || {})  || {};
+					var cached_blk = JSON.parse(LZString.decompressFromUTF16(SKY.Blk.Storage.getItem("blk-"+feed.blk_id)) || {})  || {};
 					feed_out.push(Object.assign(feed, {
 						'feed_date': md.feed_date,
 						'blk_refs': cached_blk.blk_refs
@@ -54,8 +54,8 @@ Object.assign(Lib.Feed, {
 						blk_refs: {}
 					};
 					var md = JSON.parse(feed.metadata);
-					localStorage.setItem("blk-"+feed.blk_id, LZString.compressToUTF16(JSON.stringify(feed)));
-					localStorage.setItem("blk-"+feed.blk_id+"-hash", feed.hash);
+					SKY.Blk.Storage.setItem("blk-"+feed.blk_id, LZString.compressToUTF16(JSON.stringify(feed)));
+					SKY.Blk.Storage.setItem("blk-"+feed.blk_id+"-hash", feed.hash);
 					feed_out.push(Object.assign(feed, {
 						'feed_date': md.feed_date
 					}));
@@ -70,12 +70,12 @@ Object.assign(Lib.Feed, {
 		});
 	},
 	CachedRefsFetch: function(data, cb) {
-		var cached_hash = localStorage.getItem("blk-"+data.blk_id+"-hash") || "";
+		var cached_hash = SKY.Blk.Storage.getItem("blk-"+data.blk_id+"-hash") || "";
 		SKY.Ajax.Blk.HashFetch({
 			blk_id: data.blk_id
 		}).done(function(blk) {
 			if(cached_hash === blk.hash) {
-				var cached_blk = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("blk-"+data.blk_id)) || {}) || {};
+				var cached_blk = JSON.parse(LZString.decompressFromUTF16(SKY.Blk.Storage.getItem("blk-"+data.blk_id)) || {}) || {};
 				if(cached_blk) {
 					cb(cached_blk.blk_refs);
 					return;

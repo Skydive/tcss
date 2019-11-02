@@ -46,6 +46,21 @@ Object.assign(SKY.Ajax, {
 
 //-------------------- BLK CLASS ------------------
 Object.assign(SKY.Blk, {
+	Storage: {
+		CachingUserAgent: function() {
+			// Chromium
+			var isChromium = !!window.chrome;
+			// Only cache for chrome
+			return isChromium;
+		},
+		getItem: function(k, v) {
+			return SKY.Blk.Storage.CachingUserAgent() ? localStorage.getItem(k) : null;
+		},
+		setItem: function(k, v) {
+			if(SKY.Blk.Storage.CachingUserAgent())
+				localStorage.setItem(k, v);
+		}
+	},
 	Init: function() {
 		$('[blk_id]').map(function(k, v) {
 			var blk_id = $(v).attr('blk_id');
@@ -76,7 +91,7 @@ Object.assign(SKY.Blk, {
 			blk_id: data.blk_id
 		}).done(function(blk) {
 			if(cached_blk_hash === blk.blk_hash) {
-				var cached_blk = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("blk-"+data.blk_id)) || {}) || {};
+				var cached_blk = JSON.parse(LZString.decompressFromUTF16(SKY.Blk.Storage.getItem("blk-"+data.blk_id)) || {}) || {};
 				if(cached_blk) {
 					cb(cached_blk.blk_refs);
 					return;
@@ -86,7 +101,7 @@ Object.assign(SKY.Blk, {
 				'blk_ids': [data.blk_id]
 			}).done(function(json) {
 				// Reset hash
-				localStorage.setItem("blk-"+data.blk_id+"-hash", blk.blk_hash);
+				SKY.Blk.Storage.setItem("blk-"+data.blk_id+"-hash", blk.blk_hash);
 
 				// Reload BLK
 				var store_blk = {
@@ -98,7 +113,7 @@ Object.assign(SKY.Blk, {
 					var ref = json.blk_refs[i];
 					store_blk.blk_refs[ref.blk_ref_name] = ref;
 				}
-				localStorage.setItem("blk-"+data.blk_id, LZString.compressToUTF16(JSON.stringify(store_blk)));
+				SKY.Blk.Storage.setItem("blk-"+data.blk_id, LZString.compressToUTF16(JSON.stringify(store_blk)));
 				cb(store_blk.blk_refs);
 			});
 		});

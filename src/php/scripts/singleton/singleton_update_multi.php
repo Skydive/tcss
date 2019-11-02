@@ -11,7 +11,7 @@ require_once("lib/blk/blk_ref.php");
 require_once("scripts/dashboard/dashboard_config.php");
 
 $session_token = (string)$_COOKIE['session_token'];
-$content_array = json_decode($inputs['content_array']);
+$content_array = json_decode($inputs['data_array']);
 /*
 Expected content: [{blk_id: ___, metadata:, content: ___, update_owner: t/f}, ...]
  */
