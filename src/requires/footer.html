@@ -17,7 +17,7 @@
 </div>
 <script>
 	$(function() {
-		let regex = /app\-?((?:\d|[a-z]){10})\.min\.js/;
+		let regex = /app\-?((?:\d|[a-z]){10})\.js/;
 		let app_ver = $("script[src*='app']").attr('src');
 		let m = app_ver.match(regex)
 		if(m) {

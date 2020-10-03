@@ -86,6 +86,7 @@ Object.assign(SKY.Blk, {
 		});	
 	},
 	CachedRefsFetch: function(data, cb) {
+		// DISABLE BLK CACHE FETCH
 		//var cached_blk_hash = localStorage.getItem("blk-"+data.blk_id+"-hash") || "";
 		SKY.Ajax.Blk.HashFetch({
 			blk_id: data.blk_id

@@ -1,5 +1,7 @@
 # Trinity College Science Society Website
 
+Live @ https://tcss.soc.srcf.net/
+
 ## Contents
 1. Introduction
 2. Documentation
@@ -24,6 +26,8 @@
 3. Motivations
 	1. Personal Background
 	2. Aims for the society
+	3. Personal Benefit
+	4. Time Spent
 
 # Introduction
 This text file can largely be split into two seperate categories. Firstly, this text file will contain the necessary documentation for maintenance purposes as time progresses.
@@ -31,16 +35,23 @@ I will also outline my motivations for making a new website for TCSS and spendin
 
 # Documentation
 ## General Overview
-The website frontend is generated with _node_, using a library called _gulp_. Most of the functionality is accomplished using a JavaScript library called _jQuery_.
+The website frontend is generated with _rust_, using a library called _aggregate_. Most of the website functionality is accomplished using a JavaScript library called _jQuery_.
 
 The website backend is written in _PHP_, and makes use of _PostgreSQL_ as a database server. 
 
 ## Tools/Languages
 ### Build Tool
 #### General
-The build tool resides in the `/gulp` directory and is written in ES6, a form of JavaScript used by node.
+The build tool resides in the `aggregate` directory and is written in Rust.
+The repository can be obtained via:
+```
+cd $ROOTDIR
+git clone git@github.com/skydive:aggregate
+```
 
-[Gulp](https://gulpjs.com/) is a pipe-based build tool, designed for efficient generation of code, and is used extensively. It is [heavily documented](https://gulpjs.com/docs/en/api/concepts) in other places.
+In the past, `npm` and `gulp` were used. This has been deprecated due to security considerations. The Rust build tool makes use of petgraph and async_std to perform the entire build process in parallel across all available threads. It is by far superior to what existed in the past.
+
+Copy `config.json` into `aggregate/config.json` and execute `cargo run -- build` in shell to build the program
 
 __DEVELOPMENT__
 During development, ___watchers___, are created. When a file is changed, the respective output file, in the
@@ -48,9 +59,8 @@ During development, ___watchers___, are created. When a file is changed, the res
 
 __Within a terminal:__
 ```
-cd $ROOTDIR/gulp
-npm install
-npm start
+cd aggregate
+cargo run -- watch
 ```
 
 __DEPLOY__
@@ -58,35 +68,33 @@ The most important think about deployment, is that the code is automatically min
 
 __Within a terminal:__
 ```
-cd $ROOTDIR/gulp
-npm install
-npm run deploy
+cd aggregate
+cargo run -- deploy
 ```
 
-The build tool is written with great emphasis on configuration. It is written to apply specific 'procedures', each lying in `/gulp/proc`. Procedures in use include: `html, clone, js, css, php`.
+The build tool is written with great emphasis on configuration. It is written to apply specific 'processors', each lying in `aggregate/src/processor` Procedures in use include: `html, clone, js, css, php`.
 
-The configuration for the build tool resides in `/config.json`, and outlines the procedures required, including specifying the output directory of the built files and supports passing arguments to each of the procedures.
+The configuration for the build tool resides in `config.json`, and outlines the procedures required, including specifying the output directory of the built files and supports passing arguments to each of the procedures.
 
-Global build modifiers include: `build`, and `deploy`. Where each modifies
-the behaviour of every procedure executed. Notably, 'deploy' exists for
-producing revisions and minifying code upon deployment.
+Global build modifiers include: `build`, and `deploy`. Where each modifies the behaviour of every procedure executed. Notably, 'deploy' exists for producing revisions and minifying code upon deployment.
 
 #### HTML
-The html procedure, in particular, is the most complicated. 
+The htmlpages procedure, in particular, is the most complicated. 
 For each page directory specified, the procedure seeks a ```template.html``` file, in the /src/pages/ folder
 recursively looking up directories. The ```template.html``` contains syntax which specifies the output files and how to construct them..
 
 The standard ```template.html``` file creates both ```content.html```, and ```index.html``` files. This integrates seamlessly with the ```sky-history.js``` library, providing seamless page transitions and hooking into browser history.
 
+See `aggregate/src/processor/htmlpages.rs`
 
 ### PHP
 #### Philosophy
 PHP is the most widely used language for backend. It has been proven to scale and is still widely used by many major companies.
 
-The principal argument here is so the society does not need to pay for webhosting, as the SRCF (Student Run Computing Facility) supports PHP by default.
+The principal argument for its use here is so the society does not need to pay for webhosting, as the SRCF (Student Run Computing Facility) supports PHP by default.
 
 #### Structure of Code
-The entire collection of possible backend php _actions_ has a common entry point `/src/php/index.php`. A switch/case statement is used to ensure the execution of particular scripts. This is bundled with a `.htaccess` file, to ensure that only index.php may be executed. This is added security, and guarantees only intended execution of code.
+The entire collection of possible backend php _actions_ has a common entry point `/src/php/index.php`. A switch/case statement is used to ensure the execution of particular scripts. This is (usually) bundled with a `.htaccess` file, to ensure that only index.php may be executed. This is added security, and guarantees only intended execution of code.
 
 The configuration of the backend resides in `/src/php/config.php`, where fields within the `$GLOBALS` associative array may be modified to alter the hostnames of the database server, list valid exceptions to return to the client, and provide information about where image uploads should reside.
 
@@ -205,7 +213,7 @@ User management: `/src/php/lib/framework/auth/user.php`
 ### Atlas
 The problem of listing all crsids, and obtaining as much information from the UIS as possible to assign groups to people who haven't yet logged in is achieved by _caching_ necessary crsids.
 
-A cron job, set to execute once a month. It fetches a JSON list of all members of the University, containing initials, last name and crsids, and caches it within the `atlas` table. New accounts are generated as required. This allows groups to be assigned, to users who have not yet logged on.
+A cron job is set to execute once a month. It fetches a JSON list of all members of the University, containing initials, last name and crsids, and caches it within the `atlas` table. New accounts are generated as required. This allows groups to be assigned to users who have not yet logged on by having their accounts generated automatically.
 
 [SRCF Crontab](https://www.srcf.net/faq/managing-socaccount#crontab)
 
@@ -218,6 +226,12 @@ __BLK__
 A blk contains within it, references to the header, footer and body of the news article. The blk stores a combined hash, of everything it refers to. When a single reference of the blk has its data changed, the hash of the blk will then be recalculated, and everything it references will be fetched again by clients. 
 
 The stored _blks_ on the client are lzo compressed, as json is an inefficient format for storing data. This ensures that the ~8MB localstorage cap will not be exceeded.
+
+EDIT 2020: THIS IS A GOOD LESSON IN OVERENGINEERING
+Some browsers dislike storing lzo-compressed UTF32 bytes in localStorage. This results in a JSON.parse error.
+The original fix was to store UTF16 bytes in memory - but this is still disliked by many browsers.
+TODO: Re-enable with a try/catch CASE for the JSON.parse to set a boolean in localStorage to disable fetching from cache!
+For now - this is DISABLED. See `sky-blk.js`, Line 90 is commented out.
 
 ### Content Editing
 ContentTools, a _WYSIWYG_ editor, was used to provide an interface for content editing. 
@@ -236,19 +250,22 @@ The featureset required is not met with WordPress. Raven authentication and user
 
 Making a website quickly in wordpress has no educational aspect to it. I am fortunate to still be young and not in full time work, and to have the spare time to actually pursue the acquisition of new skills and knowledge. Given that I have the time and that the skills acquired would greatly benefit me immediate future and later in life. It is a task that is optimal for a holiday project, and surely the university should be supportive of this endeavor.
 
-## Personal Background
-My name is Khalid Aleem (ka476). I am a student who is genuinely passionate about software development, and I have been programming, primarily as a hobby, from a very young age.
+EDIT 2020: Most definitely.
 
-Given that I've spent over 2000 hours, over the course of 9 years, learning how to code. (See https://github.com/Skydive/), I feel as if I have the necessary skillset to make a new website for TCSS.
+## Personal Background
+My name is Khalid Aleem (ka476). I am a student who is genuinely passionate about software development, and I have been programming, primarily as a hobby from a very young age.
+
+Given that I've spent over 2000 hours, over the course of 9 years writing code. (See https://github.com/Skydive/), I feel as if I have the necessary skillset to make this new website for TCSS.
 
 Past projects include:
 - A Steam Chatbot (Written in C#) (2013-14)
 - C++ 3D Rendering Engine (2015)
 - WebGL Sprite Ship Game (2017)
 - C++ Neural Network (MNIST ~80% coverage) (2017)
+- Rust async dependency resolver build tool (2020)
 
 Recently, I've spent over 100 hours in the summer holiday period writing code for relevant web technologies and developing a familiarity with these languages: `PHP/HTML/JS/SQL`. 
-I've spent some time reading dev/techblogs to understand the best and necessary practices.
+I've spent some time reading dev/techblogs to understand the best and necessary practices involved.
 
 I've started working on a [portfolio](https://portfolio.precess.io/) website.
 
@@ -257,9 +274,9 @@ The internet is the inevitable future of technology. Developing the necessary sk
 ## Aims for the society
 The current website is incredibly old and unmaintainable. I feel it sets an incredibly negative image to those who are also passionate about software development and web technologies, especially in industry.
 
-The dynamically generated php pages, overall lack of static content, and poorly done stylesheet makes the TCSS website visually resemble something from the 1990s, and functionally it resembles the first incarnation of facebook.
+The dynamically generated php pages, overall lack of static content, and poorly done stylesheet makes the TCSS website visually resemble something from the 1990s, and functionally it resembles (and looks worse than) the first incarnation of facebook.
 
-Furthermore, the admin section involves inserting raw html code. This demonstrates the unmaintainability of the website. Editing raw code should not be necessary to modify the content of the site.
+Furthermore, the admin section involves inserting raw html code. This demonstrates the unmaintainability of the website. Editing raw code should not be necessary to modify the content of the site. (Serious security risk)
 
 Moreover, I feel a deep sense of fulfillment for improving it.
 
@@ -277,7 +294,4 @@ Users/Sessions - 3 days
 Raven authentication - 3 days  
 Atlas fetching - 1 day
 Dynamic content - 1 week
-
-To retain the degree of concentration necessary to write and design the new website, I resided in college over the Winter vacation. I therefore propose that the society reimburses me money equivalent to, or greater than my winter room rent. (£1000)
-
-Given that the society recently applied for £1500 to get a contractor to make a new website, this is significantly undercutting that amount.
+Maintenance - Ongoing... (too long... regrettably)
