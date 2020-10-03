@@ -290,8 +290,8 @@ Making a website for TCSS, gives me a greater ability to compete, and demonstrat
 Given this very personal connection, it is also in my best interest to maintain the site and ensure it is up.
 
 ## Time Spent  
-Users/Sessions - 3 days
-Raven authentication - 3 days  
-Atlas fetching - 1 day
-Dynamic content - 1 week
-Maintenance - Ongoing... (too long... regrettably)
+- Users/Sessions - 3 days
+- Raven authentication - 3 days  
+- Atlas fetching - 1 day
+- Dynamic content - 1 week
+- Maintenance - Ongoing... (too long... regrettably)
